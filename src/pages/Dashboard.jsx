@@ -1,3 +1,4 @@
+// nahids part
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client.js";
@@ -63,7 +64,7 @@ export default function Dashboard() {
       </div>
 
       <div className="card">
-        <h2>How we calculated it</h2>
+        <h2>How we calculated The BMR</h2>
         <ul>
           <li>BMR (resting energy, Mifflin-St Jeor formula): <strong>{plan.bmr} kcal</strong></li>
           <li>TDEE = BMR x activity factor: <strong>{plan.tdee} kcal</strong></li>
@@ -80,3 +81,4 @@ export default function Dashboard() {
     </div>
   );
 }
+// nahids part
