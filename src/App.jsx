@@ -1,3 +1,4 @@
+// This part was developed by Arik abrar but committed by a teammate due to a GitHub repository structure loss issue.
 import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
