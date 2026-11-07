@@ -1,4 +1,4 @@
-// nahids part
+//This part was developed by Mojammel Nahid but committed by a teammate due to a GitHub repository structure loss issue.
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client.js";
@@ -7,10 +7,10 @@ import { ACTIVITY_LEVELS, GOALS } from "../constants.js";
 const label = (list, value) => list.find((o) => o.value === value)?.label ?? value;
 
 export default function Dashboard() {
-  const [profile, setProfile] = useState(null);
-  const [plan, setPlan] = useState(null);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [profile,setProfile] = useState(null);
+  const [plan,setPlan] = useState(null);
+  const [error,setError] = useState("");
+  const [loading,setLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([api.getProfile(), api.getNutritionPlan()])
@@ -27,7 +27,7 @@ export default function Dashboard() {
       <div className="card narrow">
         <h1>Welcome</h1>
         <p>Fill in your fitness profile first, then your calorie and protein targets will appear here.</p>
-        <Link className="btn" to="/profile">Complete my profile</Link>
+        <Link className="btn" to="/profile">Complete MY profile</Link>
       </div>
     );
   }
