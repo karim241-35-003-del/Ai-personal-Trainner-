@@ -1,3 +1,4 @@
+//alif part 
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../api/client.js";
 import { EQUIPMENT } from "../constants.js";
