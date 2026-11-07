@@ -1,4 +1,5 @@
-// nahids part
+//This part was developed by Mojammel Nahid but committed by a teammate due to a GitHub repository structure loss issue.
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -29,7 +30,7 @@ export default function Login() {
   return (
     <div className="card narrow">
       <h1>Login</h1>
-      <form onSubmit={onSubmit} noValidate>
+      <form onSubmit= {onSubmit} noValidate>
         <label>Email
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
         </label>
@@ -39,7 +40,7 @@ export default function Login() {
         {error && <p className="error">{error}</p>}
         <button className="btn" disabled={busy}>{busy ? "Logging in..." : "Login"}</button>
       </form>
-      <p className="muted">New here? <Link to="/register">Create an account</Link></p>
+      <p className="muted">New here? <Link to="/register">Create An account</Link></p>
     </div>
   );
 }
