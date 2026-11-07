@@ -1,3 +1,4 @@
+// This part was developed by Arik Abrar but committed by a teammate due to a GitHub repository structure loss issue.
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../api/client.js";
