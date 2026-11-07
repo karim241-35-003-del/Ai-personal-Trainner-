@@ -1,4 +1,5 @@
-// nahids part
+//This part was developed by Mojammel Nahid but committed by a teammate due to a GitHub repository structure loss issue.
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../api/client.js";
