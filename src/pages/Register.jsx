@@ -1,4 +1,4 @@
-// nahids part
+//This part was developed by Mojammel Nahid but committed by a teammate due to a GitHub repository structure loss issue.
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -29,7 +29,6 @@ export default function Register() {
       setBusy(false);
     }
   };
-
   return (
     <div className="card narrow">
       <h1>Create account</h1>
