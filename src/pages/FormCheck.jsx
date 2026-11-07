@@ -1,3 +1,4 @@
+//alif part
 import { useEffect, useRef, useState } from "react";
 import { api } from "../api/client.js";
 import { PHOTO_MAX_MB } from "../constants.js";
