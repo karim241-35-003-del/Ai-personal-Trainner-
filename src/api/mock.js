@@ -1,4 +1,6 @@
-// DEMO MODE ONLY. No backend needed. Everything is stored in this browser.
+// Developed by Mojammel Nahid (but Committed by a teammate due to a GitHub tree lost issue).
+
+//eita demo mode..ekhono backend make kori nai.tai Everything is stored in this browser.
 import { ACTIVITY_LEVELS } from "../constants.js";
 
 const wait = (ms = 300) => new Promise((r) => setTimeout(r, ms));
@@ -215,7 +217,7 @@ export const api = {
     await wait();
     const users = read("mock_users", {});
     const key = email.toLowerCase();
-    if (users[key]) throw new Error("An account with this email already exists.");
+    if (users[key]) throw new Error("An account with this email already exists in our system.");
     users[key] = { name, password };
     write("mock_users", users);
     return { access_token: "mock:" + key, token_type: "bearer", user: { name, email: key } };
