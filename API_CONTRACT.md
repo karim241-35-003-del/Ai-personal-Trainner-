@@ -1,4 +1,4 @@
-# API contract (frontend <-> backend)
+// This part was developed by Asif karim alif but committed by a teammate due to a GitHub repository structure loss issue.# API contract (frontend <-> backend)
 
 The frontend already calls these endpoints. Build the backend to match, so that
 switching `VITE_USE_MOCK=false` just works. Base path: `/api`. All bodies are JSON.
