@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+// This part was developed by Asif karim alif but committed by a teammate due to a GitHub repository structure loss issue.import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 // Dev server: http://localhost:5173
