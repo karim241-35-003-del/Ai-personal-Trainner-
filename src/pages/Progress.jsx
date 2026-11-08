@@ -1,4 +1,3 @@
-// This part was developed by Arik Abrar but committed by a teammate due to a GitHub repository structure loss issue.
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../api/client.js";
 import { WEIGHT_LIMITS } from "../constants.js";
@@ -10,10 +9,10 @@ function today() {
   return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 }
 
-// Monday of the week that contains the given YYYY-MM-DD date.
+// Saturday of the week that contains the given YYYY-MM-DD date (week runs Saturday to Friday).
 function weekStart(dateStr) {
   const d = new Date(dateStr + "T00:00:00");
-  d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+  d.setDate(d.getDate() - ((d.getDay() + 1) % 7));
   return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 }
 
