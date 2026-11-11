@@ -1,0 +1,68 @@
+{
+  "_note": "PLACEHOLDER ranges, to be confirmed by the trainer",
+  "_visibility_note": "PLACEHOLDER minimum landmark visibility (0.5), to be confirmed by the trainer",
+  "_penalty_note": "PLACEHOLDER score deduction per issue (15), to be confirmed by the trainer",
+  "visibility_threshold": 0.5,
+  "penalty_per_issue": 15,
+  "exercises": {
+    "push-up": {
+      "name": "Push-up",
+      "checks": [
+        {
+          "id": "elbow_bottom",
+          "body_part": "Elbows",
+          "joints": ["shoulder", "elbow", "wrist"],
+          "range": [60, 105],
+          "messages": {
+            "ok": "Good elbow bend at the bottom of the push-up.",
+            "low": "Elbows are bent very tightly. Lower until your chest is just above the floor without collapsing.",
+            "high": "Lower deeper until your elbows bend closer to 90 degrees (take the photo at the bottom of the rep)."
+          }
+        },
+        {
+          "id": "body_line",
+          "body_part": "Hips & back",
+          "joints": ["shoulder", "hip", "ankle"],
+          "range": [165, 180],
+          "messages": {
+            "ok": "Body stays in a straight line from shoulders to ankles.",
+            "low": "Hips are sagging or piking. Brace your core and squeeze your glutes to keep a straight line.",
+            "high": "Hips are slightly out of line. Keep a straight line from shoulders to ankles."
+          }
+        }
+      ]
+    },
+    "bodyweight-squat": {
+      "name": "Bodyweight squat",
+      "checks": [
+        {
+          "id": "knee_bottom",
+          "body_part": "Knees",
+          "joints": ["hip", "knee", "ankle"],
+          "range": [70, 115],
+          "messages": {
+            "ok": "Good knee depth at the bottom of the squat.",
+            "low": "Very deep knee bend. Keep your heels flat and stay in control at the bottom.",
+            "high": "Squat slightly deeper if your mobility allows (take the photo at the lowest point)."
+          }
+        }
+      ]
+    },
+    "plank": {
+      "name": "Plank",
+      "checks": [
+        {
+          "id": "body_line",
+          "body_part": "Hips & back",
+          "joints": ["shoulder", "hip", "ankle"],
+          "range": [165, 180],
+          "messages": {
+            "ok": "Body forms a straight line from shoulders to ankles.",
+            "low": "Hips are sagging or raised too high. Brace your stomach and align shoulders, hips, and ankles.",
+            "high": "Hips are out of alignment. Keep your body in one straight line."
+          }
+        }
+      ]
+    }
+  }
+}
