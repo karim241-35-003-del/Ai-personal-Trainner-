@@ -54,3 +54,322 @@ table.log th { color: var(--muted); font-size: 12px; text-transform: uppercase; 
 .routine-tab-btn:hover { background: #f1f5f9; color: #0f172a; }
 .routine-tab-btn.active { background: var(--blue, #2563eb); border-color: var(--blue, #2563eb); color: #ffffff; }
 
+
+/* ============================================================
+   Redesigned Exercise Routine UI (Photo Matching Layout)
+   ============================================================ */
+
+/* Top Routine Toggle Bar */
+.routine-top-toggle-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.routine-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.routine-toggle-pill:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.routine-toggle-pill.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.green-dot-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+/* 3-Day Plan Section */
+.plan-heading-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px;
+}
+
+/* 3-Day Plan Segmented Tab Navigation */
+.plan-subtabs-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid #2563eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 22px;
+}
+
+.plan-subtab-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  border: none;
+  background: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.plan-subtab-btn:not(:first-child) {
+  border-left: 1px solid #e2e8f0;
+}
+
+.plan-subtab-btn:hover:not(.active) {
+  background: #f8fafc;
+}
+
+.plan-subtab-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.plan-subtab-day {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  color: #2563eb;
+}
+
+.plan-subtab-btn.active .plan-subtab-day {
+  color: #ffffff;
+}
+
+.plan-subtab-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.plan-subtab-btn.active .plan-subtab-subtitle {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Main Workout Plan Card */
+.workout-plan-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 26px 30px;
+}
+
+.workout-card-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
+}
+
+.workout-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.workout-card-meta {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Exercise List Rows */
+.exercise-list-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exercise-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.exercise-row-item:hover {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.exercise-row-item.open {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.exercise-row-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.exercise-row-num {
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.exercise-row-thumb {
+  width: 92px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0f172a;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-thumb-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.exercise-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 20px;
+}
+
+.exercise-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.exercise-row-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exercise-row-muscle {
+  font-size: 13px;
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+.exercise-row-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.exercise-row-sets {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: 0.02em;
+}
+
+.exercise-row-chevron {
+  font-size: 18px;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.exercise-row-chevron.open {
+  transform: rotate(90deg);
+  color: #2563eb;
+}
+
+/* Expanded Detail Box */
+.exercise-detail-panel {
+  padding: 16px 20px;
+  margin: 4px 0 12px 40px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.exercise-detail-video-box {
+  max-width: 440px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-detail-video {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .plan-subtabs-container {
+    grid-template-columns: 1fr;
+  }
+  .plan-subtab-btn:not(:first-child) {
+    border-left: none;
+    border-top: 1px solid #e2e8f0;
+  }
+  .exercise-row-thumb {
+    width: 68px;
+    height: 44px;
+  }
+  .workout-plan-card {
+    padding: 18px 16px;
+  }
+  .exercise-detail-panel {
+    margin-left: 0;
+  }
+}
