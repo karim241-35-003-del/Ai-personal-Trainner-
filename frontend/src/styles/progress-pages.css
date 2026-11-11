@@ -1,0 +1,17 @@
+/* Styles for Progress and Recommendations. Shared colours come from app.css. */
+.chart { width: 100%; height: auto; display: block; }
+.chart .axis { stroke: var(--line); stroke-width: 1; }
+.chart .line { fill: none; stroke: var(--blue); stroke-width: 2.5; stroke-linejoin: round; }
+.chart .dot { fill: var(--blue); }
+.chart text { fill: var(--muted); font-size: 11px; }
+.week-bars { display: flex; align-items: flex-end; gap: 10px; height: 140px; padding-top: 8px; }
+.week-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; font-size: 12px; color: var(--muted); }
+.week-bar .bar { width: 100%; max-width: 48px; background: var(--blue); border-radius: 6px 6px 0 0; min-height: 2px; }
+.week-bar .count { font-weight: 700; color: var(--blue-dark); }
+.rec-list { display: grid; gap: 12px; margin-bottom: 20px; }
+.rec { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 12px; padding: 14px 18px; }
+.rec h2 { margin: 0 0 4px; font-size: 17px; }
+.rec p { margin: 4px 0; font-size: 14px; }
+.rec .why { color: var(--muted); font-size: 13px; }
+.rec.cat-nutrition { border-left-color: #2e8b57; }
+.rec.cat-form { border-left-color: #b8860b; }

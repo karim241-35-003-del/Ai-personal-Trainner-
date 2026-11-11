@@ -1,0 +1,309 @@
+/* Styles for the Personalized Routine Page */
+
+.routine-header-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 12px 0 20px;
+}
+
+.routine-badge {
+  background: #e8efff;
+  color: var(--blue-dark);
+  border: 1px solid #c7d8f9;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.routine-badge.badge-goal {
+  background: #e3f6e8;
+  color: #17512a;
+  border-color: #b7e8c2;
+}
+
+.routine-badge.badge-alert {
+  background: #fff3cd;
+  color: #664d03;
+  border-color: #ffe69c;
+}
+
+.routine-tip-box {
+  background: #eef4ff;
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.routine-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.routine-meta-item {
+  background: #f8fafd;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.routine-meta-label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.routine-meta-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+
+.day-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin: 20px 0 16px;
+}
+
+.day-tab-btn {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease-in-out;
+}
+
+.day-tab-btn:hover {
+  border-color: var(--blue);
+  background: #f0f4fc;
+}
+
+.day-tab-btn.active {
+  background: var(--blue-dark);
+  color: #fff;
+  border-color: var(--blue-dark);
+}
+
+.day-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.day-card-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.day-card-header .est-time {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.routine-exercise-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: #fff;
+  transition: border-color 0.15s ease;
+}
+
+.routine-exercise-card.completed {
+  background: #f8faf8;
+  border-color: #b7e8c2;
+  opacity: 0.9;
+}
+
+.routine-exercise-card.completed .rex-title {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.rex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rex-title {
+  margin: 0 0 6px;
+  font-size: 17px;
+  color: var(--blue-dark);
+}
+
+.rex-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.target-pill {
+  background: #eef3fc;
+  color: var(--blue);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.target-pill.pill-rest {
+  background: #f3f3f3;
+  color: #555;
+}
+
+.rex-alert {
+  background: #fff8e1;
+  border-left: 3px solid #ffb300;
+  color: #825300;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+.rex-cues {
+  background: #fafbfc;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.rex-cues strong {
+  color: var(--blue-dark);
+}
+
+.rex-cues ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.rex-cues li {
+  margin-bottom: 2px;
+}
+
+.rex-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+}
+
+.rex-check-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0;
+}
+
+.rex-check-label input {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.rex-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 13px;
+  border-radius: 6px;
+}
+
+.warmup-box {
+  background: #fbfbfd;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.warmup-box summary {
+  font-weight: 600;
+  color: var(--blue-dark);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.warmup-box ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.routine-bottom-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 32px;
+}
+
+@media print {
+  .nav, .demo-bar, .day-tabs, .rex-actions, .routine-bottom-actions, .link-btn {
+    display: none !important;
+  }
+  .container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .card, .day-card {
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+  .routine-exercise-card {
+    page-break-inside: avoid;
+  }
+}
