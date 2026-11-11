@@ -4,16 +4,28 @@ import { api } from "../api/client.js";
 import { detectInjuries, getExerciseContraindication } from "../utils/injuryRules.js";
 import "../styles/trainer-pages.css";
 
-const DAY_SUBTITLES = {
+const GYM_INT_SUBTITLES = {
   "Day 1": "Chest · Shoulder · Tricep",
   "Day 2": "Legs",
   "Day 3": "Back · Biceps",
 };
 
-const DAY_DURATIONS = {
+const GYM_INT_DURATIONS = {
   "Day 1": "About 35 min",
   "Day 2": "About 30 min",
   "Day 3": "About 40 min",
+};
+
+const HOME_INT_SUBTITLES = {
+  "Day 1": "Chest · Triceps · Shoulders",
+  "Day 2": "Legs · Abs",
+  "Day 3": "Back · Biceps",
+};
+
+const HOME_INT_DURATIONS = {
+  "Day 1": "About 35–40 min",
+  "Day 2": "About 35–40 min",
+  "Day 3": "About 35–40 min",
 };
 
 export default function ExerciseLibrary() {
@@ -51,7 +63,7 @@ export default function ExerciseLibrary() {
     [profile?.limitations]
   );
 
-  // Fitness level comes directly from profile selection
+  // Fitness level & location come directly from profile selection
   const isIntermediate =
     profile?.fitness_level === "intermediate" || profile?.fitness_level === "advanced";
   const userLevel = isIntermediate ? "intermediate" : "beginner";
@@ -62,7 +74,8 @@ export default function ExerciseLibrary() {
   //    - At Home: home_bodyweight_beginner or home_dumbbell_beginner
   //    - Gym: gym_beginner
   // 2. Intermediate profile:
-  //    - 3-day split by activeDay
+  //    - At Home: home_dumbbell_intermediate by activeDay
+  //    - Gym: intermediate_split by activeDay
   const visibleExercises = useMemo(() => {
     if (userLevel === "beginner") {
       if (isHome) {
@@ -77,8 +90,13 @@ export default function ExerciseLibrary() {
     }
 
     if (userLevel === "intermediate") {
+      if (isHome) {
+        return exercises.filter(
+          (e) => e.routine_type === "home_dumbbell_intermediate" && e.day === activeDay
+        );
+      }
       return exercises.filter(
-        (e) => (e.routine_type === "intermediate_split" || e.level === "intermediate") && e.day === activeDay
+        (e) => e.routine_type === "intermediate_split" && e.day === activeDay
       );
     }
 
@@ -88,13 +106,17 @@ export default function ExerciseLibrary() {
   if (loading) return <p>Loading exercises...</p>;
   if (error) return <p className="error">{error}</p>;
 
+  // Subtitles & Durations lookup
+  const intSubtitles = isHome ? HOME_INT_SUBTITLES : GYM_INT_SUBTITLES;
+  const intDurations = isHome ? HOME_INT_DURATIONS : GYM_INT_DURATIONS;
+
   // Title and duration calculation
   let currentTitle = "Your Workout Plan";
   let currentDuration = "About 30 min";
 
   if (userLevel === "intermediate") {
-    currentTitle = `${activeDay} · ${DAY_SUBTITLES[activeDay] || "Workout"}`;
-    currentDuration = DAY_DURATIONS[activeDay] || "About 35 min";
+    currentTitle = `${activeDay} · ${intSubtitles[activeDay] || "Workout"}`;
+    currentDuration = intDurations[activeDay] || "About 35 min";
   } else if (isHome) {
     if (homeEquipment === "dumbbell") {
       currentTitle = "Beginner · At Home (Dumbbells)";
@@ -125,6 +147,11 @@ export default function ExerciseLibrary() {
             <strong style={{ color: "#0f172a", textTransform: "capitalize" }}>
               {profile?.location || "Home"}
             </strong>
+            {userLevel === "intermediate" && isHome && (
+              <span style={{ color: "#16a34a", fontWeight: "600", marginLeft: "6px" }}>
+                · (Dumbbell 3-Day Split)
+              </span>
+            )}
           </p>
         </div>
 
@@ -168,7 +195,7 @@ export default function ExerciseLibrary() {
                   }}
                 >
                   <span className="plan-subtab-day">{d.toUpperCase()}</span>
-                  <span className="plan-subtab-subtitle">{DAY_SUBTITLES[d]}</span>
+                  <span className="plan-subtab-subtitle">{intSubtitles[d]}</span>
                 </button>
               );
             })}
@@ -267,10 +294,10 @@ export default function ExerciseLibrary() {
                       </div>
                     </div>
 
-                    {/* Right: Sets & Reps format ('2 x 10–12 reps' or '4 x 12') + Arrow icon ( > ) */}
+                    {/* Right: Sets & Reps format ('3 x 10–12 reps' or '4 x 12') + Arrow icon ( > ) */}
                     <div className="exercise-row-right">
                       <span className="exercise-row-sets">
-                        {e.sets || 2} &times; {e.reps || 12}
+                        {e.sets || 3} &times; {e.reps || 12}
                       </span>
                       <span className={`exercise-row-chevron ${isOpen ? "open" : ""}`}>
                         &gt;
