@@ -629,6 +629,101 @@ export const EXERCISE_SAFETY = {
     reason: "Overhead dumbbell pressing compresses the subacromial space and loads the cervical spine.",
     alternatives: ["Dumbbell side raises (light load)", "Chest press", "Lower body training"],
   },
+  "home-int-dumbbell-floor-press": {
+    riskAreas: ["shoulder", "wrist", "elbow"],
+    reason: "Floor pressing reduces shoulder hyperextension but still places direct compressive load through the anterior glenohumeral joint and wrist flexors.",
+    alternatives: ["Knee push-ups", "Dumbbell squeeze press with light load", "Glute bridge"]
+  },
+  "home-int-dumbbell-squeeze-press": {
+    riskAreas: ["shoulder", "wrist", "elbow"],
+    reason: "Continuous isometric inward squeezing places intense tension across the anterior shoulder capsule and wrist tendons.",
+    alternatives: ["Floor dumbbell press", "Knee push-ups", "Standing arm raises"]
+  },
+  "home-int-dumbbell-shoulder-press": {
+    riskAreas: ["shoulder", "neck", "elbow"],
+    reason: "Overhead dumbbell pressing compresses the subacromial space and places shear stress on the cervical spine.",
+    alternatives: ["Dumbbell lateral raise with light load", "Dumbbell floor press", "Lower body training"]
+  },
+  "home-int-dumbbell-lateral-raise": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "Abducting weights with long levers increases subacromial friction if arms drift behind the scapular plane.",
+    alternatives: ["Scapular plane raises", "Arm front raises", "Bicep curls"]
+  },
+  "home-int-overhead-triceps-extension": {
+    riskAreas: ["elbow", "shoulder"],
+    reason: "Deep overhead elbow flexion creates high tensile stretch across the distal triceps tendon and loads the shoulder capsule.",
+    alternatives: ["Dumbbell triceps kickback", "Dumbbell floor press", "Knee push-ups"]
+  },
+  "home-int-dumbbell-triceps-kickback": {
+    riskAreas: ["elbow", "back"],
+    reason: "Holding a bent-over posture requires continuous lumbar erector stabilization while flexing elbows.",
+    alternatives: ["Dumbbell floor press", "Knee push-ups", "Overhead triceps extension with light load"]
+  },
+  "home-int-goblet-squat": {
+    riskAreas: ["knee", "hip"],
+    reason: "Deep squatting increases patellofemoral compressive force under external loading.",
+    alternatives: ["Glute bridge", "Romanian deadlift", "Dumbbell calf raise"]
+  },
+  "home-int-dumbbell-romanian-deadlift": {
+    riskAreas: ["back", "hip"],
+    reason: "Hip hinging with weights places significant tensile shear on the lumbar spine and hamstring origins.",
+    alternatives: ["Glute bridge", "Goblet squat with upright torso", "Dumbbell calf raise"]
+  },
+  "home-int-dumbbell-reverse-lunge": {
+    riskAreas: ["knee", "hip", "ankle"],
+    reason: "Unilateral lunging exerts intense shear on the lead patellar tendon and requires ankle stability.",
+    alternatives: ["Goblet squat", "Glute bridge", "Standing calf raise"]
+  },
+  "home-int-dumbbell-calf-raise": {
+    riskAreas: ["ankle"],
+    reason: "Weighted plantarflexion places heavy tensile stretch on the Achilles tendon and plantar fascia.",
+    alternatives: ["Bodyweight calf raise", "Goblet squat", "Reverse crunch"]
+  },
+  "home-int-dumbbell-crunch": {
+    riskAreas: ["neck", "back"],
+    reason: "Weighted thoracic flexion increases compressive stress on the cervical and lumbar intervertebral discs.",
+    alternatives: ["Plank on knees", "Dead bug", "Bird dog"]
+  },
+  "home-int-reverse-crunch": {
+    riskAreas: ["back", "hip"],
+    reason: "Pelvic tilting and curling can strain the lower lumbar spine if hip flexors overpower abdominals.",
+    alternatives: ["Plank", "Dead bug", "Pelvic tilts"]
+  },
+  "home-int-plank": {
+    riskAreas: ["shoulder", "wrist", "elbow", "back"],
+    reason: "Isometric plank holds place continuous loading across the shoulder girdle, elbows, and lower back.",
+    alternatives: ["Bird dog", "Dead bug", "Knee plank"]
+  },
+  "home-int-bent-over-dumbbell-row": {
+    riskAreas: ["back", "wrist", "elbow"],
+    reason: "Bilateral bent-over rowing requires continuous lumbar support and loaded grip strength.",
+    alternatives: ["Single-arm row supported on chair", "Band pull-apart", "Dumbbell curl"]
+  },
+  "home-int-single-arm-dumbbell-row": {
+    riskAreas: ["back", "wrist", "elbow"],
+    reason: "Rowing loads the forearm flexors and requires rotational torso stabilization.",
+    alternatives: ["Chest-supported row", "Band pull-apart", "Bicep curl"]
+  },
+  "home-int-dumbbell-reverse-fly": {
+    riskAreas: ["shoulder", "neck", "back"],
+    reason: "Horizontal shoulder abduction in a bent-over stance stresses rear deltoids and cervical erectors.",
+    alternatives: ["Band pull-apart", "Single-arm row", "Bicep curl"]
+  },
+  "home-int-dumbbell-pullover": {
+    riskAreas: ["shoulder", "back"],
+    reason: "Extending weights overhead in a supine position maximizes lever force on the anterior shoulder capsule and lat insertion.",
+    alternatives: ["Single-arm dumbbell row", "Floor press", "Bicep curl"]
+  },
+  "home-int-dumbbell-biceps-curl": {
+    riskAreas: ["elbow", "wrist"],
+    reason: "Supinated curling increases tensile loading on the distal biceps tendon and wrist flexors.",
+    alternatives: ["Hammer curls", "Isometric holds", "Shoulder press"]
+  },
+  "home-int-dumbbell-hammer-curl": {
+    riskAreas: ["elbow", "wrist"],
+    reason: "Neutral grip curling stresses the brachioradialis and lateral epicondyle under heavy weights.",
+    alternatives: ["Dumbbell curl with light load", "Single-arm row", "Isometric holds"]
+  },
 };
 
 /**
