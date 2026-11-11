@@ -1,6 +1,5 @@
 //Test commit by Arik
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { api } from "../api/client.js";
 import { WORKOUT_LIMITS } from "../constants.js";
 import "../styles/trainer-pages.css";
@@ -33,7 +32,6 @@ function validate(f) {
 }
 
 export default function WorkoutLog() {
-  const location = useLocation();
   const [exercises, setExercises] = useState([]);
   const [entries, setEntries] = useState([]);
   const [form, setForm] = useState(EMPTY);
@@ -48,19 +46,11 @@ export default function WorkoutLog() {
       .then(([list, logs]) => {
         setExercises(list);
         setEntries(logs);
-        const prefillId = location.state?.exercise_id;
-        const targetId = prefillId && list.some((x) => x.id === prefillId) ? prefillId : list[0]?.id || "";
-        setForm((f) => ({
-          ...f,
-          exercise_id: targetId,
-          sets: location.state?.sets ? String(location.state.sets) : f.sets,
-          reps: location.state?.reps ? String(location.state.reps).split("-")[0] : f.reps,
-          weight_kg: location.state?.weight_kg !== undefined ? String(location.state.weight_kg) : f.weight_kg,
-        }));
+        if (list[0]) setForm((f) => ({ ...f, exercise_id: list[0].id }));
       })
       .catch((err) => setServerError(err.message))
       .finally(() => setLoading(false));
-  }, [location.state]);
+  }, []);
 
   const change = (e) => {
     setSaved("");

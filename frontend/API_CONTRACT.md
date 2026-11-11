@@ -98,7 +98,6 @@ Limits (`WORKOUT_LIMITS` in `constants.js`, placeholders): sets 1-20, reps 1-100
 | POST | /progress/weights | JWT | `{date:"YYYY-MM-DD", weight_kg}` | saved entry `{id, date, weight_kg}` |
 | DELETE | /progress/weights/{id} | JWT | - | `204`; `404` if not this user's entry |
 | GET | /recommendations | JWT | - | recommendations object, or `404` if no profile yet |
-| GET | /routine | JWT | - | personalized workout routine object, or `404` if no profile yet |
 
 Weight limit 30-300 kg (`WEIGHT_LIMITS`, placeholder). Weekly training charts are computed in the
 frontend from `GET /workouts`, so there is no separate endpoint for them.
@@ -110,49 +109,6 @@ frontend from `GET /workouts`, so there is no separate endpoint for them.
     { "id": "more-sessions", "category": "workout|nutrition|form|general",
       "title": "Try to hit your weekly sessions",
       "detail": "What to do.", "reason": "Why we say this." }
-  ]
-}
-```
-
-## Workout Routine object (GET /routine, FR-05)
-```json
-{
-  "split_name": "3-Day Full Body Classic Split",
-  "summary": "Personalized 3-Day Full Body Classic Split tailored for muscle hypertrophy and strength building...",
-  "frequency": "3 days / week",
-  "goal": "gain",
-  "fitness_level": "beginner",
-  "location": "home",
-  "equipment": ["bodyweight", "dumbbell"],
-  "limitations": "knee pain",
-  "pacing_tip": "Hypertrophy focus: push for progressive overload...",
-  "target_sets": 3,
-  "target_reps": "8-12",
-  "target_rest": "90s",
-  "warmup": ["5 minutes light cardio...", "Dynamic shoulder rolls..."],
-  "cooldown": ["3-5 minutes light walking...", "Static stretches..."],
-  "days": [
-    {
-      "day_number": 1,
-      "title": "Day 1: Full Body A (Chest, Quads, Core)",
-      "focus": "Chest, Quads, Core",
-      "est_minutes": 50,
-      "exercises": [
-        {
-          "id": "push-up",
-          "name": "Push-up",
-          "muscle_group": "chest",
-          "equipment": ["bodyweight"],
-          "level": "beginner",
-          "sets": 3,
-          "reps": "8-12",
-          "rest": "90s",
-          "instructions": "...",
-          "form_cues": ["..."],
-          "safety_alert": null
-        }
-      ]
-    }
   ]
 }
 ```

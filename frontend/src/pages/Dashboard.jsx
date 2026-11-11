@@ -76,15 +76,7 @@ export default function Dashboard() {
         </p>
       </div>
 
-      <div className="card" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "12px" }}>
-        <div>
-          <h2 style={{ marginBottom: "4px" }}>Personalized Workout Routine</h2>
-          <p className="muted" style={{ margin: 0 }}>
-            Your custom training split has been generated based on your fitness profile and equipment.
-          </p>
-        </div>
-        <Link className="btn" to="/routine">View Workout Routine</Link>
-      </div>
+      <p className="muted">Coming next: your workout plan and meal guidance.</p>
     </div>
   );
 }

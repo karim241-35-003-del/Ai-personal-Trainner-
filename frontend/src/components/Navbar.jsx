@@ -21,7 +21,6 @@ export default function Navbar() {
             <>
               <NavLink to="/dashboard">Dashboard</NavLink>
               <NavLink to="/profile">Profile</NavLink>
-              <NavLink to="/routine">Routine</NavLink>
               <NavLink to="/exercises">Exercises</NavLink>
               <NavLink to="/form-check">Form check</NavLink>
               <NavLink to="/workouts">Workout log</NavLink>

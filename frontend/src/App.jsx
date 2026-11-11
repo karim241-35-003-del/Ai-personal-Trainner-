@@ -10,7 +10,6 @@ import FormCheck from "./pages/FormCheck.jsx";
 import WorkoutLog from "./pages/WorkoutLog.jsx";
 import Progress from "./pages/Progress.jsx";
 import Recommendations from "./pages/Recommendations.jsx";
-import Routine from "./pages/Routine.jsx";
 
 export default function App() {
   return (
@@ -22,7 +21,6 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/routine" element={<ProtectedRoute><Routine /></ProtectedRoute>} />
           <Route path="/exercises" element={<ProtectedRoute><ExerciseLibrary /></ProtectedRoute>} />
           <Route path="/form-check" element={<ProtectedRoute><FormCheck /></ProtectedRoute>} />
           <Route path="/workouts" element={<ProtectedRoute><WorkoutLog /></ProtectedRoute>} />

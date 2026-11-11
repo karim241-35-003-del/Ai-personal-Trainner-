@@ -53,7 +53,6 @@ const real = {
   addWeight: (d) => request("/progress/weights", { method: "POST", body: d }),
   deleteWeight: (id) => request(`/progress/weights/${id}`, { method: "DELETE" }),
   getRecommendations: () => orNull(() => request("/recommendations")),
-  getRoutine: () => orNull(() => request("/routine")),
 };
 
 export const api = USE_MOCK ? mock.api : real;

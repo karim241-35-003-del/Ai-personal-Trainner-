@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { api } from "../api/client.js";
 import { PHOTO_MAX_MB } from "../constants.js";
 import "../styles/trainer-pages.css";
@@ -12,7 +11,6 @@ function verdictFor(score) {
 }
 
 export default function FormCheck() {
-  const location = useLocation();
   const [exercises, setExercises] = useState([]);
   const [exerciseId, setExerciseId] = useState("");
   const [file, setFile] = useState(null);
@@ -24,18 +22,10 @@ export default function FormCheck() {
 
   useEffect(() => {
     api.getExercises()
-      .then((list) => {
-        setExercises(list);
-        const prefill = location.state?.exercise_id;
-        if (prefill && list.some((x) => x.id === prefill)) {
-          setExerciseId(prefill);
-        } else if (list[0]) {
-          setExerciseId(list[0].id);
-        }
-      })
+      .then((list) => { setExercises(list); if (list[0]) setExerciseId(list[0].id); })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [location.state]);
+  }, []);
 
   // Show the chosen photo, and free the preview URL when it changes.
   useEffect(() => {
