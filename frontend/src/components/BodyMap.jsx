@@ -11,7 +11,7 @@ import {
  */
 export const MUSCLE_GROUPS = [
   { id: "chest", label: "Chest (Pectorals)", view: "front" },
-  { id: "abdominals", label: "Abdominals & Core", view: "front" },
+  { id: "abdominals", label: "Abs", view: "front" },
   { id: "shoulders", label: "Shoulders (Deltoids)", view: "both" },
   { id: "biceps", label: "Biceps", view: "front" },
   { id: "triceps", label: "Triceps", view: "back" },
