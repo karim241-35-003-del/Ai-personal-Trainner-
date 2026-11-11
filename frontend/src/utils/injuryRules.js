@@ -724,6 +724,51 @@ export const EXERCISE_SAFETY = {
     reason: "Neutral grip curling stresses the brachioradialis and lateral epicondyle under heavy weights.",
     alternatives: ["Dumbbell curl with light load", "Single-arm row", "Isometric holds"]
   },
+  "home-int-bw-standard-push-up": {
+    riskAreas: ["shoulder", "wrist", "elbow"],
+    reason: "Standard push-ups place high tensile shear across the anterior rotator cuff and load the wrist joints.",
+    alternatives: ["Wall push-ups", "Knee push-ups", "Glute bridge"]
+  },
+  "home-int-bw-pike-push-up": {
+    riskAreas: ["shoulder", "neck", "wrist"],
+    reason: "Pike angle directly compresses the subacromial space and increases vertical axial loading on the cervical spine.",
+    alternatives: ["Standard push-ups with hands elevated", "Side plank", "Arm front raises"]
+  },
+  "home-int-bw-bodyweight-squat": {
+    riskAreas: ["knee", "hip"],
+    reason: "Deep knee flexion under bodyweight increases patellofemoral compressive force.",
+    alternatives: ["Glute bridge", "Standing calf raises", "Chair squats"]
+  },
+  "home-int-bw-standing-calf-raise": {
+    riskAreas: ["ankle"],
+    reason: "Repeated plantarflexion loads the Achilles tendon and plantar aponeurosis.",
+    alternatives: ["Seated calf raise", "Reverse crunches", "Standard push-ups"]
+  },
+  "home-int-bw-crunches": {
+    riskAreas: ["neck", "back"],
+    reason: "Repeated thoracic flexion strains the cervical spine and increases pressure on lumbar discs.",
+    alternatives: ["Plank", "Side plank", "Bird dog"]
+  },
+  "home-int-bw-reverse-crunches": {
+    riskAreas: ["back", "hip"],
+    reason: "Curling hips upward can stress lumbar erectors if the core fatigues.",
+    alternatives: ["Glute bridge", "Plank", "Dead bug"]
+  },
+  "home-int-bw-glute-bridge": {
+    riskAreas: ["back", "hip"],
+    reason: "Excessive hyperextension at top contraction places compressive force on the lumbar vertebrae.",
+    alternatives: ["Clamshells", "Bodyweight squat with upright spine", "Standing calf raises"]
+  },
+  "home-int-bw-side-plank": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Unilateral weight-bearing places intense downward shear through the rotator cuff and supporting elbow.",
+    alternatives: ["Bird dog", "Standard plank on knees", "Pelvic tilts"]
+  },
+  "home-int-bw-chair-tricep-dips": {
+    riskAreas: ["shoulder", "wrist", "elbow"],
+    reason: "Dipping behind the body forces extreme anterior shoulder internal rotation and capsule stretching.",
+    alternatives: ["Push-ups with close hand placement", "Knee push-ups", "Standing arm raises"]
+  },
 };
 
 /**
