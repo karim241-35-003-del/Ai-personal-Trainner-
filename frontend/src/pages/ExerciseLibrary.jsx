@@ -1,42 +1,33 @@
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../api/client.js";
-import { EQUIPMENT } from "../constants.js";
 import { detectInjuries, getExerciseContraindication } from "../utils/injuryRules.js";
 import "../styles/trainer-pages.css";
 
-const EQUIPMENT_LABELS = {
-  bodyweight: "Bodyweight",
-  dumbbell: "Dumbbell",
-  barbell: "Barbell",
-  gym_machines: "Gym Machine / Cables",
-  machine: "Machine",
-  cables: "Cables",
+const DAY_SUBTITLES = {
+  "Day 1": "Chest · Shoulder · Tricep",
+  "Day 2": "Legs",
+  "Day 3": "Back · Biceps",
 };
 
-const equipmentLabel = (value) =>
-  EQUIPMENT_LABELS[value] ?? EQUIPMENT.find((o) => o.value === value)?.label ?? value;
-
-// Bodyweight moves need no equipment, so they always count as "available".
-const canDoWith = (exercise, myEquipment) =>
-  exercise.equipment.every(
-    (eq) =>
-      eq === "bodyweight" ||
-      myEquipment.includes(eq) ||
-      (myEquipment.includes("gym_machines") && ["gym_machines", "machine", "cables", "barbell"].includes(eq)) ||
-      (myEquipment.includes("dumbbell") && eq === "dumbbells")
-  );
+const DAY_DURATIONS = {
+  "Day 1": "About 35 min",
+  "Day 2": "About 30 min",
+  "Day 3": "About 40 min",
+};
 
 export default function ExerciseLibrary() {
   const [exercises, setExercises] = useState([]);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [search, setSearch] = useState("");
-  const [muscle, setMuscle] = useState("all");
-  const [routineFilter, setRoutineFilter] = useState("all"); // "all" | "beginner" | "intermediate"
-  const [dayFilter, setDayFilter] = useState("all"); // "all" | "Day 1" | "Day 2" | "Day 3"
-  const [onlyMine, setOnlyMine] = useState(true);
-  const [filterInjuries, setFilterInjuries] = useState(true);
+
+  // 2. Top-Level Routine Toggle (default: 'beginner')
+  const [activeRoutine, setActiveRoutine] = useState("beginner");
+
+  // 3. Sub-Tabs for Intermediate (default: 'Day 1')
+  const [activeDay, setActiveDay] = useState("Day 1");
+
+  // Accordion open exercise ID
   const [openId, setOpenId] = useState(null);
 
   useEffect(() => {
@@ -49,240 +40,229 @@ export default function ExerciseLibrary() {
       .finally(() => setLoading(false));
   }, []);
 
-  const muscles = useMemo(
-    () => [...new Set(exercises.map((e) => e.muscle_id || e.muscle_group))].filter(Boolean).sort(),
-    [exercises]
-  );
-
   const detectedInjuries = useMemo(
     () => detectInjuries(profile?.limitations),
     [profile?.limitations]
   );
 
-  const myEquipment = profile?.equipment ?? [];
-  const term = search.trim().toLowerCase();
-
-  const visible = exercises.filter((e) => {
-    if (routineFilter !== "all" && e.level !== routineFilter) return false;
-    if (dayFilter !== "all" && e.day !== dayFilter) return false;
-    if (muscle !== "all" && e.muscle_id !== muscle && e.muscle_group !== muscle) return false;
-    if (onlyMine && profile && !canDoWith(e, myEquipment)) return false;
-    if (term && !e.name.toLowerCase().includes(term)) return false;
-    if (filterInjuries && detectedInjuries.length > 0) {
-      const { isContraindicated } = getExerciseContraindication(e.id, detectedInjuries);
-      if (isContraindicated) return false;
+  // 4. Data Filtering Logic
+  const visibleExercises = useMemo(() => {
+    if (activeRoutine === "beginner") {
+      return exercises.filter((e) => e.level === "beginner");
     }
-    return true;
-  });
+    if (activeRoutine === "intermediate") {
+      return exercises.filter(
+        (e) => e.level === "intermediate" && e.day === activeDay
+      );
+    }
+    return exercises;
+  }, [exercises, activeRoutine, activeDay]);
 
   if (loading) return <p>Loading exercises...</p>;
   if (error) return <p className="error">{error}</p>;
 
+  const currentDuration =
+    activeRoutine === "beginner" ? "About 30 min" : DAY_DURATIONS[activeDay] || "About 35 min";
+  const currentTitle =
+    activeRoutine === "beginner"
+      ? "Initial Routine · Full Body Workout"
+      : `${activeDay} · ${DAY_SUBTITLES[activeDay] || "Workout"}`;
+
   return (
     <div>
-      <div style={{ marginBottom: "16px" }}>
-        <h1>Exercise routine</h1>
-        <p className="muted">
-          Structured gym routines with sets, reps, and split schedules for progressive overload and injury-safe execution.
-        </p>
+      {/* 2. Top-Level Routine Toggle Button Group */}
+      <div className="routine-top-toggle-bar">
+        <button
+          type="button"
+          className={`routine-toggle-pill ${activeRoutine === "beginner" ? "active" : ""}`}
+          onClick={() => {
+            setActiveRoutine("beginner");
+            setOpenId(null);
+          }}
+        >
+          {activeRoutine !== "beginner" && <span className="green-dot-icon" />}
+          <span>Initial Routine (Beginner)</span>
+        </button>
+
+        <button
+          type="button"
+          className={`routine-toggle-pill ${activeRoutine === "intermediate" ? "active" : ""}`}
+          onClick={() => {
+            setActiveRoutine("intermediate");
+            setOpenId(null);
+          }}
+        >
+          <span>🔥 Intermediate (3-Day Split)</span>
+        </button>
       </div>
 
+      {/* Injury Safety Notice Banner if User Has Limitations */}
       {detectedInjuries.length > 0 && (
-        <div className="safety-banner">
+        <div className="safety-banner" style={{ marginBottom: "20px" }}>
           <strong>⚠️ Injury Protection Active</strong>
           <p>
-            Your profile lists: <em>&ldquo;{profile.limitations}&rdquo;</em> (detected: {detectedInjuries.map((i) => i.label).join(", ")}).
-            Exercises placing excessive mechanical stress on these areas are filtered or flagged to protect your joints and tendons.
+            Your profile lists: <em>&ldquo;{profile?.limitations}&rdquo;</em> (detected:{" "}
+            {detectedInjuries.map((i) => i.label).join(", ")}). Movements that place high shear on
+            these joints are flagged below with safety warnings and alternatives.
           </p>
         </div>
       )}
 
-      {/* Routine Quick Tabs */}
-      <div className="routine-tabs">
-        <button
-          className={`routine-tab-btn ${routineFilter === "all" ? "active" : ""}`}
-          onClick={() => { setRoutineFilter("all"); setDayFilter("all"); }}
-        >
-          All Routines ({exercises.length})
-        </button>
-        <button
-          className={`routine-tab-btn ${routineFilter === "beginner" ? "active" : ""}`}
-          onClick={() => { setRoutineFilter("beginner"); setDayFilter("all"); }}
-        >
-          🟢 Initial Routine (Beginner)
-        </button>
-        <button
-          className={`routine-tab-btn ${routineFilter === "intermediate" ? "active" : ""}`}
-          onClick={() => setRoutineFilter("intermediate")}
-        >
-          🔥 Intermediate (3-Day Split)
-        </button>
-      </div>
-
-      {/* Day Subtabs for Intermediate */}
-      {(routineFilter === "intermediate" || routineFilter === "all") && (
-        <div className="routine-tabs" style={{ marginBottom: "20px" }}>
-          <button
-            className={`routine-tab-btn ${dayFilter === "all" ? "active" : ""}`}
-            onClick={() => setDayFilter("all")}
-          >
-            All Days
-          </button>
-          <button
-            className={`routine-tab-btn ${dayFilter === "Day 1" ? "active" : ""}`}
-            onClick={() => { setRoutineFilter("intermediate"); setDayFilter("Day 1"); }}
-          >
-            📅 Day 1 (Chest / Shoulder / Tricep)
-          </button>
-          <button
-            className={`routine-tab-btn ${dayFilter === "Day 2" ? "active" : ""}`}
-            onClick={() => { setRoutineFilter("intermediate"); setDayFilter("Day 2"); }}
-          >
-            📅 Day 2 (Legs)
-          </button>
-          <button
-            className={`routine-tab-btn ${dayFilter === "Day 3" ? "active" : ""}`}
-            onClick={() => { setRoutineFilter("intermediate"); setDayFilter("Day 3"); }}
-          >
-            📅 Day 3 (Back / Biceps)
-          </button>
+      {/* 3. Sub-Tabs for Intermediate (Day 1, Day 2, Day 3) - Photo Matching Design */}
+      {activeRoutine === "intermediate" && (
+        <div>
+          <h2 className="plan-heading-title">Your 3-day plan</h2>
+          <div className="plan-subtabs-container">
+            {["Day 1", "Day 2", "Day 3"].map((d) => {
+              const isActive = activeDay === d;
+              return (
+                <button
+                  key={d}
+                  type="button"
+                  className={`plan-subtab-btn ${isActive ? "active" : ""}`}
+                  onClick={() => {
+                    setActiveDay(d);
+                    setOpenId(null);
+                  }}
+                >
+                  <span className="plan-subtab-day">{d.toUpperCase()}</span>
+                  <span className="plan-subtab-subtitle">{DAY_SUBTITLES[d]}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
 
-      <div className="card">
-        <div className="filters">
-          <label>Search
-            <input
-              type="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="For example: press or curl"
-            />
-          </label>
-          <label>Muscle group
-            <select value={muscle} onChange={(e) => setMuscle(e.target.value)}>
-              <option value="all">All muscles</option>
-              {muscles.map((m) => (
-                <option key={m} value={m}>
-                  {m[0].toUpperCase() + m.slice(1)}
-                </option>
-              ))}
-            </select>
-          </label>
-          {profile && (
-            <label className="check">
-              <input
-                type="checkbox"
-                checked={onlyMine}
-                onChange={(e) => setOnlyMine(e.target.checked)}
-              />
-              Only show what I can do with my equipment
-            </label>
-          )}
-          {detectedInjuries.length > 0 && (
-            <label className="check" style={{ color: "#9a3412", fontWeight: 600 }}>
-              <input
-                type="checkbox"
-                checked={filterInjuries}
-                onChange={(e) => setFilterInjuries(e.target.checked)}
-              />
-              🛡️ Hide exercises unsafe for my {detectedInjuries.map((i) => i.label).join(", ")} injury
-            </label>
-          )}
-        </div>
-        {!profile && (
-          <p className="muted" style={{ marginBottom: 0 }}>
-            Save your profile to filter by the equipment you have.
+      {/* 5. Main Exercise Card Container & Clean List */}
+      <div className="workout-plan-card">
+        <div className="workout-card-header">
+          <h1 className="workout-card-title">{currentTitle}</h1>
+          <p className="workout-card-meta">
+            {visibleExercises.length} exercises · {currentDuration}
           </p>
+        </div>
+
+        {visibleExercises.length === 0 ? (
+          <p className="empty">No exercises found for this routine.</p>
+        ) : (
+          <div className="exercise-list-group">
+            {visibleExercises.map((e, idx) => {
+              const isOpen = openId === e.id;
+              const contraindication = getExerciseContraindication(e.id, detectedInjuries);
+
+              return (
+                <div key={e.id}>
+                  <div
+                    className={`exercise-row-item ${isOpen ? "open" : ""}`}
+                    onClick={() => setOpenId(isOpen ? null : e.id)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        setOpenId(isOpen ? null : e.id);
+                      }
+                    }}
+                  >
+                    {/* Left: Number + Thumbnail */}
+                    <div className="exercise-row-left">
+                      <span className="exercise-row-num">{idx + 1}</span>
+                      <div className="exercise-row-thumb">
+                        {e.videoUrl ? (
+                          <video
+                            src={e.videoUrl}
+                            className="exercise-thumb-media"
+                            preload="metadata"
+                            muted
+                            playsInline
+                          />
+                        ) : (
+                          <div className="exercise-thumb-placeholder">🏋️</div>
+                        )}
+                      </div>
+
+                      {/* Middle: Name (Bold) + Muscle group (Smaller Gray) */}
+                      <div className="exercise-row-info">
+                        <div className="exercise-row-name">{e.name}</div>
+                        <div className="exercise-row-muscle">
+                          {e.muscle_id || e.muscle_group}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right: Sets & Reps format ('4 x 12') + Arrow icon ( > ) */}
+                    <div className="exercise-row-right">
+                      <span className="exercise-row-sets">
+                        {e.sets || 4} x {e.reps || 12}
+                      </span>
+                      <span className={`exercise-row-chevron ${isOpen ? "open" : ""}`}>
+                        &gt;
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Expanded Detail View */}
+                  {isOpen && (
+                    <div className="exercise-detail-panel">
+                      {/* Video Player */}
+                      {e.videoUrl && (
+                        <div className="exercise-detail-video-box">
+                          <video
+                            src={e.videoUrl}
+                            className="exercise-detail-video"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            controls
+                          />
+                        </div>
+                      )}
+
+                      {/* Instructions */}
+                      <p style={{ margin: "0 0 10px", lineHeight: "1.55", color: "#1e293b" }}>
+                        {e.instructions}
+                      </p>
+
+                      {/* Key Form Checkpoints */}
+                      {e.form_cues?.length > 0 && (
+                        <div>
+                          <strong style={{ display: "block", marginBottom: "4px", color: "#1e3a8a" }}>
+                            💡 Form Cues & Posture Checkpoints:
+                          </strong>
+                          <ul style={{ margin: "4px 0 10px", paddingLeft: "18px", color: "#334155" }}>
+                            {e.form_cues.map((cue, i) => (
+                              <li key={i} style={{ marginBottom: "3px" }}>{cue}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* Injury Contraindication Alert */}
+                      {contraindication.isContraindicated && (
+                        <div className="safety-warning-box">
+                          <strong>⛔ Medical Injury Alert: {contraindication.matchedInjuries.join(", ")} injury</strong>
+                          <p style={{ margin: "4px 0" }}>{contraindication.reason}</p>
+                          {contraindication.alternatives?.length > 0 && (
+                            <div style={{ marginTop: "6px" }}>
+                              <strong>Safe Alternatives to Consider:</strong>
+                              <ul className="safety-alternatives" style={{ margin: "4px 0 0" }}>
+                                {contraindication.alternatives.map((alt) => (
+                                  <li key={alt}>{alt}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         )}
       </div>
-
-      {visible.length === 0 ? (
-        <p className="empty">No exercises match these filters.</p>
-      ) : (
-        <div className="ex-list">
-          {visible.map((e) => {
-            const open = openId === e.id;
-            const contraindication = getExerciseContraindication(e.id, detectedInjuries);
-            return (
-              <article
-                className={`ex-card ${contraindication.isContraindicated ? "ex-unsafe" : ""}`}
-                key={e.id}
-              >
-                <div className="ex-head">
-                  <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
-                    <h2>{e.name}</h2>
-                    {e.day && (
-                      <span className="chip chip-day">📅 {e.day}</span>
-                    )}
-                    {e.sets && e.reps && (
-                      <span className="chip chip-target">
-                        🔁 {e.sets} Sets × {e.reps} Reps
-                      </span>
-                    )}
-                  </div>
-                  <button
-                    className="btn-outline"
-                    aria-expanded={open}
-                    onClick={() => setOpenId(open ? null : e.id)}
-                  >
-                    {open ? "Hide details" : "Show details"}
-                  </button>
-                </div>
-
-                <div className="chip-row">
-                  {contraindication.isContraindicated && (
-                    <span className="chip chip-unsafe">
-                      ⛔ Not recommended ({contraindication.matchedInjuries.join(", ")} injury)
-                    </span>
-                  )}
-                  {e.routine && (
-                    <span className="chip chip-routine">{e.routine}</span>
-                  )}
-                  <span className={`chip level-${e.level}`}>{e.level}</span>
-                  <span className="chip chip-muscle">🎯 {e.muscle_id || e.muscle_group}</span>
-                  {e.equipment.map((eq) => (
-                    <span className="chip chip-equipment" key={eq}>
-                      ⚙️ {equipmentLabel(eq)}
-                    </span>
-                  ))}
-                </div>
-
-                {contraindication.isContraindicated && (
-                  <div className="safety-warning-box">
-                    <strong>⚠️ Injury Risk Warning:</strong>
-                    <p style={{ margin: "2px 0 6px" }}>{contraindication.reason}</p>
-                    {contraindication.alternatives?.length > 0 && (
-                      <div>
-                        <strong>Safe Alternatives to Consider:</strong>
-                        <ul className="safety-alternatives" style={{ margin: "4px 0 0" }}>
-                          {contraindication.alternatives.map((alt) => (
-                            <li key={alt}>{alt}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {open && (
-                  <div className="ex-body">
-                    <p style={{ lineHeight: "1.5", margin: "6px 0 10px" }}>{e.instructions}</p>
-                    <strong style={{ display: "block", marginBottom: "4px", color: "var(--blue-dark, #1e3a8a)" }}>
-                      💡 Key Form Cues & Posture Checkpoints
-                    </strong>
-                    <ul>
-                      {e.form_cues.map((c) => (
-                        <li key={c} style={{ marginBottom: "3px" }}>{c}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </article>
-            );
-          })}
-        </div>
-      )}
     </div>
   );
 }
