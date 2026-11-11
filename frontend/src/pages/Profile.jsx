@@ -40,14 +40,20 @@ export default function Profile() {
     api.getProfile()
       .then((p) => {
         if (p) {
-          const eq = Array.isArray(p.equipment) ? p.equipment.filter((x) => x !== "barbell") : ["bodyweight"];
-          if (p.location === "gym" && !eq.includes("gym_machines")) {
+          const loc = p.location ?? "home";
+          let eq = Array.isArray(p.equipment) ? p.equipment.filter((x) => x !== "barbell") : ["bodyweight"];
+          if (loc === "gym" && !eq.includes("gym_machines")) {
             eq.push("gym_machines");
+          }
+          if (loc === "home") {
+            // Home users can only select bodyweight or dumbbell, not both at a time
+            eq = eq.includes("dumbbell") ? ["dumbbell"] : ["bodyweight"];
           }
           const fitnessLevel = p.fitness_level === "advanced" ? "intermediate" : (p.fitness_level ?? "beginner");
           setForm({
             ...EMPTY,
             ...p,
+            location: loc,
             fitness_level: fitnessLevel,
             equipment: eq,
             days_per_week: String(p.days_per_week ?? 3),
@@ -67,10 +73,15 @@ export default function Profile() {
           location: value,
           equipment: prev.equipment.includes("gym_machines")
             ? prev.equipment
-            : [...prev.equipment, "gym_machines"],
+            : [...prev.equipment.filter((x) => x !== "barbell"), "gym_machines"],
         }));
       } else {
-        setForm((prev) => ({ ...prev, location: value }));
+        // Switched to home: can only select bodyweight or dumbbell, not both at a time
+        setForm((prev) => ({
+          ...prev,
+          location: value,
+          equipment: prev.equipment.includes("dumbbell") ? ["dumbbell"] : ["bodyweight"],
+        }));
       }
       return;
     }
@@ -78,13 +89,22 @@ export default function Profile() {
   };
 
   const toggleEquipment = (value) => {
+    if (form.location === "home") {
+      // At home: can only select bodyweight or dumbbell, not both at a time
+      setForm((prev) => ({
+        ...prev,
+        equipment: [value],
+      }));
+      return;
+    }
+
     const has = form.equipment.includes(value);
-    setForm({
-      ...form,
+    setForm((prev) => ({
+      ...prev,
       equipment: has
-        ? form.equipment.filter((x) => x !== value)
-        : [...form.equipment, value],
-    });
+        ? prev.equipment.filter((x) => x !== value)
+        : [...prev.equipment, value],
+    }));
   };
 
   const onSubmit = async (e) => {
@@ -357,18 +377,31 @@ export default function Profile() {
         </div>
 
         {/* Row 5: Equipment Checkboxes */}
+        {/* Row 5: Equipment Selection */}
         <div className="form-field-group">
-          <label className="field-label">Equipment you have</label>
+          <label className="field-label">
+            Equipment you have
+            {form.location === "home" && (
+              <span className="muted" style={{ fontWeight: "normal", fontSize: "13px", marginLeft: "8px" }}>
+                (Choose Bodyweight or Dumbbells)
+              </span>
+            )}
+          </label>
           <div className="equipment-cards-grid">
-            {EQUIPMENT.map((o) => {
+            {(form.location === "home"
+              ? EQUIPMENT.filter((o) => o.value !== "gym_machines")
+              : EQUIPMENT
+            ).map((o) => {
               const checked = form.equipment.includes(o.value);
+              const isHome = form.location === "home";
               return (
                 <label
                   key={o.value}
                   className={`equipment-pill-card ${checked ? "selected" : ""}`}
                 >
                   <input
-                    type="checkbox"
+                    type={isHome ? "radio" : "checkbox"}
+                    name={isHome ? "home_equipment" : undefined}
                     checked={checked}
                     onChange={() => toggleEquipment(o.value)}
                   />
