@@ -58,6 +58,7 @@ export const EXERCISES = [
     routine: "Initial Routine",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-push-up-front.mp4",
     instructions: "Start in a strong plank position with hands slightly wider than shoulder-width. Lower your chest until it is just above the floor, keeping elbows at 45 degrees. Press firmly back up to full extension.",
     form_cues: ["Maintain a straight line from head to heels", "Keep core and glutes tight throughout", "Lower until chest hovers just above the ground"]
   },
@@ -71,6 +72,7 @@ export const EXERCISES = [
     routine: "Initial Routine",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-pull-ups-front.mp4",
     instructions: "Kneel or stand on the assistance counterweight pad and grip the overhead handles slightly wider than shoulder-width. Pull yourself upward by driving your elbows down toward your hips until your chin clears the bar.",
     form_cues: ["Keep your chest proud and drive elbows straight down", "Do not swing or bounce on the assistance platform", "Lower under full control to full arm hang"]
   },
@@ -84,6 +86,7 @@ export const EXERCISES = [
     routine: "Initial Routine",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-overhead-press-front.mp4",
     instructions: "Hold a pair of dumbbells at shoulder level with wrists straight. Press the weights overhead in a smooth arc until your arms are extended. Lower slowly back to ear height.",
     form_cues: ["Brace your core to prevent lumbar hyperextension", "Press smoothly without clanking dumbbells together", "Control the lowering phase to shoulder level"]
   },
@@ -97,6 +100,7 @@ export const EXERCISES = [
     routine: "Initial Routine",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-curl-front.mp4",
     instructions: "Stand tall holding a barbell with an underhand shoulder-width grip. Keeping your elbows pinned against your ribcage, curl the bar toward your shoulders. Squeeze hard at the top and lower slowly.",
     form_cues: ["Keep elbows pinned to your sides throughout the curl", "Avoid swinging your hips or torso to generate momentum", "Resist the weight on the way down for maximum bicep tension"]
   },
@@ -110,6 +114,7 @@ export const EXERCISES = [
     routine: "Initial Routine",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-pushdown-front.mp4",
     instructions: "Attach a bar or cable handle to a high pulley. Grasp with an overhand grip and lock your elbows at your ribs. Push downward until elbows are fully locked out, then slowly return to 90 degrees.",
     form_cues: ["Upper arms stay fixed against your torso", "Focus strictly on tricep contraction at bottom lockout", "Do not allow elbows to flare outward or drift forward"]
   },
@@ -123,6 +128,7 @@ export const EXERCISES = [
     routine: "Initial Routine",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-bodyweight-squat-front.mp4",
     instructions: "Stand with feet shoulder-width apart, toes turned slightly out. Hinge back at your hips and bend your knees to squat down until your thighs are parallel to the floor. Drive through your heels to stand.",
     form_cues: ["Keep your chest upright and back flat", "Knees track outward in line with your toes", "Push through your heels and squeeze glutes at the top"]
   },
@@ -140,6 +146,7 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-chest-press-front.mp4",
     instructions: "Adjust the seat so the handles align across your mid-chest. Press outward smoothly until your arms are extended without locking elbows harshly. Lower under control until a comfortable chest stretch is reached.",
     form_cues: ["Keep shoulder blades retracted and firmly against the pad", "Drive through the palms using chest contraction", "Avoid flaring elbows up past 90 degrees"]
   },
@@ -154,6 +161,7 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-pec-fly-front.mp4",
     instructions: "Sit on the pec deck with your spine firmly against the back pad. Grasp the vertical handles with a slight bend in your elbows. Bring the handles together in an arc across your chest and squeeze.",
     form_cues: ["Maintain a constant slight bend in the elbows", "Squeeze your pectorals hard at the center point", "Control the return to prevent over-stretching the shoulders"]
   },
@@ -168,6 +176,7 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-chest-press-front.mp4",
     instructions: "Secure yourself into the decline chest press station. Grip the handles at lower chest level and press forward and downward in the machine's guided plane until arms extend. Slowly lower back to starting depth.",
     form_cues: ["Targets lower pectoral fibers with reduced anterior shoulder shear", "Keep wrists stacked directly over your forearms", "Smooth cadence without bouncing off stops"]
   },
@@ -182,6 +191,7 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-neutral-overhead-press-front.mp4",
     instructions: "Adjust seat height so handles sit at ear level. Grip the handles and press overhead until arms are nearly straight. Lower the weight smoothly back to ear height.",
     form_cues: ["Maintain neutral head position and flat back against the pad", "Do not hyperextend your lower back during the press", "Lower until elbows reach roughly 90 degrees"]
   },
@@ -196,6 +206,7 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-lateral-raise-front.mp4",
     instructions: "Hold dumbbells at your sides with palms facing inward. Keeping a slight bend in the elbows, raise your arms laterally until they reach shoulder height. Pause for a moment and lower smoothly.",
     form_cues: ["Lead with your elbows and keep wrists neutral", "Do not swing or shrug with your traps", "Raise strictly to shoulder height in the scapular plane"]
   },
@@ -210,6 +221,7 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-rope-pushdown-front.mp4",
     instructions: "Attach a rope to a high pulley. Hold rope ends with palms facing inward and upper arms locked at your ribs. Push down and spread the rope ends apart at the bottom to peak contract the triceps.",
     form_cues: ["Spread the rope apart at full elbow lockout", "Keep upper arms stationary by your sides", "Control the return to roughly chest level"]
   },
@@ -224,6 +236,7 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-dips-front.mp4",
     instructions: "Sit in the dip machine with back against the pad. Grasp the parallel handles and press downward until your arms are fully extended. Hold for a split second, then return smoothly to 90 degrees.",
     form_cues: ["Keep your torso upright to emphasize triceps over chest", "Avoid shrugging shoulders toward your ears", "Lock out with deliberate tricep contraction"]
   },
@@ -240,6 +253,7 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-squat-front.mp4",
     instructions: "Rest the barbell securely across your upper trapezius. Stand with feet shoulder-width apart, brace your core, and squat down until thighs reach parallel to the floor. Drive up through midfoot to stand.",
     form_cues: ["Keep chest tall and maintain neutral spinal alignment", "Knees track outward in line with your toes", "Squat to parallel depth without knee collapse"]
   },
@@ -254,6 +268,7 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-leg-press-front.mp4",
     instructions: "Sit on the 45-degree leg press sled with feet shoulder-width in the platform center. Lower the sled under control until your knees reach 90 degrees, then drive through heels and midfoot back up.",
     form_cues: ["Never lock your knees out forcefully at the top", "Keep lower back and glutes pressed flat against the pad", "Control the sled descent smoothly without jarring"]
   },
@@ -268,6 +283,7 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-vertical-leg-press-front.mp4",
     instructions: "Step into the V-squat machine with shoulders under the pads and back flush against the backrest. Place feet comfortably on the plate, descend into a deep knee flexion, then press back up.",
     form_cues: ["Keep your entire back against the cushion pad", "Drive through the center of your feet", "Do not hyperextend knees at the top lockout"]
   },
@@ -282,6 +298,7 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-seated-leg-curl-front.mp4",
     instructions: "Sit with back supported and thigh pad locked down firmly over your thighs. Place the lower roller pad against your achilles. Flex your knees to curl the roller beneath the seat, then return slowly.",
     form_cues: ["Lock down the thigh pad to prevent hips from rising", "Squeeze your hamstrings at the bottom of the curl", "Resist the weight on the eccentric extension"]
   },
@@ -296,6 +313,7 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-bodyweight-squat-front.mp4",
     instructions: "Sit with legs apart against the machine inner pads. Squeeze your thighs together toward the center against resistance until pads meet. Pause briefly, then control the return stretch.",
     form_cues: ["Keep your back firmly seated against the support", "Squeeze inner thighs smoothly and pause at center", "Control the opening phase to protect the hip adductors"]
   },
@@ -310,6 +328,7 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-standing-calf-raises-front.mp4",
     instructions: "Place shoulder pads over your shoulders and balls of feet on the calf block with heels hanging off. Lower heels deeply to stretch calves, then drive onto your toes for a hard contraction.",
     form_cues: ["Keep knees slightly unlocked but straight", "Pause 1 full second at full stretch and full contraction", "Avoid bouncing off the bottom Achilles stretch"]
   },
@@ -326,6 +345,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-pulldown-front.mp4",
     instructions: "Sit with chest against the pad and reach up to grasp the high handles. Pull downward and back toward your ribs, driving your elbows down and squeezing your lats. Return under control.",
     form_cues: ["Drive elbows down toward your hip pockets", "Keep chest firmly planted against the pad", "Full stretch at top, full contraction at bottom"]
   },
@@ -340,6 +360,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-cable-row-front.mp4",
     instructions: "Position yourself on the low row machine with chest against the pad. Grasp the low handles and pull back toward your lower ribs. Pinch your shoulder blades together, then return slowly.",
     form_cues: ["Pull towards your lower abdomen to load lats", "Pinch shoulder blades together without shrugging", "Avoid twisting your torso during the pull"]
   },
@@ -354,6 +375,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-cable-row-front.mp4",
     instructions: "Seat yourself into the Dorian Yates low-incline row station with chest supported. Pull the handles in an underhand or neutral arc back toward your hips. Squeeze your lats and extend under control.",
     form_cues: ["Follow the guided natural converging arc of the handles", "Keep elbows close to your torso during the pull", "Feel the lat stretch at the forward extension point"]
   },
@@ -368,6 +390,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-cable-row-front.mp4",
     instructions: "Sit on the cable bench with feet on footplates and knees softly bent. Grasp the handle and sit upright. Pull the handle directly into your lower abdomen, squeezing shoulder blades together.",
     form_cues: ["Keep torso stationary at roughly 90 degrees; do not swing", "Drive elbows back and retract shoulder blades fully", "Avoid rounding the lower back during the forward reach"]
   },
@@ -382,6 +405,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-face-pull-front.mp4",
     instructions: "Attach a rope to a high pulley. Grasp the ends with thumbs pointing back. Pull the center of the rope directly toward your forehead while separating your hands outward. Squeeze rear delts and upper back.",
     form_cues: ["Pull toward eye level while externally rotating shoulders", "Keep elbows flared high and wide", "Hold peak contraction for a full second"]
   },
@@ -396,6 +420,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-curl-front.mp4",
     instructions: "Stand tall with an underhand grip on the barbell. Keeping your elbows pinned against your torso, curl the bar up toward your chest with explosive control. Squeeze your biceps at the top and lower slowly.",
     form_cues: ["Lock your elbows in place at your sides", "Do not lean back or use momentum from your hips", "Lower the bar over 2-3 seconds for maximum eccentric overload"]
   },
@@ -410,6 +435,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-curl-front.mp4",
     instructions: "Hold dumbbells at your sides. As you curl the weights upward, rotate your forearms so your palms face your shoulders at the top. Squeeze firmly, then reverse the motion under control.",
     form_cues: ["Supinate your wrists as you curl up for complete bicep contraction", "Keep elbows pinned to your sides", "Avoid swinging or leaning sideways"]
   },
@@ -424,6 +450,7 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 4,
     reps: 12,
+    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-hammer-curl-front.mp4",
     instructions: "Hold dumbbells with palms facing each other in a neutral grip. Curl the weights upward while keeping palms facing inward throughout. Squeeze forearms and biceps at the top, then lower slowly.",
     form_cues: ["Maintain a strict neutral grip throughout the entire repetition", "Keep upper arms stationary by your sides", "Control the descent to target the brachialis and brachioradialis"]
   }
