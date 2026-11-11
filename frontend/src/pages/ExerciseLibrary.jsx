@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { api } from "../api/client.js";
 import { detectInjuries, getExerciseContraindication } from "../utils/injuryRules.js";
 import "../styles/trainer-pages.css";
@@ -21,10 +22,7 @@ export default function ExerciseLibrary() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // 2. Top-Level Routine Toggle (default: 'beginner')
-  const [activeRoutine, setActiveRoutine] = useState("beginner");
-
-  // 3. Sub-Tabs for Intermediate (default: 'Day 1')
+  // Sub-Tabs for Intermediate (default: 'Day 1')
   const [activeDay, setActiveDay] = useState("Day 1");
 
   // Accordion open exercise ID
@@ -45,55 +43,61 @@ export default function ExerciseLibrary() {
     [profile?.limitations]
   );
 
-  // 4. Data Filtering Logic
+  // Routine selection comes strictly from profile fitness_level
+  const isIntermediate =
+    profile?.fitness_level === "intermediate" || profile?.fitness_level === "advanced";
+  const userLevel = isIntermediate ? "intermediate" : "beginner";
+
+  // Data Filtering Logic:
+  // Beginner profile -> only sees beginner routine
+  // Intermediate profile -> only sees intermediate routine (by activeDay)
   const visibleExercises = useMemo(() => {
-    if (activeRoutine === "beginner") {
+    if (userLevel === "beginner") {
       return exercises.filter((e) => e.level === "beginner");
     }
-    if (activeRoutine === "intermediate") {
+    if (userLevel === "intermediate") {
       return exercises.filter(
         (e) => e.level === "intermediate" && e.day === activeDay
       );
     }
-    return exercises;
-  }, [exercises, activeRoutine, activeDay]);
+    return [];
+  }, [exercises, userLevel, activeDay]);
 
   if (loading) return <p>Loading exercises...</p>;
   if (error) return <p className="error">{error}</p>;
 
   const currentDuration =
-    activeRoutine === "beginner" ? "About 30 min" : DAY_DURATIONS[activeDay] || "About 35 min";
+    userLevel === "beginner" ? "About 30 min" : DAY_DURATIONS[activeDay] || "About 35 min";
   const currentTitle =
-    activeRoutine === "beginner"
+    userLevel === "beginner"
       ? "Initial Routine · Full Body Workout"
       : `${activeDay} · ${DAY_SUBTITLES[activeDay] || "Workout"}`;
 
   return (
     <div>
-      {/* 2. Top-Level Routine Toggle Button Group */}
-      <div className="routine-top-toggle-bar">
-        <button
-          type="button"
-          className={`routine-toggle-pill ${activeRoutine === "beginner" ? "active" : ""}`}
-          onClick={() => {
-            setActiveRoutine("beginner");
-            setOpenId(null);
-          }}
-        >
-          {activeRoutine !== "beginner" && <span className="green-dot-icon" />}
-          <span>Initial Routine (Beginner)</span>
-        </button>
+      {/* Profile Routine Status Header */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", flexWrap: "wrap", gap: "10px" }}>
+        <div>
+          <h1 style={{ margin: "0 0 4px", fontSize: "24px", fontWeight: "800", color: "#0f172a" }}>
+            {userLevel === "intermediate" ? "Your 3-day plan" : "Your Workout Plan"}
+          </h1>
+          <p className="muted" style={{ margin: 0, fontSize: "14px" }}>
+            Assigned routine based on your profile fitness level:{" "}
+            <strong style={{ color: "#2563eb", textTransform: "capitalize" }}>
+              {profile?.fitness_level || "Beginner"}
+            </strong>
+          </p>
+        </div>
 
-        <button
-          type="button"
-          className={`routine-toggle-pill ${activeRoutine === "intermediate" ? "active" : ""}`}
-          onClick={() => {
-            setActiveRoutine("intermediate");
-            setOpenId(null);
-          }}
+        <Link
+          to="/profile"
+          className="routine-toggle-pill"
+          style={{ textDecoration: "none", fontSize: "13px", padding: "8px 16px" }}
+          title="Change fitness level in profile"
         >
-          <span>🔥 Intermediate (3-Day Split)</span>
-        </button>
+          {userLevel === "intermediate" ? "🔥 Intermediate Plan" : "🟢 Beginner Plan"}
+          <span style={{ color: "#64748b", marginLeft: "4px" }}>(Change in Profile ⚙️)</span>
+        </Link>
       </div>
 
       {/* Injury Safety Notice Banner if User Has Limitations */}
@@ -102,16 +106,15 @@ export default function ExerciseLibrary() {
           <strong>⚠️ Injury Protection Active</strong>
           <p>
             Your profile lists: <em>&ldquo;{profile?.limitations}&rdquo;</em> (detected:{" "}
-            {detectedInjuries.map((i) => i.label).join(", ")}). Movements that place high shear on
-            these joints are flagged below with safety warnings and alternatives.
+            {detectedInjuries.map((i) => i.label).join(", ")}). Movements placing excessive mechanical stress on
+            these joints are flagged below with safety warnings and safe alternatives.
           </p>
         </div>
       )}
 
-      {/* 3. Sub-Tabs for Intermediate (Day 1, Day 2, Day 3) - Photo Matching Design */}
-      {activeRoutine === "intermediate" && (
+      {/* Sub-Tabs: ONLY for Intermediate Profiles (Day 1, Day 2, Day 3) - Photo Matching Design */}
+      {userLevel === "intermediate" && (
         <div>
-          <h2 className="plan-heading-title">Your 3-day plan</h2>
           <div className="plan-subtabs-container">
             {["Day 1", "Day 2", "Day 3"].map((d) => {
               const isActive = activeDay === d;
@@ -134,10 +137,10 @@ export default function ExerciseLibrary() {
         </div>
       )}
 
-      {/* 5. Main Exercise Card Container & Clean List */}
+      {/* Main Exercise Card Container & Clean List (Matching Reference Photo) */}
       <div className="workout-plan-card">
         <div className="workout-card-header">
-          <h1 className="workout-card-title">{currentTitle}</h1>
+          <h2 className="workout-card-title">{currentTitle}</h2>
           <p className="workout-card-meta">
             {visibleExercises.length} exercises · {currentDuration}
           </p>
