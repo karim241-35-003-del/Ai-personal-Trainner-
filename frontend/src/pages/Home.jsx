@@ -9,7 +9,7 @@ const MUSCLEWIKI_EXERCISES = [
   {
     id: "dumbbell-russian-twist",
     name: "Dumbbell Russian Twist",
-    muscle_id: "abdominals", 
+    muscle_id: "abdominals",
     muscle_group: "core",
     equipment: ["dumbbells"],
     level: "intermediate",
@@ -430,7 +430,7 @@ const MUSCLEWIKI_EXERCISES = [
   },
   {
     id: "bicep-curl",
-    name: "Dumbbell Bicep Curl",
+    name: "Dumbbell Curl",
     muscle_id: "biceps",
     muscle_group: "arms",
     equipment: ["dumbbells"],
@@ -438,11 +438,12 @@ const MUSCLEWIKI_EXERCISES = [
     gender: "both",
     videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-curl-side.mp4",
     videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-curl-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Dumbbells-dumbbell-curl-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Dumbbells-dumbbell-curl-front.mp4",
     steps: [
-      "Stand tall holding dumbbells at your sides with palms facing forward.",
-      "Keeping your upper arms pinned to your torso, curl the weights toward your shoulders.",
-      "Squeeze your biceps hard at the peak contraction.",
-      "Lower the dumbbells slowly over 2-3 seconds to the full hang."
+      "Stand up straight with a dumbbell in each hand at arm's length.",
+      "Raise one dumbbell and twist your forearm until it is vertical and your palm faces the shoulder.",
+      "Lower to original position and repeat with opposite arm"
     ],
     form_cues: ["Do not swing your hips or use momentum", "Keep elbows locked in position", "Control eccentric descent"]
   },
@@ -470,22 +471,74 @@ const MUSCLEWIKI_EXERCISES = [
     ]
   },
   {
-    id: "cable-curl",
-    name: "Cable Bicep Curl",
+    id: "cable-single-arm-bayesian-curl",
+    name: "Cable Single Arm Bayesian Curl",
     muscle_id: "biceps",
     muscle_group: "arms",
-    equipment: ["cables"],
-    level: "intermediate",
+    equipment: ["machine"],
+    level: "beginner",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-curl-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-curl-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-bayesian-curl-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-bayesian-curl-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-bayesian-curl-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-bayesian-curl-front.mp4",
     steps: [
-      "Hold the barbell with an underhand shoulder-width grip, arms extended downward.",
-      "Keeping your elbows close to your torso, curl the bar upward by flexing your biceps.",
-      "Pause and contract your biceps strongly at shoulder level.",
-      "Lower the barbell under strict control back to full extension."
+      "Use a handle attachment. The cable should be set all the way to the bottom of the machine.",
+      "Face away from the cable machine.",
+      "Stagger your stance so you have a better base of support. Face your palm forward. Flex at the elbow and extend."
     ],
-    form_cues: ["Keep upper arms stationary", "Do not lean back or swing the weight", "Full extension at the bottom"]
+    form_cues: [
+      "Keep upper arm pinned slightly behind your torso to stretch the long head",
+      "Curl forward while keeping your elbow stationary",
+      "Control the eccentric descent back to full elbow extension"
+    ]
+  },
+  {
+    id: "cable-twisting-curl",
+    name: "Cable Twisting Curl",
+    muscle_id: "biceps",
+    muscle_group: "arms",
+    equipment: ["machine"],
+    level: "advanced",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-single-arm-twisting-curl-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-single-arm-twisting-curl-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-single-arm-twisting-curl-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-single-arm-twisting-curl-front.mp4",
+    steps: [
+      "Use a handle attachment. The cable should be set all the way to the bottom of the machine.",
+      "Face away from the cable machine. Stagger your stance so you have a better base of support.",
+      "Start with a neutral grip. Flex at the elbow. While flexing twist your palm. When you hit the top of the movement your palm should be facing upward."
+    ],
+    form_cues: [
+      "Supinate your wrist throughout the curl to maximize bicep peak contraction",
+      "Maintain a solid staggered stance to prevent swinging",
+      "Lower smoothly back into the neutral starting position"
+    ]
+  },
+  {
+    id: "feature-curl",
+    name: "Feature Curl",
+    muscle_id: "biceps",
+    muscle_group: "arms",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-tricep-pushdown-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-tricep-pushdown-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-tricep-pushdown-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-tricep-pushdown-front.mp4",
+    steps: [
+      "Sit on the machine with your upper arms resting flat on the angled pad.",
+      "Grip the handles firmly with your palms facing up toward you.",
+      "Flex your elbows to curl the weight upward toward your shoulders, squeezing your biceps at the peak.",
+      "Lower under control back down until your arms are fully extended."
+    ],
+    form_cues: [
+      "Keep your chest against the pad and upper arms firmly planted",
+      "Do not let your elbows rise off the incline pad during the curl",
+      "Control the eccentric return under continuous tension"
+    ]
   },
   {
     id: "chin-ups",
@@ -860,6 +913,53 @@ const MUSCLEWIKI_EXERCISES = [
     ]
   },
   {
+    id: "gluteator",
+    name: "Gluteator",
+    muscle_id: "glutes",
+    muscle_group: "glutes",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-gluteator-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-gluteator-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-gluteator-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-gluteator-front.mp4",
+    steps: [
+      "Sit on the seat upright with your knees placed on the pads and your feet on the foot pads.",
+      "Push your legs outwards and backwards and flex your glutes."
+    ],
+    form_cues: [
+      "Sit tall with chest proud and hips planted against the back pad",
+      "Drive your knees outward and backward against the resistance pads",
+      "Squeeze your gluteus medius and maximus at peak abduction before controlling the return"
+    ]
+  },
+  {
+    id: "vertical-leg-press",
+    name: "Vertical Leg Press",
+    muscle_id: "glutes",
+    muscle_group: "glutes",
+    secondary_muscles: ["quads", "hamstrings"],
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-vertical-leg-press-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-vertical-leg-press-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-vertical-leg-press-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-vertical-leg-press-front.mp4",
+    steps: [
+      "Lay on the pad and place your feet on the foot plate.",
+      "Lift the plate up and disengage the holding hook.",
+      "Lower the weight. Stop before your lower back rounds off the pad.",
+      "Press the weight back to the starting position."
+    ],
+    form_cues: [
+      "Keep your entire spine and hips firmly pressed against the floor pad",
+      "Lower the plate until knees reach 90 degrees without letting lower back round (butt-wink)",
+      "Press upward through heels and mid-foot without locking out knees harshly"
+    ]
+  },
+  {
     id: "leg-press",
     name: "Machine Leg Press",
     muscle_id: "quads",
@@ -869,6 +969,8 @@ const MUSCLEWIKI_EXERCISES = [
     gender: "both",
     videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-leg-press-side.mp4",
     videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-leg-press-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-leg-press-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-leg-press-front.mp4",
     steps: [
       "Sit back firmly against the angled seat pad and place feet shoulder-width on the sled platform.",
       "Release the safety handles and lower the platform slowly toward your chest until knees reach 90 degrees.",
@@ -878,25 +980,122 @@ const MUSCLEWIKI_EXERCISES = [
     form_cues: ["Do not let lower back peel off the back pad", "Never lock knees harshly", "Control the descent"]
   },
   {
-    id: "cable-good-morning",
-    name: "Cable Good Morning",
-    muscle_id: "lowerback",
-    muscle_group: "back",
-    equipment: ["cables"],
+    id: "cable-zercher-squat",
+    name: "Cable Zercher Squat",
+    muscle_id: "quads",
+    muscle_group: "legs",
+    equipment: ["machine"],
     level: "intermediate",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-romanian-deadlift-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-romanian-deadlift-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-zercher-squat-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-zercher-squat-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-zercher-squat-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-zercher-squat-front.mp4",
     steps: [
-      "Stand upright holding the barbell with an overhand shoulder-width grip.",
-      "Hinge back deeply at your hips while keeping knees soft and slightly bent.",
-      "Lower the barbell along your thighs until just below knee height.",
-      "Drive hips forward forcefully to return to the neutral upright position."
+      "Start with a straight bar or easy bar attachment .",
+      "Place the bar in your elbows, squat straight up and then walk back a few steps.",
+      "Break at your knees and hips to initiate the squat. Make sure you maintain a flat back.",
+      "Squat all the way back to a standing position."
     ],
     form_cues: [
-      "Bar remains in contact with legs throughout entire descent",
-      "Keep core heavily braced to protect lower back",
-      "Avoid locking knees out rigidly"
+      "Cradle the bar securely in the crook of your elbows with chest proud",
+      "Maintain an upright torso and flat spine throughout the descent",
+      "Drive through your mid-foot and heels to return to standing"
+    ]
+  },
+  {
+    id: "cable-split-squat",
+    name: "Cable Split Squat",
+    muscle_id: "quads",
+    muscle_group: "legs",
+    equipment: ["machine"],
+    level: "advanced",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-split-squat-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-split-squat-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-split-squat-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-split-squat-front.mp4",
+    steps: [
+      "You can use a straight or EZ bar on this exercise. Cable should be set all to the bottom.",
+      "Grab the attachment and walk back a few steps. Take a split stance. One leg in front and one behind.",
+      "Break at the knees and hips to initiate the split squat. Make sure your back knee touches the floor.",
+      "Squat back up into a standing position."
+    ],
+    form_cues: [
+      "Keep your torso vertical and hips squared forward",
+      "Lower under control until your trailing knee lightly taps the floor",
+      "Push through your front heel to rise without letting front knee collapse inward"
+    ]
+  },
+  {
+    id: "machine-leg-extension",
+    name: "Machine Leg Extension",
+    muscle_id: "quads",
+    muscle_group: "legs",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-extension-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-leg-extension-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-leg-extension-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-leg-extension-front.mp4",
+    steps: [
+      "Sit on the machine with your back against the cushion and adjust the machine you are using so that your knees are at a 90 degree angle at the starting position.",
+      "Raise the weight by extending your knees outward, then lower your leg to the starting position. Both movements should be done in a slow, controlled motion."
+    ],
+    form_cues: [
+      "Align your knee joints directly with the machine's pivot axis",
+      "Grip the handles firmly to anchor your hips down into the seat",
+      "Pause briefly at peak knee extension and resist the descent under eccentric control"
+    ]
+  },
+  {
+    id: "machine-45-degree-back-extension",
+    name: "Machine 45 Degree Back Extension",
+    muscle_id: "lowerback",
+    secondary_muscles: ["glutes", "hamstrings"],
+    muscle_group: "back",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-back-extension-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-back-extension-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-45-degree-back-extension-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-45-degree-back-extension-front.mp4",
+    steps: [
+      "Position your thighs on the padding and hook your feet on the platform supports.",
+      "Keeping your back straight, slowly bend at your waist until your legs and back are at a 45° angle.",
+      "Slowly raise your body to the starting position."
+    ],
+    form_cues: [
+      "Align thigh pads just below your hip crease to allow full hip hinging",
+      "Maintain a flat, neutral spine without rounding through the thoracic or lumbar region",
+      "Extend by squeezing your glutes and erectors until your body forms a straight line (do not hyperextend)"
+    ]
+  },
+  {
+    id: "machine-reverse-hyperextension",
+    name: "Machine Reverse Hyperextension",
+    muscle_id: "lowerback",
+    secondary_muscles: ["glutes", "hamstrings"],
+    muscle_group: "back",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-reverse-hyperextension-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-reverse-hyperextension-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-reverse-hyperextension-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-reverse-hyperextension-front.mp4",
+    steps: [
+      "Lay on the pad and grab the handles.",
+      "Slip your legs into the belt loop.",
+      "Push your legs back until they are horizontal with the ground.",
+      "Lower back to the starting position."
+    ],
+    form_cues: [
+      "Anchor your upper body firmly by gripping the front handles",
+      "Drive your legs upward and back using your glutes and lower back erectors until horizontal",
+      "Control the pendulum descent without letting the weights swing or hyperextending abruptly"
     ]
   },
   {
@@ -1037,24 +1236,72 @@ const MUSCLEWIKI_EXERCISES = [
     ]
   },
   {
-    id: "cable-wrist-curl",
-    name: "Cable Wrist Curl",
+    id: "cable-single-arm-reverse-curl",
+    name: "Cable Single Arm Reverse Curl",
     muscle_id: "forearms",
     muscle_group: "arms",
-    equipment: ["cables"],
-    level: "intermediate",
+    equipment: ["machine"],
+    level: "beginner",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-wrist-curl-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-wrist-curl-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-reverse-curl-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-reverse-curl-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-reverse-curl-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-reverse-curl-front.mp4",
     steps: [
-      "Kneel next to a flat bench, resting forearms across the surface with palms facing up.",
-      "Grip the barbell with hands shoulder-width apart.",
-      "Lower the bar toward your fingertips, opening hands slightly for full extension.",
-      "Curl the bar back into your palms and flex wrists upward forcefully."
+      "Use a handle attachment. The cable should be set all the way to the bottom of the machine.",
+      "Face away from the cable machine. Stagger your stance so you have a better base of support.",
+      "Face your palm downwards. Flex at the elbow and extend."
     ],
     form_cues: [
-      "Maintain strict wrist isolation without shoulder movement",
-      "Pause for 1 second at the top of each contraction"
+      "Keep your upper arm locked at your side and wrist firm",
+      "Maintain a pronated grip (palm facing down) to target the brachioradialis",
+      "Control the lowering phase back to full elbow extension"
+    ]
+  },
+  {
+    id: "cable-bar-reverse-grip-curl",
+    name: "Cable Bar Reverse Grip Curl",
+    muscle_id: "forearms",
+    muscle_group: "arms",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-bar-reverse-grip-curl-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-bar-reverse-grip-curl-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-bar-reverse-grip-curl-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-bar-reverse-grip-curl-front.mp4",
+    steps: [
+      "Use a bar attachment. The cable should be set all the way to the bottom of the machine.",
+      "Face the cable machine.",
+      "Stagger your stance so you have a better base of support. Face your palm down. Flex at the elbow and extend."
+    ],
+    form_cues: [
+      "Grip the bar overhand shoulder-width apart with wrists neutral",
+      "Keep elbows stationary by your ribs without swinging your body",
+      "Squeeze your forearm extensors and brachioradialis at the peak"
+    ]
+  },
+  {
+    id: "cable-wrist-extension",
+    name: "Cable Wrist Extension",
+    muscle_id: "forearms",
+    muscle_group: "arms",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-cable-wrist-extension-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-cable-wrist-extension-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-cable-wrist-extension-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-cable-wrist-extension-front.mp4",
+    steps: [
+      "Use a handle attachment. The cable should be set all the way to the bottom of the machine.",
+      "Face away from the cable machine. Stagger your stance so you have a better base of support.",
+      "Start with your elbow at a 90 degree angle with your palm facing down. Flex and extend at the wrist."
+    ],
+    form_cues: [
+      "Lock your elbow at 90 degrees and isolate wrist joint movement only",
+      "Raise the back of your hand toward your forearm for a full extension contraction",
+      "Lower under control without letting the cable pull your wrist into hyperflexion"
     ]
   },
   {
@@ -1197,73 +1444,257 @@ const MUSCLEWIKI_EXERCISES = [
     form_cues: ["Keep chest proud and lead with your elbow", "Do not swing or use body momentum"]
   },
   {
-    id: "cable-crunch",
-    name: "Cable Kneeling Crunch",
+    id: "machine-crunch",
+    name: "Machine Crunch",
     muscle_id: "abdominals",
     muscle_group: "core",
-    equipment: ["cables"],
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-crunch-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-crunch-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-crunch-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-crunch-front.mp4",
+    steps: [
+      "Place your feet under the foot pads and grab the handles with your hands.",
+      "Flex your spine and bring your upper and lower body together."
+    ],
+    form_cues: [
+      "Focus on curling your ribcage toward your pelvis rather than pulling with your arms",
+      "Exhale as you contract your abs and inhale as you return",
+      "Maintain control on the eccentric return and avoid letting weight stack slam"
+    ]
+  },
+  {
+    id: "rower-pike",
+    name: "Rower Pike",
+    muscle_id: "abdominals",
+    muscle_group: "core",
+    equipment: ["machine"],
     level: "intermediate",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-crunch-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-crunch-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-rower-pike-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-rower-pike-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-rower-pike-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-rower-pike-front.mp4",
     steps: [
-      "Kneel below a high cable pulley holding the rope attachment at ear level.",
-      "Flex at your waist to crunch your ribcage toward your hips, rounding your spine slightly.",
-      "Hold the peak contraction in your abdominals and slowly uncurl back up."
+      "Place your feet on the rower seat and get in to a plank position.",
+      "Pull your hips straight up toward the ceiling.",
+      "Lower your hips until you're back in a plank position."
     ],
-    form_cues: ["Initiate movement with your abs, not your hips", "Keep hips stationary"]
+    form_cues: [
+      "Keep your legs straight and core tightly braced throughout the pike",
+      "Push through your shoulders to stabilize the upper body",
+      "Control the slide back to plank without letting hips sag"
+    ]
   },
   {
-    id: "cable-tricep-pushdown",
-    name: "Cable Tricep Pushdown",
+    id: "cable-row-bar-kneeling-crunch",
+    name: "Cable Row Bar Kneeling Crunch",
+    muscle_id: "abdominals",
+    muscle_group: "core",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-bar-kneeling-crunch-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-bar-kneeling-crunch-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-bar-kneeling-crunch-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-bar-kneeling-crunch-front.mp4",
+    steps: [
+      "Use a double handle attachment and set the cable all the way to the top.",
+      "Walk a few steps forward then fall into a kneeling position.",
+      "Push your hips back and flex your abs, then push hips forward until in the starting position."
+    ],
+    form_cues: [
+      "Hold the attachment close to your head/neck to keep tension on the abs",
+      "Flex your spine by bringing ribcage toward pelvis, not just hinging at the hips",
+      "Keep hips anchored and control the return under constant cable tension"
+    ]
+  },
+  {
+    id: "cable-rope-kneeling-oblique-crunch",
+    name: "Cable Rope Kneeling Oblique Crunch",
+    muscle_id: "abdominals",
+    muscle_group: "core",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-rope-kneeling-oblique-crunch-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-rope-kneeling-oblique-crunch-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-rope-kneeling-oblique-crunch-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-rope-kneeling-oblique-crunch-front.mp4",
+    steps: [
+      "Use a rope attachment and set the cable all the way to the top.",
+      "Walk a few steps forward then fall into a kneeling position.",
+      "Push your hips back and flex your abs, then push hips forward until in the starting position."
+    ],
+    form_cues: [
+      "Twist slightly towards one knee during the crunch to emphasize the oblique muscles",
+      "Maintain core bracing throughout and avoid letting momentum take over",
+      "Perform evenly on both sides for balanced rotational strength"
+    ]
+  },
+  {
+    id: "cable-rope-pushdown",
+    name: "Cable Rope Pushdown",
     muscle_id: "triceps",
     muscle_group: "arms",
-    equipment: ["cables"],
+    equipment: ["machine"],
     level: "beginner",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-bench-dips-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-bench-dips-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-push-down-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-push-down-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-push-down-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-push-down-front.mp4",
     steps: [
-      "Attach a bar or rope to a high pulley cable machine.",
-      "Tuck your elbows tightly to your sides and pin them in place.",
-      "Push the attachment down until your arms are fully extended.",
-      "Slowly return up to 90 degrees under complete control."
+      "The cable should be set all the way at the top of the machine.",
+      "Make sure to keep your upper arm glued at your side. Extend your elbows until you feel your triceps contract."
     ],
-    form_cues: ["Do not let elbows flare forward", "Full lockout at bottom"]
+    form_cues: [
+      "Flare the rope apart at the bottom of the movement for maximum lateral head contraction",
+      "Do not let elbows drift forward on the eccentric return",
+      "Maintain a slight athletic forward lean"
+    ]
   },
   {
-    id: "cable-face-pull",
-    name: "Cable Face Pull",
+    id: "cable-rope-overhead-tricep-extension",
+    name: "Cable Rope Overhead Tricep Extension",
+    muscle_id: "triceps",
+    muscle_group: "arms",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-overhead-tricep-extension-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-overhead-tricep-extension-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-overhead-tricep-extension-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-overhead-tricep-extension-front.mp4",
+    steps: [
+      "You can use any attachment. The cable should be set all the way to the bottom of the machine. Face away from the machine.",
+      "Point your elbows straight up toward the ceiling.",
+      "From there, extend your elbows until your fists are pointed straight toward the ceiling."
+    ],
+    form_cues: [
+      "Keep elbows tucked inward and pointing upward toward ceiling",
+      "Extend arms fully overhead without arching the lumbar spine",
+      "Feel a deep stretch in the long head of the triceps before extending"
+    ]
+  },
+  {
+    id: "cable-row-bar-standing-row",
+    name: "Cable Row Bar Standing Row",
     muscle_id: "traps",
     muscle_group: "back",
-    equipment: ["cables"],
+    equipment: ["machine"],
     level: "beginner",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-row-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-row-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-v-bar-standing-row-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-v-bar-standing-row-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-v-bar-standing-row-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-v-bar-standing-row-front.mp4",
     steps: [
-      "Set the cable pulley to eye level with a rope attachment.",
-      "Pull the center of the rope directly toward your bridge of the nose.",
-      "Flaring your elbows high and rotating thumbs back to pinch your upper traps."
+      "Place the cable at shoulder height. Use a row bar.",
+      "Pull the handles back using your arms. Push out your chest.",
+      "Pull the handles towards your body until your hands are beside your abdomen."
     ],
-    form_cues: ["Retract shoulder blades fully", "Slow controlled eccentric"]
+    form_cues: [
+      "Keep chest pushed out and spine neutral throughout the pull",
+      "Lead with your elbows and retract your scapulae firmly",
+      "Avoid leaning back or using momentum to pull the weight"
+    ]
   },
   {
-    id: "cable-lat-pulldown",
-    name: "Cable Lat Pulldown",
-    muscle_id: "lats",
+    id: "cable-single-arm-underhand-grip-row",
+    name: "Cable Single Arm Underhand Grip Row",
+    muscle_id: "traps",
     muscle_group: "back",
-    equipment: ["cables", "machine"],
+    equipment: ["machine"],
     level: "beginner",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-pull-up-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Bodyweight-pull-up-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-single-arm-underhand-grip-row-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-single-arm-underhand-grip-row-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-single-arm-underhand-grip-row-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Cables-cable-single-arm-underhand-grip-row-front.mp4",
     steps: [
-      "Grip the wide bar with palms facing forward.",
-      "Pull the bar down toward your upper chest while leaning back slightly.",
-      "Squeeze your lats at the bottom and control the ascent."
+      "Place the cable at shoulder height. Use a handle attachment. Face your palm upward.",
+      "Pull the handle back using your arms. Push out your chest.",
+      "Pull the handle towards your body until your hands are beside your abdomen."
     ],
-    form_cues: ["Drive elbows down and back", "Do not use excessive torso swing"]
+    form_cues: [
+      "Maintain an underhand supinated grip to engage lower lats and upper back",
+      "Keep shoulders square to the machine and avoid twisting your torso",
+      "Control the eccentric extension with a full stretch"
+    ]
+  },
+  {
+    id: "narrow-pulldown",
+    name: "Narrow Pulldown",
+    muscle_id: "traps",
+    muscle_group: "back",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-narrow-pulldown-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-narrow-pulldown-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-narrow-pulldown-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-narrow-pulldown-front.mp4",
+    steps: [
+      "Use the Straight Bar attachment.",
+      "Hold the attachment as you sit on the machine and put your legs under the leg pads.",
+      "Pull the bar to your clavicle, then raise back up until your arm are extended."
+    ],
+    form_cues: [
+      "Use a narrow overhand grip on the straight bar",
+      "Pull your elbows down toward your sides, contacting upper chest at clavicle",
+      "Keep torso stationary and do not lean excessively back"
+    ]
+  },
+  {
+    id: "machine-pulldown",
+    name: "Machine Pulldown",
+    muscle_id: "lats",
+    muscle_group: "back",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-pulldown-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-pulldown-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-pulldown-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-pulldown-front.mp4",
+    steps: [
+      "Grip the bar with the palms facing forward, your hands need to be spaced out at a distance wider than shoulder width.",
+      "As you have both arms extended in front of you holding the bar, bring your torso back around 30 degrees while sticking your chest out.",
+      "Pull the bar down to about chin level or a little lower in a smooth movement whilst squeezing the shoulder blades together.",
+      "After a second of squeezing, slowly raise the bar back to the starting position when your arms are fully extended."
+    ],
+    form_cues: [
+      "Maintain a wide overhand grip with torso leaned back roughly 30 degrees",
+      "Drive your elbows down and back toward your hips, bringing the bar to chin level",
+      "Squeeze your lats and shoulder blades at the bottom; control the ascent to full arm extension"
+    ]
+  },
+  {
+    id: "machine-seated-cable-row",
+    name: "Machine Seated Cable Row",
+    muscle_id: "lats",
+    secondary_muscles: ["traps"],
+    muscle_group: "back",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-cable-row-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-cable-row-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-seated-cable-row-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-seated-cable-row-front.mp4",
+    steps: [
+      "Sit with your back straight on the machine and grip the handles.",
+      "Pull the handles back using your arms. Your legs and torso should be at a 90° angle. Push out your chest.",
+      "Pull the handles towards your body until your hands are beside your abdomen."
+    ],
+    form_cues: [
+      "Keep legs softly bent and torso upright at roughly 90 degrees",
+      "Drive elbows straight back and squeeze shoulder blades together",
+      "Avoid rounding your lower back when reaching forward"
+    ]
   },
   {
     id: "dumbbell-row-bilateral",
@@ -1314,6 +1745,29 @@ const MUSCLEWIKI_EXERCISES = [
     ]
   },
   {
+    id: "neutral-chest-press",
+    name: "Neutral Chest Press",
+    muscle_id: "chest",
+    muscle_group: "chest",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-neutral-chest-press-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-neutral-chest-press-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-neutral-chest-press-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-neutral-chest-press-front.mp4",
+    steps: [
+      "Sit on the machine and grab the handles with a neutral grip.",
+      "Adjust the machine to get the longest range of motion possible.",
+      "Press until your elbows are not extended but not hyperextended."
+    ],
+    form_cues: [
+      "Maintain neutral wrist alignment",
+      "Keep your chest proud and shoulder blades retracted against the pad",
+      "Press smoothly without locking or hyperextending your elbows"
+    ]
+  },
+  {
     id: "machine-chest-press",
     name: "Machine Chest Press",
     muscle_id: "chest",
@@ -1321,49 +1775,251 @@ const MUSCLEWIKI_EXERCISES = [
     equipment: ["machine"],
     level: "beginner",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-barbell-bench-press-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-barbell-bench-press-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-chest-press-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-chest-press-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-chest-press-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-chest-press-front.mp4",
     steps: [
-      "Adjust seat height so handles align with mid-chest.",
-      "Press the handles forward until arms are extended without locking elbows.",
-      "Lower under control until you feel a comfortable stretch in your pecs."
+      "Sit on the machine and grab the handles with an overhand grip.",
+      "Adjust the machine to get the longest range of motion possible.",
+      "Press until your elbows are not extended but not hyperextended."
     ],
-    form_cues: ["Keep back flat against the pad", "Do not shrug your shoulders"]
+    form_cues: [
+      "Keep shoulders retracted and pressed into the seat",
+      "Drive forward through your palms using your chest muscles",
+      "Avoid locking out elbows at peak extension"
+    ]
   },
   {
-    id: "machine-calf-raise",
-    name: "Machine Standing Calf Raise",
+    id: "machine-pec-fly",
+    name: "Machine Pec Fly",
+    muscle_id: "chest",
+    muscle_group: "chest",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-pec-fly-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-pec-fly-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-pec-fly-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-pec-fly-front.mp4",
+    steps: [
+      "Adjust seat height so handles align with chest. Sit and grip handles with elbows slightly bent.",
+      "Slowly bring handles together in front, keeping tension. Focus on squeezing chest muscles.",
+      "Return handles to starting position with controlled motion. Keep chest up throughout. Repeat for reps."
+    ],
+    form_cues: [
+      "Maintain a slight, fixed bend in your elbows throughout the arc",
+      "Squeeze your chest at the peak contraction in front",
+      "Control the eccentric return without letting weights slam"
+    ]
+  },
+  {
+    id: "machine-neutral-overhead-press",
+    name: "Machine Neutral Overhead Press",
+    muscle_id: "shoulders",
+    muscle_group: "shoulders",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-neutral-overhead-press-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-neutral-overhead-press-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-neutral-overhead-press-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-neutral-overhead-press-front.mp4",
+    steps: [
+      "Adjust the seat to match your height.",
+      "Press your back into the back pad.",
+      "Press upwards until your elbows are nearly extended. But not fully extended.",
+      "Lower until the plates nearly touch back down."
+    ],
+    form_cues: [
+      "Keep your elbows slightly in front of your body with neutral grip",
+      "Avoid arching your lower back away from the back pad",
+      "Control the descent to protect the shoulder joint"
+    ]
+  },
+  {
+    id: "machine-standing-lateral-raise",
+    name: "Machine Standing Lateral Raise",
+    muscle_id: "shoulders",
+    muscle_group: "shoulders",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-standing-lateral-raise-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-standing-lateral-raise-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-standing-lateral-raise-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-standing-lateral-raise-front.mp4",
+    steps: [
+      "Grab the two handles and raise the arms straight out to your sides."
+    ],
+    form_cues: [
+      "Maintain a slight bend in your elbows and keep wrists neutral",
+      "Lead with your elbows to isolate the lateral deltoids",
+      "Avoid shrugging your traps at the top of the movement"
+    ]
+  },
+  {
+    id: "machine-reverse-fly",
+    name: "Machine Reverse Fly",
+    muscle_id: "shoulders",
+    muscle_group: "shoulders",
+    equipment: ["machine"],
+    level: "beginner",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-reverse-fly-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-reverse-fly-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-reverse-fly-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-reverse-fly-front.mp4",
+    steps: [
+      "Sit on machine and press your chest into the pad.",
+      "Grab the handles with an overhand grip. Keep your elbows mostly extended.",
+      "Bring your arms backwards and squeeze your scapula together."
+    ],
+    form_cues: [
+      "Keep chest pressed firmly into the pad to prevent body momentum",
+      "Lead the movement with your rear deltoids and squeeze shoulder blades",
+      "Return slowly under control without letting weights slam"
+    ]
+  },
+  {
+    id: "machine-seated-calf-raises",
+    name: "Machine Seated Calf Raises",
+    muscle_id: "calves",
+    muscle_group: "legs",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-calf-raise-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-seated-calf-raise-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-seated-calf-raise-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-seated-calf-raise-front.mp4",
+    steps: [
+      "Get comfortable on the machine, then place your lower thighs beneath the padded lever. Place your toes and the balls of your feet onto the foot supports.",
+      "Prevent the weight from slipping forward by gripping the handles, and release the safety bar. Lower the weight until your calves are extended.",
+      "Push your heels up to lift the padded lever and hold the contracted position, then slowly lower back down to the starting position. Repeat."
+    ],
+    form_cues: [
+      "Place pad securely across lower thighs above the knees",
+      "Lower heels fully for a deep stretch in the soleus muscle",
+      "Press powerfully onto balls of feet, hold the peak contraction 1-2 seconds, and control the descent"
+    ]
+  },
+  {
+    id: "machine-standing-calf-raises",
+    name: "Machine Standing Calf Raises",
+    muscle_id: "calves",
+    muscle_group: "legs",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-standing-calf-raises-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-standing-calf-raises-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-standing-calf-raises-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-standing-calf-raises-front.mp4",
+    steps: [
+      "Adjust the machine in accordance with your height and place your shoulders underneath the padded lever.",
+      "The balls of your feet should be supporting your weight on the calve block, your heels extending off of it.",
+      "Extend your heels upwards while keeping your knees stationary, and pause at the contracted position."
+    ],
+    form_cues: [
+      "Keep knees soft but stationary (do not bend or bounce knees)",
+      "Lower heels under control beneath the platform for a full gastroc stretch",
+      "Drive up as high as possible on the balls of your feet and pause at apex"
+    ]
+  },
+  {
+    id: "machine-horizontal-leg-press-calf-raise",
+    name: "Machine Horizontal Leg Press Calf Raise",
     muscle_id: "calves",
     muscle_group: "legs",
     equipment: ["machine"],
     level: "beginner",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-calf-raise-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-calf-raise-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-horizontal-leg-press-calf-raise-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-horizontal-leg-press-calf-raise-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-horizontal-leg-press-calf-raise-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-horizontal-leg-press-calf-raise-front.mp4",
     steps: [
-      "Position your shoulders beneath the padded levers with balls of feet on the platform.",
-      "Lower heels below the platform edge for a deep calf stretch.",
-      "Raise up onto the balls of your feet as high as possible."
+      "Adjust the machine in accordance with your height.",
+      "The balls of your feet should be supporting your weight on the bottom of the platform, your heels extending off of it.",
+      "Extend your heels upwards while keeping your knees stationary, and pause at the contracted position."
     ],
-    form_cues: ["Hold top contraction 1 second", "Do not bounce"]
+    form_cues: [
+      "Keep legs mostly straight with knees soft and unlocked",
+      "Press through balls of feet and toes to push the sled forward",
+      "Allow heels to come back toward you under control without letting feet slip"
+    ]
   },
   {
-    id: "machine-leg-curl",
-    name: "Machine Lying Leg Curl",
+    id: "machine-seated-leg-curl",
+    name: "Machine Seated Leg Curl",
+    muscle_id: "hamstrings",
+    muscle_group: "legs",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-seated-leg-curl-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-seated-leg-curl-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-seated-leg-curl-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-Machine-machine-seated-leg-curl-front.mp4",
+    steps: [
+      "Sit back in the seat. Use the two handles to push yourself back into the chair.",
+      "Flex your ankles and point your toes upward.",
+      "Flex your knee bringing the pad backward, extend your knee without allowing the weight to touch back down."
+    ],
+    form_cues: [
+      "Lock your thighs under the lap pad securely",
+      "Flex ankles (dorsiflexion) to maximize hamstring tension",
+      "Control the eccentric extension without letting the weight stack touch"
+    ]
+  },
+  {
+    id: "machine-hamstring-curl",
+    name: "Machine Hamstring Curl",
+    muscle_id: "hamstrings",
+    muscle_group: "legs",
+    equipment: ["machine"],
+    level: "novice",
+    gender: "both",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-hamstring-curl-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-hamstring-curl-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-hamstring-curl-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-hamstring-curl-front.mp4",
+    steps: [
+      "Lay down on the machine, placing your legs beneath the padded lever. Position your legs so that the padded lever is below your calve muscles.",
+      "Support yourself by grabbing the side handles of the machine, and slowly raise the weight with your legs, toes pointed straight.",
+      "Pause at the apex of the motion, then slowly return to starting position."
+    ],
+    form_cues: [
+      "Keep your hips firmly pressed into the bench pad throughout",
+      "Curl all the way up until hamstrings are fully contracted",
+      "Resist the downward return under slow control"
+    ]
+  },
+  {
+    id: "glute-ham-raise",
+    name: "Glute Ham Raise",
     muscle_id: "hamstrings",
     muscle_group: "legs",
     equipment: ["machine"],
     level: "intermediate",
     gender: "both",
-    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-deadlift-side.mp4",
-    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-Barbell-barbell-deadlift-front.mp4",
+    videoSide: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-glute-ham-raise-side.mp4",
+    videoFront: "https://media.musclewiki.com/media/uploads/videos/branded/male-machine-glute-ham-raise-front.mp4",
+    videoSideFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-glute-ham-raise-side.mp4",
+    videoFrontFemale: "https://media.musclewiki.com/media/uploads/videos/branded/female-machine-glute-ham-raise-front.mp4",
     steps: [
-      "Lie face down on the machine with the roller pad behind your lower calves.",
-      "Curl your heels toward your glutes, keeping hips pressed flat against the bench.",
-      "Slowly extend legs back to the starting stretch."
+      "Position yourself on a glute ham raise machine or find a suitable substitute like a stability ball or bench.",
+      "Adjust the equipment to fit your body by setting the footplate at an appropriate height and making sure your feet are securely anchored.",
+      "Begin the movement by slowly lowering your upper body towards the ground while keeping your torso and legs aligned.",
+      "Once you reach the lowest point where your body is parallel to the ground or as far as you can comfortably go, pause briefly."
     ],
-    form_cues: ["Do not let hips lift off pad", "Focus on hamstring tension"]
-  },
+    form_cues: [
+      "Lock feet securely against the footplate and calves under the back ankle pads",
+      "Keep torso rigid and maintain a straight line from knees to shoulders",
+      "Pull through your hamstrings and calves to return to upright posture"
+    ]
+  }
 ];
 
 const ALL_EQUIPMENT = [
