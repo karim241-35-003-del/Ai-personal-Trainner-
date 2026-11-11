@@ -312,7 +312,8 @@
   color: #003bb3;
 }
 
-.equipment-pill-card input[type="checkbox"] {
+.equipment-pill-card input[type="checkbox"],
+.equipment-pill-card input[type="radio"] {
   width: 16px;
   height: 16px;
   accent-color: #003bb3;
