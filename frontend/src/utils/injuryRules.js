@@ -559,6 +559,76 @@ export const EXERCISE_SAFETY = {
     reason: "Neutral grip curling puts high tension on the brachioradialis and lateral elbow.",
     alternatives: ["Reverse cable curl with light weight", "Isometric forearm hold", "EZ-bar neutral curl"],
   },
+  "knee-push-up": {
+    riskAreas: ["shoulder", "wrist", "elbow", "knee"],
+    reason: "Knee push-ups load the anterior shoulder, wrist joint, and place direct bodyweight pressure on the patella.",
+    alternatives: ["Wall push-ups", "Glute bridge", "Standing arm raises"],
+  },
+  "chair-squat": {
+    riskAreas: ["knee", "hip"],
+    reason: "Squatting to a chair places compressive force on the patellofemoral joint during knee flexion.",
+    alternatives: ["Glute bridge", "Standing calf raises", "Arm front raises"],
+  },
+  "knee-plank": {
+    riskAreas: ["shoulder", "elbow", "wrist", "knee"],
+    reason: "Forearm plank on knees bears core weight directly through the shoulder girdle and kneecaps.",
+    alternatives: ["Dead bug", "Bird dog", "Pelvic tilts"],
+  },
+  "home-glute-bridge": {
+    riskAreas: ["back", "hip"],
+    reason: "Hyperextending at the top of the bridge can place compressive shear on the lumbar spine.",
+    alternatives: ["Clamshells", "Standing calf raises", "Chair squats with neutral pelvis"],
+  },
+  "arm-side-raise": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "Lateral arm abduction stresses the subacromial space if shoulders are shrugged or internally rotated.",
+    alternatives: ["Scapular retractions", "Arm front raises with low range", "Bicep curls"],
+  },
+  "arm-front-raise": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "Front arm raises load the anterior deltoid and long head of the biceps tendon.",
+    alternatives: ["Gentle arm circles", "Scapular wall slides"],
+  },
+  "home-standing-calf-raise": {
+    riskAreas: ["ankle"],
+    reason: "Plantarflexion places tensile loading through the Achilles tendon and plantar fascia.",
+    alternatives: ["Seated calf raise", "Knee push-ups", "Crunches"],
+  },
+  "crunches": {
+    riskAreas: ["neck", "back"],
+    reason: "Spinal flexion and pulling on the cervical spine can aggravate disc injuries and neck pain.",
+    alternatives: ["Bird dog", "Plank on knees", "Pelvic tilts"],
+  },
+  "dumbbell-floor-press": {
+    riskAreas: ["shoulder", "wrist", "elbow"],
+    reason: "Horizontal pressing loads the anterior deltoid, rotator cuff, and wrist flexors.",
+    alternatives: ["Knee push-ups", "Resistance band chest press", "Lower body exercises"],
+  },
+  "dumbbell-one-arm-row": {
+    riskAreas: ["back", "wrist", "elbow"],
+    reason: "Bent-over rowing requires spinal stabilization and forearm gripping strength.",
+    alternatives: ["Chest-supported row", "Lat pulldown", "Band pull-apart"],
+  },
+  "dumbbell-bicep-curl": {
+    riskAreas: ["elbow", "wrist"],
+    reason: "Curling creates tensile strain on the distal biceps tendon and wrist flexors.",
+    alternatives: ["Hammer curls", "Isometric holds", "Shoulder press"],
+  },
+  "dumbbell-overhead-tricep-extension": {
+    riskAreas: ["elbow", "shoulder"],
+    reason: "Deep overhead elbow flexion places intense tensile strain on the triceps tendon and rotator cuff.",
+    alternatives: ["Tricep kickbacks", "Dumbbell floor press", "Close-grip push-ups"],
+  },
+  "dumbbell-standing-calf-raise": {
+    riskAreas: ["ankle", "knee"],
+    reason: "Weighted plantarflexion increases Achilles tendon strain and calf muscle shear.",
+    alternatives: ["Bodyweight calf raise", "Seated calf raise", "Goblet squat"],
+  },
+  "gym-dumbbell-shoulder-press": {
+    riskAreas: ["shoulder", "neck", "elbow"],
+    reason: "Overhead dumbbell pressing compresses the subacromial space and loads the cervical spine.",
+    alternatives: ["Dumbbell side raises (light load)", "Chest press", "Lower body training"],
+  },
 };
 
 /**
