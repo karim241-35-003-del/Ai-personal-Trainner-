@@ -34,11 +34,8 @@ export default function ExerciseLibrary() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Sub-Tabs for Intermediate (default: 'Day 1')
+  // Sub-Tabs for Intermediate Split (default: 'Day 1')
   const [activeDay, setActiveDay] = useState("Day 1");
-
-  // Sub-selector for Home Beginner (Bodyweight vs Dumbbells)
-  const [homeEquipment, setHomeEquipment] = useState(null);
 
   // Accordion open exercise ID
   const [openId, setOpenId] = useState(null);
@@ -48,11 +45,6 @@ export default function ExerciseLibrary() {
       .then(([list, p]) => {
         setExercises(list);
         setProfile(p);
-        if (p?.equipment?.includes("dumbbell") && !p?.equipment?.includes("bodyweight")) {
-          setHomeEquipment("dumbbell");
-        } else {
-          setHomeEquipment("bodyweight");
-        }
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -63,23 +55,28 @@ export default function ExerciseLibrary() {
     [profile?.limitations]
   );
 
-  // Fitness level & location come directly from profile selection
+  // Fitness level, location & equipment come directly from profile selection
   const isIntermediate =
     profile?.fitness_level === "intermediate" || profile?.fitness_level === "advanced";
   const userLevel = isIntermediate ? "intermediate" : "beginner";
   const isHome = (profile?.location ?? "home") === "home";
+  const hasDumbbell = Boolean(profile?.equipment?.includes("dumbbell"));
 
   // Data Filtering Logic:
   // 1. Beginner profile:
-  //    - At Home: home_bodyweight_beginner or home_dumbbell_beginner
+  //    - At Home:
+  //        * Dumbbells: home_dumbbell_beginner
+  //        * Bodyweight: home_bodyweight_beginner
   //    - Gym: gym_beginner
   // 2. Intermediate profile:
-  //    - At Home: home_dumbbell_intermediate by activeDay
-  //    - Gym: intermediate_split by activeDay
+  //    - At Home:
+  //        * Bodyweight only: home_bodyweight_intermediate (9 exercises)
+  //        * Dumbbells: home_dumbbell_intermediate by activeDay (3-day split)
+  //    - Gym: intermediate_split by activeDay (3-day split)
   const visibleExercises = useMemo(() => {
     if (userLevel === "beginner") {
       if (isHome) {
-        if (homeEquipment === "dumbbell") {
+        if (hasDumbbell) {
           return exercises.filter((e) => e.routine_type === "home_dumbbell_beginner");
         }
         return exercises.filter((e) => e.routine_type === "home_bodyweight_beginner");
@@ -91,8 +88,13 @@ export default function ExerciseLibrary() {
 
     if (userLevel === "intermediate") {
       if (isHome) {
+        if (hasDumbbell) {
+          return exercises.filter(
+            (e) => e.routine_type === "home_dumbbell_intermediate" && e.day === activeDay
+          );
+        }
         return exercises.filter(
-          (e) => e.routine_type === "home_dumbbell_intermediate" && e.day === activeDay
+          (e) => e.routine_type === "home_bodyweight_intermediate"
         );
       }
       return exercises.filter(
@@ -101,12 +103,12 @@ export default function ExerciseLibrary() {
     }
 
     return [];
-  }, [exercises, userLevel, isHome, homeEquipment, activeDay]);
+  }, [exercises, userLevel, isHome, hasDumbbell, activeDay]);
 
   if (loading) return <p>Loading exercises...</p>;
   if (error) return <p className="error">{error}</p>;
 
-  // Subtitles & Durations lookup
+  // Subtitles & Durations lookup for 3-Day Splits
   const intSubtitles = isHome ? HOME_INT_SUBTITLES : GYM_INT_SUBTITLES;
   const intDurations = isHome ? HOME_INT_DURATIONS : GYM_INT_DURATIONS;
 
@@ -115,10 +117,20 @@ export default function ExerciseLibrary() {
   let currentDuration = "About 30 min";
 
   if (userLevel === "intermediate") {
-    currentTitle = `${activeDay} · ${intSubtitles[activeDay] || "Workout"}`;
-    currentDuration = intDurations[activeDay] || "About 35 min";
+    if (isHome) {
+      if (hasDumbbell) {
+        currentTitle = `${activeDay} · ${intSubtitles[activeDay] || "Workout"}`;
+        currentDuration = intDurations[activeDay] || "About 35 min";
+      } else {
+        currentTitle = "Intermediate · At Home (No Equipment)";
+        currentDuration = "About 25–30 min";
+      }
+    } else {
+      currentTitle = `${activeDay} · ${intSubtitles[activeDay] || "Workout"}`;
+      currentDuration = intDurations[activeDay] || "About 35 min";
+    }
   } else if (isHome) {
-    if (homeEquipment === "dumbbell") {
+    if (hasDumbbell) {
       currentTitle = "Beginner · At Home (Dumbbells)";
       currentDuration = "About 25–30 min";
     } else {
@@ -128,6 +140,16 @@ export default function ExerciseLibrary() {
   } else {
     currentTitle = "Initial Routine · Full Body Workout";
     currentDuration = "About 30 min";
+  }
+
+  // Active split description badge
+  let profileBadgeText = "";
+  if (isHome) {
+    if (hasDumbbell) {
+      profileBadgeText = userLevel === "intermediate" ? "(Dumbbell 3-Day Split)" : "(Dumbbell Routine)";
+    } else {
+      profileBadgeText = "(No Equipment · Bodyweight)";
+    }
   }
 
   return (
@@ -147,9 +169,9 @@ export default function ExerciseLibrary() {
             <strong style={{ color: "#0f172a", textTransform: "capitalize" }}>
               {profile?.location || "Home"}
             </strong>
-            {userLevel === "intermediate" && isHome && (
+            {profileBadgeText && (
               <span style={{ color: "#16a34a", fontWeight: "600", marginLeft: "6px" }}>
-                · (Dumbbell 3-Day Split)
+                · {profileBadgeText}
               </span>
             )}
           </p>
@@ -178,8 +200,8 @@ export default function ExerciseLibrary() {
         </div>
       )}
 
-      {/* Sub-Tabs: ONLY for Intermediate Profiles (Day 1, Day 2, Day 3) */}
-      {userLevel === "intermediate" && (
+      {/* Sub-Tabs: ONLY for Intermediate 3-Day Splits (Gym, or Home with Dumbbells) */}
+      {userLevel === "intermediate" && (!isHome || hasDumbbell) && (
         <div>
           <div className="plan-subtabs-container">
             {["Day 1", "Day 2", "Day 3"].map((d) => {
@@ -203,35 +225,7 @@ export default function ExerciseLibrary() {
         </div>
       )}
 
-      {/* Equipment Selector: For Beginner At Home (Bodyweight vs Dumbbells) */}
-      {userLevel === "beginner" && isHome && (
-        <div style={{ display: "flex", gap: "10px", marginBottom: "18px", flexWrap: "wrap" }}>
-          <button
-            type="button"
-            className={`routine-toggle-pill ${homeEquipment === "bodyweight" ? "active" : ""}`}
-            onClick={() => {
-              setHomeEquipment("bodyweight");
-              setOpenId(null);
-            }}
-            style={{ padding: "8px 16px", fontSize: "14px", fontWeight: "600" }}
-          >
-            🏠 Bodyweight (No Equipment)
-          </button>
-          <button
-            type="button"
-            className={`routine-toggle-pill ${homeEquipment === "dumbbell" ? "active" : ""}`}
-            onClick={() => {
-              setHomeEquipment("dumbbell");
-              setOpenId(null);
-            }}
-            style={{ padding: "8px 16px", fontSize: "14px", fontWeight: "600" }}
-          >
-            🏋️ Dumbbells
-          </button>
-        </div>
-      )}
-
-      {/* Main Exercise Card Container & Clean List (Matching Reference Photo) */}
+      {/* Main Exercise Card Container & Clean List */}
       <div className="workout-plan-card">
         <div className="workout-card-header">
           <h2 className="workout-card-title">{currentTitle}</h2>
@@ -294,7 +288,7 @@ export default function ExerciseLibrary() {
                       </div>
                     </div>
 
-                    {/* Right: Sets & Reps format ('3 x 10–12 reps' or '4 x 12') + Arrow icon ( > ) */}
+                    {/* Right: Sets & Reps format + Arrow icon ( > ) */}
                     <div className="exercise-row-right">
                       <span className="exercise-row-sets">
                         {e.sets || 3} &times; {e.reps || 12}
@@ -333,17 +327,21 @@ export default function ExerciseLibrary() {
                             }}
                           />
                         </div>
-                      ) : e.videoUrl ? (
+                      ) : (e.videoUrl || e.video) ? (
                         <div className="exercise-detail-video-box">
                           <video
-                            src={e.videoUrl}
+                            key={e.videoUrl || e.video}
                             className="exercise-detail-video"
                             autoPlay
                             muted
                             loop
                             playsInline
                             controls
-                          />
+                          >
+                            <source src={e.videoUrl || e.video} type={(e.videoUrl || e.video).endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
+                            <source src={e.videoUrl || e.video} type="video/mp4" />
+                            Your browser does not support HTML5 video.
+                          </video>
                         </div>
                       ) : null}
 
