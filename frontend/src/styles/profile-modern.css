@@ -1,0 +1,398 @@
+/* Modern Profile Form Styling - Expanded, Spacious Multi-Column Layout */
+
+.modern-profile-card {
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto 40px;
+  background: #ffffff;
+  border: 1px solid #e8ecf4;
+  border-radius: 24px;
+  padding: 36px 36px 32px;
+  box-shadow: 0 10px 30px -5px rgba(23, 37, 84, 0.06), 0 2px 8px -1px rgba(0, 0, 0, 0.02);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+}
+
+.profile-header {
+  margin-bottom: 28px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
+}
+
+.profile-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0b192c;
+  margin: 0 0 6px;
+  letter-spacing: -0.02em;
+}
+
+.profile-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Form Section / Groups */
+.form-section-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Grids for Spacious Layouts */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-sublabel {
+  font-size: 12px;
+  font-weight: 400;
+  color: #64748b;
+}
+
+/* Segmented Pill Toggles (Gender, Units, Goal, etc.) */
+.segmented-pill-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.segmented-pill-btn {
+  background: transparent;
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.segmented-pill-btn:hover:not(.active-blue):not(.active-coral) {
+  background: #eef2f6;
+  color: #0f172a;
+}
+
+/* Blue Active State (Gender, Units, Days) */
+.segmented-pill-btn.active-blue {
+  background: #003bb3;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 59, 179, 0.25);
+}
+
+/* Coral / Pink Active State (Goal) */
+.segmented-pill-btn.active-coral {
+  background: #ff2d55;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 45, 85, 0.3);
+}
+
+/* Metric Card Container (Age, Height, Weight) */
+.metric-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.metric-card:hover {
+  border-color: #cbd5e1;
+}
+
+.metric-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Value Badge Box */
+.value-badge-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.value-badge-box:focus-within {
+  border-color: #003bb3;
+  box-shadow: 0 0 0 3px rgba(0, 59, 179, 0.12);
+}
+
+.value-badge-input {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.value-badge-unit {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+/* Slider Controls */
+.slider-control-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modern-range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  outline: none;
+  margin: 6px 0;
+  cursor: pointer;
+}
+
+.modern-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #003bb3;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 59, 179, 0.35);
+  transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+.modern-range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #002e8c;
+}
+
+.modern-range-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #003bb3;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 59, 179, 0.35);
+}
+
+.slider-scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  padding: 0 2px;
+}
+
+.slider-scale-current {
+  color: #003bb3;
+  font-weight: 700;
+}
+
+/* Modern Select Box (Activity Level, Fitness, Location) */
+.modern-select-box {
+  position: relative;
+  width: 100%;
+}
+
+.modern-select {
+  width: 100%;
+  appearance: none;
+  background: #ffffff url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 14px center/18px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 40px 12px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modern-select:focus {
+  border-color: #003bb3;
+  box-shadow: 0 0 0 3px rgba(0, 59, 179, 0.12);
+}
+
+/* Checkbox Cards Grid (Equipment) */
+.equipment-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.equipment-pill-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.equipment-pill-card:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.equipment-pill-card.selected {
+  border-color: #003bb3;
+  background: #f0f5ff;
+  color: #003bb3;
+}
+
+.equipment-pill-card input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #003bb3;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* Modern Textarea (Injuries / Limitations) */
+.modern-textarea {
+  width: 100%;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  resize: vertical;
+  min-height: 76px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.modern-textarea:focus {
+  border-color: #003bb3;
+  box-shadow: 0 0 0 3px rgba(0, 59, 179, 0.12);
+}
+
+/* Submit Button */
+.profile-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #003bb3 0%, #002e8c 100%);
+  color: #ffffff;
+  border: 0;
+  border-radius: 14px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 59, 179, 0.25);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 8px;
+}
+
+.profile-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 59, 179, 0.32);
+}
+
+.profile-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 820px) {
+  .modern-profile-card {
+    padding: 28px 20px;
+  }
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .equipment-cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .equipment-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .segmented-pill-btn {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,660 @@
+/* MuscleWiki Dashboard Layout Styling - Left-to-Right Architecture */
+
+.container:has(.musclewiki-wrapper) {
+  max-width: 1300px;
+}
+
+.musclewiki-wrapper {
+  max-width: 1260px;
+  margin: 0 auto 48px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #1e293b;
+}
+
+/* Header & Top Bar */
+.mw-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.mw-brand-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mw-brand-title h1 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.mw-brand-badge {
+  background: #ff2d55;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mw-search-input {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1.5px solid #cbd5e1;
+  font-size: 14px;
+  min-width: 260px;
+  outline: none;
+  background: #ffffff;
+}
+
+.mw-search-input:focus {
+  border-color: #003bb3;
+  box-shadow: 0 0 0 3px rgba(0, 59, 179, 0.12);
+}
+
+/* ============================================================
+   Main 2-Column Grid Layout:
+   LEFT (440px): Body Map, Filters & Exercise Selector List
+   RIGHT (1fr): Exercise Demonstration Viewer & Instructions
+   ============================================================ */
+.mw-layout-grid {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* LEFT COLUMN */
+.mw-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* RIGHT COLUMN */
+.mw-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 1. Body Map Card */
+.bodymap-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+}
+
+.body-map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.body-map-tooltip {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+  text-align: center;
+}
+
+.body-map-svg-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.body-map-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 180px;
+}
+
+.figure-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.body-map-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.04));
+}
+
+.muscle-clickable-group path,
+.muscle-clickable-group g {
+  transition: fill 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
+}
+
+.muscle-clickable-group path:hover,
+.muscle-clickable-group g:hover {
+  filter: drop-shadow(0 0 6px rgba(255, 45, 85, 0.5));
+}
+
+/* Quick Muscle Chips */
+.muscle-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  justify-content: center;
+}
+
+.muscle-chip-btn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.muscle-chip-btn:hover {
+  background: #e2e8f0;
+}
+
+.muscle-chip-btn.active {
+  background: #ff2d55;
+  border-color: #ff2d55;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(255, 45, 85, 0.3);
+}
+
+/* 2. Filters & Preferences Card */
+.filters-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px 20px;
+  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+}
+
+.card-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.toggle-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.toggle-switch-row:last-child {
+  border-bottom: none;
+}
+
+.toggle-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.pill-switch {
+  display: inline-flex;
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: 2px;
+  border: 1px solid #e2e8f0;
+  gap: 2px;
+}
+
+.pill-switch-btn {
+  border: 0;
+  background: transparent;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pill-switch-btn.active {
+  background: #173b75;
+  color: #ffffff;
+}
+
+/* Equipment Filter List */
+.equipment-filter-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.equipment-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  user-select: none;
+}
+
+.equipment-checkbox-label input[type="checkbox"] {
+  accent-color: #173b75;
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* 3. Exercise Selector List (Left Column) */
+.exercise-selector-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+}
+
+.selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+
+.selector-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.selector-count {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.exercise-list-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 440px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.ex-selector-item {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ex-selector-item:hover {
+  background: #ffffff;
+  border-color: #003bb3;
+  transform: translateX(2px);
+}
+
+.ex-selector-item.selected {
+  background: #ffffff;
+  border-color: #ff2d55;
+  box-shadow: 0 0 0 2px #ff2d55, 0 4px 12px rgba(255, 45, 85, 0.15);
+}
+
+.ex-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ex-item-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.ex-item-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ex-item-chips .chip {
+  padding: 1px 7px;
+  font-size: 10px;
+}
+
+/* ============================================================
+   RIGHT COLUMN: Exercise Demonstration & Video Player Card
+   ============================================================ */
+.exercise-detail-hero {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 6px 28px -4px rgba(15, 23, 42, 0.08);
+}
+
+.ex-detail-header-bar {
+  background: #173b75;
+  color: #ffffff;
+  padding: 18px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ex-detail-title {
+  font-size: 24px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.badge-level {
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.badge-level.level-beginner {
+  background: #16a34a;
+}
+
+.badge-level.level-intermediate {
+  background: #2563eb;
+}
+
+.badge-level.level-advanced {
+  background: #ea580c;
+}
+
+.mw-share-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 4px;
+}
+
+.mw-share-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* Dual Angle Demonstration Player */
+/* Dual Angle Demonstration Video Player */
+.dual-angle-player {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #020617;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.angle-pane {
+  position: relative;
+  height: 400px;
+  background: #090d16;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #1e293b;
+}
+
+.angle-pane:last-child {
+  border-right: none;
+}
+
+.angle-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  letter-spacing: 0.04em;
+  z-index: 3;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.angle-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff2d55;
+  box-shadow: 0 0 6px #ff2d55;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.demo-stage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: #090d16;
+}
+
+.demo-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #090d16;
+}
+
+.video-loading-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+  background: #090d16;
+  z-index: 1;
+}
+
+.demo-cadence-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff2d55, #2563eb);
+  width: 100%;
+  animation: cadenceProgress 3.2s infinite linear;
+  z-index: 2;
+}
+
+@keyframes cadenceProgress {
+  0% { width: 0%; opacity: 0.8; }
+  95% { opacity: 1; }
+  100% { width: 100%; opacity: 0.3; }
+}
+
+/* Step-by-Step Instructions Container */
+.instructions-container {
+  padding: 30px 28px;
+}
+
+.instructions-heading {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #173b75;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(23, 59, 117, 0.3);
+}
+
+.step-text {
+  font-size: 15px;
+  color: #334155;
+  line-height: 1.55;
+  padding-top: 3px;
+  margin: 0;
+}
+
+/* Form cues bar */
+.form-cues-box {
+  margin-top: 24px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.form-cues-box strong {
+  display: block;
+  font-size: 13px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.form-cues-box ul {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Empty or Placeholder State */
+.demo-placeholder-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 60px 32px;
+  text-align: center;
+  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05);
+}
+
+.demo-placeholder-card h2 {
+  font-size: 20px;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+
+.demo-placeholder-card p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 980px) {
+  .mw-layout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .dual-angle-player {
+    grid-template-columns: 1fr;
+  }
+  .angle-pane {
+    height: 250px;
+    border-right: none;
+    border-bottom: 1px solid #334155;
+  }
+  .body-map-svg-grid {
+    gap: 12px;
+  }
+}
