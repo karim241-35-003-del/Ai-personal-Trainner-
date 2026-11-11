@@ -449,6 +449,116 @@ export const EXERCISE_SAFETY = {
     reason: "Loaded plantarflexion against the sled platform stresses the gastrocnemius and Achilles tendon without axial spinal compression.",
     alternatives: ["Machine seated calf raise", "Isometric calf holds"],
   },
+  "assisted-pull-up": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Overhead pulling with fixed hand positions places shear force across the glenohumeral joint and biceps tendon.",
+    alternatives: ["Lat pulldown with wide grip", "Chest-supported row", "Resistance band pull-aparts"],
+  },
+  "dumbbell-shoulder-press": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "Vertical overhead pressing loads the acromioclavicular joint and subacromial space.",
+    alternatives: ["Neutral grip dumbbell press", "Landmine press", "Incline dumbbell press"],
+  },
+  "barbell-curl": {
+    riskAreas: ["wrist", "elbow"],
+    reason: "Straight barbell curls fix the wrists in full supination, creating valgus torque at the medial elbow.",
+    alternatives: ["EZ-bar curl", "Dumbbell hammer curl", "Cable rope curl"],
+  },
+  "intermediate-barbell-curl": {
+    riskAreas: ["wrist", "elbow"],
+    reason: "Straight barbell curls fix the wrists in full supination, creating valgus torque at the medial elbow.",
+    alternatives: ["EZ-bar curl", "Dumbbell hammer curl", "Cable rope curl"],
+  },
+  "tricep-pressdown": {
+    riskAreas: ["elbow"],
+    reason: "Terminal extension against cable resistance creates compressive load on the olecranon fossa.",
+    alternatives: ["Rope pushdown", "Neutral grip dumbbell kickback", "Resistance band pressdown"],
+  },
+  "pectoral-fly": {
+    riskAreas: ["shoulder"],
+    reason: "Horizontal adduction with extended lever arms places high anterior shoulder capsule stress.",
+    alternatives: ["Neutral chest press", "Floor dumbbell fly", "Resistance band hug"],
+  },
+  "decline-chest-press": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Decline pressing requires stable rotator cuff bracing under load.",
+    alternatives: ["Flat machine chest press", "Push-up on elevated surface", "Cable crossover"],
+  },
+  "machine-shoulder-press": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "Fixed overhead pressing path forces the glenohumeral joint through potentially impinged ranges.",
+    alternatives: ["Neutral overhead press", "Lateral dumbbell raise", "Face pull"],
+  },
+  "dumbbell-side-raise": {
+    riskAreas: ["shoulder"],
+    reason: "Lateral abduction above 90 degrees can cause subacromial impingement of the supraspinatus tendon.",
+    alternatives: ["Cable lateral raise with cuff", "Incline dumbbell side raise", "Chest-supported Y-raise"],
+  },
+  "rope-press-down": {
+    riskAreas: ["elbow"],
+    reason: "Tricep flare at the bottom increases tensile loading on the triceps tendon insertion.",
+    alternatives: ["Reverse-grip cable pressdown", "Overhead tricep extension with cable", "Diamond push-up"],
+  },
+  "machine-dips": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Dip extension puts the shoulder into extreme extension and anterior translation.",
+    alternatives: ["Cable pushdown", "Close-grip bench press", "Bench dip with feet on floor"],
+  },
+  "v-squat": {
+    riskAreas: ["knee", "back"],
+    reason: "Deep angled knee flexion transfers high shear forces through the patellofemoral joint.",
+    alternatives: ["Leg press", "Goblet squat", "Box squat"],
+  },
+  "seated-leg-curl": {
+    riskAreas: ["knee", "hamstrings"],
+    reason: "Active knee flexion while hips are at 90 degrees puts maximum stretch and tensile load on the hamstring tendon origin.",
+    alternatives: ["Glute bridge", "Swiss ball leg curl", "Bodyweight hip thrust"],
+  },
+  "machine-adductor": {
+    riskAreas: ["hip"],
+    reason: "Repetitive resisted hip adduction can aggravate osteitis pubis or adductor longus tendinopathy.",
+    alternatives: ["Glute bridge with yoga block squeeze", "Isometric ball squeeze", "Side-lying adductor raise"],
+  },
+  "standing-calf-raise": {
+    riskAreas: ["ankle", "knee"],
+    reason: "Deep dorsiflexion under full body load exerts extreme tensile stretch across the Achilles tendon.",
+    alternatives: ["Seated calf raise", "Tibialis anterior raises", "Flat floor calf raises"],
+  },
+  "machine-high-row": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "High-to-low pulling angle can stress the inferior glenohumeral ligament.",
+    alternatives: ["Chest-supported row", "Seated cable row", "Inverted row"],
+  },
+  "machine-low-row": {
+    riskAreas: ["back", "elbow"],
+    reason: "Horizontal pulling demands strong spinal erector stabilization.",
+    alternatives: ["Chest-supported machine row", "Lat pulldown", "Cable face pull"],
+  },
+  "dy-row": {
+    riskAreas: ["elbow", "back"],
+    reason: "Unilateral low-angle pulling demands scapular control and posterior chain stabilization.",
+    alternatives: ["Single-arm dumbbell row on bench", "Chest-supported row", "Cable row"],
+  },
+  "seated-cable-row": {
+    riskAreas: ["back", "elbow"],
+    reason: "Seated horizontal rowing requires continuous lumbar erector bracing.",
+    alternatives: ["Chest-supported row", "Lat pulldown", "Cable face pull"],
+  },
+  "cable-face-pull": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "High cable face pulls require strong rotator cuff external rotation.",
+    alternatives: ["Band pull-aparts", "Rear delt fly on incline bench", "Prone Y-T-W raises"],
+  },
+  "dumbbell-curl": {
+    riskAreas: ["wrist", "elbow"],
+    reason: "Supinating under load stresses the biceps tendon and common flexor origin.",
+    alternatives: ["Neutral grip hammer curl", "Cable rope hammer curl", "Concentration curl with light weight"],
+  },
+  "hammer-curl": {
+    riskAreas: ["elbow", "wrist"],
+    reason: "Neutral grip curling puts high tension on the brachioradialis and lateral elbow.",
+    alternatives: ["Reverse cable curl with light weight", "Isometric forearm hold", "EZ-bar neutral curl"],
+  },
 };
 
 /**
