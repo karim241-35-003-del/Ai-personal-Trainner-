@@ -25,6 +25,9 @@ export default function ExerciseLibrary() {
   // Sub-Tabs for Intermediate (default: 'Day 1')
   const [activeDay, setActiveDay] = useState("Day 1");
 
+  // Sub-selector for Home Beginner (Bodyweight vs Dumbbells)
+  const [homeEquipment, setHomeEquipment] = useState(null);
+
   // Accordion open exercise ID
   const [openId, setOpenId] = useState(null);
 
@@ -33,6 +36,11 @@ export default function ExerciseLibrary() {
       .then(([list, p]) => {
         setExercises(list);
         setProfile(p);
+        if (p?.equipment?.includes("dumbbell") && !p?.equipment?.includes("bodyweight")) {
+          setHomeEquipment("dumbbell");
+        } else {
+          setHomeEquipment("bodyweight");
+        }
       })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -43,35 +51,62 @@ export default function ExerciseLibrary() {
     [profile?.limitations]
   );
 
-  // Routine selection comes strictly from profile fitness_level
+  // Fitness level comes directly from profile selection
   const isIntermediate =
     profile?.fitness_level === "intermediate" || profile?.fitness_level === "advanced";
   const userLevel = isIntermediate ? "intermediate" : "beginner";
+  const isHome = (profile?.location ?? "home") === "home";
 
   // Data Filtering Logic:
-  // Beginner profile -> only sees beginner routine
-  // Intermediate profile -> only sees intermediate routine (by activeDay)
+  // 1. Beginner profile:
+  //    - At Home: home_bodyweight_beginner or home_dumbbell_beginner
+  //    - Gym: gym_beginner
+  // 2. Intermediate profile:
+  //    - 3-day split by activeDay
   const visibleExercises = useMemo(() => {
     if (userLevel === "beginner") {
-      return exercises.filter((e) => e.level === "beginner");
-    }
-    if (userLevel === "intermediate") {
+      if (isHome) {
+        if (homeEquipment === "dumbbell") {
+          return exercises.filter((e) => e.routine_type === "home_dumbbell_beginner");
+        }
+        return exercises.filter((e) => e.routine_type === "home_bodyweight_beginner");
+      }
       return exercises.filter(
-        (e) => e.level === "intermediate" && e.day === activeDay
+        (e) => e.routine_type === "gym_beginner" || (e.level === "beginner" && e.location === "gym")
       );
     }
+
+    if (userLevel === "intermediate") {
+      return exercises.filter(
+        (e) => (e.routine_type === "intermediate_split" || e.level === "intermediate") && e.day === activeDay
+      );
+    }
+
     return [];
-  }, [exercises, userLevel, activeDay]);
+  }, [exercises, userLevel, isHome, homeEquipment, activeDay]);
 
   if (loading) return <p>Loading exercises...</p>;
   if (error) return <p className="error">{error}</p>;
 
-  const currentDuration =
-    userLevel === "beginner" ? "About 30 min" : DAY_DURATIONS[activeDay] || "About 35 min";
-  const currentTitle =
-    userLevel === "beginner"
-      ? "Initial Routine · Full Body Workout"
-      : `${activeDay} · ${DAY_SUBTITLES[activeDay] || "Workout"}`;
+  // Title and duration calculation
+  let currentTitle = "Your Workout Plan";
+  let currentDuration = "About 30 min";
+
+  if (userLevel === "intermediate") {
+    currentTitle = `${activeDay} · ${DAY_SUBTITLES[activeDay] || "Workout"}`;
+    currentDuration = DAY_DURATIONS[activeDay] || "About 35 min";
+  } else if (isHome) {
+    if (homeEquipment === "dumbbell") {
+      currentTitle = "Beginner · At Home (Dumbbells)";
+      currentDuration = "About 25–30 min";
+    } else {
+      currentTitle = "Beginner · At Home (No Equipment)";
+      currentDuration = "About 20–25 min";
+    }
+  } else {
+    currentTitle = "Initial Routine · Full Body Workout";
+    currentDuration = "About 30 min";
+  }
 
   return (
     <div>
@@ -79,12 +114,16 @@ export default function ExerciseLibrary() {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px", flexWrap: "wrap", gap: "10px" }}>
         <div>
           <h1 style={{ margin: "0 0 4px", fontSize: "24px", fontWeight: "800", color: "#0f172a" }}>
-            {userLevel === "intermediate" ? "Your 3-day plan" : "Your Workout Plan"}
+            Exercise routine
           </h1>
           <p className="muted" style={{ margin: 0, fontSize: "14px" }}>
-            Assigned routine based on your profile fitness level:{" "}
+            Routine tailored for:{" "}
             <strong style={{ color: "#2563eb", textTransform: "capitalize" }}>
               {profile?.fitness_level || "Beginner"}
+            </strong>{" "}
+            · Location:{" "}
+            <strong style={{ color: "#0f172a", textTransform: "capitalize" }}>
+              {profile?.location || "Home"}
             </strong>
           </p>
         </div>
@@ -93,10 +132,10 @@ export default function ExerciseLibrary() {
           to="/profile"
           className="routine-toggle-pill"
           style={{ textDecoration: "none", fontSize: "13px", padding: "8px 16px" }}
-          title="Change fitness level in profile"
+          title="Change fitness level or location in profile"
         >
-          {userLevel === "intermediate" ? "🔥 Intermediate Plan" : "🟢 Beginner Plan"}
-          <span style={{ color: "#64748b", marginLeft: "4px" }}>(Change in Profile ⚙️)</span>
+          {userLevel === "intermediate" ? "🔥 Intermediate Routine" : "🟢 Beginner Routine"}
+          <span style={{ color: "#64748b", marginLeft: "6px" }}>(Profile ⚙️)</span>
         </Link>
       </div>
 
@@ -112,7 +151,7 @@ export default function ExerciseLibrary() {
         </div>
       )}
 
-      {/* Sub-Tabs: ONLY for Intermediate Profiles (Day 1, Day 2, Day 3) - Photo Matching Design */}
+      {/* Sub-Tabs: ONLY for Intermediate Profiles (Day 1, Day 2, Day 3) */}
       {userLevel === "intermediate" && (
         <div>
           <div className="plan-subtabs-container">
@@ -134,6 +173,34 @@ export default function ExerciseLibrary() {
               );
             })}
           </div>
+        </div>
+      )}
+
+      {/* Equipment Selector: For Beginner At Home (Bodyweight vs Dumbbells) */}
+      {userLevel === "beginner" && isHome && (
+        <div style={{ display: "flex", gap: "10px", marginBottom: "18px", flexWrap: "wrap" }}>
+          <button
+            type="button"
+            className={`routine-toggle-pill ${homeEquipment === "bodyweight" ? "active" : ""}`}
+            onClick={() => {
+              setHomeEquipment("bodyweight");
+              setOpenId(null);
+            }}
+            style={{ padding: "8px 16px", fontSize: "14px", fontWeight: "600" }}
+          >
+            🏠 Bodyweight (No Equipment)
+          </button>
+          <button
+            type="button"
+            className={`routine-toggle-pill ${homeEquipment === "dumbbell" ? "active" : ""}`}
+            onClick={() => {
+              setHomeEquipment("dumbbell");
+              setOpenId(null);
+            }}
+            style={{ padding: "8px 16px", fontSize: "14px", fontWeight: "600" }}
+          >
+            🏋️ Dumbbells
+          </button>
         </div>
       )}
 
@@ -170,8 +237,15 @@ export default function ExerciseLibrary() {
                     {/* Left: Number + Thumbnail */}
                     <div className="exercise-row-left">
                       <span className="exercise-row-num">{idx + 1}</span>
-                      <div className="exercise-row-thumb">
-                        {e.videoUrl ? (
+                      <div className="exercise-row-thumb" style={{ background: "#f8fafc" }}>
+                        {e.imageUrl ? (
+                          <img
+                            src={e.imageUrl}
+                            alt={e.name}
+                            className="exercise-thumb-media"
+                            style={{ objectFit: "contain", background: "#ffffff" }}
+                          />
+                        ) : e.videoUrl ? (
                           <video
                             src={e.videoUrl}
                             className="exercise-thumb-media"
@@ -193,10 +267,10 @@ export default function ExerciseLibrary() {
                       </div>
                     </div>
 
-                    {/* Right: Sets & Reps format ('4 x 12') + Arrow icon ( > ) */}
+                    {/* Right: Sets & Reps format ('2 x 10–12 reps' or '4 x 12') + Arrow icon ( > ) */}
                     <div className="exercise-row-right">
                       <span className="exercise-row-sets">
-                        {e.sets || 4} x {e.reps || 12}
+                        {e.sets || 2} &times; {e.reps || 12}
                       </span>
                       <span className={`exercise-row-chevron ${isOpen ? "open" : ""}`}>
                         &gt;
@@ -207,8 +281,32 @@ export default function ExerciseLibrary() {
                   {/* Expanded Detail View */}
                   {isOpen && (
                     <div className="exercise-detail-panel">
-                      {/* Video Player */}
-                      {e.videoUrl && (
+                      {/* Media Display: Photo or Video */}
+                      {e.imageUrl ? (
+                        <div
+                          className="exercise-detail-video-box"
+                          style={{
+                            background: "#ffffff",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            padding: "16px",
+                            borderRadius: "10px",
+                            border: "1px solid #e2e8f0",
+                          }}
+                        >
+                          <img
+                            src={e.imageUrl}
+                            alt={e.name}
+                            style={{
+                              maxWidth: "100%",
+                              maxHeight: "320px",
+                              objectFit: "contain",
+                              borderRadius: "8px",
+                            }}
+                          />
+                        </div>
+                      ) : e.videoUrl ? (
                         <div className="exercise-detail-video-box">
                           <video
                             src={e.videoUrl}
@@ -220,7 +318,7 @@ export default function ExerciseLibrary() {
                             controls
                           />
                         </div>
-                      )}
+                      ) : null}
 
                       {/* Instructions */}
                       <p style={{ margin: "0 0 10px", lineHeight: "1.55", color: "#1e293b" }}>
