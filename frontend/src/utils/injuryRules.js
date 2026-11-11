@@ -74,6 +74,21 @@ export const EXERCISE_SAFETY = {
     reason: "Long lever arm places high tensile force across the anterior shoulder capsule.",
     alternatives: ["Floor dumbbell press", "Isometric chest press"],
   },
+  "neutral-chest-press": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Machine pressing stabilizes the load but can stress anterior shoulders if seated too far back.",
+    alternatives: ["Push-ups with elevated hands", "Isometric chest press"],
+  },
+  "machine-chest-press": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Fixed plane horizontal pressing heavily loads the anterior deltoids and rotator cuff under heavy load.",
+    alternatives: ["Dumbbell floor press", "Push-ups"],
+  },
+  "machine-pec-fly": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Pec fly machines place high tensile leverage across the anterior shoulder capsule and biceps tendon at deep horizontal abduction.",
+    alternatives: ["Machine chest press with moderate range", "Isometric chest press"],
+  },
   "shoulder-press": {
     riskAreas: ["shoulder", "neck"],
     reason: "Overhead pressing directly compresses the subacromial space and strains injured shoulders.",
@@ -88,6 +103,21 @@ export const EXERCISE_SAFETY = {
     riskAreas: ["shoulder", "wrist"],
     reason: "Front flexion places leverage on the anterior deltoid and long head of the biceps tendon.",
     alternatives: ["Incline chest press", "Neutral grip front raises with light load"],
+  },
+  "machine-neutral-overhead-press": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "Overhead pressing compresses the subacromial space; neutral grip reduces impingement but requires care with active shoulder injuries.",
+    alternatives: ["Dumbbell lateral raise with light resistance", "Lower body exercises"],
+  },
+  "machine-standing-lateral-raise": {
+    riskAreas: ["shoulder", "neck"],
+    reason: "Abducting arms under fixed machine resistance can irritate the supraspinatus or subacromial bursa if shoulders are compromised.",
+    alternatives: ["Scaption raises with light load", "Front raise with neutral grip"],
+  },
+  "machine-reverse-fly": {
+    riskAreas: ["shoulder"],
+    reason: "Horizontal abduction heavily loads the posterior deltoid and rotator cuff stabilizers.",
+    alternatives: ["Face pull with light cable resistance", "Prone Y-raises without weights"],
   },
   "plank": {
     riskAreas: ["shoulder", "wrist", "back"],
@@ -104,6 +134,26 @@ export const EXERCISE_SAFETY = {
     reason: "Weighted sit-ups create repeated flexion compression on lumbar intervertebral discs.",
     alternatives: ["Crunches with elevated feet", "Dead bug", "Bird-dog"],
   },
+  "machine-crunch": {
+    riskAreas: ["back", "neck"],
+    reason: "Resisted spinal flexion compresses lumbar discs under load if form breaks down.",
+    alternatives: ["Dead bug", "Bird-dog", "Plank on knees"],
+  },
+  "rower-pike": {
+    riskAreas: ["wrist", "shoulder", "back"],
+    reason: "Piking elevates hips in a moving plank requiring strong shoulder and wrist stability under bodyweight.",
+    alternatives: ["Standard forearm plank", "Dead bug"],
+  },
+  "cable-row-bar-kneeling-crunch": {
+    riskAreas: ["back", "knee"],
+    reason: "Kneeling spinal flexion with overhead load stresses the lumbar spine if hips sit back improperly.",
+    alternatives: ["Forearm plank", "Dead bug", "Standard crunches"],
+  },
+  "cable-rope-kneeling-oblique-crunch": {
+    riskAreas: ["back", "knee"],
+    reason: "Rotational flexion under overhead cable load increases shear stress on lumbar facet joints.",
+    alternatives: ["Side plank on knees", "Bird-dog", "Dead bug"],
+  },
   "lat-pulldown": {
     riskAreas: ["shoulder", "elbow"],
     reason: "Wide-grip overhead pulling can cause shoulder impingement and stress the joint capsule.",
@@ -113,6 +163,31 @@ export const EXERCISE_SAFETY = {
     riskAreas: ["shoulder", "elbow"],
     reason: "Vertical pulling places high bodyweight tensile stress on the glenohumeral joint and shoulder capsule.",
     alternatives: ["Inverted rows", "Assisted pull-ups"],
+  },
+  "cable-row-bar-standing-row": {
+    riskAreas: ["back", "shoulder"],
+    reason: "Standing horizontal cable pulling requires core and lower back stabilization against forward pull.",
+    alternatives: ["Chest-supported row", "Seated cable row"],
+  },
+  "cable-single-arm-underhand-grip-row": {
+    riskAreas: ["shoulder", "wrist"],
+    reason: "Unilateral pulling with supinated grip increases biceps tendon loading and requires anti-rotational core stability.",
+    alternatives: ["Neutral grip cable row", "Chest-supported row"],
+  },
+  "machine-seated-cable-row": {
+    riskAreas: ["back", "shoulder"],
+    reason: "Seated horizontal rowing can place shear stress on the lumbar spine if the lower back rounds during reach.",
+    alternatives: ["Chest-supported machine row", "Neutral grip pulldown"],
+  },
+  "narrow-pulldown": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Close-grip vertical pulling increases forearm and elbow flexion stress compared to standard grip widths.",
+    alternatives: ["Lat pulldown with shoulder-width grip", "Seated row"],
+  },
+  "machine-pulldown": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Wide-grip overhead pulling can cause shoulder impingement and stress the anterior capsule if leaning too far back.",
+    alternatives: ["Neutral grip pulldown", "Chest-supported row"],
   },
   "bodyweight-pike-shrug": {
     riskAreas: ["shoulder", "wrist"],
@@ -134,10 +209,30 @@ export const EXERCISE_SAFETY = {
     reason: "Unilateral pulling with unsupported torso can cause rotational shear on the spine.",
     alternatives: ["Chest-supported row", "Cable seated row with neutral grip"],
   },
+  "bicep-curl": {
+    riskAreas: ["elbow", "wrist"],
+    reason: "Supinated elbow flexion under load places tensile stress on the biceps tendon and forearm flexor origins.",
+    alternatives: ["Hammer curls", "Light resistance band curls"],
+  },
   "dumbbell-hammer-curl": {
     riskAreas: ["elbow", "wrist"],
     reason: "Repetitive neutral grip curls place load on the common extensor and brachioradialis tendons.",
     alternatives: ["Light resistance band hammer curls", "Cable curls with rope attachment"],
+  },
+  "cable-single-arm-bayesian-curl": {
+    riskAreas: ["elbow", "shoulder"],
+    reason: "Extended shoulder position during elbow flexion places high stretch and tensile tension on the long head of the biceps and distal tendon.",
+    alternatives: ["Dumbbell hammer curl", "Preacher curl"],
+  },
+  "cable-twisting-curl": {
+    riskAreas: ["elbow", "wrist"],
+    reason: "Combining forearm supination with heavy elbow flexion can irritate the distal biceps tendon or medial epicondyle.",
+    alternatives: ["Neutral grip hammer curl", "Cable curl with fixed EZ bar"],
+  },
+  "feature-curl": {
+    riskAreas: ["elbow", "wrist"],
+    reason: "Fixed machine curl paths with arms supported on an incline pad place continuous tension on the distal bicep tendon at full extension.",
+    alternatives: ["Dumbbell hammer curl", "Standing cable curl with rope attachment"],
   },
   "dumbbell-skullcrusher": {
     riskAreas: ["elbow", "wrist"],
@@ -148,6 +243,16 @@ export const EXERCISE_SAFETY = {
     riskAreas: ["shoulder", "elbow"],
     reason: "Extreme shoulder flexion combined with deep elbow flexion strains the shoulder capsule and triceps tendon origin.",
     alternatives: ["Cable tricep pushdown", "Neutral grip dumbbell kickbacks"],
+  },
+  "cable-rope-pushdown": {
+    riskAreas: ["elbow"],
+    reason: "Forced terminal elbow extension with flaring wrists can aggravate triceps tendonitis.",
+    alternatives: ["Floor press", "Close-grip push-ups with hands on bench"],
+  },
+  "cable-rope-overhead-tricep-extension": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Full shoulder flexion combined with heavy elbow flexion places maximal stretch on the triceps tendon and stresses the anterior shoulder capsule.",
+    alternatives: ["Cable pushdowns", "Dumbbell kickbacks"],
   },
   "barbell-squat": {
     riskAreas: ["knee", "back", "hip", "shoulder"],
@@ -179,6 +284,21 @@ export const EXERCISE_SAFETY = {
     reason: "Deep sled descent compresses the knees and can round the lumbar spine.",
     alternatives: ["Glute bridge", "Shallow step-ups"],
   },
+  "cable-zercher-squat": {
+    riskAreas: ["knee", "back", "elbow"],
+    reason: "Holding the bar in the crook of the elbows increases anterior core and spinal demand, while deep squatting places compressive shear across the patellofemoral joint.",
+    alternatives: ["Bodyweight box squat", "Glute bridge", "Leg press with light load"],
+  },
+  "cable-split-squat": {
+    riskAreas: ["knee", "hip", "ankle"],
+    reason: "Unilateral lunging places concentrated shear forces on the forward knee and stretches the hip flexors under load.",
+    alternatives: ["Glute bridge", "Partial step-ups", "Bodyweight box squat"],
+  },
+  "machine-leg-extension": {
+    riskAreas: ["knee"],
+    reason: "Open-chain knee extension produces significant patellofemoral compressive stress and ACL shear at full terminal extension.",
+    alternatives: ["Leg press with partial range", "Goblet box squats", "Glute bridge"],
+  },
   "glute-bridge": {
     riskAreas: ["back"],
     reason: "Over-arching the lumbar spine at the top can aggravate acute lower back issues.",
@@ -194,6 +314,16 @@ export const EXERCISE_SAFETY = {
     reason: "Deep hip flexion against a loaded dumbbell can strain lumbar spine or patella if knee angle is suboptimal.",
     alternatives: ["Bodyweight glute bridge", "Clamshells", "Bird-dog"],
   },
+  "gluteator": {
+    riskAreas: ["hip", "knee"],
+    reason: "Resisted seated hip abduction under heavy loading places tensile stress across the gluteus medius, piriformis, and IT band insertion.",
+    alternatives: ["Bodyweight glute bridge", "Clamshells with light band", "Bird-dog"],
+  },
+  "vertical-leg-press": {
+    riskAreas: ["back", "knee", "hip"],
+    reason: "Vertical downward loading directly compresses the lumbar spine against the floor pad and places high compressive force on the patellofemoral joints at deep flexion.",
+    alternatives: ["Bodyweight box squat", "Glute bridge", "Standard 45-degree leg press with light load"],
+  },
   "dumbbell-romanian-deadlift": {
     riskAreas: ["back", "hamstrings"],
     reason: "Hip hinge loading places mechanical tension and shear stress across the lumbar spine and hamstring origins.",
@@ -203,6 +333,21 @@ export const EXERCISE_SAFETY = {
     riskAreas: ["knee", "hamstrings"],
     reason: "Resisted knee flexion under load isolates the hamstring tendons at their posterior knee insertion.",
     alternatives: ["Glute bridge", "Bird-dog", "Hamstring stretches"],
+  },
+  "machine-seated-leg-curl": {
+    riskAreas: ["knee", "hamstrings"],
+    reason: "Seated knee flexion places hamstrings on stretch at the hip; heavy loads can strain the distal hamstring tendons or irritate the popliteal space.",
+    alternatives: ["Glute bridge", "Bird-dog", "Hamstring stretches"],
+  },
+  "machine-hamstring-curl": {
+    riskAreas: ["knee", "hamstrings", "back"],
+    reason: "Prone knee flexion under load isolates the hamstrings and can place compressive shear on the anterior knee if hips arch off the pad.",
+    alternatives: ["Glute bridge", "Bird-dog", "Hamstring stretches"],
+  },
+  "glute-ham-raise": {
+    riskAreas: ["knee", "hamstrings", "back"],
+    reason: "High eccentric hamstring demand through full bodyweight leverage; placing intense tensile loading on the posterior chain and knee flexors.",
+    alternatives: ["Glute bridge", "Bodyweight hip thrusts", "Bird-dog"],
   },
   "single-legged-romanian-deadlifts": {
     riskAreas: ["back", "hamstrings"],
@@ -229,6 +374,16 @@ export const EXERCISE_SAFETY = {
     reason: "Loaded forward hip flexion places mechanical shear stress across the lumbar spine and hamstring origins.",
     alternatives: ["Glute bridge", "Bird-dog"],
   },
+  "machine-45-degree-back-extension": {
+    riskAreas: ["back", "hamstrings"],
+    reason: "Trunk flexion and extension on a 45-degree bench loads the spinal erectors and can strain lumbar discs if hyperextended at the peak.",
+    alternatives: ["Bird-dog", "Glute bridge", "Cat-cow stretches"],
+  },
+  "machine-reverse-hyperextension": {
+    riskAreas: ["back", "hip"],
+    reason: "Dynamic leg swing against reverse pendulum resistance decompresses the lumbar spine but requires controlled momentum to prevent sacral jarring.",
+    alternatives: ["Bird-dog", "Glute bridge", "Prone leg lifts on floor"],
+  },
   "dumbbell-reverse-curl": {
     riskAreas: ["wrist", "elbow"],
     reason: "Pronated curls load the wrist extensors and the common extensor origin at the lateral epicondyle.",
@@ -243,6 +398,21 @@ export const EXERCISE_SAFETY = {
     riskAreas: ["wrist", "elbow"],
     reason: "Loaded repetitive wrist flexion strains the flexor tendon insertions at the medial epicondyle.",
     alternatives: ["Light stress ball squeezes", "Isometric wrist holds"],
+  },
+  "cable-single-arm-reverse-curl": {
+    riskAreas: ["wrist", "elbow"],
+    reason: "Pronated cable curls place continuous tension on the brachioradialis and common extensor tendon at the lateral epicondyle.",
+    alternatives: ["Neutral grip cable curls", "Light resistance band hammer curls"],
+  },
+  "cable-bar-reverse-grip-curl": {
+    riskAreas: ["wrist", "elbow"],
+    reason: "A fixed straight bar with an overhand grip can strain wrist extensors and the lateral elbow under heavy loads.",
+    alternatives: ["Cable curl with EZ attachment", "Neutral grip dumbbell curls"],
+  },
+  "cable-wrist-extension": {
+    riskAreas: ["wrist", "elbow"],
+    reason: "Isolated wrist extension against continuous cable tension places direct strain on the dorsal carpal ligaments and lateral epicondyle.",
+    alternatives: ["Isometric towel holds", "Farmer carries with light weights"],
   },
   "barbell-wrist-curl": {
     riskAreas: ["wrist", "elbow"],
@@ -263,6 +433,21 @@ export const EXERCISE_SAFETY = {
     riskAreas: ["ankle"],
     reason: "Seated angle places focused load on the soleus and Achilles complex.",
     alternatives: ["Gentle ankle mobility rotations", "Isometric calf holds"],
+  },
+  "machine-seated-calf-raises": {
+    riskAreas: ["ankle"],
+    reason: "Bent-knee ankle plantarflexion isolates the soleus muscle and places direct tension on the distal Achilles tendon.",
+    alternatives: ["Gentle ankle mobility rotations", "Isometric calf holds", "Bodyweight seated calf raise"],
+  },
+  "machine-standing-calf-raises": {
+    riskAreas: ["ankle", "knee", "back"],
+    reason: "Axial shoulder loading combined with full ankle extension creates high tensile stress across the Achilles tendon, plantar fascia, and spinal column.",
+    alternatives: ["Seated calf raise", "Tibialis raises", "Bodyweight calf raises on flat floor"],
+  },
+  "machine-horizontal-leg-press-calf-raise": {
+    riskAreas: ["ankle", "knee"],
+    reason: "Loaded plantarflexion against the sled platform stresses the gastrocnemius and Achilles tendon without axial spinal compression.",
+    alternatives: ["Machine seated calf raise", "Isometric calf holds"],
   },
 };
 
