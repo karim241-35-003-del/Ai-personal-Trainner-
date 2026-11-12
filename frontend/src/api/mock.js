@@ -419,7 +419,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: "12 reps",
-    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-chest-press-front.mp4",
+    video: "/exercises/videos/machine-chest-press.mov",
+    videoUrl: "/exercises/videos/machine-chest-press.mov",
     instructions: "Adjust the seat so the handles align across your mid-chest. Press outward smoothly until your arms are extended without locking elbows harshly. Lower under control until a comfortable chest stretch is reached.",
     form_cues: ["Keep shoulder blades retracted and firmly against the pad", "Drive through the palms using chest contraction", "Avoid flaring elbows up past 90 degrees"]
   },
@@ -434,7 +435,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: "12 reps",
-    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-pec-fly-front.mp4",
+    video: "/exercises/videos/pectoral-fly.mov",
+    videoUrl: "/exercises/videos/pectoral-fly.mov",
     instructions: "Sit on the pec deck with your spine firmly against the back pad. Grasp the vertical handles with a slight bend in your elbows. Bring the handles together in an arc across your chest and squeeze.",
     form_cues: ["Maintain a constant slight bend in the elbows", "Squeeze your pectorals hard at the center point", "Control the return to prevent over-stretching the shoulders"]
   },
@@ -449,7 +451,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: "12 reps",
-    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-chest-press-front.mp4",
+    video: "/exercises/videos/decline-chest-press.mov",
+    videoUrl: "/exercises/videos/decline-chest-press.mov",
     instructions: "Secure yourself into the decline chest press station. Grip the handles at lower chest level and press forward and downward in the machine's guided plane until arms extend. Slowly lower back to starting depth.",
     form_cues: ["Targets lower pectoral fibers with reduced anterior shoulder shear", "Keep wrists stacked directly over your forearms", "Smooth cadence without bouncing off stops"]
   },
@@ -464,7 +467,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: "12 reps",
-    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-neutral-overhead-press-front.mp4",
+    video: "/exercises/videos/machine-shoulder-press.mov",
+    videoUrl: "/exercises/videos/machine-shoulder-press.mov",
     instructions: "Adjust seat height so handles sit at ear level. Grip the handles and press overhead until arms are nearly straight. Lower the weight smoothly back to ear height.",
     form_cues: ["Maintain neutral head position and flat back against the pad", "Do not hyperextend your lower back during the press", "Lower until elbows reach roughly 90 degrees"]
   },
@@ -479,7 +483,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: "12 reps",
-    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-lateral-raise-front.mp4",
+    video: "/exercises/videos/db-side-raise.mov",
+    videoUrl: "/exercises/videos/db-side-raise.mov",
     instructions: "Hold dumbbells at your sides with palms facing inward. Keeping a slight bend in the elbows, raise your arms laterally until they reach shoulder height. Pause for a moment and lower smoothly.",
     form_cues: ["Lead with your elbows and keep wrists neutral", "Do not swing or shrug with your traps", "Raise strictly to shoulder height in the scapular plane"]
   },
@@ -494,7 +499,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: "12 reps",
-    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Cables-cable-rope-pushdown-front.mp4",
+    video: "/exercises/videos/rope-press-down.mov",
+    videoUrl: "/exercises/videos/rope-press-down.mov",
     instructions: "Attach a rope to a high pulley. Hold rope ends with palms facing inward and upper arms locked at your ribs. Push down and spread the rope ends apart at the bottom to peak contract the triceps.",
     form_cues: ["Spread the rope apart at full elbow lockout", "Keep upper arms stationary by your sides", "Control the return to roughly chest level"]
   },
@@ -509,7 +515,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 4,
     reps: "12 reps",
-    videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Machine-machine-dips-front.mp4",
+    video: "/exercises/videos/machine-dips.mov",
+    videoUrl: "/exercises/videos/machine-dips.mov",
     instructions: "Sit in the dip machine with back against the pad. Grasp the parallel handles and press downward until your arms are fully extended. Hold for a split second, then return smoothly to 90 degrees.",
     form_cues: ["Keep your torso upright to emphasize triceps over chest", "Avoid shrugging shoulders toward your ears", "Lock out with deliberate tricep contraction"]
   },
