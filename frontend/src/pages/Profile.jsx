@@ -331,26 +331,8 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Row 4: Workout Days, Fitness Level, Workout Location */}
-        <div className="form-grid-3">
-          {/* Workout Days */}
-          <div className="form-field-group">
-            <label className="field-label">Workout days / week</label>
-            <div className="segmented-pill-container" style={{ gridTemplateColumns: "repeat(7, 1fr)" }}>
-              {[1, 2, 3, 4, 5, 6, 7].map((d) => (
-                <button
-                  key={d}
-                  type="button"
-                  className={`segmented-pill-btn ${form.days_per_week === String(d) ? "active-blue" : ""}`}
-                  style={{ padding: "8px 0" }}
-                  onClick={() => setForm({ ...form, days_per_week: String(d) })}
-                >
-                  {d}
-                </button>
-              ))}
-            </div>
-          </div>
-
+        {/* Row 4: Fitness Level & Workout Location */}
+        <div className="form-grid-2">
           {/* Fitness Level */}
           <div className="form-field-group">
             <label className="field-label">Fitness experience</label>
