@@ -16,24 +16,92 @@ function weekStart(dateStr) {
   return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 }
 
-function WeightChart({ points }) {
-  const W = 600, H = 220, P = { l: 44, r: 16, t: 16, b: 28 };
+function WeightChart({ points, hoveredId, onHover }) {
+  const W = 620, H = 236, P = { l: 48, r: 22, t: 24, b: 32 };
   const ws = points.map((p) => p.weight_kg);
   let lo = Math.min(...ws), hi = Math.max(...ws);
   if (hi - lo < 2) { lo -= 1; hi += 1; }
+  const mid = (lo + hi) / 2;
+
   const x = (i) => P.l + (points.length === 1 ? (W - P.l - P.r) / 2 : (i * (W - P.l - P.r)) / (points.length - 1));
   const y = (v) => P.t + ((hi - v) / (hi - lo)) * (H - P.t - P.b);
-  const path = points.map((p, i) => `${i ? "L" : "M"}${x(i)},${y(p.weight_kg)}`).join(" ");
+
+  const linePath = points.map((p, i) => `${i ? "L" : "M"}${x(i)},${y(p.weight_kg)}`).join(" ");
+  const areaPath = points.length >= 2
+    ? `${linePath} L${x(points.length - 1)},${H - P.b} L${x(0)},${H - P.b} Z`
+    : "";
+
   return (
     <svg className="chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Body weight over time">
+      <defs>
+        <linearGradient id="weightAreaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#2e5395" stopOpacity="0.28" />
+          <stop offset="100%" stopColor="#2e5395" stopOpacity="0.02" />
+        </linearGradient>
+        <filter id="weightLineShadow" x="-10%" y="-15%" width="120%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="2.5" floodColor="#1f3864" floodOpacity="0.28" />
+        </filter>
+      </defs>
+
+      {/* Horizontal grid lines */}
+      <line className="grid-line" x1={P.l} y1={y(hi)} x2={W - P.r} y2={y(hi)} />
+      <line className="grid-line" x1={P.l} y1={y(mid)} x2={W - P.r} y2={y(mid)} />
+
+      {/* Axes */}
       <line className="axis" x1={P.l} y1={H - P.b} x2={W - P.r} y2={H - P.b} />
       <line className="axis" x1={P.l} y1={P.t} x2={P.l} y2={H - P.b} />
-      <text x={P.l - 6} y={P.t + 4} textAnchor="end">{hi.toFixed(1)}</text>
-      <text x={P.l - 6} y={H - P.b} textAnchor="end">{lo.toFixed(1)}</text>
-      <text x={P.l} y={H - 8}>{points[0].date}</text>
-      <text x={W - P.r} y={H - 8} textAnchor="end">{points[points.length - 1].date}</text>
-      <path className="line" d={path} />
-      {points.map((p, i) => <circle key={p.id} className="dot" cx={x(i)} cy={y(p.weight_kg)} r="4" />)}
+
+      {/* Y-axis labels */}
+      <text x={P.l - 8} y={y(hi) + 4} textAnchor="end">{hi.toFixed(1)}</text>
+      <text x={P.l - 8} y={y(mid) + 4} textAnchor="end">{mid.toFixed(1)}</text>
+      <text x={P.l - 8} y={H - P.b + 4} textAnchor="end">{lo.toFixed(1)}</text>
+
+      {/* X-axis date labels */}
+      {points.length === 1 ? (
+        <text x={x(0)} y={H - 9} textAnchor="middle">{points[0].date}</text>
+      ) : (
+        <>
+          <text x={P.l} y={H - 9}>{points[0].date}</text>
+          <text x={W - P.r} y={H - 9} textAnchor="end">{points[points.length - 1].date}</text>
+        </>
+      )}
+
+      {/* Shaded area under curve */}
+      {areaPath && <path d={areaPath} fill="url(#weightAreaGrad)" />}
+
+      {/* Line with drop shadow */}
+      {points.length >= 2 && (
+        <path className="line" d={linePath} filter="url(#weightLineShadow)" />
+      )}
+
+      {/* Data points */}
+      {points.map((p, i) => {
+        const cx = x(i);
+        const cy = y(p.weight_kg);
+        const isActive = hoveredId === p.id;
+        return (
+          <g
+            key={p.id}
+            onMouseEnter={() => onHover(p)}
+            onMouseLeave={() => onHover(null)}
+          >
+            {(points.length <= 8 || isActive) && (
+              <text className="pt-label" x={cx} y={cy - 10} textAnchor="middle">
+                {p.weight_kg}
+              </text>
+            )}
+            <circle
+              className={`dot ${isActive ? "active" : ""}`}
+              cx={cx}
+              cy={cy}
+              r={isActive ? 6.5 : 4.5}
+              filter="url(#weightLineShadow)"
+            >
+              <title>{`${p.date}: ${p.weight_kg} kg`}</title>
+            </circle>
+          </g>
+        );
+      })}
     </svg>
   );
 }
@@ -43,6 +111,7 @@ export default function Progress() {
   const [workouts, setWorkouts] = useState([]);
   const [date, setDate] = useState(today());
   const [kg, setKg] = useState("");
+  const [hoveredPoint, setHoveredPoint] = useState(null);
   const [fieldError, setFieldError] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -113,30 +182,36 @@ export default function Progress() {
   if (loading) return <p>Loading your progress...</p>;
 
   return (
-    <div>
-      <h1>Your progress</h1>
-      <p className="muted">Track your body weight and see how often you train.</p>
+    <div className="pg-page">
+      <div className="pg-header">
+        <div>
+          <h1>Your progress</h1>
+          <p className="muted">Track your body weight and see how consistent your training is over time.</p>
+        </div>
+      </div>
 
-      <div className="cards">
-        <div className="stat">
+      <div className="pg-stats">
+        <div className="pg-stat">
           <span className="stat-title">Current weight</span>
           <span className="stat-value">{byDate.length ? byDate[byDate.length - 1].weight_kg : "-"}</span>
           <span className="stat-unit">kg</span>
         </div>
-        <div className="stat">
+        <div className="pg-stat">
           <span className="stat-title">Change since first entry</span>
           <span className="stat-value">{change === null ? "-" : `${change > 0 ? "+" : ""}${change.toFixed(1)}`}</span>
           <span className="stat-unit">kg</span>
         </div>
-        <div className="stat">
+        <div className="pg-stat">
           <span className="stat-title">Training days logged</span>
           <span className="stat-value">{activeDays}</span>
           <span className="stat-unit">{Math.round(totalVolume)} kg total lifted</span>
         </div>
       </div>
 
-      <form className="card" onSubmit={onSubmit} noValidate>
-        <h2>Add today's weight</h2>
+      <form className="pg-card" onSubmit={onSubmit} noValidate>
+        <div className="pg-card-head">
+          <h2>Add today's weight</h2>
+        </div>
         <div className="grid">
           <label>Date
             <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
@@ -148,26 +223,49 @@ export default function Progress() {
         {fieldError && <span className="error">{fieldError}</span>}
         {error && <p className="error">{error}</p>}
         <div className="form-actions">
-          <button className="btn" disabled={busy}>{busy ? "Saving..." : "Add weight"}</button>
+          <button className="pg-btn" disabled={busy}>{busy ? "Saving..." : "Add weight"}</button>
         </div>
       </form>
 
-      <div className="card">
-        <h2>Weight over time</h2>
+      <div className="pg-card">
+        <div className="pg-card-head">
+          <h2>Weight over time</h2>
+          {hoveredPoint && (
+            <span className="pg-hover-pill">
+              {hoveredPoint.date} • {hoveredPoint.weight_kg} kg
+            </span>
+          )}
+        </div>
+
         {byDate.length === 0 ? (
           <p className="empty">No weight entries yet. Add your first one above.</p>
         ) : (
           <>
-            <WeightChart points={byDate} />
-            <div className="table-wrap">
-              <table className="log">
-                <thead><tr><th>Date</th><th>Weight</th><th></th></tr></thead>
+            <div className="pg-chart-box">
+              <WeightChart
+                points={byDate}
+                hoveredId={hoveredPoint?.id ?? null}
+                onHover={setHoveredPoint}
+              />
+            </div>
+
+            <div className="pg-table-wrap">
+              <table className="pg-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Weight</th>
+                    <th></th>
+                  </tr>
+                </thead>
                 <tbody>
                   {[...byDate].reverse().map((w) => (
                     <tr key={w.id}>
                       <td>{w.date}</td>
-                      <td>{w.weight_kg} kg</td>
-                      <td><button className="btn-danger" onClick={() => onDelete(w.id)}>Delete</button></td>
+                      <td><span className="pg-weight-pill">{w.weight_kg} kg</span></td>
+                      <td style={{ textAlign: "right" }}>
+                        <button className="pg-delete-btn" onClick={() => onDelete(w.id)}>Delete</button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -177,19 +275,34 @@ export default function Progress() {
         )}
       </div>
 
-      <div className="card">
-        <h2>Training days per week (last 6 weeks)</h2>
+      <div className="pg-card">
+        <div className="pg-card-head">
+          <h2>Training days per week (last 6 weeks)</h2>
+        </div>
+
         {workouts.length === 0 ? (
           <p className="empty">Log workouts in the Workout log to see this chart.</p>
         ) : (
-          <div className="week-bars" role="img" aria-label="Training days per week">
-            {weeks.map((w) => (
-              <div className="week-bar" key={w.start}>
-                <span className="count">{w.count}</span>
-                <div className="bar" style={{ height: `${(w.count / maxCount) * 100}px` }} />
-                <span>{w.start.slice(5)}</span>
-              </div>
-            ))}
+          <div className="pg-bars-box">
+            <div className="week-bars" role="img" aria-label="Training days per week">
+              {weeks.map((w) => {
+                const barHeight = w.count === 0 ? 4 : Math.max(12, Math.round((w.count / maxCount) * 116));
+                return (
+                  <div className="week-bar" key={w.start} title={`Week of ${w.start}: ${w.count} day(s)`}>
+                    <span className={`count ${w.count === 0 ? "zero" : ""}`}>{w.count}</span>
+                    <div
+                      className={`bar ${w.count === 0 ? "empty-bar" : ""}`}
+                      style={{ height: `${barHeight}px` }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+            <div className="pg-week-labels">
+              {weeks.map((w) => (
+                <span className="pg-week-label" key={w.start}>{w.start.slice(5)}</span>
+              ))}
+            </div>
           </div>
         )}
         <p className="muted" style={{ marginBottom: 0 }}>Bars show the week starting on that date (month-day).</p>
