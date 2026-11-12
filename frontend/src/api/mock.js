@@ -378,22 +378,80 @@ export const api = {
     await wait(150);
     return EXERCISES;
   },
-  // Demo only: the photo is NOT analysed. The result is a fixed sample so the page can be tested.
+  // Demo only: the photo is NOT analysed. Sample feedback is matched to the chosen exercise.
   async checkForm(form) {
     await wait(900);
     const id = form.get("exercise_id");
     const ex = EXERCISES.find((e) => e.id === id);
     if (!ex) throw new Error("Choose an exercise first.");
+
+    const FEEDBACK_BY_MUSCLE = {
+      chest: {
+        score: 74,
+        good: [ex.form_cues?.[0] || "Torso stays steady through the movement"],
+        issues: [
+          { body_part: "Elbows", message: "Elbows flare slightly wide. Keep them tucked around 45 degrees from your torso." },
+          { body_part: "Shoulders", message: "Keep shoulder blades pulled back and down away from your ears." },
+        ],
+      },
+      back: {
+        score: 76,
+        good: [ex.form_cues?.[0] || "Spine stays neutral and aligned"],
+        issues: [
+          { body_part: "Shoulders", message: "Pull through your elbows rather than shrugging your shoulders upward." },
+          { body_part: "Back", message: "Keep your chest lifted at the end of each rep so your upper back does not round." },
+        ],
+      },
+      shoulders: {
+        score: 72,
+        good: [ex.form_cues?.[0] || "Wrists remain neutral and aligned"],
+        issues: [
+          { body_part: "Shoulders", message: "Control the load without shrugging your upper traps at the top." },
+          { body_part: "Back", message: "Brace your core firmly so your lower back does not arch." },
+        ],
+      },
+      arms: {
+        score: 78,
+        good: [ex.form_cues?.[0] || "Wrists stay straight and controlled"],
+        issues: [
+          { body_part: "Elbows", message: "Elbows drift slightly forward. Pin upper arms steadily by your sides." },
+          { body_part: "Torso", message: "Minimize hip or torso swing when starting the rep." },
+        ],
+      },
+      legs: {
+        score: 68,
+        good: [ex.form_cues?.[0] || "Chest stays steady through the movement"],
+        issues: [
+          { body_part: "Knees", message: "Knees move slightly inward at the bottom. Push them out in line with your toes." },
+          { body_part: "Back", message: "Lower back rounds slightly. Brace your core before each rep." },
+        ],
+      },
+      glutes: {
+        score: 75,
+        good: [ex.form_cues?.[0] || "Feet stay planted firmly on the floor"],
+        issues: [
+          { body_part: "Back", message: "Avoid overarching the lower back at lockout; keep ribs tucked down." },
+          { body_part: "Knees", message: "Keep knees tracking steadily hip-width apart." },
+        ],
+      },
+      core: {
+        score: 77,
+        good: [ex.form_cues?.[0] || "Head and neck stay in a neutral line"],
+        issues: [
+          { body_part: "Hips", message: "Hips dip slightly; squeeze glutes and brace abs to hold a straight line." },
+          { body_part: "Shoulders", message: "Press firmly through the floor so shoulder blades do not collapse." },
+        ],
+      },
+    };
+
+    const sample = FEEDBACK_BY_MUSCLE[ex.muscle_group] || FEEDBACK_BY_MUSCLE.legs;
     return {
       demo: true,
       exercise_id: ex.id,
       exercise_name: ex.name,
-      score: 68,
-      good_points: ["Torso stays steady through the movement"],
-      issues: [
-        { body_part: "Knees", message: "Knees move inward at the bottom. Push them out in line with your toes." },
-        { body_part: "Back", message: "Lower back rounds slightly. Brace your core before each rep." },
-      ],
+      score: sample.score,
+      good_points: sample.good,
+      issues: sample.issues,
     };
   },
   async listWorkouts() {
