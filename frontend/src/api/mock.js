@@ -150,52 +150,225 @@ export const EXERCISES = [
 const workoutsKey = () => "mock_workouts_" + currentEmail();
 const weightsKey = () => "mock_weights_" + currentEmail();
 
+function localDateStr(offsetDays = 0) {
+  const d = new Date();
+  d.setDate(d.getDate() + offsetDays);
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+}
+
 // DEMO recommendations. The real backend (services/adaptive.py + explainer.py) decides these.
-// These rules are simple on purpose and only exist so the page can be tested.
 function buildRecommendations(profile, plan, workouts, weights) {
   const items = [];
   if (!profile || !plan) return { summary: "", items: [] };
-  const goalText = { lose: "lose weight", maintain: "maintain your weight", gain: "gain muscle and weight" }[profile.goal];
+
+  const goalText = {
+    lose: "lose weight",
+    maintain: "maintain your weight",
+    gain: "gain muscle and weight",
+  }[profile.goal] || "improve your fitness";
+
+  const proteinText = plan.protein_min_g === plan.protein_max_g
+    ? `${plan.protein_min_g} g`
+    : `${plan.protein_min_g} to ${plan.protein_max_g} g`;
+
+  const equipmentList = Array.isArray(profile.equipment) && profile.equipment.length > 0
+    ? profile.equipment
+    : ["bodyweight"];
+
   const summary =
-    `You want to ${goalText}, you train ${profile.days_per_week} day(s) a week as a ${profile.fitness_level}, ` +
-    `and you train ${profile.location === "gym" ? "at a gym" : "at home"}. ` +
-    `So your plan uses ${plan.daily_calorie_target} kcal and ${plan.protein_min_g} to ${plan.protein_max_g} g protein per day.`;
+    `You want to ${goalText} as a ${profile.fitness_level} training ${profile.days_per_week} day(s)/week ` +
+    `${profile.location === "gym" ? "at a gym" : "at home"}. ` +
+    `Your BMI is ${plan.bmi} (${plan.bmi_category}), so your daily targets are ${plan.daily_calorie_target} kcal ` +
+    `and ${proteinText} of protein.`;
 
-  const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 7);
-  const recent = workouts.filter((w) => new Date(w.date) >= cutoff);
+  // 1. Weekly training consistency (distinct training days in last 7 days)
+  const cutoffStr = localDateStr(-6);
+  const recentLogs = workouts.filter((w) => w.date >= cutoffStr);
+  const recentDays = new Set(recentLogs.map((w) => w.date)).size;
+  const plannedDays = Number(profile.days_per_week) || 3;
+
   if (workouts.length === 0) {
-    items.push({ id: "start-logging", category: "workout", title: "Log your first workout",
-      detail: "Add what you did in the Workout log so we can adapt your plan.",
-      reason: "We have no workout data from you yet." });
-  } else if (recent.length < profile.days_per_week) {
-    items.push({ id: "more-sessions", category: "workout", title: "Try to hit your weekly sessions",
-      detail: `You planned ${profile.days_per_week} day(s) a week and logged ${recent.length} in the last 7 days.`,
-      reason: "Regular sessions matter more than a single hard one." });
+    items.push({
+      id: "start-logging",
+      category: "workout",
+      title: "Log your first workout session",
+      detail: `Aim for ${plannedDays} training day(s) this week and record your sets and reps in Workout log so recommendations adapt to your progress.`,
+      reason: "No workout sessions have been logged yet.",
+    });
+  } else if (recentDays < plannedDays) {
+    const remaining = plannedDays - recentDays;
+    items.push({
+      id: "more-sessions",
+      category: "workout",
+      title: `Schedule ${remaining} more training day(s) this week`,
+      detail: `You trained on ${recentDays} distinct day(s) in the last 7 days compared to your ${plannedDays}-day target. Even a short 30-minute session keeps momentum alive.`,
+      reason: `Profile target is ${plannedDays} day(s)/week; ${recentDays} logged recently.`,
+    });
   } else {
-    items.push({ id: "on-track", category: "workout", title: "You are on track with your sessions",
-      detail: "Keep going. When reps feel easy, add a little weight or a few reps.",
-      reason: `You logged ${recent.length} session(s) in the last 7 days.` });
+    const totalVolume = recentLogs.reduce((sum, w) => sum + w.sets * w.reps * w.weight_kg, 0);
+    items.push({
+      id: "on-track",
+      category: "workout",
+      title: "You are hitting your weekly training frequency",
+      detail: `Great consistency (${recentDays}/${plannedDays} days in the last 7 days, ${Math.round(totalVolume)} kg total volume). When you complete all target reps cleanly, increase weight by 1–2.5 kg or add 1–2 reps.`,
+      reason: `Logged ${recentDays} training day(s) over the past 7 days.`,
+    });
   }
 
-  const sorted = [...weights].sort((a, b) => (a.date < b.date ? -1 : 1));
-  if (sorted.length >= 2) {
-    const change = sorted[sorted.length - 1].weight_kg - sorted[0].weight_kg;
+  // 2. Upper vs Lower body balance from workout progress
+  if (workouts.length > 0) {
+    const byId = new Map(EXERCISES.map((ex) => [ex.id, ex]));
+    const isLower = (w) => {
+      const ex = byId.get(w.exercise_id);
+      if (ex?.body_part) return ex.body_part === "lower";
+      return ["legs", "glutes"].includes(ex?.muscle_group);
+    };
+    const lowerCount = workouts.filter(isLower).length;
+    const upperCount = workouts.length - lowerCount;
+
+    if (upperCount > 0 && lowerCount === 0) {
+      const legOptions = equipmentList.includes("gym_machines")
+        ? "Leg Press, Seated Leg Curl, or V. Squat"
+        : equipmentList.includes("barbell")
+          ? "Barbell Squat or Barbell deadlift"
+          : "Bodyweight Squat and Glute bridge";
+      items.push({
+        id: "balance-lower",
+        category: "workout",
+        title: "Add Lower Body exercises for balanced progress",
+        detail: `All ${upperCount} of your logged entries so far are Upper Body. Try adding ${legOptions} to build leg strength and burn more calories.`,
+        reason: `Workout log shows ${upperCount} Upper Body vs 0 Lower Body entries.`,
+      });
+    } else if (lowerCount > 0 && upperCount === 0) {
+      const upperOptions = equipmentList.includes("gym_machines")
+        ? "Machine Chest Press, Seated Cable Row, or Tricep Pressdown"
+        : equipmentList.includes("dumbbell")
+          ? "Dumbbell Shoulder Press, Dumbbell Curl, and Push-up"
+          : "Push-up and Plank";
+      items.push({
+        id: "balance-upper",
+        category: "workout",
+        title: "Add Upper Body exercises for balanced progress",
+        detail: `All ${lowerCount} of your logged entries so far are Lower Body. Include ${upperOptions} to develop upper-body strength and posture.`,
+        reason: `Workout log shows 0 Upper Body vs ${lowerCount} Lower Body entries.`,
+      });
+    } else if (upperCount >= lowerCount * 3 && upperCount >= 3) {
+      items.push({
+        id: "more-lower",
+        category: "workout",
+        title: "Increase Lower Body volume slightly",
+        detail: `Your logs lean heavily toward Upper Body (${upperCount} vs ${lowerCount}). Aim for at least one dedicated Lower Body day each week.`,
+        reason: "Balanced upper/lower training lowers injury risk and improves overall conditioning.",
+      });
+    } else {
+      items.push({
+        id: "balanced-split",
+        category: "workout",
+        title: "Good Upper & Lower body training balance",
+        detail: `You have logged ${upperCount} Upper Body and ${lowerCount} Lower Body entries. Keep alternating push, pull, and leg movements across the week.`,
+        reason: "Based on your logged exercise distribution in Workout log.",
+      });
+    }
+  }
+
+  // 3. Weight progress & profile sync
+  const sortedWeights = [...weights].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  if (sortedWeights.length >= 2) {
+    const firstKg = sortedWeights[0].weight_kg;
+    const latestKg = sortedWeights[sortedWeights.length - 1].weight_kg;
+    const change = latestKg - firstKg;
     const dir = change > 0 ? "up" : change < 0 ? "down" : "unchanged";
-    const fits = (profile.goal === "lose" && change < 0) || (profile.goal === "gain" && change > 0) ||
-      (profile.goal === "maintain" && Math.abs(change) < 1);
-    items.push({ id: "weight-trend", category: "nutrition",
-      title: fits ? "Your weight is moving the way you want" : "Your weight is not moving toward your goal yet",
-      detail: `Weight is ${dir} ${Math.abs(change).toFixed(1)} kg since your first entry.` +
-        (fits ? "" : " Check your calories and sleep, and give it a few more weeks before changing the plan."),
-      reason: "Based on your weight log in Progress." });
+    const fits =
+      (profile.goal === "lose" && change <= -0.2) ||
+      (profile.goal === "gain" && change >= 0.2) ||
+      (profile.goal === "maintain" && Math.abs(change) <= 1.0);
+
+    let advice = "";
+    if (fits) {
+      advice = ` Stay consistent with ${plan.daily_calorie_target} kcal and ${proteinText} protein per day.`;
+    } else if (profile.goal === "lose") {
+      advice = ` Aim for steady portion control around ${plan.daily_calorie_target} kcal, prioritize ${proteinText} protein to stay full, and add daily walking steps.`;
+    } else if (profile.goal === "gain") {
+      advice = ` Try adding a protein-rich snack or extra complex carbs to consistently hit ${plan.daily_calorie_target} kcal and fuel muscle recovery.`;
+    } else {
+      advice = ` Adjust daily intake slightly closer to ${plan.tdee} kcal if the shift continues over the next 2 weeks.`;
+    }
+
+    items.push({
+      id: "weight-trend",
+      category: "nutrition",
+      title: fits ? "Your weight trend matches your goal" : "Weight trend needs a small nutrition adjustment",
+      detail: `Your weight moved ${dir} ${Math.abs(change).toFixed(1)} kg (from ${firstKg} kg to ${latestKg} kg).${advice}`,
+      reason: `Goal is "${goalText}" and ${sortedWeights.length} weight entries are logged in Progress.`,
+    });
+
+    if (Math.abs(latestKg - Number(profile.weight)) >= 2) {
+      items.push({
+        id: "sync-profile-weight",
+        category: "general",
+        title: "Update your weight in Profile",
+        detail: `Your latest logged weight (${latestKg} kg) differs from your saved profile weight (${profile.weight} kg). Updating your profile recalculates accurate calorie and protein targets.`,
+        reason: "Nutrition targets depend on your current body weight.",
+      });
+    }
   } else {
-    items.push({ id: "log-weight", category: "nutrition", title: "Log your weight each week",
-      detail: "Two or more entries let us see your trend.", reason: "We need at least 2 weight entries." });
+    items.push({
+      id: "log-weight",
+      category: "nutrition",
+      title: "Log your body weight weekly in Progress",
+      detail: `You currently have ${sortedWeights.length} weight entry. Log 2+ morning weigh-ins over the next couple of weeks to verify whether ${plan.daily_calorie_target} kcal is working for your "${goalText}" goal.`,
+      reason: "At least 2 weight entries are needed to measure a trend.",
+    });
   }
 
-  items.push({ id: "form-check", category: "form", title: "Check your form on a main lift",
-    detail: "Upload one photo in Form check, especially for squats, deadlifts or presses.",
-    reason: "Good form lowers injury risk." });
+  // 4. Equipment & experience-tailored exercise suggestion
+  const canDo = (ex) => ex.equipment.every((eq) => eq === "bodyweight" || equipmentList.includes(eq));
+  const suitable = EXERCISES.filter(canDo).filter(
+    (ex) => profile.fitness_level !== "beginner" || ex.level === "beginner"
+  );
+  const equipSpecific = suitable.filter((ex) =>
+    ex.equipment.some((eq) => eq !== "bodyweight" && equipmentList.includes(eq))
+  );
+  const picks = (equipSpecific.length >= 3 ? equipSpecific : suitable).slice(0, 3).map((ex) => ex.name);
+  if (picks.length > 0) {
+    items.push({
+      id: "equipment-picks",
+      category: "general",
+      title: `Recommended moves for your ${profile.location === "gym" ? "gym" : "home"} setup`,
+      detail: `Based on your ${profile.fitness_level} level and selected equipment, focus on mastering ${picks.join(", ")} with 3 sets of ${profile.goal === "lose" ? "12–15" : "8–12"} controlled reps.`,
+      reason: `Matched to your profile equipment (${equipmentList.join(", ")}) and fitness level.`,
+    });
+  }
+
+  // 5. Limitations / injury safety & form check
+  const lim = (profile.limitations || "").trim();
+  if (lim) {
+    const lowerLim = lim.toLowerCase();
+    let safetyHint = "Warm up gently for 5–10 minutes and stop any movement that triggers sharp pain.";
+    if (lowerLim.includes("knee")) {
+      safetyHint = "Keep knees tracking over your toes during squats/leg press, control the lowering depth, and prioritize pain-free ranges.";
+    } else if (lowerLim.includes("back")) {
+      safetyHint = "Brace your core tightly, keep a neutral spine on rows and hinges, and avoid rounding under load.";
+    } else if (lowerLim.includes("shoulder")) {
+      safetyHint = "Tuck elbows slightly (~45°) on presses, keep shoulder blades stable, and avoid pushing through impingement.";
+    }
+    items.push({
+      id: "limitation-safety",
+      category: "form",
+      title: `Train safely around: ${lim}`,
+      detail: safetyHint,
+      reason: "Adapted to the physical limitations listed in your Profile.",
+    });
+  }
+
+  items.push({
+    id: "form-check",
+    category: "form",
+    title: "Check your form on key compound lifts",
+    detail: "Upload a photo in Form check for squats, presses, or rows to verify joint alignment and reduce injury risk.",
+    reason: "Clean technique makes every rep safer and more effective.",
+  });
+
   return { summary, items };
 }
 
