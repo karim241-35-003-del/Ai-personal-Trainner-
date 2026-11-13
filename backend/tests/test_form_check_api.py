@@ -154,11 +154,11 @@ def test_200_with_real_photo_and_privacy_safe_db_record(monkeypatch):
     async def fake_lookup(ex_id: str, token: str):
         return {"id": ex_id, "name": ex_id.replace("-", " ").title()}
 
-    async def fake_save(user_id: str, token: str, ex_id: str, score: int, issues: list):
+    async def fake_save(user_id: str, token: str, exercise_id: str, score: int, issues: list):
         saved_records.append(
             {
                 "user_id": user_id,
-                "exercise_id": ex_id,
+                "exercise_id": exercise_id,
                 "score": score,
                 "issues": issues,
             }
