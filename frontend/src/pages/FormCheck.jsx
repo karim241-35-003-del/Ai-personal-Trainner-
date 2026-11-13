@@ -64,6 +64,11 @@ export default function FormCheck() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.body.classList.add("purple-theme");
+    return () => document.body.classList.remove("purple-theme");
+  }, []);
+
+  useEffect(() => {
     api.getExercises()
       .then((list) => {
         const byId = new Map((list || []).map((ex) => [ex.id, ex]));
