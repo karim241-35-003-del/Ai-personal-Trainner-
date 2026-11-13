@@ -58,6 +58,11 @@ export default function WorkoutLog() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
+    document.body.classList.add("purple-theme");
+    return () => document.body.classList.remove("purple-theme");
+  }, []);
+
+  useEffect(() => {
     Promise.all([api.getExercises(), api.listWorkouts()])
       .then(([list, logs]) => {
         setExercises(list);
