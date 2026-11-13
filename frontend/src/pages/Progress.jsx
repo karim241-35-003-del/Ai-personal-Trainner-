@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { api } from "../api/client.js";
 import { WEIGHT_LIMITS } from "../constants.js";
 import "../styles/progress-pages.css";
@@ -16,7 +17,28 @@ function weekStart(dateStr) {
   return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 }
 
-function WeightChart({ points, hoveredId, onHover }) {
+function computeBMI(weightKg, heightCm) {
+  const w = Number(weightKg);
+  const h = Number(heightCm);
+  if (!w || !h || w <= 0 || h <= 0) return null;
+  const val = w / ((h / 100) ** 2);
+  const rounded = Math.round(val * 10) / 10;
+  let category = "Normal";
+  let cls = "normal";
+  if (rounded < 18.5) {
+    category = "Underweight";
+    cls = "under";
+  } else if (rounded >= 30) {
+    category = "Obese";
+    cls = "obese";
+  } else if (rounded >= 25) {
+    category = "Overweight";
+    cls = "over";
+  }
+  return { value: rounded, category, cls };
+}
+
+function WeightChart({ points, height, hoveredId, onHover }) {
   const W = 620, H = 236, P = { l: 48, r: 22, t: 24, b: 32 };
   const ws = points.map((p) => p.weight_kg);
   let lo = Math.min(...ws), hi = Math.max(...ws);
@@ -79,6 +101,7 @@ function WeightChart({ points, hoveredId, onHover }) {
         const cx = x(i);
         const cy = y(p.weight_kg);
         const isActive = hoveredId === p.id;
+        const ptBMI = computeBMI(p.weight_kg, height);
         return (
           <g
             key={p.id}
@@ -97,7 +120,7 @@ function WeightChart({ points, hoveredId, onHover }) {
               r={isActive ? 6.5 : 4.5}
               filter="url(#weightLineShadow)"
             >
-              <title>{`${p.date}: ${p.weight_kg} kg`}</title>
+              <title>{`${p.date}: ${p.weight_kg} kg${ptBMI ? ` • BMI ${ptBMI.value} (${ptBMI.category})` : ""}`}</title>
             </circle>
           </g>
         );
@@ -109,6 +132,7 @@ function WeightChart({ points, hoveredId, onHover }) {
 export default function Progress() {
   const [weights, setWeights] = useState([]);
   const [workouts, setWorkouts] = useState([]);
+  const [profile, setProfile] = useState(null);
   const [date, setDate] = useState(today());
   const [kg, setKg] = useState("");
   const [hoveredPoint, setHoveredPoint] = useState(null);
@@ -118,8 +142,12 @@ export default function Progress() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    Promise.all([api.listWeights(), api.listWorkouts()])
-      .then(([w, logs]) => { setWeights(w); setWorkouts(logs); })
+    Promise.all([api.listWeights(), api.listWorkouts(), api.getProfile()])
+      .then(([w, logs, p]) => {
+        setWeights(w);
+        setWorkouts(logs);
+        setProfile(p);
+      })
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
@@ -144,7 +172,21 @@ export default function Progress() {
 
   const totalVolume = workouts.reduce((sum, w) => sum + w.sets * w.reps * w.weight_kg, 0);
   const activeDays = new Set(workouts.map((w) => w.date)).size;
-  const change = byDate.length >= 2 ? byDate[byDate.length - 1].weight_kg - byDate[0].weight_kg : null;
+
+  const latestWeight = byDate.length ? byDate[byDate.length - 1].weight_kg : null;
+  const initialWeight = byDate.length ? byDate[0].weight_kg : null;
+  const change = byDate.length >= 2 ? latestWeight - initialWeight : null;
+
+  const currentBMI = latestWeight !== null ? computeBMI(latestWeight, profile?.height) : null;
+  const initialBMI = initialWeight !== null ? computeBMI(initialWeight, profile?.height) : null;
+  const bmiChange = (currentBMI && initialBMI && byDate.length >= 2)
+    ? Math.round((currentBMI.value - initialBMI.value) * 10) / 10
+    : null;
+
+  const hoveredBMI = hoveredPoint ? computeBMI(hoveredPoint.weight_kg, profile?.height) : null;
+  const previewBMI = kg && !Number.isNaN(Number(kg)) && Number(kg) > 0
+    ? computeBMI(kg, profile?.height)
+    : null;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -186,21 +228,54 @@ export default function Progress() {
       <div className="pg-header">
         <div>
           <h1>Your progress</h1>
-          <p className="muted">Track your body weight and see how consistent your training is over time.</p>
+          <p className="muted">Track your body weight, BMI trend, and see how consistent your training is over time.</p>
         </div>
+        {profile?.height ? (
+          <span className="muted" style={{ fontSize: "13px" }}>
+            Height: <strong>{profile.height} cm</strong> (<Link to="/profile">Edit</Link>)
+          </span>
+        ) : (
+          <Link className="pg-btn" to="/profile" style={{ textDecoration: "none", fontSize: "13px", padding: "6px 14px" }}>
+            Add height in Profile for BMI
+          </Link>
+        )}
       </div>
 
       <div className="pg-stats">
         <div className="pg-stat">
           <span className="stat-title">Current weight</span>
-          <span className="stat-value">{byDate.length ? byDate[byDate.length - 1].weight_kg : "-"}</span>
-          <span className="stat-unit">kg</span>
+          <span className="stat-value">{latestWeight !== null ? latestWeight : "-"}</span>
+          <span className="stat-unit">
+            {currentBMI ? `kg • BMI ${currentBMI.value} (${currentBMI.category})` : "kg"}
+          </span>
         </div>
+
         <div className="pg-stat">
-          <span className="stat-title">Change since first entry</span>
-          <span className="stat-value">{change === null ? "-" : `${change > 0 ? "+" : ""}${change.toFixed(1)}`}</span>
-          <span className="stat-unit">kg</span>
+          <span className="stat-title">Current BMI</span>
+          <span className="stat-value">{currentBMI ? currentBMI.value : "-"}</span>
+          <span className="stat-unit">
+            {currentBMI ? (
+              <span className={`pg-bmi-pill ${currentBMI.cls}`}>{currentBMI.category}</span>
+            ) : profile?.height ? (
+              "Log weight to see BMI"
+            ) : (
+              <Link to="/profile">Add height in Profile</Link>
+            )}
+          </span>
         </div>
+
+        <div className="pg-stat">
+          <span className="stat-title">Weight &amp; BMI change</span>
+          <span className="stat-value">{change === null ? "-" : `${change > 0 ? "+" : ""}${change.toFixed(1)}`}</span>
+          <span className="stat-unit">
+            {change === null
+              ? "Need 2+ entries"
+              : bmiChange !== null
+                ? `kg (${bmiChange > 0 ? "+" : ""}${bmiChange.toFixed(1)} BMI points)`
+                : "kg since first entry"}
+          </span>
+        </div>
+
         <div className="pg-stat">
           <span className="stat-title">Training days logged</span>
           <span className="stat-value">{activeDays}</span>
@@ -218,6 +293,13 @@ export default function Progress() {
           </label>
           <label>Weight (kg)
             <input type="number" step="0.1" value={kg} onChange={(e) => setKg(e.target.value)} placeholder="For example: 70.5" />
+            {previewBMI && (
+              <div className="pg-bmi-preview">
+                <span>BMI: <strong>{previewBMI.value}</strong></span>
+                <span className={`pg-bmi-pill ${previewBMI.cls}`}>{previewBMI.category}</span>
+                <span className="muted">({profile.height} cm height)</span>
+              </div>
+            )}
           </label>
         </div>
         {fieldError && <span className="error">{fieldError}</span>}
@@ -229,10 +311,11 @@ export default function Progress() {
 
       <div className="pg-card">
         <div className="pg-card-head">
-          <h2>Weight over time</h2>
+          <h2>Weight &amp; BMI over time</h2>
           {hoveredPoint && (
             <span className="pg-hover-pill">
               {hoveredPoint.date} • {hoveredPoint.weight_kg} kg
+              {hoveredBMI ? ` • BMI ${hoveredBMI.value} (${hoveredBMI.category})` : ""}
             </span>
           )}
         </div>
@@ -244,6 +327,7 @@ export default function Progress() {
             <div className="pg-chart-box">
               <WeightChart
                 points={byDate}
+                height={profile?.height}
                 hoveredId={hoveredPoint?.id ?? null}
                 onHover={setHoveredPoint}
               />
@@ -255,19 +339,32 @@ export default function Progress() {
                   <tr>
                     <th>Date</th>
                     <th>Weight</th>
+                    <th>BMI</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {[...byDate].reverse().map((w) => (
-                    <tr key={w.id}>
-                      <td>{w.date}</td>
-                      <td><span className="pg-weight-pill">{w.weight_kg} kg</span></td>
-                      <td style={{ textAlign: "right" }}>
-                        <button className="pg-delete-btn" onClick={() => onDelete(w.id)}>Delete</button>
-                      </td>
-                    </tr>
-                  ))}
+                  {[...byDate].reverse().map((w) => {
+                    const rowBMI = computeBMI(w.weight_kg, profile?.height);
+                    return (
+                      <tr key={w.id}>
+                        <td>{w.date}</td>
+                        <td><span className="pg-weight-pill">{w.weight_kg} kg</span></td>
+                        <td>
+                          {rowBMI ? (
+                            <span className={`pg-bmi-pill ${rowBMI.cls}`}>
+                              {rowBMI.value} • {rowBMI.category}
+                            </span>
+                          ) : (
+                            <span className="muted">-</span>
+                          )}
+                        </td>
+                        <td style={{ textAlign: "right" }}>
+                          <button className="pg-delete-btn" onClick={() => onDelete(w.id)}>Delete</button>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
