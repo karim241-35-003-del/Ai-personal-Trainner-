@@ -53,6 +53,21 @@ function WeightChart({ points, height, hoveredId, onHover }) {
     ? `${linePath} L${x(points.length - 1)},${H - P.b} L${x(0)},${H - P.b} Z`
     : "";
 
+  const activeIdx = points.findIndex((p) => p.id === hoveredId);
+  const activePoint = activeIdx >= 0 ? points[activeIdx] : null;
+  const activeBMI = activePoint ? computeBMI(activePoint.weight_kg, height) : null;
+
+  const tipW = 152;
+  const tipH = 46;
+  let tipX = 0;
+  let tipY = 0;
+  if (activePoint) {
+    const cx = x(activeIdx);
+    const cy = y(activePoint.weight_kg);
+    tipX = cx + 12 + tipW > W - 10 ? cx - 12 - tipW : cx + 12;
+    tipY = Math.max(8, Math.min(H - tipH - 8, cy - tipH / 2));
+  }
+
   return (
     <svg className="chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Body weight over time">
       <defs>
@@ -62,6 +77,9 @@ function WeightChart({ points, height, hoveredId, onHover }) {
         </linearGradient>
         <filter id="weightLineShadow" x="-10%" y="-15%" width="120%" height="140%">
           <feDropShadow dx="0" dy="3" stdDeviation="2.5" floodColor="#1f3864" floodOpacity="0.28" />
+        </filter>
+        <filter id="weightTooltipShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#1f3864" floodOpacity="0.22" />
         </filter>
       </defs>
 
@@ -108,10 +126,21 @@ function WeightChart({ points, height, hoveredId, onHover }) {
             onMouseEnter={() => onHover(p)}
             onMouseLeave={() => onHover(null)}
           >
-            {(points.length <= 8 || isActive) && (
+            {points.length <= 8 && !isActive && (
               <text className="pt-label" x={cx} y={cy - 10} textAnchor="middle">
                 {p.weight_kg}
               </text>
+            )}
+            {isActive && (
+              <circle
+                cx={cx}
+                cy={cy}
+                r={9}
+                fill="none"
+                stroke="#2e5395"
+                strokeWidth="2"
+                strokeOpacity="0.45"
+              />
             )}
             <circle
               className={`dot ${isActive ? "active" : ""}`}
@@ -122,9 +151,93 @@ function WeightChart({ points, height, hoveredId, onHover }) {
             >
               <title>{`${p.date}: ${p.weight_kg} kg${ptBMI ? ` • BMI ${ptBMI.value} (${ptBMI.category})` : ""}`}</title>
             </circle>
+            {/* Wider transparent hit target for easy mouse hover */}
+            <circle
+              cx={cx}
+              cy={cy}
+              r={14}
+              fill="transparent"
+              style={{ cursor: "pointer" }}
+            />
           </g>
         );
       })}
+
+      {/* Floating tooltip beside hovered point */}
+      {activePoint && (() => {
+        const cx = x(activeIdx);
+        const cy = y(activePoint.weight_kg);
+        const onRight = tipX > cx;
+        return (
+          <g className="chart-tooltip" pointerEvents="none">
+            {/* Subtle connector dashed line */}
+            <line
+              x1={onRight ? cx + 7 : cx - 7}
+              y1={cy}
+              x2={onRight ? tipX : tipX + tipW}
+              y2={cy}
+              stroke="#2e5395"
+              strokeWidth="1.5"
+              strokeDasharray="2 2"
+              strokeOpacity="0.65"
+            />
+            {/* Card background */}
+            <rect
+              x={tipX}
+              y={tipY}
+              width={tipW}
+              height={tipH}
+              rx={8}
+              fill="#ffffff"
+              stroke="#2e5395"
+              strokeWidth="1.5"
+              filter="url(#weightTooltipShadow)"
+            />
+            {/* Weight and date */}
+            <text
+              x={tipX + 10}
+              y={tipY + 18}
+              style={{ fontSize: "12px", fontWeight: "700", fill: "#1f3864" }}
+            >
+              {activePoint.weight_kg} kg
+              <tspan style={{ fill: "#5f6673", fontSize: "10px", fontWeight: "500" }}> • {activePoint.date}</tspan>
+            </text>
+            {/* BMI value and category */}
+            {activeBMI ? (
+              <text
+                x={tipX + 10}
+                y={tipY + 34}
+                style={{ fontSize: "11px", fontWeight: "600", fill: "#2e5395" }}
+              >
+                BMI: <tspan style={{ fontWeight: "700", fill: "#1f3864" }}>{activeBMI.value}</tspan>
+                <tspan
+                  style={{
+                    fill:
+                      activeBMI.cls === "normal"
+                        ? "#15803d"
+                        : activeBMI.cls === "over"
+                        ? "#b45309"
+                        : activeBMI.cls === "obese"
+                        ? "#b91c1c"
+                        : "#0284c7",
+                    fontWeight: "700",
+                  }}
+                >
+                  {" "}• {activeBMI.category}
+                </tspan>
+              </text>
+            ) : (
+              <text
+                x={tipX + 10}
+                y={tipY + 34}
+                style={{ fontSize: "10px", fill: "#5f6673", fontWeight: "500" }}
+              >
+                Add height for BMI
+              </text>
+            )}
+          </g>
+        );
+      })()}
     </svg>
   );
 }
@@ -183,7 +296,6 @@ export default function Progress() {
     ? Math.round((currentBMI.value - initialBMI.value) * 10) / 10
     : null;
 
-  const hoveredBMI = hoveredPoint ? computeBMI(hoveredPoint.weight_kg, profile?.height) : null;
   const previewBMI = kg && !Number.isNaN(Number(kg)) && Number(kg) > 0
     ? computeBMI(kg, profile?.height)
     : null;
@@ -312,12 +424,6 @@ export default function Progress() {
       <div className="pg-card">
         <div className="pg-card-head">
           <h2>Weight &amp; BMI over time</h2>
-          {hoveredPoint && (
-            <span className="pg-hover-pill">
-              {hoveredPoint.date} • {hoveredPoint.weight_kg} kg
-              {hoveredBMI ? ` • BMI ${hoveredBMI.value} (${hoveredBMI.category})` : ""}
-            </span>
-          )}
         </div>
 
         {byDate.length === 0 ? (
