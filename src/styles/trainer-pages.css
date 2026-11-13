@@ -28,3 +28,6 @@ table.log th { color: var(--muted); font-size: 12px; text-transform: uppercase; 
 .verdict-bad { color: var(--err); font-weight: 600; }
 .form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .success { color: #17512a; font-size: 14px; }
+.details-box { margin-top: 16px; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+.details-box summary { cursor: pointer; font-weight: 600; color: var(--blue-dark); }
+.details-box ul { margin: 10px 0 0; }

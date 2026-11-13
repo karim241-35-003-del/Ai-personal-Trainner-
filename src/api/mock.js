@@ -1,6 +1,4 @@
-// Developed by Mojammel Nahid (but Committed by a teammate due to a GitHub tree lost issue).
-
-//eita demo mode..ekhono backend make kori nai.tai Everything is stored in this browser.
+// DEMO MODE ONLY. No backend needed. Everything is stored in this browser.
 import { ACTIVITY_LEVELS } from "../constants.js";
 
 const wait = (ms = 300) => new Promise((r) => setTimeout(r, ms));
@@ -144,23 +142,8 @@ export const api = {
     await wait(150);
     return EXERCISES;
   },
-  // Demo only: the photo is NOT analysed. The result is a fixed sample so the page can be tested.
-  async checkForm(form) {
-    await wait(900);
-    const id = form.get("exercise_id");
-    const ex = EXERCISES.find((e) => e.id === id);
-    if (!ex) throw new Error("Choose an exercise first.");
-    return {
-      demo: true,
-      exercise_id: ex.id,
-      exercise_name: ex.name,
-      score: 68,
-      good_points: ["Torso stays steady through the movement"],
-      issues: [
-        { body_part: "Knees", message: "Knees move inward at the bottom. Push them out in line with your toes." },
-        { body_part: "Back", message: "Lower back rounds slightly. Brace your core before each rep." },
-      ],
-    };
+  async checkForm() {
+    throw new Error("Form check needs the backend. Set VITE_USE_MOCK=false and start the backend.");
   },
   async listWorkouts() {
     await wait(150);
@@ -217,7 +200,7 @@ export const api = {
     await wait();
     const users = read("mock_users", {});
     const key = email.toLowerCase();
-    if (users[key]) throw new Error("An account with this email already exists in our system.");
+    if (users[key]) throw new Error("An account with this email already exists.");
     users[key] = { name, password };
     write("mock_users", users);
     return { access_token: "mock:" + key, token_type: "bearer", user: { name, email: key } };
