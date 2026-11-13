@@ -281,64 +281,95 @@
 
 .week-bars {
   display: flex;
-  align-items: flex-end;
-  gap: 14px;
-  height: 140px;
-  padding-bottom: 8px;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  height: 180px;
+  padding: 6px 6px 0;
 }
 
-.week-col {
+.week-bar-col {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   height: 100%;
+}
+
+.week-bar-col .count {
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+  background: #1c0e35;
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  border-radius: 999px;
+  padding: 2px 8px;
+  min-width: 22px;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.25);
+  margin-bottom: 8px;
+}
+
+.week-bar-col .count.zero {
+  background: #140924;
+  color: #6b5d7d;
+  border-color: rgba(168, 85, 247, 0.18);
+  box-shadow: none;
+}
+
+.week-bar-col .bar-area {
+  width: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  gap: 8px;
+  border-bottom: 2px solid rgba(168, 85, 247, 0.4);
 }
 
-.week-bar-wrap {
-  width: 100%;
-  max-width: 38px;
-  flex: 1;
-  background: #180d2d;
-  border: 1px solid rgba(168, 85, 247, 0.2);
-  border-radius: 8px;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+.week-bar-col .bar {
+  width: 20px; /* Slim reduced width */
+  max-width: 22px;
+  background: linear-gradient(180deg, #c084fc 0%, #9333ea 50%, #7e22ce 100%);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.55);
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.week-bar {
-  width: 100%;
-  background: linear-gradient(180deg, #c084fc 0%, #9333ea 50%, #6b21a8 100%);
-  border-radius: 8px 8px 0 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 4px;
-  box-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
-  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.week-bar-col .bar.empty-bar {
+  background: rgba(168, 85, 247, 0.12);
+  box-shadow: none;
 }
 
-.week-bar.current {
-  background: linear-gradient(180deg, #f0abfc 0%, #a855f7 50%, #7e22ce 100%);
-  box-shadow: 0 0 22px rgba(168, 85, 247, 0.8), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+.week-bar-col:hover .bar:not(.empty-bar) {
+  transform: scaleY(1.02);
+  filter: brightness(1.15);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.85);
 }
 
-.week-bar-val {
-  font-size: 11px;
-  font-weight: 800;
-  color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
-}
-
-.week-bar-lbl {
-  font-size: 11px;
+.week-bar-col .week-date {
+  font-size: 11.5px;
   font-weight: 700;
-  color: #a79cb8;
+  color: #c4b5fd;
+  margin-top: 8px;
+  text-align: center;
   letter-spacing: 0.02em;
+}
+
+/* Backward-compatible labels container if needed */
+.pg-week-labels {
+  display: flex;
+  gap: 12px;
+  padding: 8px 6px 0;
+}
+
+.pg-week-label {
+  flex: 1;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #c4b5fd;
 }
 
 /* Weight History Table */
