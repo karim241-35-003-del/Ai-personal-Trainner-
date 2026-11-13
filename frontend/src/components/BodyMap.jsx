@@ -57,7 +57,7 @@ export function mapAssetToAppMuscle(group, view = "front") {
 
 /**
  * Interactive Front & Back Human Body Muscle Map (SVG)
- * Detailed anatomical vector line art matching MuscleWiki dashboard design
+ * Detailed anatomical vector line art matching Nahid Fitness dashboard design
  *
  * @param {Object} props
  * @param {string} [props.selectedMuscle=""] - Currently active muscle id (e.g. "abdominals")
@@ -81,7 +81,7 @@ export default function BodyMap({
   const isHovered = (id) => hovered === id;
 
   const getMuscleFill = (id) => {
-    if (isSelected(id)) return "#ff2d55"; // MuscleWiki vibrant coral-red
+    if (isSelected(id)) return "#ff2d55"; // Nahid Fitness vibrant coral-red
     if (isHovered(id)) return "#fda4af"; // Soft coral hover
     return "#f1f5f9"; // Neutral anatomical body fill
   };

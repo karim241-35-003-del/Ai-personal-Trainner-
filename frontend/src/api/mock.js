@@ -1219,7 +1219,7 @@ export const EXERCISES = [
 
 ];
 
-export const MUSCLEWIKI_EXERCISES = EXERCISES;
+export const NAHID_FITNESS_EXERCISES = EXERCISES;
 
 const workoutsKey = () => "mock_workouts_" + currentEmail();
 const weightsKey = () => "mock_weights_" + currentEmail();

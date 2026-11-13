@@ -16,7 +16,7 @@ export default function Navbar() {
       )}
       <nav className="nav">
         <NavLink to="/" className="brand" style={{ color: "#ffffff", textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}>
-          <span>💪 AI Personal Trainer</span>
+          <span>💪 AI Powered Personal Trainer</span>
         </NavLink>
         <div className="nav-links">
           <NavLink to="/" end>Muscle Map</NavLink>

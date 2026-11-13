@@ -2,10 +2,10 @@ import { useState, useMemo, useEffect } from "react";
 import BodyMap, { MUSCLE_GROUPS } from "../components/BodyMap.jsx";
 import { api } from "../api/client.js";
 import { detectInjuries, getExerciseContraindication } from "../utils/injuryRules.js";
-import "../styles/musclewiki.css";
+import "../styles/nahid-fitness.css";
 
 // Comprehensive exercise database with dual-angle previews, steps, and cues
-const MUSCLEWIKI_EXERCISES = [
+const NAHID_FITNESS_EXERCISES = [
   {
     id: "dumbbell-russian-twist",
     name: "Dumbbell Russian Twist",
@@ -2061,7 +2061,7 @@ export default function Home() {
 
   // Filter exercises strictly by selected muscle AND selected equipment
   const filteredExercises = useMemo(() => {
-    return MUSCLEWIKI_EXERCISES.filter((ex) => {
+    return NAHID_FITNESS_EXERCISES.filter((ex) => {
       // 1. Muscle filtering
       if (selectedMuscle) {
         const matchesMuscle =
@@ -2131,7 +2131,7 @@ export default function Home() {
     : { isContraindicated: false, matchedInjuries: [] };
 
   return (
-    <div className="musclewiki-wrapper">
+    <div className="nahid-fitness-wrapper">
       {/* Top Header Bar */}
       <div className="mw-header">
         <div className="mw-brand-title">
