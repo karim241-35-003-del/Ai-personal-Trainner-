@@ -494,22 +494,20 @@ export default function Progress() {
           <div className="pg-bars-box">
             <div className="week-bars" role="img" aria-label="Training days per week">
               {weeks.map((w) => {
-                const barHeight = w.count === 0 ? 4 : Math.max(12, Math.round((w.count / maxCount) * 116));
+                const barHeight = w.count === 0 ? 5 : Math.max(14, Math.round((w.count / maxCount) * 120));
                 return (
-                  <div className="week-bar" key={w.start} title={`Week of ${w.start}: ${w.count} day(s)`}>
+                  <div className="week-bar-col" key={w.start} title={`Week of ${w.start}: ${w.count} day(s)`}>
                     <span className={`count ${w.count === 0 ? "zero" : ""}`}>{w.count}</span>
-                    <div
-                      className={`bar ${w.count === 0 ? "empty-bar" : ""}`}
-                      style={{ height: `${barHeight}px` }}
-                    />
+                    <div className="bar-area">
+                      <div
+                        className={`bar ${w.count === 0 ? "empty-bar" : ""}`}
+                        style={{ height: `${barHeight}px` }}
+                      />
+                    </div>
+                    <span className="week-date">{w.start.slice(5)}</span>
                   </div>
                 );
               })}
-            </div>
-            <div className="pg-week-labels">
-              {weeks.map((w) => (
-                <span className="pg-week-label" key={w.start}>{w.start.slice(5)}</span>
-              ))}
             </div>
           </div>
         )}
