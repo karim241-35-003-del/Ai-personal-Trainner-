@@ -361,6 +361,55 @@ table.pg-table tbody tr:hover {
   font-size: 13px;
 }
 
+.pg-bmi-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.pg-bmi-pill.normal {
+  background: #e3f6e8;
+  color: #17512a;
+  border: 1px solid #9fd8b0;
+}
+
+.pg-bmi-pill.under {
+  background: #e8efff;
+  color: #1f3864;
+  border: 1px solid #9cb8ed;
+}
+
+.pg-bmi-pill.over {
+  background: #fff6db;
+  color: #664d03;
+  border: 1px solid #f3d27a;
+}
+
+.pg-bmi-pill.obese {
+  background: #fdeceb;
+  color: #b3261e;
+  border: 1px solid #f5b7b4;
+}
+
+.pg-bmi-preview {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue-dark);
+  background: #f0f5ff;
+  border: 1px solid #bfd3f7;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
 .pg-delete-btn {
   background: #ffffff;
   color: var(--err);
