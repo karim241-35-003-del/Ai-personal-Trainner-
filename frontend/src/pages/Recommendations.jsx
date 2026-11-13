@@ -62,6 +62,11 @@ export default function Recommendations() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.body.classList.add("purple-theme");
+    return () => document.body.classList.remove("purple-theme");
+  }, []);
+
+  useEffect(() => {
     Promise.all([
       api.getRecommendations(),
       api.getProfile(),
