@@ -7,6 +7,27 @@ import "../styles/progress-pages.css";
 const labelFor = (list, val) => list.find((o) => o.value === val)?.label ?? val;
 const LOWER_MUSCLES = new Set(["legs", "glutes", "calves", "hamstrings", "quads"]);
 
+function computeBMI(weightKg, heightCm) {
+  const w = Number(weightKg);
+  const h = Number(heightCm);
+  if (!w || !h || w <= 0 || h <= 0) return null;
+  const val = w / ((h / 100) ** 2);
+  const rounded = Math.round(val * 10) / 10;
+  let category = "Normal";
+  let cls = "normal";
+  if (rounded < 18.5) {
+    category = "Underweight";
+    cls = "under";
+  } else if (rounded >= 30) {
+    category = "Obese";
+    cls = "obese";
+  } else if (rounded >= 25) {
+    category = "Overweight";
+    cls = "over";
+  }
+  return { value: rounded, category, cls };
+}
+
 function localDateStr(offsetDays = 0) {
   const d = new Date();
   d.setDate(d.getDate() + offsetDays);
@@ -85,8 +106,20 @@ export default function Recommendations() {
       ? sortedWeights[sortedWeights.length - 1].weight_kg - sortedWeights[0].weight_kg
       : null;
 
-    return { recentDays, upperCount, lowerCount, latestWeight, weightChange };
-  }, [workouts, weights, exercises, profile]);
+    let bmi = null;
+    if (latestWeight !== null && profile?.height) {
+      bmi = computeBMI(latestWeight, profile.height);
+    } else if (plan?.bmi) {
+      const v = Number(plan.bmi);
+      let cls = "normal";
+      if (v < 18.5) cls = "under";
+      else if (v >= 30) cls = "obese";
+      else if (v >= 25) cls = "over";
+      bmi = { value: v, category: plan.bmi_category || "Normal", cls };
+    }
+
+    return { recentDays, upperCount, lowerCount, latestWeight, weightChange, bmi };
+  }, [workouts, weights, exercises, profile, plan]);
 
   if (loading) return <p>Loading your recommendations...</p>;
   if (error) return <p className="error">{error}</p>;
@@ -100,6 +133,8 @@ export default function Recommendations() {
       </div>
     );
   }
+
+  const currentBMI = stats.bmi;
 
   const proteinText = plan
     ? (plan.protein_min_g === plan.protein_max_g
@@ -146,19 +181,34 @@ export default function Recommendations() {
         </div>
 
         <div className="rc-snap-card">
-          <span className="rc-snap-label">Weekly Consistency</span>
-          <span className="rc-snap-value">
-            {stats.recentDays} / {profile.days_per_week} days
-          </span>
-          <span className="rc-snap-sub">Training days in last 7 days</span>
-        </div>
-
-        <div className="rc-snap-card">
           <span className="rc-snap-label">Weight Progress</span>
           <span className="rc-snap-value">
             {stats.latestWeight !== null ? `${stats.latestWeight} kg` : "-"}
           </span>
           <span className="rc-snap-sub">{changeText}</span>
+        </div>
+
+        <div className="rc-snap-card">
+          <span className="rc-snap-label">Current BMI</span>
+          <span className="rc-snap-value" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+            {currentBMI ? currentBMI.value : "-"}
+            {currentBMI && (
+              <span className={`pg-bmi-pill ${currentBMI.cls}`} style={{ fontSize: "11px", padding: "2px 8px" }}>
+                {currentBMI.category}
+              </span>
+            )}
+          </span>
+          <span className="rc-snap-sub">
+            {profile?.height ? `Height: ${profile.height} cm` : "Add height in Profile"}
+          </span>
+        </div>
+
+        <div className="rc-snap-card">
+          <span className="rc-snap-label">Weekly Consistency</span>
+          <span className="rc-snap-value">
+            {stats.recentDays} / {profile.days_per_week} days
+          </span>
+          <span className="rc-snap-sub">Training days in last 7 days</span>
         </div>
 
         <div className="rc-snap-card">
@@ -176,7 +226,11 @@ export default function Recommendations() {
           <div className="rc-card-head">
             <h2>Why this plan?</h2>
             <span className="muted" style={{ fontSize: "13px" }}>
-              {plan ? `BMI ${plan.bmi} (${plan.bmi_category})` : ""}
+              {currentBMI
+                ? `BMI ${currentBMI.value} (${currentBMI.category})`
+                : plan?.bmi
+                ? `BMI ${plan.bmi} (${plan.bmi_category})`
+                : ""}
             </span>
           </div>
           <p style={{ margin: 0 }}>{data.summary}</p>
