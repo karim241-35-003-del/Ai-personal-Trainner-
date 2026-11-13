@@ -2277,13 +2277,13 @@ export default function Home() {
           {selectedExercise ? (
             <div className="exercise-detail-hero">
               {/* Header Bar */}
-              <div className="ex-detail-header-bar">
+              <div className="ex-detail-header-bar text-white" style={{ color: "#ffffff" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <h2 className="ex-detail-title">{selectedExercise.name}</h2>
-                  <span className={`badge-level level-${selectedExercise.level}`}>{selectedExercise.level}</span>
+                  <h2 className="ex-detail-title text-white" style={{ color: "#ffffff" }}>{selectedExercise.name}</h2>
+                  <span className={`badge-level level-${selectedExercise.level} text-white`} style={{ color: "#ffffff" }}>{selectedExercise.level}</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                  <span className="chip" style={{ background: "rgba(255,255,255,0.2)", color: "#fff" }}>
+                  <span className="chip text-white" style={{ background: "rgba(255,255,255,0.2)", color: "#ffffff" }}>
                     {selectedExercise.muscle_id === "calves"
                       ? "Calf Leg"
                       : selectedExercise.muscle_id === "lowerback"
@@ -2291,14 +2291,15 @@ export default function Home() {
                       : selectedExercise.muscle_id}
                   </span>
                   {selectedExercise.equipment.map((eq) => (
-                    <span className="chip" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }} key={eq}>
+                    <span className="chip text-white" style={{ background: "rgba(255,255,255,0.15)", color: "#ffffff" }} key={eq}>
                       {eq}
                     </span>
                   ))}
                   <button
                     type="button"
-                    className="mw-share-btn"
+                    className="mw-share-btn text-white"
                     title="Share Exercise"
+                    style={{ color: "#ffffff" }}
                     onClick={() => {
                       if (navigator.clipboard) {
                         navigator.clipboard.writeText(window.location.href);

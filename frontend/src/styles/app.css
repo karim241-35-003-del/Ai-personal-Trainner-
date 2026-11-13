@@ -35,3 +35,4 @@ legend { font-size: 14px; font-weight: 600; padding: 0 6px; }
 .stat-unit { color: var(--muted); font-size: 14px; }
 ul { padding-left: 20px; }
 li { margin-bottom: 6px; }
+.text-white { color: #ffffff !important; }

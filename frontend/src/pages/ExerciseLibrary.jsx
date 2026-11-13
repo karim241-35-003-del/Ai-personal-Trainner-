@@ -216,8 +216,8 @@ export default function ExerciseLibrary() {
                     setOpenId(null);
                   }}
                 >
-                  <span className="plan-subtab-day">{d.toUpperCase()}</span>
-                  <span className="plan-subtab-subtitle">{intSubtitles[d]}</span>
+                  <span className={`plan-subtab-day ${isActive ? "text-white" : ""}`}>{d.toUpperCase()}</span>
+                  <span className={`plan-subtab-subtitle ${isActive ? "text-white" : ""}`}>{intSubtitles[d]}</span>
                 </button>
               );
             })}

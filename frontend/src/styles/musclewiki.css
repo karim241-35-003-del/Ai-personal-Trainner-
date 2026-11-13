@@ -380,7 +380,7 @@
 
 .ex-detail-header-bar {
   background: #173b75;
-  color: #ffffff;
+  color: #ffffff !important;
   padding: 18px 26px;
   display: flex;
   justify-content: space-between;
@@ -389,11 +389,17 @@
   gap: 12px;
 }
 
+.ex-detail-header-bar h2,
 .ex-detail-title {
+  color: #ffffff !important;
   font-size: 24px;
   font-weight: 800;
   margin: 0;
   letter-spacing: -0.01em;
+}
+
+.text-white {
+  color: #ffffff !important;
 }
 
 .badge-level {
