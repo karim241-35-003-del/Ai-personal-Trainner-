@@ -25,10 +25,6 @@ export default function Navbar() {
               <NavLink to="/dashboard">Dashboard</NavLink>
               <NavLink to="/profile">Profile</NavLink>
               <NavLink to="/exercises">Exercises</NavLink>
-              <NavLink to="/form-check">Form check</NavLink>
-              <NavLink to="/workouts">Workout log</NavLink>
-              <NavLink to="/progress">Progress</NavLink>
-              <NavLink to="/recommendations">Tips</NavLink>
               <button className="link-btn" onClick={onLogout}>Logout ({user.name})</button>
             </>
           ) : (
