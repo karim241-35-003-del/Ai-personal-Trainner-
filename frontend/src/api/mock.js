@@ -7,7 +7,7 @@ const write = (k, v) => localStorage.setItem(k, JSON.stringify(v));
 
 function currentEmail() {
   const token = localStorage.getItem("token") || "";
-  return token.startsWith("mock:") ? token.slice(5) : null;
+  return token.startsWith("mock:") ? token.slice(5) : "demo@trainer.local";
 }
 
 // TEAM DECISION placeholders: the trainer's notes give ranges (lose 300-500, gain 200-500).
@@ -497,7 +497,7 @@ export const api = {
   },
   async getRecommendations() {
     await wait(300);
-    const profile = read("mock_profile_" + currentEmail(), null);
+    const profile = await this.getProfile();
     if (!profile) return null;
     return {
       demo: true,
@@ -523,7 +523,21 @@ export const api = {
   },
   async getProfile() {
     await wait(150);
-    return read("mock_profile_" + currentEmail(), null);
+    const existing = read("mock_profile_" + currentEmail(), null);
+    if (existing) return existing;
+    const defaultProfile = {
+      age: 22,
+      sex: "male",
+      height: 175,
+      weight: 70,
+      activity: "moderate",
+      goal: "gain",
+      days_per_week: 4,
+      location: "gym",
+      equipment: ["barbell", "dumbbell", "cables", "machines"],
+    };
+    write("mock_profile_" + currentEmail(), defaultProfile);
+    return defaultProfile;
   },
   async saveProfile(data) {
     await wait();
@@ -532,7 +546,7 @@ export const api = {
   },
   async getNutritionPlan() {
     await wait(150);
-    const p = read("mock_profile_" + currentEmail(), null);
+    const p = await this.getProfile();
     return p ? computePlan(p) : null;
   },
 };
