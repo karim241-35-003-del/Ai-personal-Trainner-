@@ -296,16 +296,16 @@ export default function ExerciseLibrary() {
                     <div className="exercise-row-left">
                       <span className="exercise-row-num">{idx + 1}</span>
                       <div className="exercise-row-thumb" style={{ background: "#f8fafc" }}>
-                        {e.imageUrl ? (
+                        {(e.imageUrl || e.image) ? (
                           <img
-                            src={e.imageUrl}
+                            src={e.imageUrl || e.image}
                             alt={e.name}
                             className="exercise-thumb-media"
                             style={{ objectFit: "contain", background: "#ffffff" }}
                           />
-                        ) : e.videoUrl ? (
+                        ) : (e.videoUrl || e.video) ? (
                           <video
-                            src={e.videoUrl}
+                            src={e.videoUrl || e.video}
                             className="exercise-thumb-media"
                             preload="metadata"
                             muted
@@ -354,7 +354,7 @@ export default function ExerciseLibrary() {
                         </span>
                       </div>
                       {/* Media Display: Photo or Video */}
-                      {e.imageUrl ? (
+                      {(e.imageUrl || e.image) ? (
                         <div
                           className="exercise-detail-video-box"
                           style={{
@@ -368,7 +368,7 @@ export default function ExerciseLibrary() {
                           }}
                         >
                           <img
-                            src={e.imageUrl}
+                            src={e.imageUrl || e.image}
                             alt={e.name}
                             style={{
                               maxWidth: "100%",

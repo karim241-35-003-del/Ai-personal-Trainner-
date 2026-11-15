@@ -1122,7 +1122,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "8–12 reps",
     rest: "60-90 seconds",
-    imageUrl: "",
+    imageUrl: "/exercises/close-grip-push-up.jpg",
+    image: "/exercises/close-grip-push-up.jpg",
     instructions: "Start in a high plank position with your hands placed inside shoulder-width, thumbs and index fingers close together. Keep your elbows tucked tight against your ribs as you lower your chest towards the floor, then push forcefully back up through the palms focusing on tricep extension.",
     form_cues: ["Keep elbows tucked tight against torso, not flared out", "Brace core and glutes to keep hips level", "Push through palms to full elbow extension"]
   },
@@ -1156,7 +1157,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "10 reps each leg",
     rest: "60-90 seconds",
-    imageUrl: "",
+    imageUrl: "/exercises/reverse-lunge.jpg",
+    image: "/exercises/reverse-lunge.jpg",
     instructions: "Stand tall with feet hip-width apart and hands on hips or at chest. Step backward with one leg and lower your hips until both knees form approximately 90-degree angles. Press through the front heel to return to standing, then repeat on the opposite leg.",
     form_cues: ["Keep torso upright and chest open throughout", "Lower back knee until it hovers just an inch off the floor", "Drive through the front heel and midfoot to return to start"]
   },
@@ -1221,7 +1223,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "60 seconds",
     rest: "60-90 seconds",
-    imageUrl: "",
+    imageUrl: "/exercises/plank.jpg",
+    image: "/exercises/plank.jpg",
     instructions: "Place forearms on the ground with elbows aligned directly under shoulders. Extend legs straight back with toes tucked. Engage your core, glutes, and quadriceps to form a rigid, flat line from the crown of your head down to your heels. Hold steadily for 60 seconds.",
     form_cues: ["Keep hips level with shoulders — do not let hips sag or pike up", "Actively press forearms into floor to dome upper back slightly", "Maintain steady abdominal breathing throughout the hold"]
   },
@@ -1238,7 +1241,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "45–60 seconds",
     rest: "60-90 seconds",
-    imageUrl: "",
+    imageUrl: "/exercises/hollow-body-hold.jpg",
+    image: "/exercises/hollow-body-hold.jpg",
     instructions: "Lie flat on your back with arms extended overhead and legs straight. Press your lower back completely flat against the mat with no gap. Lift your shoulder blades and legs 2–3 inches off the ground, pointing toes forward to create a shallow banana shape. Hold for 45–60 seconds.",
     form_cues: ["Ensure lower back is firmly glued to the floor with zero arch", "Brace your deep transverse abdominis throughout the hold", "Breathe smoothly while keeping toes and fingers actively pointed"]
   },
@@ -1258,23 +1262,6 @@ export const EXERCISES = [
     imageUrl: "/exercises/int-bw-glute-bridge.png",
     instructions: "Lie on your back with knees bent and feet flat hip-width apart. Drive through your heels to lift your hips toward the ceiling until knees, hips, and shoulders form a straight line. Squeeze glutes firmly at top, then lower smoothly.",
     form_cues: ["Drive directly through heels", "Squeeze glutes at peak height without hyperextending lumbar spine", "Lower under full muscular control"]
-  },
-  {
-    id: "home-int-bw-chair-tricep-dips",
-    name: "Chair Tricep Dips",
-    muscle_id: "triceps",
-    muscle_group: "arms",
-    secondary_muscles: ["chest", "shoulders"],
-    equipment: ["bodyweight"],
-    level: "intermediate",
-    location: "home",
-    routine_type: "home_bodyweight_intermediate",
-    sets: 2,
-    reps: "8–10 reps",
-    rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-chair-tricep-dips.png",
-    instructions: "Sit on the edge of a sturdy chair with hands gripping the front edge beside your hips. Slide hips off the chair with knees bent or extended. Bend elbows to lower your body until upper arms are parallel to the floor, then press through palms to lockout.",
-    form_cues: ["Keep back close to the chair edge throughout", "Lower until elbows reach roughly 90 degrees", "Do not allow shoulders to shrug up toward ears"]
   }
 
 ];

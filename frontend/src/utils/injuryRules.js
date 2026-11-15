@@ -784,11 +784,6 @@ export const EXERCISE_SAFETY = {
     reason: "Holding extended levers without complete lumbar floor contact places intense shear on the lower back.",
     alternatives: ["Dead bug", "Bird dog", "Plank on knees"]
   },
-  "home-int-bw-chair-tricep-dips": {
-    riskAreas: ["shoulder", "wrist", "elbow"],
-    reason: "Dipping behind the body forces extreme anterior shoulder internal rotation and capsule stretching.",
-    alternatives: ["Push-ups with close hand placement", "Knee push-ups", "Standing arm raises"]
-  },
 };
 
 /**
