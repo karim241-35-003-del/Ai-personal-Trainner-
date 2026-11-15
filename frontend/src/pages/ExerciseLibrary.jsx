@@ -62,15 +62,6 @@ export default function ExerciseLibrary() {
   const isHome = (profile?.location ?? "home") === "home";
   const hasDumbbell = Boolean(profile?.equipment?.includes("dumbbell"));
 
-  // Home routine filter tab: 'bodyweight' (At Home + Intermediate) vs 'dumbbell'
-  const [homeEquipmentTab, setHomeEquipmentTab] = useState("bodyweight");
-
-  useEffect(() => {
-    if (profile) {
-      setHomeEquipmentTab(hasDumbbell ? "dumbbell" : "bodyweight");
-    }
-  }, [profile, hasDumbbell]);
-
   // Data Filtering Logic:
   // 1. Beginner profile:
   //    - At Home:
@@ -79,13 +70,13 @@ export default function ExerciseLibrary() {
   //    - Gym: gym_beginner
   // 2. Intermediate profile:
   //    - At Home:
-  //        * At Home + Intermediate: home_bodyweight_intermediate (12 exercises)
+  //        * Bodyweight: home_bodyweight_intermediate (12 exercises)
   //        * Dumbbells: home_dumbbell_intermediate by activeDay (3-day split)
   //    - Gym: intermediate_split by activeDay (3-day split)
   const visibleExercises = useMemo(() => {
     if (userLevel === "beginner") {
       if (isHome) {
-        if (homeEquipmentTab === "dumbbell") {
+        if (hasDumbbell) {
           return exercises.filter((e) => e.routine_type === "home_dumbbell_beginner");
         }
         return exercises.filter((e) => e.routine_type === "home_bodyweight_beginner");
@@ -97,7 +88,7 @@ export default function ExerciseLibrary() {
 
     if (userLevel === "intermediate") {
       if (isHome) {
-        if (homeEquipmentTab === "dumbbell") {
+        if (hasDumbbell) {
           return exercises.filter(
             (e) => e.routine_type === "home_dumbbell_intermediate" && e.day === activeDay
           );
@@ -112,7 +103,7 @@ export default function ExerciseLibrary() {
     }
 
     return [];
-  }, [exercises, userLevel, isHome, homeEquipmentTab, activeDay]);
+  }, [exercises, userLevel, isHome, hasDumbbell, activeDay]);
 
   if (loading) return <p>Loading exercises...</p>;
   if (error) return <p className="error">{error}</p>;
@@ -127,7 +118,7 @@ export default function ExerciseLibrary() {
 
   if (userLevel === "intermediate") {
     if (isHome) {
-      if (homeEquipmentTab === "dumbbell") {
+      if (hasDumbbell) {
         currentTitle = `${activeDay} · ${intSubtitles[activeDay] || "Workout"}`;
         currentDuration = intDurations[activeDay] || "About 35 min";
       } else {
@@ -139,7 +130,7 @@ export default function ExerciseLibrary() {
       currentDuration = intDurations[activeDay] || "About 35 min";
     }
   } else if (isHome) {
-    if (homeEquipmentTab === "dumbbell") {
+    if (hasDumbbell) {
       currentTitle = "Beginner · At Home (Dumbbells)";
       currentDuration = "About 25–30 min";
     } else {
@@ -154,7 +145,7 @@ export default function ExerciseLibrary() {
   // Active split description badge
   let profileBadgeText = "";
   if (isHome) {
-    if (homeEquipmentTab === "dumbbell") {
+    if (hasDumbbell) {
       profileBadgeText = userLevel === "intermediate" ? "(Dumbbell 3-Day Split)" : "(Dumbbell Routine)";
     } else {
       profileBadgeText = userLevel === "intermediate" ? "(At Home + Intermediate)" : "(No Equipment · Bodyweight)";
@@ -209,36 +200,8 @@ export default function ExerciseLibrary() {
         </div>
       )}
 
-      {/* Category Filter Tabs for Home Workouts */}
-      {isHome && (
-        <div style={{ display: "flex", gap: "10px", marginBottom: "18px", flexWrap: "wrap" }}>
-          <button
-            type="button"
-            className={`routine-toggle-pill ${homeEquipmentTab === "bodyweight" ? "active" : ""}`}
-            onClick={() => {
-              setHomeEquipmentTab("bodyweight");
-              setOpenId(null);
-            }}
-            style={{ padding: "8px 16px", fontSize: "14px", fontWeight: "600" }}
-          >
-            {userLevel === "intermediate" ? "At Home + Intermediate" : "At Home + Beginner"}
-          </button>
-          <button
-            type="button"
-            className={`routine-toggle-pill ${homeEquipmentTab === "dumbbell" ? "active" : ""}`}
-            onClick={() => {
-              setHomeEquipmentTab("dumbbell");
-              setOpenId(null);
-            }}
-            style={{ padding: "8px 16px", fontSize: "14px", fontWeight: "600" }}
-          >
-            {userLevel === "intermediate" ? "At Home + Dumbbells (3-Day Split)" : "At Home + Dumbbells"}
-          </button>
-        </div>
-      )}
-
       {/* Sub-Tabs: ONLY for Intermediate 3-Day Splits (Gym, or Home with Dumbbells) */}
-      {userLevel === "intermediate" && (!isHome || homeEquipmentTab === "dumbbell") && (
+      {userLevel === "intermediate" && (!isHome || hasDumbbell) && (
         <div>
           <div className="plan-subtabs-container">
             {["Day 1", "Day 2", "Day 3"].map((d) => {
