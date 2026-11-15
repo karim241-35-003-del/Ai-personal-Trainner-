@@ -311,11 +311,26 @@ table.log th { color: var(--muted); font-size: 12px; text-transform: uppercase; 
   flex-shrink: 0;
 }
 
+.exercise-row-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
 .exercise-row-sets {
   font-size: 15px;
   font-weight: 600;
   color: #334155;
   letter-spacing: 0.02em;
+}
+
+.exercise-row-rest {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .exercise-row-chevron {
@@ -372,4 +387,45 @@ table.log th { color: var(--muted); font-size: 12px; text-transform: uppercase; 
   .exercise-detail-panel {
     margin-left: 0;
   }
+}
+
+.exercise-detail-badge-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.exercise-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.exercise-meta-pill.rest-pill {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.routine-medical-disclaimer {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.routine-medical-disclaimer p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  font-style: italic;
+  line-height: 1.6;
 }

@@ -764,6 +764,26 @@ export const EXERCISE_SAFETY = {
     reason: "Unilateral weight-bearing places intense downward shear through the rotator cuff and supporting elbow.",
     alternatives: ["Bird dog", "Standard plank on knees", "Pelvic tilts"]
   },
+  "home-int-bw-close-grip-push-up": {
+    riskAreas: ["wrist", "elbow", "shoulder"],
+    reason: "Narrow hand placement increases shear load on the triceps tendon and wrist flexors.",
+    alternatives: ["Wall push-ups", "Standard push-ups", "Knee push-ups"]
+  },
+  "home-int-bw-reverse-lunge": {
+    riskAreas: ["knee", "ankle"],
+    reason: "Stepping back creates eccentric deceleration shear on the patellofemoral joint.",
+    alternatives: ["Glute bridge", "Bodyweight box squat", "Clamshells"]
+  },
+  "home-int-bw-plank": {
+    riskAreas: ["shoulder", "back"],
+    reason: "Static isometric hold can strain lumbar spine if abdominal bracing fails, or stress anterior shoulders.",
+    alternatives: ["Bird dog", "Knee plank", "Dead bug"]
+  },
+  "home-int-bw-hollow-body-hold": {
+    riskAreas: ["back", "neck"],
+    reason: "Holding extended levers without complete lumbar floor contact places intense shear on the lower back.",
+    alternatives: ["Dead bug", "Bird dog", "Plank on knees"]
+  },
   "home-int-bw-chair-tricep-dips": {
     riskAreas: ["shoulder", "wrist", "elbow"],
     reason: "Dipping behind the body forces extreme anterior shoulder internal rotation and capsule stretching.",

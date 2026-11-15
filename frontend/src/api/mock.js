@@ -1073,7 +1073,7 @@ export const EXERCISES = [
   }
 ,
   // ==========================================
-  // 6. Intermediate – At Home (No Equipment) [9 EXERCISES FROM USER PHOTOS]
+  // 6. At Home + Intermediate (Bodyweight) [12 EXERCISES]
   // ==========================================
   {
     id: "home-int-bw-standard-push-up",
@@ -1087,6 +1087,7 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
     reps: "10–15 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-standard-push-up.png",
     instructions: "Set up in a standard high plank with hands slightly wider than shoulder-width and body forming a straight line. Lower chest until it nearly touches the floor, keep elbows at 45 degrees, and press forcefully back up to full extension.",
     form_cues: ["Maintain rigid straight line from head to heels", "Brace core and squeeze glutes", "Lower until chest is an inch off the floor"]
@@ -1103,9 +1104,27 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
     reps: "8–12 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-pike-push-up.png",
     instructions: "Start in a push-up position, then walk your feet forward and hike hips high into an inverted V (pike) position. Lower the crown of your head diagonally forward toward the floor between your hands, then press back through your shoulders.",
     form_cues: ["Keep hips high and back flat", "Lower head forward of hands in a tripod shape", "Drive up through palms targeting front delts"]
+  },
+  {
+    id: "home-int-bw-close-grip-push-up",
+    name: "Close-Grip Push-up",
+    muscle_id: "triceps",
+    muscle_group: "arms",
+    secondary_muscles: ["chest", "shoulders"],
+    equipment: ["bodyweight"],
+    level: "intermediate",
+    location: "home",
+    routine_type: "home_bodyweight_intermediate",
+    sets: 3,
+    reps: "8–12 reps",
+    rest: "60-90 seconds",
+    imageUrl: "",
+    instructions: "Start in a high plank position with your hands placed inside shoulder-width, thumbs and index fingers close together. Keep your elbows tucked tight against your ribs as you lower your chest towards the floor, then push forcefully back up through the palms focusing on tricep extension.",
+    form_cues: ["Keep elbows tucked tight against torso, not flared out", "Brace core and glutes to keep hips level", "Push through palms to full elbow extension"]
   },
   {
     id: "home-int-bw-bodyweight-squat",
@@ -1119,9 +1138,27 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
     reps: "15 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-bodyweight-squat.png",
     instructions: "Stand tall with feet shoulder-width apart, arms extended forward for balance. Hinge back at your hips and bend your knees to squat down until your thighs are parallel to the ground. Drive through your heels to return to standing.",
     form_cues: ["Keep chest proud and spine neutral", "Track knees in line with your toes", "Push through midfoot and squeeze glutes at the top"]
+  },
+  {
+    id: "home-int-bw-reverse-lunge",
+    name: "Reverse Lunge",
+    muscle_id: "quads",
+    muscle_group: "legs",
+    secondary_muscles: ["glutes", "hamstrings"],
+    equipment: ["bodyweight"],
+    level: "intermediate",
+    location: "home",
+    routine_type: "home_bodyweight_intermediate",
+    sets: 3,
+    reps: "10 reps each leg",
+    rest: "60-90 seconds",
+    imageUrl: "",
+    instructions: "Stand tall with feet hip-width apart and hands on hips or at chest. Step backward with one leg and lower your hips until both knees form approximately 90-degree angles. Press through the front heel to return to standing, then repeat on the opposite leg.",
+    form_cues: ["Keep torso upright and chest open throughout", "Lower back knee until it hovers just an inch off the floor", "Drive through the front heel and midfoot to return to start"]
   },
   {
     id: "home-int-bw-standing-calf-raise",
@@ -1134,6 +1171,7 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
     reps: "15–20 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-standing-calf-raise.png",
     instructions: "Stand upright with feet hip-width apart on a flat surface. Press evenly through the balls of your feet to raise your heels as high as possible. Pause and peak squeeze your calves for 1 full second, then lower slowly.",
     form_cues: ["Rise straight up without leaning forward", "Hold the peak contraction for 1 full second", "Lower heels down under control"]
@@ -1149,6 +1187,7 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
     reps: "15 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-crunches.png",
     instructions: "Lie on your back with knees bent and feet flat on the mat. Place your fingertips lightly behind your ears or head. Flex your abdominal muscles to raise your shoulder blades off the floor, exhale at the apex, then lower under control.",
     form_cues: ["Do not yank your neck or pull with your hands", "Focus on shortening the distance between ribs and hips", "Keep movement slow and deliberate"]
@@ -1164,9 +1203,44 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
     reps: "12 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-reverse-crunches.png",
     instructions: "Lie flat on your back with hands pressed into the floor beside you and knees bent at 90 degrees. Contract your lower abdominals to curl your pelvis off the floor, bringing knees toward your chest. Lower slowly without arching your lower back.",
     form_cues: ["Initiate movement strictly with lower abs", "Avoid swinging legs or using momentum", "Control the descent back to starting position"]
+  },
+  {
+    id: "home-int-bw-plank",
+    name: "Plank",
+    muscle_id: "abs",
+    muscle_group: "core",
+    secondary_muscles: ["shoulders", "glutes"],
+    equipment: ["bodyweight"],
+    level: "intermediate",
+    location: "home",
+    routine_type: "home_bodyweight_intermediate",
+    sets: 3,
+    reps: "60 seconds",
+    rest: "60-90 seconds",
+    imageUrl: "",
+    instructions: "Place forearms on the ground with elbows aligned directly under shoulders. Extend legs straight back with toes tucked. Engage your core, glutes, and quadriceps to form a rigid, flat line from the crown of your head down to your heels. Hold steadily for 60 seconds.",
+    form_cues: ["Keep hips level with shoulders — do not let hips sag or pike up", "Actively press forearms into floor to dome upper back slightly", "Maintain steady abdominal breathing throughout the hold"]
+  },
+  {
+    id: "home-int-bw-hollow-body-hold",
+    name: "Hollow Body Hold",
+    muscle_id: "abs",
+    muscle_group: "core",
+    secondary_muscles: ["lowerback"],
+    equipment: ["bodyweight"],
+    level: "intermediate",
+    location: "home",
+    routine_type: "home_bodyweight_intermediate",
+    sets: 3,
+    reps: "45–60 seconds",
+    rest: "60-90 seconds",
+    imageUrl: "",
+    instructions: "Lie flat on your back with arms extended overhead and legs straight. Press your lower back completely flat against the mat with no gap. Lift your shoulder blades and legs 2–3 inches off the ground, pointing toes forward to create a shallow banana shape. Hold for 45–60 seconds.",
+    form_cues: ["Ensure lower back is firmly glued to the floor with zero arch", "Brace your deep transverse abdominis throughout the hold", "Breathe smoothly while keeping toes and fingers actively pointed"]
   },
   {
     id: "home-int-bw-glute-bridge",
@@ -1180,25 +1254,10 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
     reps: "15 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-glute-bridge.png",
     instructions: "Lie on your back with knees bent and feet flat hip-width apart. Drive through your heels to lift your hips toward the ceiling until knees, hips, and shoulders form a straight line. Squeeze glutes firmly at top, then lower smoothly.",
     form_cues: ["Drive directly through heels", "Squeeze glutes at peak height without hyperextending lumbar spine", "Lower under full muscular control"]
-  },
-  {
-    id: "home-int-bw-side-plank",
-    name: "Side Plank",
-    muscle_id: "abs",
-    muscle_group: "core",
-    secondary_muscles: ["obliques"],
-    equipment: ["bodyweight"],
-    level: "intermediate",
-    location: "home",
-    routine_type: "home_bodyweight_intermediate",
-    sets: 3,
-    reps: "20–30 sec/side",
-    imageUrl: "/exercises/int-bw-side-plank.png",
-    instructions: "Lie on your side with legs straight and feet stacked. Prop your upper body up on your forearm with elbow directly below shoulder. Lift hips off the floor until body forms a straight line from ankles to shoulders. Hold steadily.",
-    form_cues: ["Keep hips high and core fully braced", "Shoulder stacked directly over supporting elbow", "Maintain straight alignment without rotating hips forward or back"]
   },
   {
     id: "home-int-bw-chair-tricep-dips",
@@ -1212,6 +1271,7 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_intermediate",
     sets: 2,
     reps: "8–10 reps",
+    rest: "60-90 seconds",
     imageUrl: "/exercises/int-bw-chair-tricep-dips.png",
     instructions: "Sit on the edge of a sturdy chair with hands gripping the front edge beside your hips. Slide hips off the chair with knees bent or extended. Bend elbows to lower your body until upper arms are parallel to the floor, then press through palms to lockout.",
     form_cues: ["Keep back close to the chair edge throughout", "Lower until elbows reach roughly 90 degrees", "Do not allow shoulders to shrug up toward ears"]
@@ -1219,7 +1279,10 @@ export const EXERCISES = [
 
 ];
 
-export const NAHID_FITNESS_EXERCISES = EXERCISES;
+export const NAHID_FITNESS_EXERCISES = EXERCISES.map((e) => ({
+  rest: "60-90 seconds",
+  ...e,
+}));
 
 const workoutsKey = () => "mock_workouts_" + currentEmail();
 const weightsKey = () => "mock_weights_" + currentEmail();
@@ -1294,7 +1357,10 @@ function buildRecommendations(profile, plan, workouts, weights) {
 export const api = {
   async getExercises() {
     await wait(150);
-    return EXERCISES;
+    return EXERCISES.map((e) => ({
+      rest: e.rest || "60-90 seconds",
+      ...e,
+    }));
   },
   // Demo only: the photo is NOT analysed. The result is a fixed sample so the page can be tested.
   async checkForm(form) {
