@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../api/client.js";
 import { PHOTO_MAX_MB } from "../constants.js";
-import "../styles/trainer-pages.css";
 import "../styles/form-check.css";
 
 const LOWER_MUSCLES = new Set(["legs", "glutes", "calves", "hamstrings", "quads"]);
@@ -62,11 +61,6 @@ export default function FormCheck() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    document.body.classList.add("purple-theme");
-    return () => document.body.classList.remove("purple-theme");
-  }, []);
 
   useEffect(() => {
     api.getExercises()
