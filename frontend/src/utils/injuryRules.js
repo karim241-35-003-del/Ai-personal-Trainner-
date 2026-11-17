@@ -569,10 +569,20 @@ export const EXERCISE_SAFETY = {
     reason: "Squatting to a chair places compressive force on the patellofemoral joint during knee flexion.",
     alternatives: ["Glute bridge", "Standing calf raises", "Arm front raises"],
   },
+  "home-bodyweight-squat": {
+    riskAreas: ["knee", "hip"],
+    reason: "Bodyweight squats place moderate shear and compressive loading on the patellofemoral joint.",
+    alternatives: ["Glute bridge", "Standing calf raises", "Wall push-ups"],
+  },
   "knee-plank": {
     riskAreas: ["shoulder", "elbow", "wrist", "knee"],
     reason: "Forearm plank on knees bears core weight directly through the shoulder girdle and kneecaps.",
     alternatives: ["Dead bug", "Bird dog", "Pelvic tilts"],
+  },
+  "home-plank": {
+    riskAreas: ["shoulder", "elbow", "wrist", "back"],
+    reason: "Isometric plank holds place continuous loading across the shoulder girdle, elbows, and lower back.",
+    alternatives: ["Bird dog", "Dead bug", "Glute bridge"],
   },
   "home-glute-bridge": {
     riskAreas: ["back", "hip"],

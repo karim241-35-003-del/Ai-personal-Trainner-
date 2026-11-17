@@ -68,8 +68,8 @@ export const EXERCISES = [
     form_cues: ["Keep core braced and hips aligned with knees", "Lower until chest is just off the floor", "Do not let lower back sag"]
   },
   {
-    id: "chair-squat",
-    name: "Chair Squat",
+    id: "home-bodyweight-squat",
+    name: "Bodyweight Squat",
     muscle_id: "quads",
     muscle_group: "legs",
     secondary_muscles: ["glutes"],
@@ -79,27 +79,29 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "10–12 reps",
-    video: "/video/chair-squat.mov",
-    videoUrl: "/video/chair-squat.mov",
-    instructions: "Stand directly in front of a sturdy chair with feet shoulder-width apart. Hinge back at your hips and bend your knees to lower your hips down until lightly touching the chair seat. Press through your heels to stand back up.",
-    form_cues: ["Keep your chest upright and arms extended for balance", "Lightly tap the chair seat without collapsing into it", "Drive up through your heels"]
+    rest: "60-90 seconds",
+    video: "/video/bw-squat.mov",
+    videoUrl: "/video/bw-squat.mov",
+    instructions: "Stand tall with feet shoulder-width apart, arms extended forward for balance. Hinge back at your hips and bend your knees to squat down until your thighs are parallel to the ground. Drive through your heels to return to standing.",
+    form_cues: ["Keep chest proud and spine neutral", "Track knees in line with your toes", "Push through midfoot and squeeze glutes at the top"]
   },
   {
-    id: "knee-plank",
-    name: "Knee Plank",
+    id: "home-plank",
+    name: "Plank",
     muscle_id: "abs",
     muscle_group: "core",
-    secondary_muscles: ["shoulders"],
+    secondary_muscles: ["shoulders", "glutes"],
     equipment: ["bodyweight"],
     level: "beginner",
     location: "home",
     routine_type: "home_bodyweight_beginner",
     sets: 2,
-    reps: "15–20 seconds",
-    video: "/video/knee-plank.mov",
-    videoUrl: "/video/knee-plank.mov",
-    instructions: "Place your forearms on the floor with elbows directly under your shoulders. Rest on your knees with lower legs bent upward. Hold your body in a straight line from your head to your knees while bracing your abdominal muscles.",
-    form_cues: ["Brace your stomach muscles as if anticipating a punch", "Keep neck neutral with gaze on the floor", "Breathe steadily without letting hips sag"]
+    reps: "20–30 seconds",
+    rest: "60-90 seconds",
+    video: "/video/plank.mov",
+    videoUrl: "/video/plank.mov",
+    instructions: "Place forearms on the ground with elbows aligned directly under shoulders. Extend legs straight back with toes tucked. Engage your core, glutes, and quadriceps to form a rigid, flat line from the crown of your head down to your heels. Hold steadily.",
+    form_cues: ["Keep hips level with shoulders — do not let hips sag or hike up", "Actively press forearms into floor to dome upper back slightly", "Maintain steady abdominal breathing throughout the hold"]
   },
   {
     id: "home-glute-bridge",
