@@ -267,8 +267,8 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
-    video: "/video/dumbbell-shoulder-press.mov",
-    videoUrl: "/video/dumbbell-shoulder-press.mov",
+    video: "/video/db-shoulder-press.mov",
+    videoUrl: "/video/db-shoulder-press.mov",
     instructions: "Hold a pair of dumbbells at shoulder level with wrists straight. Press the weights overhead in a smooth arc until your arms are extended. Lower slowly back to ear height.",
     form_cues: ["Brace your core to prevent lumbar hyperextension", "Press smoothly without clanking dumbbells together", "Control the lowering phase to shoulder level"]
   },
@@ -367,8 +367,8 @@ export const EXERCISES = [
     routine_type: "gym_beginner",
     sets: 4,
     reps: "12 reps",
-    video: "/video/machine-shoulder-press.mov",
-    videoUrl: "/video/machine-shoulder-press.mov",
+    video: "/video/db-shoulder-press.mov",
+    videoUrl: "/video/db-shoulder-press.mov",
     instructions: "Hold a pair of dumbbells at shoulder level with wrists straight. Press the weights overhead in a smooth arc until your arms are extended. Lower slowly back to ear height.",
     form_cues: ["Brace your core to prevent lumbar hyperextension", "Press smoothly without clanking dumbbells together", "Control the lowering phase to shoulder level"]
   },
@@ -818,8 +818,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "8–12 reps",
-    video: "/video/int-dumbbell-shoulder-press.mov",
-    videoUrl: "/video/int-dumbbell-shoulder-press.mov",
+    video: "/video/db-shoulder-press.mov",
+    videoUrl: "/video/db-shoulder-press.mov",
     instructions: "Stand tall or sit upright with dumbbells at shoulder height, wrists straight. Press the dumbbells overhead in a smooth converging arc until arms are extended overhead. Lower under strict control to ear level.",
     form_cues: ["Brace your abdominals and glutes to prevent lumbar hyperextension", "Do not clank the dumbbells together at lockout", "Lower dumbbells slowly to shoulder depth"]
   },
