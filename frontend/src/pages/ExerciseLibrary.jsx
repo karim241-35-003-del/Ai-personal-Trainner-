@@ -259,21 +259,22 @@ export default function ExerciseLibrary() {
                     <div className="exercise-row-left">
                       <span className="exercise-row-num">{idx + 1}</span>
                       <div className="exercise-row-thumb" style={{ background: "#f8fafc" }}>
-                        {(e.imageUrl || e.image) ? (
-                          <img
-                            src={e.imageUrl || e.image}
-                            alt={e.name}
-                            className="exercise-thumb-media"
-                            style={{ objectFit: "contain", background: "#ffffff" }}
-                          />
-                        ) : (e.videoUrl || e.video) ? (
+                        {(e.videoUrl || e.video) ? (
                           <video
                             src={e.videoUrl || e.video}
                             className="exercise-thumb-media"
-                            preload="metadata"
+                            autoPlay
+                            loop
                             muted
                             playsInline
-                          />
+                            preload="metadata"
+                          >
+                            <source src={e.videoUrl || e.video} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
+                            {(e.videoUrl || e.video)?.startsWith("/exercises/") && !(e.videoUrl || e.video)?.startsWith("/exercises/videos/") && (
+                              <source src={(e.videoUrl || e.video).replace("/exercises/", "/exercises/videos/")} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
+                            )}
+                            <source src={e.videoUrl || e.video} type="video/mp4" />
+                          </video>
                         ) : (
                           <div className="exercise-thumb-placeholder">🏋️</div>
                         )}
@@ -316,35 +317,12 @@ export default function ExerciseLibrary() {
                           ⏱️ Rest: {e.rest || "60-90 seconds"}
                         </span>
                       </div>
-                      {/* Media Display: Photo or Video */}
-                      {(e.imageUrl || e.image) ? (
-                        <div
-                          className="exercise-detail-video-box"
-                          style={{
-                            background: "#ffffff",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            padding: "16px",
-                            borderRadius: "10px",
-                            border: "1px solid #e2e8f0",
-                          }}
-                        >
-                          <img
-                            src={e.imageUrl || e.image}
-                            alt={e.name}
-                            style={{
-                              maxWidth: "100%",
-                              maxHeight: "320px",
-                              objectFit: "contain",
-                              borderRadius: "8px",
-                            }}
-                          />
-                        </div>
-                      ) : (e.videoUrl || e.video) ? (
+                      {/* Media Display: Video */}
+                      {(e.videoUrl || e.video) ? (
                         <div className="exercise-detail-video-box">
                           <video
                             key={e.videoUrl || e.video}
+                            src={e.videoUrl || e.video}
                             className="exercise-detail-video"
                             autoPlay
                             muted
@@ -352,7 +330,10 @@ export default function ExerciseLibrary() {
                             playsInline
                             controls
                           >
-                            <source src={e.videoUrl || e.video} type={(e.videoUrl || e.video).endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
+                            <source src={e.videoUrl || e.video} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
+                            {(e.videoUrl || e.video)?.startsWith("/exercises/") && !(e.videoUrl || e.video)?.startsWith("/exercises/videos/") && (
+                              <source src={(e.videoUrl || e.video).replace("/exercises/", "/exercises/videos/")} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
+                            )}
                             <source src={e.videoUrl || e.video} type="video/mp4" />
                             Your browser does not support HTML5 video.
                           </video>

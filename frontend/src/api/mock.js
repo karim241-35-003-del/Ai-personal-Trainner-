@@ -62,7 +62,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "10–12 reps",
-    imageUrl: "/exercises/knee-push-up.png",
+    video: "/exercises/knee-push-up.mov",
+    videoUrl: "/exercises/knee-push-up.mov",
     instructions: "Start on your hands and knees with hands positioned shoulder-width apart. Lower your chest smoothly toward the floor while keeping a straight line from your head to your knees. Press through your palms to return to the starting position.",
     form_cues: ["Keep core braced and hips aligned with knees", "Lower until chest is just off the floor", "Do not let lower back sag"]
   },
@@ -78,7 +79,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "10–12 reps",
-    imageUrl: "/exercises/chair-squat.png",
+    video: "/exercises/chair-squat.mov",
+    videoUrl: "/exercises/chair-squat.mov",
     instructions: "Stand directly in front of a sturdy chair with feet shoulder-width apart. Hinge back at your hips and bend your knees to lower your hips down until lightly touching the chair seat. Press through your heels to stand back up.",
     form_cues: ["Keep your chest upright and arms extended for balance", "Lightly tap the chair seat without collapsing into it", "Drive up through your heels"]
   },
@@ -94,7 +96,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "15–20 seconds",
-    imageUrl: "/exercises/knee-plank.png",
+    video: "/exercises/knee-plank.mov",
+    videoUrl: "/exercises/knee-plank.mov",
     instructions: "Place your forearms on the floor with elbows directly under your shoulders. Rest on your knees with lower legs bent upward. Hold your body in a straight line from your head to your knees while bracing your abdominal muscles.",
     form_cues: ["Brace your stomach muscles as if anticipating a punch", "Keep neck neutral with gaze on the floor", "Breathe steadily without letting hips sag"]
   },
@@ -110,7 +113,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "12 reps",
-    imageUrl: "/exercises/glute-bridge.png",
+    video: "/exercises/glute-bridge.mov",
+    videoUrl: "/exercises/glute-bridge.mov",
     instructions: "Lie on your back with knees bent and feet flat on the floor hip-width apart. Drive through your heels to lift your hips toward the ceiling until your body forms a straight line from shoulders to knees. Squeeze glutes at the top, then lower slowly.",
     form_cues: ["Squeeze your glutes firmly at peak height", "Avoid overarching your lumbar spine", "Keep feet grounded flat throughout"]
   },
@@ -126,7 +130,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "12–15 reps",
-    imageUrl: "/exercises/arm-side-raise.png",
+    video: "/exercises/arm-side-raise.mov",
+    videoUrl: "/exercises/arm-side-raise.mov",
     instructions: "Stand tall with arms at your sides. Slowly raise both arms straight out to the sides until they are level with your shoulders (parallel to the ground). Hold briefly, then lower slowly under control.",
     form_cues: ["Lead with your elbows in the lateral plane", "Keep your shoulders relaxed away from your ears", "Control the lowering phase without dropping arms"]
   },
@@ -142,7 +147,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "12–15 reps",
-    imageUrl: "/exercises/arm-front-raise.png",
+    video: "/exercises/arm-front-raise.mov",
+    videoUrl: "/exercises/arm-front-raise.mov",
     instructions: "Stand upright with arms in front of your thighs. Raise your arms straight out in front of you until they reach eye/shoulder height. Pause briefly at the top and lower back down smoothly.",
     form_cues: ["Do not swing or rock your torso backwards", "Keep your elbows almost straight with a micro-softness", "Feel the anterior deltoids engage"]
   },
@@ -157,7 +163,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "15 reps",
-    imageUrl: "/exercises/standing-calf-raise.png",
+    video: "/exercises/standing-calf-raise.mov",
+    videoUrl: "/exercises/standing-calf-raise.mov",
     instructions: "Stand upright with feet hip-width apart on a flat floor. Slowly rise up onto the balls of your feet as high as possible, lifting your heels off the ground. Squeeze your calves at the apex, then lower slowly.",
     form_cues: ["Rise straight up without leaning forward", "Hold the peak contraction for 1 full second", "Lower heels down under control"]
   },
@@ -172,7 +179,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "12 reps",
-    imageUrl: "/exercises/crunches.png",
+    video: "/exercises/crunches.mov",
+    videoUrl: "/exercises/crunches.mov",
     instructions: "Lie on your back with knees bent and feet flat on the floor. Place your fingertips lightly behind your head. Curl your upper spine forward to lift your shoulder blades off the mat, contract your abdominals, then lower with control.",
     form_cues: ["Do not pull on your neck with your hands", "Focus on drawing your ribs toward your pelvis", "Exhale on the way up, inhale on the descent"]
   },
@@ -192,6 +200,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-goblet-squat-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-goblet-squat-front.mp4",
     instructions: "Hold a dumbbell vertically against your chest with both hands cradling the top bell. Stand with feet shoulder-width apart, squat down between your hips until thighs are parallel to the floor, then press through your heels to stand.",
     form_cues: ["Keep dumbbell held close to your sternum", "Chest stays tall and proud throughout", "Knees track outward in line with toes"]
@@ -208,6 +217,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-bench-press-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-dumbbell-bench-press-front.mp4",
     instructions: "Lie flat on the floor with knees bent and feet flat. Hold a pair of dumbbells at chest level with upper arms resting on the floor at a 45-degree angle. Press both dumbbells straight up over your chest until arms extend, then lower until triceps touch the floor.",
     form_cues: ["Floor naturally protects shoulders from excessive extension", "Press dumbbells in a slight arc over mid-chest", "Pause briefly as triceps touch floor"]
@@ -224,6 +234,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-single-arm-row-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-single-arm-row-front.mp4",
     instructions: "Place one hand on a sturdy chair or bench, hinge forward at hips with a flat back. Hold a dumbbell in the opposite hand hanging down. Pull the dumbbell upward towards your hip pocket, squeezing your lat at the top, then lower smoothly.",
     form_cues: ["Keep your back flat and parallel to the floor", "Pull your elbow straight back toward your hip", "Avoid twisting your shoulders during the row"]
@@ -240,6 +251,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-romanian-deadlift-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-romanian-deadlift-front.mp4",
     instructions: "Stand tall holding dumbbells in front of your thighs. Keep a soft micro-bend in your knees, push your hips straight backwards, and slide the dumbbells down along your shins until you feel a deep hamstring stretch. Drive your hips forward to stand.",
     form_cues: ["Push your hips back as if touching a wall behind you", "Keep the dumbbells close to your legs", "Maintain a flat, neutral spine without rounding"]
@@ -255,6 +267,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-overhead-press-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-overhead-press-front.mp4",
     instructions: "Hold a pair of dumbbells at shoulder level with wrists straight. Press the weights overhead in a smooth arc until your arms are extended. Lower slowly back to ear height.",
     form_cues: ["Brace your core to prevent lumbar hyperextension", "Press smoothly without clanking dumbbells together", "Control the lowering phase to shoulder level"]
@@ -270,6 +283,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-curl-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-curl-front.mp4",
     instructions: "Hold dumbbells at your sides. As you curl the weights upward, rotate your forearms so your palms face your shoulders at the top. Squeeze firmly, then reverse the motion under control.",
     form_cues: ["Supinate your wrists as you curl up for complete bicep contraction", "Keep elbows pinned to your sides", "Avoid swinging or leaning sideways"]
@@ -285,6 +299,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-seated-overhead-tricep-extension-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-seated-overhead-tricep-extension-front.mp4",
     instructions: "Hold one dumbbell with both hands overhead, palms supporting the upper plate. Keeping your elbows pointed forward and close to your head, lower the weight behind your head by bending your elbows. Extend your arms to press the weight back overhead.",
     form_cues: ["Keep your elbows pointing forward, not flaring out", "Lower until forearms pass 90 degrees", "Press through your triceps back to the top"]
@@ -300,6 +315,7 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "15 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-calf-raise-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-calf-raise-front.mp4",
     instructions: "Hold a dumbbell in each hand at your sides. Rise up onto the balls of your feet, contracting your calf muscles at the peak. Lower slowly back down until your heels touch the floor.",
     form_cues: ["Rise straight up onto your big toes", "Hold the peak contraction for 1 second", "Lower slowly under strict control"]
@@ -351,6 +367,7 @@ export const EXERCISES = [
     routine_type: "gym_beginner",
     sets: 4,
     reps: "12 reps",
+    video: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-overhead-press-front.mp4",
     videoUrl: "https://media.musclewiki.com/media/uploads/videos/branded/male-Dumbbells-dumbbell-overhead-press-front.mp4",
     instructions: "Hold a pair of dumbbells at shoulder level with wrists straight. Press the weights overhead in a smooth arc until your arms are extended. Lower slowly back to ear height.",
     form_cues: ["Brace your core to prevent lumbar hyperextension", "Press smoothly without clanking dumbbells together", "Control the lowering phase to shoulder level"]
@@ -765,7 +782,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-dumbbell-floor-press.png",
+    video: "/exercises/int-dumbbell-floor-press.mov",
+    videoUrl: "/exercises/int-dumbbell-floor-press.mov",
     instructions: "Lie flat on the floor with knees bent and feet flat. Hold a pair of dumbbells at chest level with upper arms resting on the floor at a 45-degree angle. Press both dumbbells straight up over your chest until arms extend, then lower under control until triceps touch the floor.",
     form_cues: ["Floor naturally protects shoulders from excessive hyperextension", "Press in a smooth slight inward arc over mid-chest", "Pause for half a second as triceps touch the ground"]
   },
@@ -782,7 +800,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-dumbbell-squeeze-press.png",
+    video: "/exercises/int-dumbbell-squeeze-press.mov",
+    videoUrl: "/exercises/int-dumbbell-squeeze-press.mov",
     instructions: "Lie on the floor holding dumbbells with a neutral grip (palms facing each other). Press the dumbbell plates firmly against each other throughout the entire movement. Lower to your sternum while maintaining inward pressure, then press straight up.",
     form_cues: ["Keep dumbbells pressed tightly together for maximum inner pec recruitment", "Maintain inward squeezing tension continuously", "Lower slowly without releasing contact between dumbbells"]
   },
@@ -799,7 +818,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "8–12 reps",
-    imageUrl: "/exercises/int-dumbbell-shoulder-press.png",
+    video: "/exercises/int-dumbbell-shoulder-press.mov",
+    videoUrl: "/exercises/int-dumbbell-shoulder-press.mov",
     instructions: "Stand tall or sit upright with dumbbells at shoulder height, wrists straight. Press the dumbbells overhead in a smooth converging arc until arms are extended overhead. Lower under strict control to ear level.",
     form_cues: ["Brace your abdominals and glutes to prevent lumbar hyperextension", "Do not clank the dumbbells together at lockout", "Lower dumbbells slowly to shoulder depth"]
   },
@@ -815,7 +835,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "12–15 reps",
-    imageUrl: "/exercises/int-dumbbell-lateral-raise.png",
+    video: "/exercises/int-dumbbell-lateral-raise.mov",
+    videoUrl: "/exercises/int-dumbbell-lateral-raise.mov",
     instructions: "Stand with dumbbells hanging at your sides with a slight elbow bend. Raise your arms out to the sides in the scapular plane until parallel to the floor. Pause briefly at the top and lower smoothly.",
     form_cues: ["Lead with your elbows rather than wrists", "Keep your shoulders down away from your ears to avoid trap dominance", "Lower under control without swinging your hips"]
   },
@@ -831,7 +852,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-overhead-triceps-extension.png",
+    video: "/exercises/int-overhead-triceps-extension.mov",
+    videoUrl: "/exercises/int-overhead-triceps-extension.mov",
     instructions: "Hold one dumbbell with both hands overhead, cupping the top dumbbell plate. Keep your upper arms stationary by your ears and bend your elbows to lower the weight behind your head. Extend through your triceps to press back to top extension.",
     form_cues: ["Keep your elbows pointing forward without flaring wide", "Lower until forearms pass 90 degrees for a deep tricep stretch", "Drive through triceps without arching lower back"]
   },
@@ -847,7 +869,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 2,
     reps: "12–15 reps",
-    imageUrl: "/exercises/int-dumbbell-triceps-kickback.png",
+    video: "/exercises/int-dumbbell-triceps-kickback.mov",
+    videoUrl: "/exercises/int-dumbbell-triceps-kickback.mov",
     instructions: "Hinge forward at the hips with a flat back and knees soft. Bring your upper arms parallel to your torso and pin elbows by your ribs. Extend your forearms backwards until arms are straight, squeeze triceps, and lower slowly.",
     form_cues: ["Lock your upper arms in place; only forearms move", "Hold the peak lockout contraction for a full second", "Avoid swinging or dropping the elbow height"]
   },
@@ -866,7 +889,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-goblet-squat.png",
+    video: "/exercises/int-goblet-squat.mov",
+    videoUrl: "/exercises/int-goblet-squat.mov",
     instructions: "Hold a dumbbell vertically against your sternum with both hands cupping the upper plate. Stand shoulder-width apart, descend into a deep squat between your knees until thighs reach parallel, then drive through midfoot to stand.",
     form_cues: ["Keep chest tall and dumbbell pinned against sternum", "Knees track outward over second toes", "Drive up through heels and squeeze glutes at the top"]
   },
@@ -883,7 +907,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-dumbbell-romanian-deadlift.png",
+    video: "/exercises/int-dumbbell-romanian-deadlift.mov",
+    videoUrl: "/exercises/int-dumbbell-romanian-deadlift.mov",
     instructions: "Stand tall holding dumbbells against your front thighs. Keeping knees soft, push hips straight back and glide dumbbells along your shins with a flat spine until hamstrings stretch deeply. Drive hips forward to stand.",
     form_cues: ["Push your hips backwards towards the wall", "Keep dumbbells tight against your legs throughout", "Maintain rigid flat back without spinal flexion"]
   },
@@ -900,7 +925,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "10 each leg",
-    imageUrl: "/exercises/int-dumbbell-reverse-lunge.png",
+    video: "/exercises/int-dumbbell-reverse-lunge.mov",
+    videoUrl: "/exercises/int-dumbbell-reverse-lunge.mov",
     instructions: "Hold dumbbells at your sides. Step one leg straight backward and lower your hips until both knees form roughly 90-degree angles. Drive through the front heel to return to standing, then repeat on opposite side.",
     form_cues: ["Keep your torso upright and front knee directly over ankle", "Lower rear knee gently until hovering just above floor", "Drive up explosively through front heel"]
   },
@@ -916,7 +942,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "15–20 reps",
-    imageUrl: "/exercises/int-dumbbell-calf-raise.png",
+    video: "/exercises/int-dumbbell-calf-raise.mov",
+    videoUrl: "/exercises/int-dumbbell-calf-raise.mov",
     instructions: "Stand tall with feet hip-width holding dumbbells at your sides. Press through the balls of your feet to raise your heels as high as possible. Pause and peak squeeze your calves for 1 second, then lower slowly.",
     form_cues: ["Rise straight up without leaning forward", "Hold the peak contraction for 1 full second", "Lower heels under control to full floor contact"]
   },
@@ -932,7 +959,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "12–15 reps",
-    imageUrl: "/exercises/int-dumbbell-crunch.png",
+    video: "/exercises/int-dumbbell-crunch.mov",
+    videoUrl: "/exercises/int-dumbbell-crunch.mov",
     instructions: "Lie on your back with knees bent and feet flat. Hold a light dumbbell across your upper chest. Flex your abdominal muscles to raise your shoulder blades off the floor, squeeze at top, and lower with control.",
     form_cues: ["Draw ribcage down toward pelvis rather than lifting neck", "Exhale forcefully on upward crunch", "Keep lower back anchored flat on the floor"]
   },
@@ -948,7 +976,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "12–15 reps",
-    imageUrl: "/exercises/int-reverse-crunch.png",
+    video: "/exercises/int-reverse-crunch.mov",
+    videoUrl: "/exercises/int-reverse-crunch.mov",
     instructions: "Lie flat on your back with arms at your sides and legs bent at 90 degrees. Contract your lower abs to curl your hips up off the floor toward your chest. Pause briefly and lower hips slowly.",
     form_cues: ["Initiate movement strictly with lower abdominals", "Avoid using momentum or swinging your legs", "Control the lowering phase without slamming hips down"]
   },
@@ -964,7 +993,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "30–45 sec",
-    imageUrl: "/exercises/int-plank.png",
+    video: "/exercises/int-plank.mov",
+    videoUrl: "/exercises/int-plank.mov",
     instructions: "Place forearms on the floor with elbows directly under shoulders. Extend your legs straight back onto your toes. Maintain a rigid straight line from your head to your heels while bracing your core.",
     form_cues: ["Squeeze glutes and abdominals as hard as possible", "Do not let lower back sag or hips hike into the air", "Keep neck neutral with gaze directed at the floor"]
   },
@@ -983,7 +1013,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-bent-over-dumbbell-row.png",
+    video: "/exercises/int-bent-over-dumbbell-row.mov",
+    videoUrl: "/exercises/int-bent-over-dumbbell-row.mov",
     instructions: "Stand with feet shoulder-width, hinge at your hips until torso is roughly 45 degrees to the floor. Hold dumbbells with arms extended downward. Row the dumbbells toward your lower ribs, squeezing shoulder blades together.",
     form_cues: ["Keep spine flat and core braced throughout", "Pull elbows straight back toward your hips", "Pause and contract back muscles hard at peak elevation"]
   },
@@ -1000,7 +1031,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "10–12 each side",
-    imageUrl: "/exercises/int-single-arm-dumbbell-row.png",
+    video: "/exercises/int-single-arm-dumbbell-row.mov",
+    videoUrl: "/exercises/int-single-arm-dumbbell-row.mov",
     instructions: "Support one hand and knee on a sturdy chair or bench, torso flat and parallel to floor. Hold a dumbbell in opposite hand. Pull dumbbell upward toward your hip crease, squeezing your lat at top, then lower smoothly.",
     form_cues: ["Keep torso stationary without rotating shoulders", "Drive your elbow up and back towards your pocket", "Get a full lat stretch at bottom extension"]
   },
@@ -1017,7 +1049,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "12–15 reps",
-    imageUrl: "/exercises/int-dumbbell-reverse-fly.png",
+    video: "/exercises/int-dumbbell-reverse-fly.mov",
+    videoUrl: "/exercises/int-dumbbell-reverse-fly.mov",
     instructions: "Hinge forward at the hips with a flat back and a slight bend in your knees. Holding light dumbbells with elbows slightly bent, raise your arms out to the sides until elbows align with shoulders. Squeeze rear delts and lower slowly.",
     form_cues: ["Lead the movement with elbows pulling wide", "Do not shrug shoulders up toward your ears", "Focus strictly on rear deltoids and rhomboid contraction"]
   },
@@ -1034,7 +1067,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 2,
     reps: "12 reps",
-    imageUrl: "/exercises/int-dumbbell-pullover.png",
+    video: "/exercises/int-dumbbell-pullover.mov",
+    videoUrl: "/exercises/int-dumbbell-pullover.mov",
     instructions: "Lie on the floor or bench with knees bent. Hold one dumbbell with both hands cupping the upper plate directly above your chest. Keeping arms slightly bent, reach the dumbbell back over your head until you feel a deep lat stretch, then pull through lats to return.",
     form_cues: ["Maintain a slight fixed elbow bend throughout", "Feel the lats and serratus stretch overhead", "Pull with your back muscles to bring weight back over chest"]
   },
@@ -1050,7 +1084,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-dumbbell-biceps-curl.png",
+    video: "/exercises/int-dumbbell-biceps-curl.mov",
+    videoUrl: "/exercises/int-dumbbell-biceps-curl.mov",
     instructions: "Stand tall with dumbbells hanging at your sides. Curl the dumbbells upward while supinating your forearms so palms face your shoulders at top. Squeeze biceps hard for 1 second, then lower under strict control.",
     form_cues: ["Pin your elbows against your ribs throughout the curl", "Supinate wrists fully at peak height", "Resist the descent over 2-3 seconds"]
   },
@@ -1067,7 +1102,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "10–12 reps",
-    imageUrl: "/exercises/int-dumbbell-hammer-curl.png",
+    video: "/exercises/int-dumbbell-hammer-curl.mov",
+    videoUrl: "/exercises/int-dumbbell-hammer-curl.mov",
     instructions: "Stand upright holding dumbbells with a neutral grip (palms facing each other). Keeping upper arms locked at your sides, curl the dumbbells upward to shoulder height. Squeeze brachialis and forearms, then lower smoothly.",
     form_cues: ["Maintain strict neutral palm orientation throughout", "Keep elbows stationary without swinging forward", "Control the eccentric descent for maximum forearm overload"]
   }
@@ -1088,7 +1124,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "10–15 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-standard-push-up.png",
+    video: "/exercises/push-up.mov",
+    videoUrl: "/exercises/push-up.mov",
     instructions: "Set up in a standard high plank with hands slightly wider than shoulder-width and body forming a straight line. Lower chest until it nearly touches the floor, keep elbows at 45 degrees, and press forcefully back up to full extension.",
     form_cues: ["Maintain rigid straight line from head to heels", "Brace core and squeeze glutes", "Lower until chest is an inch off the floor"]
   },
@@ -1105,7 +1142,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "8–12 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-pike-push-up.png",
+    video: "/exercises/pike-push-up.mov",
+    videoUrl: "/exercises/pike-push-up.mov",
     instructions: "Start in a push-up position, then walk your feet forward and hike hips high into an inverted V (pike) position. Lower the crown of your head diagonally forward toward the floor between your hands, then press back through your shoulders.",
     form_cues: ["Keep hips high and back flat", "Lower head forward of hands in a tripod shape", "Drive up through palms targeting front delts"]
   },
@@ -1122,8 +1160,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "8–12 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/close-grip-push-up.jpg",
-    image: "/exercises/close-grip-push-up.jpg",
+    video: "/exercises/close-grip-push-up.mov",
+    videoUrl: "/exercises/close-grip-push-up.mov",
     instructions: "Start in a high plank position with your hands placed inside shoulder-width, thumbs and index fingers close together. Keep your elbows tucked tight against your ribs as you lower your chest towards the floor, then push forcefully back up through the palms focusing on tricep extension.",
     form_cues: ["Keep elbows tucked tight against torso, not flared out", "Brace core and glutes to keep hips level", "Push through palms to full elbow extension"]
   },
@@ -1140,7 +1178,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "15 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-bodyweight-squat.png",
+    video: "/exercises/bw-squat.mov",
+    videoUrl: "/exercises/bw-squat.mov",
     instructions: "Stand tall with feet shoulder-width apart, arms extended forward for balance. Hinge back at your hips and bend your knees to squat down until your thighs are parallel to the ground. Drive through your heels to return to standing.",
     form_cues: ["Keep chest proud and spine neutral", "Track knees in line with your toes", "Push through midfoot and squeeze glutes at the top"]
   },
@@ -1157,8 +1196,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "10 reps each leg",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/reverse-lunge.jpg",
-    image: "/exercises/reverse-lunge.jpg",
+    video: "/exercises/reverse-lunge.mov",
+    videoUrl: "/exercises/reverse-lunge.mov",
     instructions: "Stand tall with feet hip-width apart and hands on hips or at chest. Step backward with one leg and lower your hips until both knees form approximately 90-degree angles. Press through the front heel to return to standing, then repeat on the opposite leg.",
     form_cues: ["Keep torso upright and chest open throughout", "Lower back knee until it hovers just an inch off the floor", "Drive through the front heel and midfoot to return to start"]
   },
@@ -1174,7 +1213,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "15–20 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-standing-calf-raise.png",
+    video: "/exercises/standing-calf-raise.mov",
+    videoUrl: "/exercises/standing-calf-raise.mov",
     instructions: "Stand upright with feet hip-width apart on a flat surface. Press evenly through the balls of your feet to raise your heels as high as possible. Pause and peak squeeze your calves for 1 full second, then lower slowly.",
     form_cues: ["Rise straight up without leaning forward", "Hold the peak contraction for 1 full second", "Lower heels down under control"]
   },
@@ -1190,7 +1230,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "15 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-crunches.png",
+    video: "/exercises/crunches.mov",
+    videoUrl: "/exercises/crunches.mov",
     instructions: "Lie on your back with knees bent and feet flat on the mat. Place your fingertips lightly behind your ears or head. Flex your abdominal muscles to raise your shoulder blades off the floor, exhale at the apex, then lower under control.",
     form_cues: ["Do not yank your neck or pull with your hands", "Focus on shortening the distance between ribs and hips", "Keep movement slow and deliberate"]
   },
@@ -1206,7 +1247,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "12 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-reverse-crunches.png",
+    video: "/exercises/reverse-crunches.mov",
+    videoUrl: "/exercises/reverse-crunches.mov",
     instructions: "Lie flat on your back with hands pressed into the floor beside you and knees bent at 90 degrees. Contract your lower abdominals to curl your pelvis off the floor, bringing knees toward your chest. Lower slowly without arching your lower back.",
     form_cues: ["Initiate movement strictly with lower abs", "Avoid swinging legs or using momentum", "Control the descent back to starting position"]
   },
@@ -1223,8 +1265,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "60 seconds",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/plank.jpg",
-    image: "/exercises/plank.jpg",
+    video: "/exercises/plank.mov",
+    videoUrl: "/exercises/plank.mov",
     instructions: "Place forearms on the ground with elbows aligned directly under shoulders. Extend legs straight back with toes tucked. Engage your core, glutes, and quadriceps to form a rigid, flat line from the crown of your head down to your heels. Hold steadily for 60 seconds.",
     form_cues: ["Keep hips level with shoulders — do not let hips sag or pike up", "Actively press forearms into floor to dome upper back slightly", "Maintain steady abdominal breathing throughout the hold"]
   },
@@ -1241,8 +1283,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "45–60 seconds",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/hollow-body-hold.jpg",
-    image: "/exercises/hollow-body-hold.jpg",
+    video: "/exercises/hollow-body-hold.mov",
+    videoUrl: "/exercises/hollow-body-hold.mov",
     instructions: "Lie flat on your back with arms extended overhead and legs straight. Press your lower back completely flat against the mat with no gap. Lift your shoulder blades and legs 2–3 inches off the ground, pointing toes forward to create a shallow banana shape. Hold for 45–60 seconds.",
     form_cues: ["Ensure lower back is firmly glued to the floor with zero arch", "Brace your deep transverse abdominis throughout the hold", "Breathe smoothly while keeping toes and fingers actively pointed"]
   },
@@ -1259,7 +1301,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "15 reps",
     rest: "60-90 seconds",
-    imageUrl: "/exercises/int-bw-glute-bridge.png",
+    video: "/exercises/glute-bridge.mov",
+    videoUrl: "/exercises/glute-bridge.mov",
     instructions: "Lie on your back with knees bent and feet flat hip-width apart. Drive through your heels to lift your hips toward the ceiling until knees, hips, and shoulders form a straight line. Squeeze glutes firmly at top, then lower smoothly.",
     form_cues: ["Drive directly through heels", "Squeeze glutes at peak height without hyperextending lumbar spine", "Lower under full muscular control"]
   }
