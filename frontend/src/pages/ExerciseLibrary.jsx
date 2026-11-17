@@ -270,9 +270,6 @@ export default function ExerciseLibrary() {
                             preload="metadata"
                           >
                             <source src={e.videoUrl || e.video} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
-                            {(e.videoUrl || e.video)?.startsWith("/exercises/") && !(e.videoUrl || e.video)?.startsWith("/exercises/videos/") && (
-                              <source src={(e.videoUrl || e.video).replace("/exercises/", "/exercises/videos/")} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
-                            )}
                             <source src={e.videoUrl || e.video} type="video/mp4" />
                           </video>
                         ) : (
@@ -331,9 +328,6 @@ export default function ExerciseLibrary() {
                             controls
                           >
                             <source src={e.videoUrl || e.video} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
-                            {(e.videoUrl || e.video)?.startsWith("/exercises/") && !(e.videoUrl || e.video)?.startsWith("/exercises/videos/") && (
-                              <source src={(e.videoUrl || e.video).replace("/exercises/", "/exercises/videos/")} type={(e.videoUrl || e.video)?.endsWith(".mov") ? "video/quicktime" : "video/mp4"} />
-                            )}
                             <source src={e.videoUrl || e.video} type="video/mp4" />
                             Your browser does not support HTML5 video.
                           </video>
