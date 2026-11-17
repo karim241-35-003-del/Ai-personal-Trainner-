@@ -367,8 +367,8 @@ export const EXERCISES = [
     routine_type: "gym_beginner",
     sets: 4,
     reps: "12 reps",
-    video: "/video/dumbbell-shoulder-press.mov",
-    videoUrl: "/video/dumbbell-shoulder-press.mov",
+    video: "/video/machine-shoulder-press.mov",
+    videoUrl: "/video/machine-shoulder-press.mov",
     instructions: "Hold a pair of dumbbells at shoulder level with wrists straight. Press the weights overhead in a smooth arc until your arms are extended. Lower slowly back to ear height.",
     form_cues: ["Brace your core to prevent lumbar hyperextension", "Press smoothly without clanking dumbbells together", "Control the lowering phase to shoulder level"]
   },
