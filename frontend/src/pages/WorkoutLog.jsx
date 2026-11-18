@@ -49,6 +49,7 @@ export default function WorkoutLog() {
   const [entries, setEntries] = useState([]);
   const [bodyPart, setBodyPart] = useState("upper");
   const [muscleFilter, setMuscleFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [historyFilter, setHistoryFilter] = useState("all");
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
@@ -101,10 +102,20 @@ export default function WorkoutLog() {
     });
   }, [partExercises]);
 
+  const trimmedSearch = searchQuery.trim().toLowerCase();
+
   const filteredExercises = useMemo(() => {
+    if (trimmedSearch) {
+      return exercises.filter(
+        (ex) =>
+          (ex.name || "").toLowerCase().includes(trimmedSearch) ||
+          (ex.muscle_group || "").toLowerCase().includes(trimmedSearch) ||
+          getBodyPart(ex).includes(trimmedSearch)
+      );
+    }
     if (muscleFilter === "all") return partExercises;
     return partExercises.filter((ex) => ex.muscle_group === muscleFilter);
-  }, [partExercises, muscleFilter]);
+  }, [exercises, partExercises, muscleFilter, trimmedSearch]);
 
   const groupedExercises = useMemo(() => {
     const groups = [];
@@ -119,6 +130,7 @@ export default function WorkoutLog() {
 
   const selectBodyPart = (nextPart) => {
     setSaved("");
+    setSearchQuery("");
     setBodyPart(nextPart);
     setMuscleFilter("all");
     const nextList = nextPart === "upper" ? upperExercises : lowerExercises;
@@ -127,10 +139,30 @@ export default function WorkoutLog() {
 
   const selectMuscle = (muscle) => {
     setSaved("");
+    setSearchQuery("");
     setMuscleFilter(muscle);
     const nextList = muscle === "all"
       ? partExercises
       : partExercises.filter((ex) => ex.muscle_group === muscle);
+    if (!nextList.some((ex) => ex.id === form.exercise_id)) {
+      setForm((f) => ({ ...f, exercise_id: nextList[0]?.id ?? "" }));
+    }
+  };
+
+  const handleSearchChange = (value) => {
+    setSaved("");
+    setSearchQuery(value);
+    const q = value.trim().toLowerCase();
+    const nextList = q
+      ? exercises.filter(
+          (ex) =>
+            (ex.name || "").toLowerCase().includes(q) ||
+            (ex.muscle_group || "").toLowerCase().includes(q) ||
+            getBodyPart(ex).includes(q)
+        )
+      : muscleFilter === "all"
+        ? partExercises
+        : partExercises.filter((ex) => ex.muscle_group === muscleFilter);
     if (!nextList.some((ex) => ex.id === form.exercise_id)) {
       setForm((f) => ({ ...f, exercise_id: nextList[0]?.id ?? "" }));
     }
@@ -273,10 +305,43 @@ export default function WorkoutLog() {
         )}
 
         <span className="wl-section-label">2. Exercise &amp; Set Details</span>
+        <div className="wl-search-box">
+          <label className="wl-search-label" htmlFor="wl-exercise-search">Search Exercise</label>
+          <div className="wl-search-input-wrap">
+            <input
+              id="wl-exercise-search"
+              type="text"
+              className="wl-search-input"
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Search exercise by name or muscle (e.g. Squat, Curl, Press)..."
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                className="wl-search-clear"
+                onClick={() => handleSearchChange("")}
+                aria-label="Clear search"
+              >
+                Clear
+              </button>
+            )}
+          </div>
+          {trimmedSearch && (
+            <span className="wl-search-status">
+              {filteredExercises.length > 0
+                ? `Found ${filteredExercises.length} matching exercise${filteredExercises.length === 1 ? "" : "s"}`
+                : `No exercises found for "${searchQuery.trim()}"`}
+            </span>
+          )}
+        </div>
+
         <div className="wl-grid">
           <label>Exercise
             <select name="exercise_id" value={form.exercise_id} onChange={change}>
-              {muscleFilter === "all" && groupedExercises.length > 1 ? (
+              {filteredExercises.length === 0 ? (
+                <option value="">No matching exercises found</option>
+              ) : !trimmedSearch && muscleFilter === "all" && groupedExercises.length > 1 ? (
                 groupedExercises.map((g) => (
                   <optgroup key={g.muscle} label={cap(g.muscle)}>
                     {g.items.map((x) => (
@@ -286,7 +351,9 @@ export default function WorkoutLog() {
                 ))
               ) : (
                 filteredExercises.map((x) => (
-                  <option key={x.id} value={x.id}>{x.name}</option>
+                  <option key={x.id} value={x.id}>
+                    {trimmedSearch ? `${x.name} (${cap(x.muscle_group)})` : x.name}
+                  </option>
                 ))
               )}
             </select>
@@ -296,7 +363,7 @@ export default function WorkoutLog() {
                   {getBodyPart(selectedExercise) === "upper" ? "Upper Body" : "Lower Body"}
                 </span>
                 <span className="wl-meta-tag">{selectedExercise.muscle_group}</span>
-                {selectedExercise.equipment.map((eq) => (
+                {(selectedExercise.equipment || []).map((eq) => (
                   <span className="wl-meta-tag" key={eq}>{eqLabel(eq)}</span>
                 ))}
               </div>
