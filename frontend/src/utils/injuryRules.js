@@ -574,6 +574,11 @@ export const EXERCISE_SAFETY = {
     reason: "Bodyweight squats place moderate shear and compressive loading on the patellofemoral joint.",
     alternatives: ["Glute bridge", "Standing calf raises", "Wall push-ups"],
   },
+  "home-sumo-squat": {
+    riskAreas: ["knee", "hip", "groin"],
+    reason: "Wide-stance squats place increased rotational torque on the hips and mechanical stretch on the adductors.",
+    alternatives: ["Glute bridge", "Standing calf raises", "Bodyweight squat with neutral stance"],
+  },
   "knee-plank": {
     riskAreas: ["shoulder", "elbow", "wrist", "knee"],
     reason: "Forearm plank on knees bears core weight directly through the shoulder girdle and kneecaps.",
