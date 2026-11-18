@@ -1110,8 +1110,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "10–15 reps",
     rest: "60-90 seconds",
-    video: "/video/push-up.mov",
-    videoUrl: "/video/push-up.mov",
+    video: "/video/standard-push-up.mov",
+    videoUrl: "/video/standard-push-up.mov",
     instructions: "Set up in a standard high plank with hands slightly wider than shoulder-width and body forming a straight line. Lower chest until it nearly touches the floor, keep elbows at 45 degrees, and press forcefully back up to full extension.",
     form_cues: ["Maintain rigid straight line from head to heels", "Brace core and squeeze glutes", "Lower until chest is an inch off the floor"]
   },
@@ -1287,8 +1287,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "15 reps",
     rest: "60-90 seconds",
-    video: "/video/glute-bridge.mov",
-    videoUrl: "/video/glute-bridge.mov",
+    video: "/video/glute-bridge.mp4",
+    videoUrl: "/video/glute-bridge.mp4",
     instructions: "Lie on your back with knees bent and feet flat hip-width apart. Drive through your heels to lift your hips toward the ceiling until knees, hips, and shoulders form a straight line. Squeeze glutes firmly at top, then lower smoothly.",
     form_cues: ["Drive directly through heels", "Squeeze glutes at peak height without hyperextending lumbar spine", "Lower under full muscular control"]
   }
