@@ -579,6 +579,11 @@ export const EXERCISE_SAFETY = {
     reason: "Wide-stance squats place increased rotational torque on the hips and mechanical stretch on the adductors.",
     alternatives: ["Glute bridge", "Standing calf raises", "Bodyweight squat with neutral stance"],
   },
+  "home-int-bw-sumo-squat": {
+    riskAreas: ["knee", "hip", "groin"],
+    reason: "Wide-stance squats place increased rotational torque on the hips and mechanical stretch on the adductors.",
+    alternatives: ["Glute bridge", "Standing calf raises", "Bodyweight squat with neutral stance"],
+  },
   "knee-plank": {
     riskAreas: ["shoulder", "elbow", "wrist", "knee"],
     reason: "Forearm plank on knees bears core weight directly through the shoulder girdle and kneecaps.",

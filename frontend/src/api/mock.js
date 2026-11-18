@@ -1170,9 +1170,9 @@ export const EXERCISES = [
     form_cues: ["Keep chest proud and spine neutral", "Track knees in line with your toes", "Push through midfoot and squeeze glutes at the top"]
   },
   {
-    id: "home-int-bw-reverse-lunge",
-    name: "Reverse Lunge",
-    muscle_id: "quads",
+    id: "home-int-bw-sumo-squat",
+    name: "Sumo Squat",
+    muscle_id: "inner thighs",
     muscle_group: "legs",
     secondary_muscles: ["glutes", "hamstrings"],
     equipment: ["bodyweight"],
@@ -1180,12 +1180,12 @@ export const EXERCISES = [
     location: "home",
     routine_type: "home_bodyweight_intermediate",
     sets: 3,
-    reps: "10 reps each leg",
+    reps: "12–15 reps",
     rest: "60-90 seconds",
-    video: "/video/reverse-lunge.mov",
-    videoUrl: "/video/reverse-lunge.mov",
-    instructions: "Stand tall with feet hip-width apart and hands on hips or at chest. Step backward with one leg and lower your hips until both knees form approximately 90-degree angles. Press through the front heel to return to standing, then repeat on the opposite leg.",
-    form_cues: ["Keep torso upright and chest open throughout", "Lower back knee until it hovers just an inch off the floor", "Drive through the front heel and midfoot to return to start"]
+    video: "/video/sumo-squat.mp4",
+    videoUrl: "/video/sumo-squat.mp4",
+    instructions: "Stand with feet wider than shoulder-width apart, toes turned outward at roughly 45 degrees. Hinge back at your hips and bend your knees to squat downward until your thighs are parallel to the floor, keeping your torso upright. Drive firmly through your heels to return to standing, squeezing your inner thighs and glutes at the top.",
+    form_cues: ["Maintain an upright torso and proud chest throughout", "Ensure knees track outward over your toes without caving in", "Drive through your heels and squeeze inner thighs and glutes at the top"]
   },
   {
     id: "home-int-bw-standing-calf-raise",
@@ -1269,8 +1269,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "45–60 seconds",
     rest: "60-90 seconds",
-    video: "/video/hollow-body-hold.mov",
-    videoUrl: "/video/hollow-body-hold.mov",
+    video: "/video/hollow-body-hold.mp4",
+    videoUrl: "/video/hollow-body-hold.mp4",
     instructions: "Lie flat on your back with arms extended overhead and legs straight. Press your lower back completely flat against the mat with no gap. Lift your shoulder blades and legs 2–3 inches off the ground, pointing toes forward to create a shallow banana shape. Hold for 45–60 seconds.",
     form_cues: ["Ensure lower back is firmly glued to the floor with zero arch", "Brace your deep transverse abdominis throughout the hold", "Breathe smoothly while keeping toes and fingers actively pointed"]
   },
