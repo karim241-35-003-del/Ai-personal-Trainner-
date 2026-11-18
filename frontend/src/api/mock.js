@@ -115,8 +115,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "12 reps",
-    video: "/video/glute-bridge.mov",
-    videoUrl: "/video/glute-bridge.mov",
+    video: "/video/glute-bridge.mp4",
+    videoUrl: "/video/glute-bridge.mp4",
     instructions: "Lie on your back with knees bent and feet flat on the floor hip-width apart. Drive through your heels to lift your hips toward the ceiling until your body forms a straight line from shoulders to knees. Squeeze glutes at the top, then lower slowly.",
     form_cues: ["Squeeze your glutes firmly at peak height", "Avoid overarching your lumbar spine", "Keep feet grounded flat throughout"]
   },
@@ -149,8 +149,8 @@ export const EXERCISES = [
     routine_type: "home_bodyweight_beginner",
     sets: 2,
     reps: "15 reps",
-    video: "/video/standing-calf-raise.mov",
-    videoUrl: "/video/standing-calf-raise.mov",
+    video: "/video/bw-standing-calf-raise.mp4",
+    videoUrl: "/video/bw-standing-calf-raise.mp4",
     instructions: "Stand upright with feet hip-width apart on a flat floor. Slowly rise up onto the balls of your feet as high as possible, lifting your heels off the ground. Squeeze your calves at the apex, then lower slowly.",
     form_cues: ["Rise straight up without leaning forward", "Hold the peak contraction for 1 full second", "Lower heels down under control"]
   },
@@ -1199,8 +1199,8 @@ export const EXERCISES = [
     sets: 3,
     reps: "15–20 reps",
     rest: "60-90 seconds",
-    video: "/video/standing-calf-raise.mov",
-    videoUrl: "/video/standing-calf-raise.mov",
+    video: "/video/bw-standing-calf-raise.mp4",
+    videoUrl: "/video/bw-standing-calf-raise.mp4",
     instructions: "Stand upright with feet hip-width apart on a flat surface. Press evenly through the balls of your feet to raise your heels as high as possible. Pause and peak squeeze your calves for 1 full second, then lower slowly.",
     form_cues: ["Rise straight up without leaning forward", "Hold the peak contraction for 1 full second", "Lower heels down under control"]
   },
