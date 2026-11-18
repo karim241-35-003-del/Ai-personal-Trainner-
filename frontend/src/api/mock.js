@@ -1070,8 +1070,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "10–12 reps",
-    video: "/video/int-dumbbell-biceps-curl.mov",
-    videoUrl: "/video/int-dumbbell-biceps-curl.mov",
+    video: "/video/dumbbell-curl.mov",
+    videoUrl: "/video/dumbbell-curl.mov",
     instructions: "Stand tall with dumbbells hanging at your sides. Curl the dumbbells upward while supinating your forearms so palms face your shoulders at top. Squeeze biceps hard for 1 second, then lower under strict control.",
     form_cues: ["Pin your elbows against your ribs throughout the curl", "Supinate wrists fully at peak height", "Resist the descent over 2-3 seconds"]
   },
@@ -1088,8 +1088,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "10–12 reps",
-    video: "/video/int-dumbbell-hammer-curl.mov",
-    videoUrl: "/video/int-dumbbell-hammer-curl.mov",
+    video: "/video/hammer-curl.mov",
+    videoUrl: "/video/hammer-curl.mov",
     instructions: "Stand upright holding dumbbells with a neutral grip (palms facing each other). Keeping upper arms locked at your sides, curl the dumbbells upward to shoulder height. Squeeze brachialis and forearms, then lower smoothly.",
     form_cues: ["Maintain strict neutral palm orientation throughout", "Keep elbows stationary without swinging forward", "Control the eccentric descent for maximum forearm overload"]
   }
