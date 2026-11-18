@@ -54,6 +54,7 @@ export default function FormCheck() {
   const [exercises, setExercises] = useState([]);
   const [bodyPart, setBodyPart] = useState("upper");
   const [muscleFilter, setMuscleFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [exerciseId, setExerciseId] = useState("");
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState("");
@@ -111,10 +112,20 @@ export default function FormCheck() {
     });
   }, [partExercises]);
 
+  const trimmedSearch = searchQuery.trim().toLowerCase();
+
   const filteredExercises = useMemo(() => {
+    if (trimmedSearch) {
+      return exercises.filter(
+        (ex) =>
+          (ex.name || "").toLowerCase().includes(trimmedSearch) ||
+          (ex.muscle_group || "").toLowerCase().includes(trimmedSearch) ||
+          getBodyPart(ex).includes(trimmedSearch)
+      );
+    }
     if (muscleFilter === "all") return partExercises;
     return partExercises.filter((ex) => ex.muscle_group === muscleFilter);
-  }, [partExercises, muscleFilter]);
+  }, [exercises, partExercises, muscleFilter, trimmedSearch]);
 
   const groupedExercises = useMemo(() => {
     const groups = [];
@@ -130,6 +141,7 @@ export default function FormCheck() {
   const selectBodyPart = (nextPart) => {
     setError("");
     setResult(null);
+    setSearchQuery("");
     setBodyPart(nextPart);
     setMuscleFilter("all");
     const nextList = nextPart === "upper" ? upperExercises : lowerExercises;
@@ -139,10 +151,31 @@ export default function FormCheck() {
   const selectMuscle = (muscle) => {
     setError("");
     setResult(null);
+    setSearchQuery("");
     setMuscleFilter(muscle);
     const nextList = muscle === "all"
       ? partExercises
       : partExercises.filter((ex) => ex.muscle_group === muscle);
+    if (!nextList.some((ex) => ex.id === exerciseId)) {
+      setExerciseId(nextList[0]?.id ?? "");
+    }
+  };
+
+  const handleSearchChange = (value) => {
+    setError("");
+    setResult(null);
+    setSearchQuery(value);
+    const q = value.trim().toLowerCase();
+    const nextList = q
+      ? exercises.filter(
+          (ex) =>
+            (ex.name || "").toLowerCase().includes(q) ||
+            (ex.muscle_group || "").toLowerCase().includes(q) ||
+            getBodyPart(ex).includes(q)
+        )
+      : muscleFilter === "all"
+        ? partExercises
+        : partExercises.filter((ex) => ex.muscle_group === muscleFilter);
     if (!nextList.some((ex) => ex.id === exerciseId)) {
       setExerciseId(nextList[0]?.id ?? "");
     }
@@ -275,12 +308,45 @@ export default function FormCheck() {
         )}
 
         <span className="fc-section-label">2. Choose Exercise &amp; Upload Photo</span>
+        <div className="fc-search-box">
+          <label className="fc-search-label" htmlFor="fc-exercise-search">Search Exercise</label>
+          <div className="fc-search-input-wrap">
+            <input
+              id="fc-exercise-search"
+              type="text"
+              className="fc-search-input"
+              value={searchQuery}
+              onChange={(e) => handleSearchChange(e.target.value)}
+              placeholder="Search exercise by name or muscle (e.g. Squat, Curl, Press)..."
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                className="fc-search-clear"
+                onClick={() => handleSearchChange("")}
+                aria-label="Clear search"
+              >
+                Clear
+              </button>
+            )}
+          </div>
+          {trimmedSearch && (
+            <span className="fc-search-status">
+              {filteredExercises.length > 0
+                ? `Found ${filteredExercises.length} matching exercise${filteredExercises.length === 1 ? "" : "s"}`
+                : `No exercises found for "${searchQuery.trim()}"`}
+            </span>
+          )}
+        </div>
+
         <label>Exercise
           <select
             value={exerciseId}
             onChange={(e) => { setExerciseId(e.target.value); setResult(null); setError(""); }}
           >
-            {muscleFilter === "all" && groupedExercises.length > 1 ? (
+            {filteredExercises.length === 0 ? (
+              <option value="">No matching exercises found</option>
+            ) : !trimmedSearch && muscleFilter === "all" && groupedExercises.length > 1 ? (
               groupedExercises.map((g) => (
                 <optgroup key={g.muscle} label={cap(g.muscle)}>
                   {g.items.map((x) => (
@@ -290,7 +356,9 @@ export default function FormCheck() {
               ))
             ) : (
               filteredExercises.map((x) => (
-                <option key={x.id} value={x.id}>{x.name}</option>
+                <option key={x.id} value={x.id}>
+                  {trimmedSearch ? `${x.name} (${cap(x.muscle_group)})` : x.name}
+                </option>
               ))
             )}
           </select>
