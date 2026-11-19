@@ -220,8 +220,8 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
-    video: "/video/dumbbell-one-arm-row.mov",
-    videoUrl: "/video/dumbbell-one-arm-row.mov",
+    video: "/video/db-one-arm-row.mp4",
+    videoUrl: "/video/db-one-arm-row.mp4",
     instructions: "Place one hand on a sturdy chair or bench, hinge forward at hips with a flat back. Hold a dumbbell in the opposite hand hanging down. Pull the dumbbell upward towards your hip pocket, squeezing your lat at the top, then lower smoothly.",
     form_cues: ["Keep your back flat and parallel to the floor", "Pull your elbow straight back toward your hip", "Avoid twisting your shoulders during the row"]
   },
@@ -1002,8 +1002,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "10–12 each side",
-    video: "/video/int-single-arm-dumbbell-row.mov",
-    videoUrl: "/video/int-single-arm-dumbbell-row.mov",
+    video: "/video/db-one-arm-row.mp4",
+    videoUrl: "/video/db-one-arm-row.mp4",
     instructions: "Support one hand and knee on a sturdy chair or bench, torso flat and parallel to floor. Hold a dumbbell in opposite hand. Pull dumbbell upward toward your hip crease, squeezing your lat at top, then lower smoothly.",
     form_cues: ["Keep torso stationary without rotating shoulders", "Drive your elbow up and back towards your pocket", "Get a full lat stretch at bottom extension"]
   },
