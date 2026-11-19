@@ -984,8 +984,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "8–12 reps",
-    video: "/video/int-bent-over-dumbbell-row.mov",
-    videoUrl: "/video/int-bent-over-dumbbell-row.mov",
+    video: "/video/db-bent-over-row.mp4",
+    videoUrl: "/video/db-bent-over-row.mp4",
     instructions: "Stand with feet shoulder-width, hinge at your hips until torso is roughly 45 degrees to the floor. Hold dumbbells with arms extended downward. Row the dumbbells toward your lower ribs, squeezing shoulder blades together.",
     form_cues: ["Keep spine flat and core braced throughout", "Pull elbows straight back toward your hips", "Pause and contract back muscles hard at peak elevation"]
   },
@@ -1020,8 +1020,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "8–12 reps",
-    video: "/video/int-dumbbell-rear-delt-fly.mov",
-    videoUrl: "/video/int-dumbbell-rear-delt-fly.mov",
+    video: "/video/db-rear-delt-fly.mp4",
+    videoUrl: "/video/db-rear-delt-fly.mp4",
     instructions: "Hinge forward at the hips with a flat back and a slight bend in your knees. Holding light dumbbells with elbows slightly bent, raise your arms out to the sides in a wide arc until elbows align with shoulders. Squeeze your rear deltoids at peak contraction and lower slowly.",
     form_cues: ["Lead the movement with elbows pulling wide", "Do not shrug shoulders up toward your ears", "Focus strictly on rear deltoids and rhomboid contraction"]
   },
@@ -1038,8 +1038,8 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "8–12 reps",
-    video: "/video/int-dumbbell-shrugs.mov",
-    videoUrl: "/video/int-dumbbell-shrugs.mov",
+    video: "/video/db-shrugs.mp4",
+    videoUrl: "/video/db-shrugs.mp4",
     instructions: "Stand tall holding a pair of dumbbells at your sides with arms straight. Elevate your shoulders straight upward toward your ears in a shrugging motion. Squeeze your upper traps firmly at the peak for a full second, then lower under control.",
     form_cues: ["Shrug straight upward without rolling shoulders forward or backward", "Hold the peak contraction at the top for a full second", "Keep arms straight throughout the entire repetition"]
   },
