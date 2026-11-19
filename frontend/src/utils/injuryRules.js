@@ -699,6 +699,11 @@ export const EXERCISE_SAFETY = {
     reason: "Unilateral lunging exerts intense shear on the lead patellar tendon and requires ankle stability.",
     alternatives: ["Goblet squat", "Glute bridge", "Standing calf raise"]
   },
+  "home-int-dumbbell-sumo-squat": {
+    riskAreas: ["knee", "hip", "groin"],
+    reason: "Wide-stance squats place increased rotational torque on the hips and mechanical stretch on the adductors.",
+    alternatives: ["Glute bridge", "Dumbbell calf raise", "Goblet squat with neutral stance"]
+  },
   "home-int-dumbbell-calf-raise": {
     riskAreas: ["ankle"],
     reason: "Weighted plantarflexion places heavy tensile stretch on the Achilles tendon and plantar fascia.",
@@ -708,6 +713,11 @@ export const EXERCISE_SAFETY = {
     riskAreas: ["neck", "back"],
     reason: "Weighted thoracic flexion increases compressive stress on the cervical and lumbar intervertebral discs.",
     alternatives: ["Plank on knees", "Dead bug", "Bird dog"]
+  },
+  "home-int-crunches": {
+    riskAreas: ["neck", "back"],
+    reason: "Repetitive spinal flexion can aggravate cervical strain or lumbar disc sensitivity if not properly braced.",
+    alternatives: ["Plank", "Dead bug", "Bird dog"]
   },
   "home-int-reverse-crunch": {
     riskAreas: ["back", "hip"],
