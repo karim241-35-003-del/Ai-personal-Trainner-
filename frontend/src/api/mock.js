@@ -252,8 +252,8 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
-    video: "/video/dumbbell-bicep-curl.mov",
-    videoUrl: "/video/dumbbell-bicep-curl.mov",
+    video: "/video/dumbbell-curl.mov",
+    videoUrl: "/video/dumbbell-curl.mov",
     instructions: "Hold dumbbells at your sides. As you curl the weights upward, rotate your forearms so your palms face your shoulders at the top. Squeeze firmly, then reverse the motion under control.",
     form_cues: ["Supinate your wrists as you curl up for complete bicep contraction", "Keep elbows pinned to your sides", "Avoid swinging or leaning sideways"]
   },
