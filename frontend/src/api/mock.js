@@ -1008,11 +1008,11 @@ export const EXERCISES = [
     form_cues: ["Keep torso stationary without rotating shoulders", "Drive your elbow up and back towards your pocket", "Get a full lat stretch at bottom extension"]
   },
   {
-    id: "home-int-dumbbell-reverse-fly",
-    name: "Dumbbell Reverse Fly",
-    muscle_id: "shoulders",
+    id: "home-int-dumbbell-rear-delt-fly",
+    name: "Dumbbell Rear Delt Fly",
+    muscle_id: "rear delts",
     muscle_group: "shoulders",
-    secondary_muscles: ["traps"],
+    secondary_muscles: ["traps", "upper back"],
     equipment: ["dumbbell"],
     level: "intermediate",
     location: "home",
@@ -1020,28 +1020,28 @@ export const EXERCISES = [
     day: "Day 3",
     sets: 3,
     reps: "12–15 reps",
-    video: "/video/int-dumbbell-reverse-fly.mov",
-    videoUrl: "/video/int-dumbbell-reverse-fly.mov",
-    instructions: "Hinge forward at the hips with a flat back and a slight bend in your knees. Holding light dumbbells with elbows slightly bent, raise your arms out to the sides until elbows align with shoulders. Squeeze rear delts and lower slowly.",
+    video: "/video/int-dumbbell-rear-delt-fly.mov",
+    videoUrl: "/video/int-dumbbell-rear-delt-fly.mov",
+    instructions: "Hinge forward at the hips with a flat back and a slight bend in your knees. Holding light dumbbells with elbows slightly bent, raise your arms out to the sides in a wide arc until elbows align with shoulders. Squeeze your rear deltoids at peak contraction and lower slowly.",
     form_cues: ["Lead the movement with elbows pulling wide", "Do not shrug shoulders up toward your ears", "Focus strictly on rear deltoids and rhomboid contraction"]
   },
   {
-    id: "home-int-dumbbell-pullover",
-    name: "Dumbbell Pullover",
-    muscle_id: "lats",
+    id: "home-int-dumbbell-shrugs",
+    name: "Dumbbell Shrugs",
+    muscle_id: "upper traps",
     muscle_group: "back",
-    secondary_muscles: ["chest"],
+    secondary_muscles: ["neck", "forearms"],
     equipment: ["dumbbell"],
     level: "intermediate",
     location: "home",
     routine_type: "home_dumbbell_intermediate",
     day: "Day 3",
-    sets: 2,
-    reps: "12 reps",
-    video: "/video/int-dumbbell-pullover.mov",
-    videoUrl: "/video/int-dumbbell-pullover.mov",
-    instructions: "Lie on the floor or bench with knees bent. Hold one dumbbell with both hands cupping the upper plate directly above your chest. Keeping arms slightly bent, reach the dumbbell back over your head until you feel a deep lat stretch, then pull through lats to return.",
-    form_cues: ["Maintain a slight fixed elbow bend throughout", "Feel the lats and serratus stretch overhead", "Pull with your back muscles to bring weight back over chest"]
+    sets: 3,
+    reps: "12–15 reps",
+    video: "/video/int-dumbbell-shrugs.mov",
+    videoUrl: "/video/int-dumbbell-shrugs.mov",
+    instructions: "Stand tall holding a pair of dumbbells at your sides with arms straight. Elevate your shoulders straight upward toward your ears in a shrugging motion. Squeeze your upper traps firmly at the peak for a full second, then lower under control.",
+    form_cues: ["Shrug straight upward without rolling shoulders forward or backward", "Hold the peak contraction at the top for a full second", "Keep arms straight throughout the entire repetition"]
   },
   {
     id: "home-int-dumbbell-biceps-curl",
@@ -1463,3 +1463,26 @@ export const api = {
     return p ? computePlan(p) : null;
   },
 };
+
+// ==========================================
+// ESTIMATED WORKOUT DURATIONS
+// Calculated realistically based on sets, ~45-60s work,
+// 60-90s rest times, and 1-2m exercise transitions.
+// ==========================================
+export const ROUTINE_DURATIONS = {
+  gym_beginner: "About 45–55 min",
+  home_bodyweight_beginner: "About 25–35 min",
+  home_dumbbell_beginner: "About 25–30 min",
+  home_bodyweight_intermediate: "About 55–65 min",
+  home_dumbbell_intermediate: {
+    "Day 1": "About 40–50 min",
+    "Day 2": "About 40–50 min",
+    "Day 3": "About 35–45 min",
+  },
+  gym_intermediate_split: {
+    "Day 1": "About 50–60 min",
+    "Day 2": "About 45–55 min",
+    "Day 3": "About 55–65 min",
+  },
+};
+

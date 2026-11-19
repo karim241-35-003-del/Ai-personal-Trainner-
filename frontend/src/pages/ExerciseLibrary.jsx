@@ -11,9 +11,9 @@ const GYM_INT_SUBTITLES = {
 };
 
 const GYM_INT_DURATIONS = {
-  "Day 1": "About 35 min",
-  "Day 2": "About 30 min",
-  "Day 3": "About 40 min",
+  "Day 1": "About 50–60 min",
+  "Day 2": "About 45–55 min",
+  "Day 3": "About 55–65 min",
 };
 
 const HOME_INT_SUBTITLES = {
@@ -23,9 +23,9 @@ const HOME_INT_SUBTITLES = {
 };
 
 const HOME_INT_DURATIONS = {
-  "Day 1": "About 35–40 min",
-  "Day 2": "About 35–40 min",
-  "Day 3": "About 35–40 min",
+  "Day 1": "About 40–50 min",
+  "Day 2": "About 40–50 min",
+  "Day 3": "About 35–45 min",
 };
 
 export default function ExerciseLibrary() {
@@ -114,20 +114,20 @@ export default function ExerciseLibrary() {
 
   // Title and duration calculation
   let currentTitle = "Your Workout Plan";
-  let currentDuration = "About 30 min";
+  let currentDuration = "About 45–55 min";
 
   if (userLevel === "intermediate") {
     if (isHome) {
       if (hasDumbbell) {
         currentTitle = `${activeDay} · ${intSubtitles[activeDay] || "Workout"}`;
-        currentDuration = intDurations[activeDay] || "About 35 min";
+        currentDuration = intDurations[activeDay] || "About 40–50 min";
       } else {
         currentTitle = "At Home + Intermediate";
-        currentDuration = "About 25–30 min";
+        currentDuration = "About 55–65 min";
       }
     } else {
       currentTitle = `${activeDay} · ${intSubtitles[activeDay] || "Workout"}`;
-      currentDuration = intDurations[activeDay] || "About 35 min";
+      currentDuration = intDurations[activeDay] || "About 50–60 min";
     }
   } else if (isHome) {
     if (hasDumbbell) {
@@ -135,11 +135,11 @@ export default function ExerciseLibrary() {
       currentDuration = "About 25–30 min";
     } else {
       currentTitle = "Beginner · At Home (No Equipment)";
-      currentDuration = "About 20–25 min";
+      currentDuration = "About 25–35 min";
     }
   } else {
     currentTitle = "Initial Routine · Full Body Workout";
-    currentDuration = "About 30 min";
+    currentDuration = "About 45–55 min";
   }
 
   // Active split description badge

@@ -739,15 +739,15 @@ export const EXERCISE_SAFETY = {
     reason: "Rowing loads the forearm flexors and requires rotational torso stabilization.",
     alternatives: ["Chest-supported row", "Band pull-apart", "Bicep curl"]
   },
-  "home-int-dumbbell-reverse-fly": {
+  "home-int-dumbbell-rear-delt-fly": {
     riskAreas: ["shoulder", "neck", "back"],
     reason: "Horizontal shoulder abduction in a bent-over stance stresses rear deltoids and cervical erectors.",
     alternatives: ["Band pull-apart", "Single-arm row", "Bicep curl"]
   },
-  "home-int-dumbbell-pullover": {
-    riskAreas: ["shoulder", "back"],
-    reason: "Extending weights overhead in a supine position maximizes lever force on the anterior shoulder capsule and lat insertion.",
-    alternatives: ["Single-arm dumbbell row", "Floor press", "Bicep curl"]
+  "home-int-dumbbell-shrugs": {
+    riskAreas: ["neck", "shoulder"],
+    reason: "Heavy elevation of the shoulder girdle can place compressive stress on the cervical spine and levator scapulae.",
+    alternatives: ["Single-arm row", "Face pull", "Bicep curl"]
   },
   "home-int-dumbbell-biceps-curl": {
     riskAreas: ["elbow", "wrist"],
