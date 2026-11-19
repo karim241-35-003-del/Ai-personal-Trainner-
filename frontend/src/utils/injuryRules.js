@@ -659,6 +659,11 @@ export const EXERCISE_SAFETY = {
     reason: "Continuous isometric inward squeezing places intense tension across the anterior shoulder capsule and wrist tendons.",
     alternatives: ["Floor dumbbell press", "Knee push-ups", "Standing arm raises"]
   },
+  "home-int-dumbbell-floor-fly": {
+    riskAreas: ["shoulder", "elbow"],
+    reason: "Floor flyes protect against excessive shoulder hyperextension, but the wide lever arm still stresses the anterior capsule and distal biceps under heavy load.",
+    alternatives: ["Dumbbell floor press", "Dumbbell squeeze press with light load", "Glute bridge"]
+  },
   "home-int-dumbbell-shoulder-press": {
     riskAreas: ["shoulder", "neck", "elbow"],
     reason: "Overhead dumbbell pressing compresses the subacromial space and places shear stress on the cervical spine.",

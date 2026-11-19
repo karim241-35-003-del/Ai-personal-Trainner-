@@ -172,7 +172,7 @@ export const EXERCISES = [
   },
 
   // ==========================================
-  // 2. Beginner – At Home (Dumbbells) [8 EXERCISES]
+  // 2. Beginner – At Home (Dumbbells) [6 EXERCISES]
   // ==========================================
   {
     id: "dumbbell-goblet-squat",
@@ -186,8 +186,8 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
-    video: "/video/dumbbell-goblet-squat.mov",
-    videoUrl: "/video/dumbbell-goblet-squat.mov",
+    video: "/video/db-goblet-squat.mp4",
+    videoUrl: "/video/db-goblet-squat.mp4",
     instructions: "Hold a dumbbell vertically against your chest with both hands cradling the top bell. Stand with feet shoulder-width apart, squat down between your hips until thighs are parallel to the floor, then press through your heels to stand.",
     form_cues: ["Keep dumbbell held close to your sternum", "Chest stays tall and proud throughout", "Knees track outward in line with toes"]
   },
@@ -203,8 +203,8 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
-    video: "/video/dumbbell-floor-press.mov",
-    videoUrl: "/video/dumbbell-floor-press.mov",
+    video: "/video/db-floor-press.mp4",
+    videoUrl: "/video/db-floor-press.mp4",
     instructions: "Lie flat on the floor with knees bent and feet flat. Hold a pair of dumbbells at chest level with upper arms resting on the floor at a 45-degree angle. Press both dumbbells straight up over your chest until arms extend, then lower until triceps touch the floor.",
     form_cues: ["Floor naturally protects shoulders from excessive extension", "Press dumbbells in a slight arc over mid-chest", "Pause briefly as triceps touch floor"]
   },
@@ -224,23 +224,6 @@ export const EXERCISES = [
     videoUrl: "/video/dumbbell-one-arm-row.mov",
     instructions: "Place one hand on a sturdy chair or bench, hinge forward at hips with a flat back. Hold a dumbbell in the opposite hand hanging down. Pull the dumbbell upward towards your hip pocket, squeezing your lat at the top, then lower smoothly.",
     form_cues: ["Keep your back flat and parallel to the floor", "Pull your elbow straight back toward your hip", "Avoid twisting your shoulders during the row"]
-  },
-  {
-    id: "dumbbell-romanian-deadlift",
-    name: "Dumbbell Romanian Deadlift",
-    muscle_id: "hamstrings",
-    muscle_group: "legs",
-    secondary_muscles: ["glutes", "lowerback"],
-    equipment: ["dumbbell"],
-    level: "beginner",
-    location: "home",
-    routine_type: "home_dumbbell_beginner",
-    sets: 2,
-    reps: "10–12 reps",
-    video: "/video/dumbbell-romanian-deadlift.mov",
-    videoUrl: "/video/dumbbell-romanian-deadlift.mov",
-    instructions: "Stand tall holding dumbbells in front of your thighs. Keep a soft micro-bend in your knees, push your hips straight backwards, and slide the dumbbells down along your shins until you feel a deep hamstring stretch. Drive your hips forward to stand.",
-    form_cues: ["Push your hips back as if touching a wall behind you", "Keep the dumbbells close to your legs", "Maintain a flat, neutral spine without rounding"]
   },
   {
     id: "dumbbell-shoulder-press",
@@ -285,26 +268,10 @@ export const EXERCISES = [
     routine_type: "home_dumbbell_beginner",
     sets: 2,
     reps: "10–12 reps",
-    video: "/video/dumbbell-overhead-tricep-extension.mov",
-    videoUrl: "/video/dumbbell-overhead-tricep-extension.mov",
+    video: "/video/db-overhead-tricep-extension.mp4",
+    videoUrl: "/video/db-overhead-tricep-extension.mp4",
     instructions: "Hold one dumbbell with both hands overhead, palms supporting the upper plate. Keeping your elbows pointed forward and close to your head, lower the weight behind your head by bending your elbows. Extend your arms to press the weight back overhead.",
     form_cues: ["Keep your elbows pointing forward, not flaring out", "Lower until forearms pass 90 degrees", "Press through your triceps back to the top"]
-  },
-  {
-    id: "dumbbell-standing-calf-raise",
-    name: "Dumbbell Standing Calf Raise",
-    muscle_id: "calves",
-    muscle_group: "calves",
-    equipment: ["dumbbell"],
-    level: "beginner",
-    location: "home",
-    routine_type: "home_dumbbell_beginner",
-    sets: 2,
-    reps: "15 reps",
-    video: "/video/dumbbell-standing-calf-raise.mov",
-    videoUrl: "/video/dumbbell-standing-calf-raise.mov",
-    instructions: "Hold a dumbbell in each hand at your sides. Rise up onto the balls of your feet, contracting your calf muscles at the peak. Lower slowly back down until your heels touch the floor.",
-    form_cues: ["Rise straight up onto your big toes", "Hold the peak contraction for 1 second", "Lower slowly under strict control"]
   },
 
   // ==========================================
@@ -752,7 +719,7 @@ export const EXERCISES = [
     form_cues: ["Maintain a strict neutral grip throughout the entire repetition", "Keep upper arms stationary by your sides", "Control the descent to target the brachialis and brachioradialis"]
   },
   // ==========================================
-  // 5. Intermediate – At Home (Dumbbells) [19 EXERCISES FROM USER PHOTOS]
+  // 5. Intermediate – At Home (Dumbbells) [20 EXERCISES FROM USER PHOTOS]
   // ==========================================
   // Day 1 – Chest + Triceps + Shoulders
   {
@@ -768,8 +735,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "10–12 reps",
-    video: "/video/int-dumbbell-floor-press.mov",
-    videoUrl: "/video/int-dumbbell-floor-press.mov",
+    video: "/video/db-floor-press.mp4",
+    videoUrl: "/video/db-floor-press.mp4",
     instructions: "Lie flat on the floor with knees bent and feet flat. Hold a pair of dumbbells at chest level with upper arms resting on the floor at a 45-degree angle. Press both dumbbells straight up over your chest until arms extend, then lower under control until triceps touch the floor.",
     form_cues: ["Floor naturally protects shoulders from excessive hyperextension", "Press in a smooth slight inward arc over mid-chest", "Pause for half a second as triceps touch the ground"]
   },
@@ -786,10 +753,28 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "10–12 reps",
-    video: "/video/int-dumbbell-squeeze-press.mov",
-    videoUrl: "/video/int-dumbbell-squeeze-press.mov",
+    video: "/video/db-squeeze-press.mp4",
+    videoUrl: "/video/db-squeeze-press.mp4",
     instructions: "Lie on the floor holding dumbbells with a neutral grip (palms facing each other). Press the dumbbell plates firmly against each other throughout the entire movement. Lower to your sternum while maintaining inward pressure, then press straight up.",
     form_cues: ["Keep dumbbells pressed tightly together for maximum inner pec recruitment", "Maintain inward squeezing tension continuously", "Lower slowly without releasing contact between dumbbells"]
+  },
+  {
+    id: "home-int-dumbbell-floor-fly",
+    name: "Dumbbell Floor Fly",
+    muscle_id: "chest",
+    muscle_group: "chest",
+    secondary_muscles: ["shoulders"],
+    equipment: ["dumbbell"],
+    level: "intermediate",
+    location: "home",
+    routine_type: "home_dumbbell_intermediate",
+    day: "Day 1",
+    sets: 3,
+    reps: "10–12 reps",
+    video: "/video/db-floor-fly.mp4",
+    videoUrl: "/video/db-floor-fly.mp4",
+    instructions: "Lie flat on your back on the floor with knees bent and feet flat. Hold dumbbells above your chest with palms facing each other and elbows slightly bent. Slowly lower the weights outward in a wide arc until your upper arms gently touch the floor. Squeeze your chest muscles to bring the dumbbells back to the starting position.",
+    form_cues: ["Maintain a fixed slight bend in your elbows throughout the movement", "Allow upper arms to gently touch the floor without slamming", "Squeeze your pecs together at the top of the fly"]
   },
   {
     id: "home-int-dumbbell-shoulder-press",
@@ -821,8 +806,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "12–15 reps",
-    video: "/video/int-dumbbell-lateral-raise.mov",
-    videoUrl: "/video/int-dumbbell-lateral-raise.mov",
+    video: "/video/db-side-raise.mov",
+    videoUrl: "/video/db-side-raise.mov",
     instructions: "Stand with dumbbells hanging at your sides with a slight elbow bend. Raise your arms out to the sides in the scapular plane until parallel to the floor. Pause briefly at the top and lower smoothly.",
     form_cues: ["Lead with your elbows rather than wrists", "Keep your shoulders down away from your ears to avoid trap dominance", "Lower under control without swinging your hips"]
   },
@@ -838,8 +823,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 3,
     reps: "10–12 reps",
-    video: "/video/int-overhead-triceps-extension.mov",
-    videoUrl: "/video/int-overhead-triceps-extension.mov",
+    video: "/video/db-overhead-tricep-extension.mp4",
+    videoUrl: "/video/db-overhead-tricep-extension.mp4",
     instructions: "Hold one dumbbell with both hands overhead, cupping the top dumbbell plate. Keep your upper arms stationary by your ears and bend your elbows to lower the weight behind your head. Extend through your triceps to press back to top extension.",
     form_cues: ["Keep your elbows pointing forward without flaring wide", "Lower until forearms pass 90 degrees for a deep tricep stretch", "Drive through triceps without arching lower back"]
   },
@@ -855,8 +840,8 @@ export const EXERCISES = [
     day: "Day 1",
     sets: 2,
     reps: "12–15 reps",
-    video: "/video/int-dumbbell-triceps-kickback.mov",
-    videoUrl: "/video/int-dumbbell-triceps-kickback.mov",
+    video: "/video/db-tricep-kickback.mp4",
+    videoUrl: "/video/db-tricep-kickback.mp4",
     instructions: "Hinge forward at the hips with a flat back and knees soft. Bring your upper arms parallel to your torso and pin elbows by your ribs. Extend your forearms backwards until arms are straight, squeeze triceps, and lower slowly.",
     form_cues: ["Lock your upper arms in place; only forearms move", "Hold the peak lockout contraction for a full second", "Avoid swinging or dropping the elbow height"]
   },
@@ -864,7 +849,7 @@ export const EXERCISES = [
   // Day 2 – Legs + Abs
   {
     id: "home-int-goblet-squat",
-    name: "Goblet Squat",
+    name: "Dumbbell Goblet Squat",
     muscle_id: "quads",
     muscle_group: "legs",
     secondary_muscles: ["glutes"],
@@ -875,8 +860,8 @@ export const EXERCISES = [
     day: "Day 2",
     sets: 3,
     reps: "10–12 reps",
-    video: "/video/int-goblet-squat.mov",
-    videoUrl: "/video/int-goblet-squat.mov",
+    video: "/video/db-goblet-squat.mp4",
+    videoUrl: "/video/db-goblet-squat.mp4",
     instructions: "Hold a dumbbell vertically against your sternum with both hands cupping the upper plate. Stand shoulder-width apart, descend into a deep squat between your knees until thighs reach parallel, then drive through midfoot to stand.",
     form_cues: ["Keep chest tall and dumbbell pinned against sternum", "Knees track outward over second toes", "Drive up through heels and squeeze glutes at the top"]
   },
