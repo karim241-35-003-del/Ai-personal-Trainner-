@@ -1,6 +1,7 @@
 //Test commit by Arik
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../api/client.js";
+import { EXERCISES as REQUIRED_EXERCISES } from "../api/mock.js";
 import { EQUIPMENT, WORKOUT_LIMITS } from "../constants.js";
 import "../styles/trainer-pages.css";
 import "../styles/workout-log.css";
@@ -61,9 +62,14 @@ export default function WorkoutLog() {
   useEffect(() => {
     Promise.all([api.getExercises(), api.listWorkouts()])
       .then(([list, logs]) => {
-        setExercises(list);
+        const byId = new Map((list || []).map((ex) => [ex.id, ex]));
+        const merged = [...(list || [])];
+        for (const req of REQUIRED_EXERCISES) {
+          if (!byId.has(req.id)) merged.push(req);
+        }
+        setExercises(merged);
         setEntries(logs);
-        const firstUpper = list.find((ex) => getBodyPart(ex) === "upper") || list[0];
+        const firstUpper = merged.find((ex) => getBodyPart(ex) === "upper") || merged[0];
         if (firstUpper) {
           setBodyPart(getBodyPart(firstUpper));
           setForm((f) => ({ ...f, exercise_id: firstUpper.id }));
