@@ -1,5 +1,5 @@
 /* ==========================================================================
-   WorkoutLog Page - White Background & Blue Borders Theme
+   WorkoutLog Page - White Background & Pure Blue Glowing Theme
    ========================================================================== */
 
 .wl-page {
@@ -16,10 +16,10 @@
   flex-wrap: wrap;
   gap: 14px;
   padding: 18px 22px;
-  background: linear-gradient(135deg, #f3f7ff 0%, #ffffff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(31, 56, 100, 0.07);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.24), 0 4px 14px rgba(0, 85, 255, 0.12);
 }
 
 .wl-header h1 {
@@ -47,13 +47,13 @@
   flex-direction: column;
   align-items: center;
   min-width: 82px;
-  box-shadow: 0 4px 12px rgba(31, 56, 100, 0.06);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.22);
 }
 
 .wl-stat-num {
   font-size: 18px;
   font-weight: 700;
-  color: var(--blue-dark);
+  color: var(--blue);
   line-height: 1.2;
 }
 
@@ -66,11 +66,11 @@
 }
 
 .wl-card {
-  background: linear-gradient(180deg, #ffffff 0%, #fafcff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
   padding: 24px;
-  box-shadow: 0 8px 24px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.22), 0 4px 16px rgba(0, 85, 255, 0.1);
 }
 
 .wl-card-head {
@@ -81,13 +81,13 @@
   gap: 12px;
   padding-bottom: 14px;
   margin-bottom: 18px;
-  border-bottom: 1.5px solid #d6e4ff;
+  border-bottom: 2px solid var(--line);
 }
 
 .wl-card-head h2 {
   margin: 0;
   font-size: 19px;
-  color: var(--blue-dark);
+  color: var(--blue);
 }
 
 .wl-card-head .muted {
@@ -101,7 +101,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--blue-dark);
+  color: var(--blue);
   margin-bottom: 8px;
 }
 
@@ -124,27 +124,29 @@
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  border: 2px solid #9cb8ed;
+  border: 2px solid var(--line);
   border-radius: 12px;
-  background: #f4f8ff;
-  color: var(--blue-dark);
+  background: #ffffff;
+  color: var(--blue);
   cursor: pointer;
   text-align: left;
   font: inherit;
+  box-shadow: 0 0 10px rgba(0, 85, 255, 0.12);
   transition: all 0.16s ease;
 }
 
 .wl-part-btn:hover {
   border-color: var(--blue);
-  background: #e9f1ff;
+  background: #f4f8ff;
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.4);
   transform: translateY(-1px);
 }
 
 .wl-part-btn.active {
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
-  border-color: var(--blue-dark);
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  border-color: var(--blue);
   color: #ffffff;
-  box-shadow: 0 6px 16px rgba(46, 83, 149, 0.25);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.65), 0 4px 14px rgba(0, 85, 255, 0.35);
 }
 
 .wl-part-title {
@@ -166,15 +168,17 @@
   padding: 4px 10px;
   border-radius: 999px;
   background: #ffffff;
-  color: var(--blue-dark);
-  border: 1px solid #9cb8ed;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
   white-space: nowrap;
 }
 
 .wl-part-btn.active .wl-part-count {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: none;
 }
 
 .wl-muscle-bar {
@@ -198,22 +202,25 @@
   font-size: 13px;
   font-weight: 600;
   border-radius: 999px;
-  border: 1.5px solid #9cb8ed;
+  border: 2px solid var(--line);
   background: #ffffff;
-  color: var(--blue-dark);
+  color: var(--blue);
   cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.12);
   transition: all 0.15s ease;
 }
 
 .wl-chip-btn:hover {
-  background: #edf3ff;
+  background: #f0f6ff;
   border-color: var(--blue);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.45);
 }
 
 .wl-chip-btn.active {
   background: var(--blue);
   border-color: var(--blue);
   color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.65);
 }
 
 .wl-search-box {
@@ -238,18 +245,19 @@
   padding: 10px 12px;
   background: #ffffff;
   color: var(--text);
+  box-shadow: 0 0 14px rgba(0, 85, 255, 0.2);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .wl-card .wl-search-input:focus {
   outline: none;
-  border-color: var(--blue-dark);
-  box-shadow: 0 0 0 3px rgba(46, 83, 149, 0.18);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 22px rgba(0, 85, 255, 0.55);
 }
 
 .wl-search-clear {
-  background: #f4f8ff;
-  color: var(--blue-dark);
+  background: #ffffff;
+  color: var(--blue);
   border: 2px solid var(--blue);
   border-radius: 9px;
   padding: 9px 14px;
@@ -258,12 +266,14 @@
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.2);
   transition: all 0.15s ease;
 }
 
 .wl-search-clear:hover {
   background: var(--blue);
   color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.5);
 }
 
 .wl-search-status {
@@ -281,13 +291,13 @@
 }
 
 .wl-card label {
-  color: var(--blue-dark);
+  color: var(--blue);
   font-weight: 600;
 }
 
 .wl-card input,
 .wl-card select {
-  border: 1.5px solid #9cb8ed;
+  border: 2px solid var(--line);
   border-radius: 9px;
   padding: 10px 12px;
   background: #ffffff;
@@ -304,7 +314,7 @@
 .wl-card select:focus {
   outline: none;
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(46, 83, 149, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 20px rgba(0, 85, 255, 0.45);
 }
 
 .wl-selected-meta {
@@ -319,9 +329,10 @@
   font-weight: 600;
   padding: 2px 9px;
   border-radius: 999px;
-  background: #eef4ff;
-  color: var(--blue-dark);
-  border: 1px solid #bfd3f7;
+  background: #f0f6ff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
   text-transform: capitalize;
 }
 
@@ -332,25 +343,25 @@
   gap: 12px;
   margin-top: 8px;
   padding-top: 14px;
-  border-top: 1px solid #e4ecfb;
+  border-top: 2px solid var(--line);
 }
 
 .wl-btn {
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
   color: #ffffff;
-  border: 1.5px solid var(--blue-dark);
+  border: 2px solid var(--blue);
   border-radius: 9px;
   padding: 10px 22px;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(46, 83, 149, 0.22);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.45), 0 4px 14px rgba(0, 85, 255, 0.3);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .wl-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(46, 83, 149, 0.3);
+  box-shadow: 0 0 26px rgba(0, 85, 255, 0.7), 0 6px 18px rgba(0, 85, 255, 0.4);
 }
 
 .wl-btn:disabled {
@@ -361,11 +372,12 @@
 .wl-saved-badge {
   background: #e3f6e8;
   color: #17512a;
-  border: 1px solid #9fd8b0;
+  border: 1.5px solid #9fd8b0;
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
+  box-shadow: 0 0 10px rgba(23, 81, 42, 0.15);
 }
 
 .wl-filter-tabs {
@@ -379,7 +391,7 @@
   border: 2px solid var(--blue);
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 0 4px 16px rgba(31, 56, 100, 0.05);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.22);
 }
 
 table.wl-table {
@@ -389,20 +401,20 @@ table.wl-table {
 }
 
 table.wl-table th {
-  background: #eef4ff;
-  color: var(--blue-dark);
+  background: #f0f6ff;
+  color: var(--blue);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-align: left;
   padding: 11px 12px;
-  border-bottom: 2px solid #9cb8ed;
+  border-bottom: 2px solid var(--blue);
 }
 
 table.wl-table td {
   padding: 11px 12px;
-  border-bottom: 1px solid #e5edfb;
+  border-bottom: 1px solid var(--line);
   vertical-align: middle;
   color: var(--text);
 }
@@ -412,7 +424,7 @@ table.wl-table tbody tr:last-child td {
 }
 
 table.wl-table tbody tr:hover {
-  background: #f6f9ff;
+  background: #f4f8ff;
 }
 
 .wl-badge {
@@ -425,27 +437,30 @@ table.wl-table tbody tr:hover {
 }
 
 .wl-badge.upper {
-  background: #e8efff;
-  color: #1f3864;
-  border: 1px solid #9cb8ed;
+  background: #f0f6ff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.25);
 }
 
 .wl-badge.lower {
-  background: #e0f2fe;
-  color: #075985;
-  border: 1px solid #7dd3fc;
+  background: #e6f0ff;
+  color: var(--blue-dark);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.25);
 }
 
 .wl-sets-pill {
   display: inline-block;
-  background: #f0f5ff;
-  color: var(--blue-dark);
-  border: 1px solid #bfd3f7;
+  background: #ffffff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
   border-radius: 6px;
   padding: 2px 8px;
   font-weight: 600;
   font-size: 13px;
   white-space: nowrap;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
 }
 
 .wl-delete-btn {

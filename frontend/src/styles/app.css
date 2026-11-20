@@ -1,11 +1,13 @@
 :root {
-  --blue: #2e5395;
-  --blue-dark: #1f3864;
+  --blue: #0055ff;
+  --blue-dark: #003cd6;
+  --blue-glow: rgba(0, 85, 255, 0.35);
+  --blue-glow-hover: rgba(0, 85, 255, 0.6);
   --bg: #ffffff;
   --card: #ffffff;
-  --text: #22262e;
+  --text: #1a2233;
   --muted: #5f6673;
-  --line: #c7d9fa;
+  --line: #b3d1ff;
   --err: #b3261e;
   --warn: #fff3cd;
 }
@@ -42,10 +44,10 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
-  background: var(--blue-dark);
+  background: linear-gradient(135deg, #002db3 0%, #0044ff 100%);
   color: #fff;
   padding: 12px 20px;
-  box-shadow: 0 4px 16px rgba(31, 56, 100, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 85, 255, 0.35), 0 0 15px rgba(0, 85, 255, 0.25);
 }
 
 .brand {
@@ -77,14 +79,15 @@ body {
 
 .nav a:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .nav a.active {
   color: #fff;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.16);
-  border-bottom: 2px solid #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: 2.5px solid #ffffff;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
 }
 
 h1 {
@@ -105,7 +108,12 @@ h2 {
   border-radius: 14px;
   padding: 24px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 24px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22), 0 6px 24px rgba(0, 85, 255, 0.08);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 30px rgba(0, 85, 255, 0.45), 0 10px 32px rgba(0, 85, 255, 0.16);
 }
 
 .narrow {
@@ -131,9 +139,10 @@ textarea {
   padding: 9px 12px;
   font: inherit;
   font-weight: 400;
-  border: 1.5px solid #9cb8ed;
+  border: 2px solid var(--blue);
   border-radius: 8px;
   background: #fff;
+  box-shadow: 0 0 10px rgba(0, 85, 255, 0.14);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -142,7 +151,7 @@ select:focus,
 textarea:focus {
   outline: none;
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(46, 83, 149, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 20px rgba(0, 85, 255, 0.45);
 }
 
 .grid {
@@ -152,16 +161,18 @@ textarea:focus {
 }
 
 fieldset {
-  border: 1.5px solid var(--line);
+  border: 2px solid var(--blue);
   border-radius: 8px;
   margin: 0 0 16px;
   padding: 12px 14px;
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.15);
 }
 
 legend {
   font-size: 14px;
   font-weight: 600;
   padding: 0 6px;
+  color: var(--blue-dark);
 }
 
 .check {
@@ -175,31 +186,33 @@ legend {
 .check input {
   width: auto;
   margin: 0;
+  box-shadow: none;
 }
 
 .btn {
   display: inline-block;
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+  background: linear-gradient(135deg, #0055ff 0%, #003cd6 100%);
   color: #fff;
-  border: 0;
+  border: 2px solid #0055ff;
   border-radius: 8px;
   padding: 10px 18px;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(46, 83, 149, 0.22);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.45), 0 4px 14px rgba(0, 85, 255, 0.25);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(46, 83, 149, 0.3);
+  box-shadow: 0 0 30px rgba(0, 85, 255, 0.75), 0 6px 20px rgba(0, 85, 255, 0.35);
 }
 
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .error {
@@ -238,7 +251,13 @@ legend {
   padding: 18px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 20px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.22), 0 6px 20px rgba(0, 85, 255, 0.08);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(0, 85, 255, 0.45), 0 10px 26px rgba(0, 85, 255, 0.16);
 }
 
 .stat-title {

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Progress & Recommendations Pages - White Background & Blue Borders Theme
+   Progress & Recommendations Pages - White Background & Pure Blue Glowing Theme
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -21,10 +21,10 @@
   flex-wrap: wrap;
   gap: 12px;
   padding: 18px 22px;
-  background: linear-gradient(135deg, #f3f7ff 0%, #ffffff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.24), 0 4px 14px rgba(0, 85, 255, 0.12);
 }
 
 .pg-header h1 {
@@ -57,19 +57,19 @@
 }
 
 .pg-stat {
-  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
   padding: 18px 20px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 20px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22);
   transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 
 .pg-stat:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(31, 56, 100, 0.13);
+  box-shadow: 0 0 28px rgba(0, 85, 255, 0.5), 0 8px 20px rgba(0, 85, 255, 0.2);
 }
 
 .pg-stat .stat-title {
@@ -99,11 +99,11 @@
 
 /* Progress Cards & Forms */
 .pg-card {
-  background: linear-gradient(180deg, #ffffff 0%, #fafcff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
   padding: 24px;
-  box-shadow: 0 8px 24px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.22), 0 4px 16px rgba(0, 85, 255, 0.1);
 }
 
 .pg-card-head {
@@ -114,22 +114,22 @@
   gap: 10px;
   padding-bottom: 12px;
   margin-bottom: 18px;
-  border-bottom: 1.5px solid #d6e4ff;
+  border-bottom: 2px solid var(--line);
 }
 
 .pg-card-head h2 {
   margin: 0;
   font-size: 19px;
-  color: var(--blue-dark);
+  color: var(--blue);
 }
 
 .pg-card label {
-  color: var(--blue-dark);
+  color: var(--blue);
   font-weight: 600;
 }
 
 .pg-card input {
-  border: 1.5px solid #9cb8ed;
+  border: 2px solid var(--line);
   border-radius: 9px;
   padding: 10px 12px;
   background: #ffffff;
@@ -140,25 +140,25 @@
 .pg-card input:focus {
   outline: none;
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(46, 83, 149, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 20px rgba(0, 85, 255, 0.45);
 }
 
 .pg-btn {
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
   color: #ffffff;
-  border: 1.5px solid var(--blue-dark);
+  border: 2px solid var(--blue);
   border-radius: 9px;
   padding: 10px 22px;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(46, 83, 149, 0.22);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.45), 0 4px 14px rgba(0, 85, 255, 0.3);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .pg-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(46, 83, 149, 0.3);
+  box-shadow: 0 0 26px rgba(0, 85, 255, 0.7), 0 6px 18px rgba(0, 85, 255, 0.4);
 }
 
 .pg-btn:disabled {
@@ -181,22 +181,23 @@
 
 /* Weight Line Chart Box */
 .pg-chart-box {
-  background: linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 12px;
   padding: 16px 16px 12px;
   margin-bottom: 18px;
-  box-shadow: inset 0 1px 4px rgba(46, 83, 149, 0.06);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.2), inset 0 0 10px rgba(0, 85, 255, 0.05);
 }
 
 .pg-hover-pill {
   font-size: 12px;
   font-weight: 700;
-  color: var(--blue-dark);
-  background: #e8efff;
-  border: 1px solid #9cb8ed;
+  color: var(--blue);
+  background: #f0f6ff;
+  border: 1.5px solid var(--blue);
   border-radius: 999px;
   padding: 4px 12px;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.25);
 }
 
 .chart {
@@ -206,12 +207,12 @@
 }
 
 .chart .axis {
-  stroke: #b9cef5;
+  stroke: var(--blue);
   stroke-width: 1.5;
 }
 
 .chart .grid-line {
-  stroke: #dce7fb;
+  stroke: #d6e4ff;
   stroke-width: 1;
   stroke-dasharray: 4 4;
 }
@@ -219,14 +220,14 @@
 .chart .line {
   fill: none;
   stroke: var(--blue);
-  stroke-width: 3;
+  stroke-width: 3.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .chart .dot {
   fill: #ffffff;
-  stroke: var(--blue-dark);
+  stroke: var(--blue);
   stroke-width: 2.5;
   cursor: pointer;
   transition: r 0.15s ease, stroke-width 0.15s ease;
@@ -246,19 +247,19 @@
 }
 
 .chart .pt-label {
-  fill: var(--blue-dark);
+  fill: var(--blue);
   font-size: 10.5px;
   font-weight: 700;
 }
 
 /* Weekly Bar Chart */
 .pg-bars-box {
-  background: linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 12px;
   padding: 20px 16px 14px;
   margin-bottom: 12px;
-  box-shadow: inset 0 1px 4px rgba(46, 83, 149, 0.06);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.2), inset 0 0 10px rgba(0, 85, 255, 0.05);
 }
 
 .week-bars {
@@ -282,14 +283,14 @@
 .week-bar-col .count {
   font-size: 11px;
   font-weight: 800;
-  color: var(--blue-dark);
-  background: #e8efff;
-  border: 1px solid #9cb8ed;
+  color: var(--blue);
+  background: #f0f6ff;
+  border: 1.5px solid var(--blue);
   border-radius: 999px;
   padding: 2px 8px;
   min-width: 22px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(46, 83, 149, 0.12);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.25);
   margin-bottom: 8px;
 }
 
@@ -307,15 +308,15 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  border-bottom: 2px solid #b9cef5;
+  border-bottom: 2px solid var(--blue);
 }
 
 .week-bar-col .bar {
   width: 32px;
   max-width: 32px;
-  background: linear-gradient(180deg, #4b7bec 0%, var(--blue) 55%, var(--blue-dark) 100%);
+  background: linear-gradient(180deg, #3385ff 0%, var(--blue) 55%, var(--blue-dark) 100%);
   border-radius: 6px 6px 0 0;
-  box-shadow: 0 4px 10px rgba(46, 83, 149, 0.25);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.55);
   transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s ease;
 }
 
@@ -326,8 +327,8 @@
 
 .week-bar-col:hover .bar:not(.empty-bar) {
   transform: scaleY(1.02);
-  filter: brightness(1.1);
-  box-shadow: 0 6px 14px rgba(46, 83, 149, 0.35);
+  filter: brightness(1.15);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.85);
 }
 
 .week-bar-col .week-date {
@@ -360,7 +361,7 @@
   border: 2px solid var(--blue);
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 0 4px 16px rgba(31, 56, 100, 0.05);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.22);
 }
 
 table.pg-table {
@@ -370,20 +371,20 @@ table.pg-table {
 }
 
 table.pg-table th {
-  background: #eef4ff;
-  color: var(--blue-dark);
+  background: #f0f6ff;
+  color: var(--blue);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   text-align: left;
   padding: 11px 12px;
-  border-bottom: 2px solid #9cb8ed;
+  border-bottom: 2px solid var(--blue);
 }
 
 table.pg-table td {
   padding: 11px 12px;
-  border-bottom: 1px solid #e5edfb;
+  border-bottom: 1px solid var(--line);
   vertical-align: middle;
   color: var(--text);
 }
@@ -393,18 +394,19 @@ table.pg-table tbody tr:last-child td {
 }
 
 table.pg-table tbody tr:hover {
-  background: #f6f9ff;
+  background: #f4f8ff;
 }
 
 .pg-weight-pill {
   display: inline-block;
-  background: #f0f5ff;
-  color: var(--blue-dark);
-  border: 1px solid #bfd3f7;
+  background: #ffffff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
   border-radius: 6px;
   padding: 2px 8px;
   font-weight: 700;
   font-size: 13px;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
 }
 
 /* BMI Pills */
@@ -420,25 +422,29 @@ table.pg-table tbody tr:hover {
 .pg-bmi-pill.normal {
   background: #e3f6e8;
   color: #17512a;
-  border: 1px solid #9fd8b0;
+  border: 1.5px solid #9fd8b0;
+  box-shadow: 0 0 8px rgba(23, 81, 42, 0.15);
 }
 
 .pg-bmi-pill.under {
   background: #e0f2fe;
   color: #075985;
-  border: 1px solid #7dd3fc;
+  border: 1.5px solid #7dd3fc;
+  box-shadow: 0 0 8px rgba(7, 89, 133, 0.15);
 }
 
 .pg-bmi-pill.over {
   background: #fff6db;
   color: #664d03;
-  border: 1px solid #f3d27a;
+  border: 1.5px solid #f3d27a;
+  box-shadow: 0 0 8px rgba(102, 77, 3, 0.15);
 }
 
 .pg-bmi-pill.obese {
   background: #fdeceb;
   color: #842029;
-  border: 1px solid #f5c2c7;
+  border: 1.5px solid #f5c2c7;
+  box-shadow: 0 0 8px rgba(132, 32, 41, 0.15);
 }
 
 /* BMI Input Preview Box */
@@ -449,15 +455,16 @@ table.pg-table tbody tr:hover {
   gap: 8px;
   margin-top: 8px;
   padding: 8px 12px;
-  background: #f1f6ff;
-  border: 1.5px solid #9cb8ed;
+  background: #ffffff;
+  border: 2px solid var(--blue);
   border-radius: 9px;
   font-size: 13px;
   color: var(--blue-dark);
+  box-shadow: 0 0 14px rgba(0, 85, 255, 0.2);
 }
 
 .pg-bmi-preview strong {
-  color: var(--blue-dark);
+  color: var(--blue);
 }
 
 .pg-delete-btn {
@@ -498,10 +505,10 @@ table.pg-table tbody tr:hover {
   flex-wrap: wrap;
   gap: 12px;
   padding: 18px 22px;
-  background: linear-gradient(135deg, #f3f7ff 0%, #ffffff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.24), 0 4px 14px rgba(0, 85, 255, 0.12);
 }
 
 .rc-header h1 {
@@ -522,19 +529,19 @@ table.pg-table tbody tr:hover {
 }
 
 .rc-snap-card {
-  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
   padding: 15px 18px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 20px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22);
   transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 
 .rc-snap-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(31, 56, 100, 0.13);
+  box-shadow: 0 0 28px rgba(0, 85, 255, 0.5), 0 8px 20px rgba(0, 85, 255, 0.2);
 }
 
 .rc-snap-label {
@@ -561,11 +568,11 @@ table.pg-table tbody tr:hover {
 
 /* Recommendations Main Card */
 .rc-card {
-  background: linear-gradient(180deg, #ffffff 0%, #fafcff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
   padding: 22px 24px;
-  box-shadow: 0 8px 24px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.22), 0 4px 16px rgba(0, 85, 255, 0.1);
 }
 
 .rc-card-head {
@@ -576,13 +583,13 @@ table.pg-table tbody tr:hover {
   gap: 10px;
   padding-bottom: 12px;
   margin-bottom: 14px;
-  border-bottom: 1.5px solid #d6e4ff;
+  border-bottom: 2px solid var(--line);
 }
 
 .rc-card-head h2 {
   margin: 0;
   font-size: 18px;
-  color: var(--blue-dark);
+  color: var(--blue);
 }
 
 .rc-card-head .muted {
@@ -603,15 +610,17 @@ table.pg-table tbody tr:hover {
   font-weight: 600;
   padding: 3px 11px;
   border-radius: 999px;
-  background: #eef4ff;
-  color: var(--blue-dark);
-  border: 1px solid #bfd3f7;
+  background: #f0f6ff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
 }
 
 .rc-profile-chip.warn {
   background: #fff6db;
   color: #664d03;
   border-color: #f3d27a;
+  box-shadow: 0 0 8px rgba(102, 77, 3, 0.15);
 }
 
 /* Category Filter Tabs */
@@ -628,23 +637,25 @@ table.pg-table tbody tr:hover {
   font-size: 13px;
   font-weight: 600;
   border-radius: 999px;
-  border: 1.5px solid #9cb8ed;
+  border: 2px solid var(--line);
   background: #ffffff;
-  color: var(--blue-dark);
+  color: var(--blue);
   cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.12);
   transition: all 0.15s ease;
 }
 
 .rc-filter-btn:hover {
-  background: #edf3ff;
+  background: #f0f6ff;
   border-color: var(--blue);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.45);
 }
 
 .rc-filter-btn.active {
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
-  border-color: var(--blue-dark);
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  border-color: var(--blue);
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(46, 83, 149, 0.24);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.65), 0 4px 12px rgba(0, 85, 255, 0.35);
 }
 
 /* Recommendations Item List */
@@ -654,18 +665,18 @@ table.pg-table tbody tr:hover {
 }
 
 .rec {
-  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-left: 6px solid var(--blue);
   border-radius: 14px;
   padding: 18px 22px;
-  box-shadow: 0 8px 22px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22);
   transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 
 .rec:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(31, 56, 100, 0.14);
+  box-shadow: 0 0 28px rgba(0, 85, 255, 0.48), 0 8px 20px rgba(0, 85, 255, 0.2);
 }
 
 .rec.cat-workout {
@@ -673,15 +684,15 @@ table.pg-table tbody tr:hover {
 }
 
 .rec.cat-nutrition {
-  border-left-color: #2e8b57;
+  border-left-color: #00b050;
 }
 
 .rec.cat-form {
-  border-left-color: #c28400;
+  border-left-color: #e68a00;
 }
 
 .rec.cat-general {
-  border-left-color: #4b7bec;
+  border-left-color: #0055ff;
 }
 
 .rec-top {
@@ -706,15 +717,16 @@ table.pg-table tbody tr:hover {
   letter-spacing: 0.05em;
   padding: 3px 10px;
   border-radius: 999px;
-  background: #e8efff;
-  color: var(--blue-dark);
-  border: 1px solid #9cb8ed;
+  background: #f0f6ff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
 }
 
 .rec-cat-badge.cat-workout {
-  background: #e8efff;
-  color: var(--blue-dark);
-  border-color: #9cb8ed;
+  background: #f0f6ff;
+  color: var(--blue);
+  border-color: var(--blue);
 }
 
 .rec-cat-badge.cat-nutrition {
@@ -730,9 +742,9 @@ table.pg-table tbody tr:hover {
 }
 
 .rec-cat-badge.cat-general {
-  background: #eef4ff;
-  color: #2e5395;
-  border-color: #bfd3f7;
+  background: #f0f6ff;
+  color: var(--blue);
+  border-color: var(--blue);
 }
 
 .rec p {
@@ -750,17 +762,18 @@ table.pg-table tbody tr:hover {
   gap: 10px;
   margin-top: 12px;
   padding-top: 10px;
-  border-top: 1px solid #e2ebfc;
+  border-top: 1px solid var(--line);
 }
 
 .rec-footer .why {
   margin: 0;
   color: var(--blue-dark);
   font-size: 13px;
-  background: #f1f6ff;
-  border: 1px solid #d4e2fc;
+  background: #f0f6ff;
+  border: 1.5px solid var(--blue);
   border-radius: 8px;
   padding: 5px 10px;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.15);
 }
 
 .rc-action-link {
@@ -768,17 +781,19 @@ table.pg-table tbody tr:hover {
   font-weight: 600;
   color: var(--blue);
   background: #ffffff;
-  border: 1.5px solid var(--blue);
+  border: 2px solid var(--blue);
   border-radius: 8px;
   padding: 5px 12px;
   text-decoration: none;
   white-space: nowrap;
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.22);
   transition: all 0.15s ease;
 }
 
 .rc-action-link:hover {
   background: var(--blue);
   color: #ffffff;
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.55);
 }
 
 .rc-notice {
@@ -789,4 +804,5 @@ table.pg-table tbody tr:hover {
   border-radius: 10px;
   font-size: 13px;
   margin: 0;
+  box-shadow: 0 0 10px rgba(102, 77, 3, 0.12);
 }

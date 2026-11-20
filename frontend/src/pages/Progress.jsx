@@ -72,14 +72,14 @@ function WeightChart({ points, height, hoveredId, onHover }) {
     <svg className="chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Body weight over time">
       <defs>
         <linearGradient id="weightAreaGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2e5395" stopOpacity="0.28" />
-          <stop offset="100%" stopColor="#2e5395" stopOpacity="0.02" />
+          <stop offset="0%" stopColor="#0055ff" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#0055ff" stopOpacity="0.02" />
         </linearGradient>
         <filter id="weightLineShadow" x="-10%" y="-15%" width="120%" height="140%">
-          <feDropShadow dx="0" dy="3" stdDeviation="2.5" floodColor="#1f3864" floodOpacity="0.28" />
+          <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#0055ff" floodOpacity="0.4" />
         </filter>
         <filter id="weightTooltipShadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#1f3864" floodOpacity="0.22" />
+          <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#0055ff" floodOpacity="0.32" />
         </filter>
       </defs>
 
@@ -137,9 +137,9 @@ function WeightChart({ points, height, hoveredId, onHover }) {
                 cy={cy}
                 r={9}
                 fill="none"
-                stroke="#2e5395"
+                stroke="#0055ff"
                 strokeWidth="2"
-                strokeOpacity="0.45"
+                strokeOpacity="0.65"
               />
             )}
             <circle
@@ -176,10 +176,10 @@ function WeightChart({ points, height, hoveredId, onHover }) {
               y1={cy}
               x2={onRight ? tipX : tipX + tipW}
               y2={cy}
-              stroke="#2e5395"
+              stroke="#0055ff"
               strokeWidth="1.5"
               strokeDasharray="2 2"
-              strokeOpacity="0.65"
+              strokeOpacity="0.75"
             />
             {/* Card background */}
             <rect
@@ -189,15 +189,15 @@ function WeightChart({ points, height, hoveredId, onHover }) {
               height={tipH}
               rx={8}
               fill="#ffffff"
-              stroke="#2e5395"
-              strokeWidth="1.5"
+              stroke="#0055ff"
+              strokeWidth="2"
               filter="url(#weightTooltipShadow)"
             />
             {/* Weight and date */}
             <text
               x={tipX + 10}
               y={tipY + 18}
-              style={{ fontSize: "12px", fontWeight: "700", fill: "#1f3864" }}
+              style={{ fontSize: "12px", fontWeight: "700", fill: "#003cd6" }}
             >
               {activePoint.weight_kg} kg
               <tspan style={{ fill: "#5f6673", fontSize: "10px", fontWeight: "500" }}> • {activePoint.date}</tspan>
@@ -207,9 +207,9 @@ function WeightChart({ points, height, hoveredId, onHover }) {
               <text
                 x={tipX + 10}
                 y={tipY + 34}
-                style={{ fontSize: "11px", fontWeight: "600", fill: "#2e5395" }}
+                style={{ fontSize: "11px", fontWeight: "600", fill: "#0055ff" }}
               >
-                BMI: <tspan style={{ fontWeight: "700", fill: "#1f3864" }}>{activeBMI.value}</tspan>
+                BMI: <tspan style={{ fontWeight: "700", fill: "#003cd6" }}>{activeBMI.value}</tspan>
                 <tspan
                   style={{
                     fill:

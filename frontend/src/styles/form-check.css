@@ -1,4 +1,4 @@
-/* Styles for the FormCheck page (white cards with blue borders and soft shadows) */
+/* Styles for the FormCheck page (pure white background, pure blue boxes, borders and glow) */
 
 .fc-page {
   display: flex;
@@ -13,10 +13,10 @@
   flex-wrap: wrap;
   gap: 12px;
   padding: 18px 22px;
-  background: linear-gradient(135deg, #f3f7ff 0%, #ffffff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(31, 56, 100, 0.08);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.25), 0 6px 20px rgba(0, 85, 255, 0.1);
 }
 
 .fc-header h1 {
@@ -38,13 +38,13 @@
   flex-direction: column;
   align-items: center;
   min-width: 96px;
-  box-shadow: 0 4px 12px rgba(46, 83, 149, 0.12);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.32);
 }
 
 .fc-count-num {
   font-size: 18px;
   font-weight: 700;
-  color: var(--blue-dark);
+  color: var(--blue);
   line-height: 1.2;
 }
 
@@ -57,17 +57,17 @@
 }
 
 .fc-card {
-  background: linear-gradient(180deg, #ffffff 0%, #fafcff 100%);
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 14px;
   padding: 24px;
-  box-shadow: 0 8px 24px rgba(31, 56, 100, 0.08);
-  transition: transform 0.16s ease, box-shadow 0.16s ease;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22), 0 6px 24px rgba(0, 85, 255, 0.08);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
 }
 
 .fc-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(31, 56, 100, 0.14);
+  box-shadow: 0 0 32px rgba(0, 85, 255, 0.45), 0 10px 32px rgba(0, 85, 255, 0.16);
 }
 
 .fc-card-head {
@@ -108,7 +108,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--blue-dark);
+  color: var(--blue);
   margin-bottom: 8px;
 }
 
@@ -133,24 +133,26 @@
   padding: 13px 16px;
   border: 2px solid var(--blue);
   border-radius: 12px;
-  background: #f4f8ff;
+  background: #ffffff;
   color: var(--blue-dark);
   cursor: pointer;
   text-align: left;
   font: inherit;
+  box-shadow: 0 0 14px rgba(0, 85, 255, 0.18);
   transition: all 0.16s ease;
 }
 
 .fc-part-btn:hover {
   background: #e9f1ff;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.35);
   transform: translateY(-1px);
 }
 
 .fc-part-btn.active {
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
-  border-color: var(--blue-dark);
+  background: linear-gradient(135deg, #0055ff 0%, #003cd6 100%);
+  border-color: #0055ff;
   color: #ffffff;
-  box-shadow: 0 6px 16px rgba(46, 83, 149, 0.25);
+  box-shadow: 0 0 26px rgba(0, 85, 255, 0.6), 0 4px 16px rgba(0, 85, 255, 0.3);
 }
 
 .fc-part-title {
@@ -162,7 +164,7 @@
 .fc-part-sub {
   display: block;
   font-size: 12px;
-  opacity: 0.85;
+  opacity: 0.9;
   margin-top: 2px;
 }
 
@@ -172,15 +174,17 @@
   padding: 4px 10px;
   border-radius: 999px;
   background: #ffffff;
-  color: var(--blue-dark);
+  color: var(--blue);
   border: 1.5px solid var(--blue);
   white-space: nowrap;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
 }
 
 .fc-part-btn.active .fc-part-count {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.22);
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .fc-muscle-bar {
@@ -203,22 +207,25 @@
   font-size: 13px;
   font-weight: 600;
   border-radius: 999px;
-  border: 1.5px solid var(--blue);
+  border: 2px solid var(--blue);
   background: #ffffff;
-  color: var(--blue-dark);
+  color: var(--blue);
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 85, 255, 0.16);
   transition: all 0.15s ease;
 }
 
 .fc-chip-btn:hover {
   background: #edf3ff;
   border-color: var(--blue);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.35);
 }
 
 .fc-chip-btn.active {
   background: var(--blue);
   border-color: var(--blue);
   color: #ffffff;
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.55);
 }
 
 .fc-search-box {
@@ -243,18 +250,19 @@
   padding: 10px 12px;
   background: #ffffff;
   color: var(--text);
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.2);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .fc-card .fc-search-input:focus {
   outline: none;
-  border-color: var(--blue-dark);
-  box-shadow: 0 0 0 3px rgba(46, 83, 149, 0.18);
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 24px rgba(0, 85, 255, 0.5);
 }
 
 .fc-search-clear {
-  background: #f4f8ff;
-  color: var(--blue-dark);
+  background: #ffffff;
+  color: var(--blue);
   border: 2px solid var(--blue);
   border-radius: 9px;
   padding: 9px 14px;
@@ -263,12 +271,14 @@
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.22);
   transition: all 0.15s ease;
 }
 
 .fc-search-clear:hover {
   background: var(--blue);
   color: #ffffff;
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.5);
 }
 
 .fc-search-status {
@@ -286,11 +296,12 @@
 
 .fc-card select,
 .fc-card input[type="file"] {
-  border: 1.5px solid #9cb8ed;
+  border: 2px solid var(--blue);
   border-radius: 9px;
   padding: 10px 12px;
   background: #ffffff;
   color: var(--text);
+  box-shadow: 0 0 10px rgba(0, 85, 255, 0.16);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -298,23 +309,23 @@
 .fc-card input[type="file"]:focus {
   outline: none;
   border-color: var(--blue);
-  box-shadow: 0 0 0 3px rgba(46, 83, 149, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 22px rgba(0, 85, 255, 0.45);
 }
 
 .fc-cues-box {
-  background: #f2f7ff;
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 10px;
   padding: 12px 16px;
   margin-bottom: 16px;
   font-size: 13.5px;
   color: var(--text);
-  box-shadow: 0 4px 14px rgba(46, 83, 149, 0.08);
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.25);
 }
 
 .fc-cues-title {
   font-weight: 700;
-  color: var(--blue-dark);
+  color: var(--blue);
   margin: 0 0 6px;
 }
 
@@ -334,30 +345,31 @@
   margin: 10px 0 14px;
   border-radius: 10px;
   border: 2px solid var(--blue);
-  box-shadow: 0 6px 18px rgba(31, 56, 100, 0.12);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.35);
 }
 
 .fc-btn {
-  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+  background: linear-gradient(135deg, #0055ff 0%, #003cd6 100%);
   color: #ffffff;
-  border: 1.5px solid var(--blue-dark);
+  border: 2px solid #0055ff;
   border-radius: 9px;
   padding: 10px 22px;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(46, 83, 149, 0.22);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.5), 0 4px 14px rgba(0, 85, 255, 0.25);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .fc-btn:hover:not(:disabled) {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(46, 83, 149, 0.3);
+  box-shadow: 0 0 32px rgba(0, 85, 255, 0.75), 0 6px 20px rgba(0, 85, 255, 0.35);
 }
 
 .fc-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .fc-score-card {
@@ -365,18 +377,19 @@
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  background: #f2f7ff;
+  background: #ffffff;
   border: 2px solid var(--blue);
   border-radius: 12px;
   padding: 14px 18px;
   margin-bottom: 14px;
-  box-shadow: 0 4px 14px rgba(46, 83, 149, 0.08);
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.25);
 }
 
 .fc-score-card .score-value {
   font-size: 40px;
   font-weight: 800;
-  color: var(--blue-dark);
+  color: var(--blue);
+  text-shadow: 0 0 14px rgba(0, 85, 255, 0.35);
 }
 
 .fc-score-card .verdict-good {
