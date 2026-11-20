@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { api } from "../api/client.js";
+import { EXERCISES as REQUIRED_EXERCISES } from "../api/mock.js";
 import { PHOTO_MAX_MB } from "../constants.js";
 import "../styles/form-check.css";
 
@@ -12,36 +13,6 @@ function getBodyPart(ex) {
   if (ex.body_part === "upper" || ex.body_part === "lower") return ex.body_part;
   return LOWER_MUSCLES.has((ex.muscle_group || "").toLowerCase()) ? "lower" : "upper";
 }
-
-// Fallback list ensuring all 26 unique exercises are available on Form check even with minimal backend data.
-const REQUIRED_EXERCISES = [
-  { id: "push-up", name: "Push-up", muscle_group: "chest", body_part: "upper" },
-  { id: "assisted-pull-up", name: "Assisted Pull-up", muscle_group: "back", body_part: "upper" },
-  { id: "shoulder-press", name: "Dumbbell Shoulder Press", muscle_group: "shoulders", body_part: "upper" },
-  { id: "barbell-curl", name: "Barbell Curl", muscle_group: "arms", body_part: "upper" },
-  { id: "tricep-pressdown", name: "Tricep Pressdown", muscle_group: "arms", body_part: "upper" },
-  { id: "bodyweight-squat", name: "Bodyweight Squat", muscle_group: "legs", body_part: "lower" },
-  { id: "machine-chest-press", name: "Machine Chest Press", muscle_group: "chest", body_part: "upper" },
-  { id: "pectoral-fly", name: "Pectoral Fly", muscle_group: "chest", body_part: "upper" },
-  { id: "decline-chest-press", name: "Decline Chest Press", muscle_group: "chest", body_part: "upper" },
-  { id: "machine-shoulder-press", name: "Machine Shoulder Press", muscle_group: "shoulders", body_part: "upper" },
-  { id: "dumbbell-side-raise", name: "Dumbbell Side Raise", muscle_group: "shoulders", body_part: "upper" },
-  { id: "rope-pressdown", name: "Rope Pressdown", muscle_group: "arms", body_part: "upper" },
-  { id: "machine-dips", name: "Machine Dips", muscle_group: "arms", body_part: "upper" },
-  { id: "barbell-squat", name: "Barbell Squat", muscle_group: "legs", body_part: "lower" },
-  { id: "leg-press", name: "Leg Press", muscle_group: "legs", body_part: "lower" },
-  { id: "v-squat", name: "V. Squat", muscle_group: "legs", body_part: "lower" },
-  { id: "seated-leg-curl", name: "Seated Leg Curl", muscle_group: "legs", body_part: "lower" },
-  { id: "adductor", name: "Adductor", muscle_group: "legs", body_part: "lower" },
-  { id: "standing-calf-raise", name: "Standing Calf Raise", muscle_group: "legs", body_part: "lower" },
-  { id: "high-row", name: "High Row", muscle_group: "back", body_part: "upper" },
-  { id: "low-row", name: "Low Row", muscle_group: "back", body_part: "upper" },
-  { id: "dy-row", name: "D.Y. Row", muscle_group: "back", body_part: "upper" },
-  { id: "seated-cable-row", name: "Seated Cable Row", muscle_group: "back", body_part: "upper" },
-  { id: "face-pull", name: "Face Pull", muscle_group: "shoulders", body_part: "upper" },
-  { id: "dumbbell-curl", name: "Dumbbell Curl", muscle_group: "arms", body_part: "upper" },
-  { id: "hammer-curl", name: "Hammer Curl", muscle_group: "arms", body_part: "upper" },
-];
 
 // TEAM DECISION placeholder: score cut-offs for the verdict text. Set with the trainer.
 function verdictFor(score) {
