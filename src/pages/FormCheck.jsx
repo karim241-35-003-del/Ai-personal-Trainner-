@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { api, USE_MOCK } from "../api/client.js";
 import { PHOTO_MAX_MB } from "../constants.js";
+import FormFixCard from "../components/FormFixCard.jsx";
 import "../styles/trainer-pages.css";
 
 const ALLOWED_TYPES = new Set(["image/jpeg", "image/png"]);
@@ -165,15 +166,21 @@ export default function FormCheck() {
             </>
           )}
 
-          <h2 style={{ marginTop: 16 }}>What to fix</h2>
+          <h2 style={{ marginTop: 22 }}>What to fix (Visual Guidance)</h2>
           {result.issues?.length ? (
-            <ul>
+            <div className="form-fix-list">
               {result.issues.map((i, idx) => (
-                <li key={idx}><strong>{i.body_part}:</strong> {i.message}</li>
+                <FormFixCard key={idx} issue={i} exerciseId={result.exercise_id} />
               ))}
-            </ul>
+            </div>
           ) : (
-            <p className="muted">No problems found in this photo.</p>
+            <div className="celebration-box">
+              <span className="celebration-icon" aria-hidden="true">🎉</span>
+              <div>
+                <p className="celebration-title">Great posture! No problems found.</p>
+                <p className="celebration-sub">Your alignment matches target form for this movement. Keep it up!</p>
+              </div>
+            </div>
           )}
 
           {result.skipped?.length > 0 && (
