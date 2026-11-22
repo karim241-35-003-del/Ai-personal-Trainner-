@@ -1,0 +1,431 @@
+/* Styles for ExerciseLibrary, FormCheck and WorkoutLog. Shared colours come from app.css. */
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 16px; align-items: end; }
+.filters label { margin-bottom: 0; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.chip { background: #e8efff; color: var(--blue-dark); border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+.chip.level-intermediate { background: #fff3cd; color: #664d03; }
+.chip.level-beginner { background: #e3f6e8; color: #17512a; }
+.ex-list { display: grid; gap: 12px; }
+.ex-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.ex-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ex-head h2 { margin: 0; font-size: 17px; }
+.btn-outline { background: #fff; color: var(--blue); border: 1px solid var(--blue); border-radius: 8px; padding: 6px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-outline:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-danger { background: #fff; color: var(--err); border: 1px solid var(--err); border-radius: 8px; padding: 4px 10px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.ex-body { margin-top: 10px; font-size: 14px; }
+.ex-body p { margin: 0 0 8px; }
+.empty { color: var(--muted); text-align: center; padding: 24px 0; }
+.table-wrap { overflow-x: auto; }
+table.log { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.log th, table.log td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.log th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.photo-preview { display: block; max-width: 100%; max-height: 360px; margin: 8px 0 12px; border-radius: 8px; border: 1px solid var(--line); }
+.tips { margin: 0; padding-left: 18px; font-size: 14px; }
+.score-box { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.score-value { font-size: 40px; font-weight: 700; color: var(--blue-dark); }
+.verdict-good { color: #17512a; font-weight: 600; }
+.verdict-ok { color: #664d03; font-weight: 600; }
+.verdict-bad { color: var(--err); font-weight: 600; }
+.form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.success { color: #17512a; font-size: 14px; }
+
+/* Injury safety indicators & alerts */
+.safety-banner { background: #fff5ea; border: 1px solid #f6c187; border-left: 5px solid #d97706; color: #7c2d12; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 14px; }
+.safety-banner strong { color: #9a3412; }
+.safety-banner p { margin: 4px 0 0; }
+.chip.chip-unsafe { background: #ffebe9; color: #b3261e; border: 1px solid #ffc1be; }
+.ex-card.ex-unsafe { border-color: #fca5a5; background: #fffcfc; }
+.safety-warning-box { background: #fff1f2; border: 1px solid #fecdd3; border-radius: 8px; padding: 10px 14px; margin-top: 10px; color: #9f1239; font-size: 13px; }
+.safety-warning-box strong { display: block; margin-bottom: 4px; color: #881337; }
+.safety-alternatives { margin-top: 6px; padding-left: 18px; color: #475569; }
+.injury-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.injury-tag-btn { background: #edf2f7; border: 1px solid #cbd5e0; border-radius: 999px; padding: 3px 10px; font-size: 12px; cursor: pointer; color: #4a5568; }
+.injury-tag-btn:hover { background: #e2e8f0; }
+
+/* Gym Routine Enhancements */
+.routine-badge-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.chip.chip-routine { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-weight: 700; }
+.chip.chip-day { background: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; font-weight: 700; }
+.chip.chip-target { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; font-weight: 700; letter-spacing: 0.02em; }
+.chip.chip-muscle { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; font-weight: 600; text-transform: capitalize; }
+.chip.chip-equipment { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; font-weight: 500; }
+.routine-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.routine-tab-btn { background: #f8fafc; border: 1px solid #cbd5e1; color: #475569; padding: 6px 14px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.15s ease; }
+.routine-tab-btn:hover { background: #f1f5f9; color: #0f172a; }
+.routine-tab-btn.active { background: var(--blue, #2563eb); border-color: var(--blue, #2563eb); color: #ffffff; }
+
+
+/* ============================================================
+   Redesigned Exercise Routine UI (Photo Matching Layout)
+   ============================================================ */
+
+/* Top Routine Toggle Bar */
+.routine-top-toggle-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.routine-toggle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.routine-toggle-pill:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.routine-toggle-pill.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.green-dot-icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+}
+
+/* 3-Day Plan Section */
+.plan-heading-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 12px;
+}
+
+/* 3-Day Plan Segmented Tab Navigation */
+.plan-subtabs-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid #2563eb;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 22px;
+}
+
+.plan-subtab-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  border: none;
+  background: #ffffff;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+
+.plan-subtab-btn:not(:first-child) {
+  border-left: 1px solid #e2e8f0;
+}
+
+.plan-subtab-btn:hover:not(.active) {
+  background: #f8fafc;
+}
+
+.plan-subtab-btn.active {
+  background: #2563eb;
+  color: #ffffff;
+  z-index: 2;
+}
+
+.plan-subtab-day {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  color: #2563eb;
+}
+
+.plan-subtab-btn.active .plan-subtab-day {
+  color: #ffffff;
+}
+
+.plan-subtab-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.plan-subtab-btn.active .plan-subtab-subtitle {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Main Workout Plan Card */
+.workout-plan-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 26px 30px;
+}
+
+.workout-card-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 16px;
+}
+
+.workout-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+
+.workout-card-meta {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Exercise List Rows */
+.exercise-list-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exercise-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.exercise-row-item:hover {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.exercise-row-item.open {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.exercise-row-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+.exercise-row-num {
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.exercise-row-thumb {
+  width: 92px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0f172a;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-thumb-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.exercise-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 20px;
+}
+
+.exercise-row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.exercise-row-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exercise-row-muscle {
+  font-size: 13px;
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+.exercise-row-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.exercise-row-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.exercise-row-sets {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: 0.02em;
+}
+
+.exercise-row-rest {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.exercise-row-chevron {
+  font-size: 18px;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.exercise-row-chevron.open {
+  transform: rotate(90deg);
+  color: #2563eb;
+}
+
+/* Expanded Detail Box */
+.exercise-detail-panel {
+  padding: 16px 20px;
+  margin: 4px 0 12px 40px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.exercise-detail-video-box {
+  max-width: 440px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.exercise-detail-video {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .plan-subtabs-container {
+    grid-template-columns: 1fr;
+  }
+  .plan-subtab-btn:not(:first-child) {
+    border-left: none;
+    border-top: 1px solid #e2e8f0;
+  }
+  .exercise-row-thumb {
+    width: 68px;
+    height: 44px;
+  }
+  .workout-plan-card {
+    padding: 18px 16px;
+  }
+  .exercise-detail-panel {
+    margin-left: 0;
+  }
+}
+
+.exercise-detail-badge-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.exercise-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.exercise-meta-pill.rest-pill {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.routine-medical-disclaimer {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.routine-medical-disclaimer p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+  font-style: italic;
+  line-height: 1.6;
+}
