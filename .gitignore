@@ -1,0 +1,7 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+.DS_Store
+// This part was developed by Asif karim alif but committed by a teammate due to a GitHub repository structure loss issue.

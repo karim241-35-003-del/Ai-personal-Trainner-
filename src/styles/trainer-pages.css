@@ -1,0 +1,30 @@
+/* Styles for ExerciseLibrary, FormCheck and WorkoutLog. Shared colours come from app.css. */
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px 16px; align-items: end; }
+.filters label { margin-bottom: 0; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.chip { background: #e8efff; color: var(--blue-dark); border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
+.chip.level-intermediate { background: #fff3cd; color: #664d03; }
+.chip.level-beginner { background: #e3f6e8; color: #17512a; }
+.ex-list { display: grid; gap: 12px; }
+.ex-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.ex-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ex-head h2 { margin: 0; font-size: 17px; }
+.btn-outline { background: #fff; color: var(--blue); border: 1px solid var(--blue); border-radius: 8px; padding: 6px 12px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-outline:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-danger { background: #fff; color: var(--err); border: 1px solid var(--err); border-radius: 8px; padding: 4px 10px; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.ex-body { margin-top: 10px; font-size: 14px; }
+.ex-body p { margin: 0 0 8px; }
+.empty { color: var(--muted); text-align: center; padding: 24px 0; }
+.table-wrap { overflow-x: auto; }
+table.log { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.log th, table.log td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.log th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+.photo-preview { display: block; max-width: 100%; max-height: 360px; margin: 8px 0 12px; border-radius: 8px; border: 1px solid var(--line); }
+.tips { margin: 0; padding-left: 18px; font-size: 14px; }
+.score-box { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.score-value { font-size: 40px; font-weight: 700; color: var(--blue-dark); }
+.verdict-good { color: #17512a; font-weight: 600; }
+.verdict-ok { color: #664d03; font-weight: 600; }
+.verdict-bad { color: var(--err); font-weight: 600; }
+.form-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.success { color: #17512a; font-size: 14px; }
