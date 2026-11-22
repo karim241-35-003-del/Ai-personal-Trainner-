@@ -68,20 +68,25 @@ export default function Profile() {
     const { name, value } = e.target;
     if (name === "location") {
       if (value === "gym") {
+        // Automatically check all three equipment options when At a gym is selected
         setForm((prev) => ({
           ...prev,
           location: value,
-          equipment: prev.equipment.includes("gym_machines")
-            ? prev.equipment
-            : [...prev.equipment.filter((x) => x !== "barbell"), "gym_machines"],
+          equipment: ["bodyweight", "dumbbell", "gym_machines"],
         }));
       } else {
-        // Switched to home: can only select bodyweight or dumbbell, not both at a time
-        setForm((prev) => ({
-          ...prev,
-          location: value,
-          equipment: prev.equipment.includes("dumbbell") ? ["dumbbell"] : ["bodyweight"],
-        }));
+        // Switched to home: automatically uncheck gym_machines (keeping bodyweight or dumbbells selected as appropriate)
+        setForm((prev) => {
+          const withoutGym = (prev.equipment || []).filter((x) => x !== "gym_machines");
+          const nextEq = withoutGym.includes("dumbbell")
+            ? ["dumbbell"]
+            : (withoutGym.includes("bodyweight") ? ["bodyweight"] : ["bodyweight"]);
+          return {
+            ...prev,
+            location: value,
+            equipment: nextEq,
+          };
+        });
       }
       return;
     }
