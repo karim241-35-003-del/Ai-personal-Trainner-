@@ -53,6 +53,27 @@ def _pick_side(world_landmarks: Sequence[Any], joint_names: list[str]) -> tuple[
     return "right", right_lms
 
 
+def _resolve_exercise_config(exercise_id: str, exercises: dict[str, Any]) -> dict[str, Any] | None:
+    """Find specific exercise check config or map to the most similar biomechanical movement."""
+    if exercise_id in exercises:
+        return exercises[exercise_id]
+    
+    # Squats, leg presses, calf raises, leg curls
+    if any(k in exercise_id for k in ["squat", "leg-press", "adductor", "leg-curl", "calf-raise"]):
+        return exercises.get("bodyweight-squat")
+    
+    # Presses, push-ups, dips, flyes
+    if any(k in exercise_id for k in ["press", "push", "dip", "fly"]):
+        return exercises.get("push-up")
+
+    # Curls, rows, pull-ups, pulldowns
+    if any(k in exercise_id for k in ["curl", "row", "pull"]):
+        return exercises.get("push-up")
+    
+    # Core, planks, stability
+    return exercises.get("plank") or exercises.get("push-up")
+
+
 def evaluate_pose(
     world_landmarks: Sequence[Any],
     exercise_id: str,
@@ -62,13 +83,13 @@ def evaluate_pose(
     """Evaluate 3D world landmarks against exercise range rules and return the API payload."""
     cfg = thresholds if thresholds is not None else load_thresholds()
     exercises = cfg.get("exercises", {})
-    if exercise_id not in exercises:
+    ex_cfg = _resolve_exercise_config(exercise_id, exercises)
+    if not ex_cfg:
         raise UnsupportedExerciseError(
             f"Form check is not configured for '{exercise_id}'. Supported exercises: {', '.join(exercises)}."
         )
 
-    ex_cfg = exercises[exercise_id]
-    resolved_name = exercise_name or ex_cfg.get("name", exercise_id)
+    resolved_name = exercise_name or ex_cfg.get("name", exercise_id.replace("-", " ").title())
     visibility_min = float(cfg.get("visibility_threshold", VISIBILITY_THRESHOLD))
     penalty = int(cfg.get("penalty_per_issue", PENALTY_PER_ISSUE))
 
