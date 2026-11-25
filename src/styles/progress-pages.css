@@ -1,17 +1,808 @@
-/* Styles for Progress and Recommendations. Shared colours come from app.css. */
-.chart { width: 100%; height: auto; display: block; }
-.chart .axis { stroke: var(--line); stroke-width: 1; }
-.chart .line { fill: none; stroke: var(--blue); stroke-width: 2.5; stroke-linejoin: round; }
-.chart .dot { fill: var(--blue); }
-.chart text { fill: var(--muted); font-size: 11px; }
-.week-bars { display: flex; align-items: flex-end; gap: 10px; height: 140px; padding-top: 8px; }
-.week-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; font-size: 12px; color: var(--muted); }
-.week-bar .bar { width: 100%; max-width: 48px; background: var(--blue); border-radius: 6px 6px 0 0; min-height: 2px; }
-.week-bar .count { font-weight: 700; color: var(--blue-dark); }
-.rec-list { display: grid; gap: 12px; margin-bottom: 20px; }
-.rec { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 12px; padding: 14px 18px; }
-.rec h2 { margin: 0 0 4px; font-size: 17px; }
-.rec p { margin: 4px 0; font-size: 14px; }
-.rec .why { color: var(--muted); font-size: 13px; }
-.rec.cat-nutrition { border-left-color: #2e8b57; }
-.rec.cat-form { border-left-color: #b8860b; }
+/* ==========================================================================
+   Progress & Recommendations Pages - White Background & Pure Blue Glowing Theme
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   PART 1: PROGRESS PAGE (.pg-page)
+   -------------------------------------------------------------------------- */
+
+.pg-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text);
+}
+
+/* Header Banner */
+.pg-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.24), 0 4px 14px rgba(0, 85, 255, 0.12);
+}
+
+.pg-header h1 {
+  margin: 0 0 4px;
+  color: var(--blue-dark);
+}
+
+.pg-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.pg-header a {
+  color: var(--blue);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.pg-header a:hover {
+  color: var(--blue-dark);
+}
+
+/* Stats Summary Cards */
+.pg-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.pg-stat {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.pg-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(0, 85, 255, 0.5), 0 8px 20px rgba(0, 85, 255, 0.2);
+}
+
+.pg-stat .stat-title {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.pg-stat .stat-value {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--blue-dark);
+  line-height: 1.15;
+}
+
+.pg-stat .stat-unit {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Progress Cards & Forms */
+.pg-card {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.22), 0 4px 16px rgba(0, 85, 255, 0.1);
+}
+
+.pg-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--line);
+}
+
+.pg-card-head h2 {
+  margin: 0;
+  font-size: 19px;
+  color: var(--blue);
+}
+
+.pg-card label {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.pg-card input {
+  border: 2px solid var(--line);
+  border-radius: 9px;
+  padding: 10px 12px;
+  background: #ffffff;
+  color: var(--text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pg-card input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 20px rgba(0, 85, 255, 0.45);
+}
+
+.pg-btn {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  color: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 9px;
+  padding: 10px 22px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.45), 0 4px 14px rgba(0, 85, 255, 0.3);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pg-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 26px rgba(0, 85, 255, 0.7), 0 6px 18px rgba(0, 85, 255, 0.4);
+}
+
+.pg-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 24px 0;
+}
+
+/* Weight Line Chart Box */
+.pg-chart-box {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  padding: 16px 16px 12px;
+  margin-bottom: 18px;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.2), inset 0 0 10px rgba(0, 85, 255, 0.05);
+}
+
+.pg-hover-pill {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  background: #f0f6ff;
+  border: 1.5px solid var(--blue);
+  border-radius: 999px;
+  padding: 4px 12px;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.25);
+}
+
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart .axis {
+  stroke: var(--blue);
+  stroke-width: 1.5;
+}
+
+.chart .grid-line {
+  stroke: #d6e4ff;
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.chart .line {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart .dot {
+  fill: #ffffff;
+  stroke: var(--blue);
+  stroke-width: 2.5;
+  cursor: pointer;
+  transition: r 0.15s ease, stroke-width 0.15s ease;
+}
+
+.chart .dot:hover,
+.chart .dot.active {
+  fill: var(--blue);
+  stroke: #ffffff;
+  stroke-width: 2.5;
+}
+
+.chart text {
+  fill: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.chart .pt-label {
+  fill: var(--blue);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+/* Weekly Bar Chart */
+.pg-bars-box {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  padding: 20px 16px 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.2), inset 0 0 10px rgba(0, 85, 255, 0.05);
+}
+
+.week-bars {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  height: 180px;
+  padding: 6px 6px 0;
+}
+
+.week-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.week-bar-col .count {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--blue);
+  background: #f0f6ff;
+  border: 1.5px solid var(--blue);
+  border-radius: 999px;
+  padding: 2px 8px;
+  min-width: 22px;
+  text-align: center;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.25);
+  margin-bottom: 8px;
+}
+
+.week-bar-col .count.zero {
+  background: #f1f4f9;
+  color: #8e9bb0;
+  border-color: #d2dbe8;
+  box-shadow: none;
+}
+
+.week-bar-col .bar-area {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 2px solid var(--blue);
+}
+
+.week-bar-col .bar {
+  width: 32px;
+  max-width: 32px;
+  background: linear-gradient(180deg, #3385ff 0%, var(--blue) 55%, var(--blue-dark) 100%);
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.55);
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.15s ease;
+}
+
+.week-bar-col .bar.empty-bar {
+  background: #e5edfb;
+  box-shadow: none;
+}
+
+.week-bar-col:hover .bar:not(.empty-bar) {
+  transform: scaleY(1.02);
+  filter: brightness(1.15);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.85);
+}
+
+.week-bar-col .week-date {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+  margin-top: 8px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Backward-compatible labels container if needed */
+.pg-week-labels {
+  display: flex;
+  gap: 12px;
+  padding: 8px 6px 0;
+}
+
+.pg-week-label {
+  flex: 1;
+  text-align: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* Weight History Table */
+.pg-table-wrap {
+  overflow-x: auto;
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.22);
+}
+
+table.pg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+table.pg-table th {
+  background: #f0f6ff;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding: 11px 12px;
+  border-bottom: 2px solid var(--blue);
+}
+
+table.pg-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+  color: var(--text);
+}
+
+table.pg-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+table.pg-table tbody tr:hover {
+  background: #f4f8ff;
+}
+
+.pg-weight-pill {
+  display: inline-block;
+  background: #ffffff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-weight: 700;
+  font-size: 13px;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
+}
+
+/* BMI Pills */
+.pg-bmi-pill {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.pg-bmi-pill.normal {
+  background: #e3f6e8;
+  color: #17512a;
+  border: 1.5px solid #9fd8b0;
+  box-shadow: 0 0 8px rgba(23, 81, 42, 0.15);
+}
+
+.pg-bmi-pill.under {
+  background: #e0f2fe;
+  color: #075985;
+  border: 1.5px solid #7dd3fc;
+  box-shadow: 0 0 8px rgba(7, 89, 133, 0.15);
+}
+
+.pg-bmi-pill.over {
+  background: #fff6db;
+  color: #664d03;
+  border: 1.5px solid #f3d27a;
+  box-shadow: 0 0 8px rgba(102, 77, 3, 0.15);
+}
+
+.pg-bmi-pill.obese {
+  background: #fdeceb;
+  color: #842029;
+  border: 1.5px solid #f5c2c7;
+  box-shadow: 0 0 8px rgba(132, 32, 41, 0.15);
+}
+
+/* BMI Input Preview Box */
+.pg-bmi-preview {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 9px;
+  font-size: 13px;
+  color: var(--blue-dark);
+  box-shadow: 0 0 14px rgba(0, 85, 255, 0.2);
+}
+
+.pg-bmi-preview strong {
+  color: var(--blue);
+}
+
+.pg-delete-btn {
+  background: #ffffff;
+  color: var(--err);
+  border: 1.5px solid #e6a29e;
+  border-radius: 7px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pg-delete-btn:hover {
+  background: #fdeceb;
+  border-color: var(--err);
+}
+
+
+/* --------------------------------------------------------------------------
+   PART 2: RECOMMENDATIONS PAGE (.rc-page)
+   -------------------------------------------------------------------------- */
+
+.rc-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--text);
+}
+
+/* Header Banner */
+.rc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.24), 0 4px 14px rgba(0, 85, 255, 0.12);
+}
+
+.rc-header h1 {
+  margin: 0 0 4px;
+  color: var(--blue-dark);
+}
+
+.rc-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Snapshot Grid */
+.rc-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 14px;
+}
+
+.rc-snap-card {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  padding: 15px 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.rc-snap-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(0, 85, 255, 0.5), 0 8px 20px rgba(0, 85, 255, 0.2);
+}
+
+.rc-snap-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
+.rc-snap-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--blue-dark);
+  line-height: 1.2;
+}
+
+.rc-snap-sub {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Recommendations Main Card */
+.rc-card {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  padding: 22px 24px;
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.22), 0 4px 16px rgba(0, 85, 255, 0.1);
+}
+
+.rc-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 2px solid var(--line);
+}
+
+.rc-card-head h2 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--blue);
+}
+
+.rc-card-head .muted {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* Profile Chips */
+.rc-profile-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rc-profile-chip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 11px;
+  border-radius: 999px;
+  background: #f0f6ff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
+}
+
+.rc-profile-chip.warn {
+  background: #fff6db;
+  color: #664d03;
+  border-color: #f3d27a;
+  box-shadow: 0 0 8px rgba(102, 77, 3, 0.15);
+}
+
+/* Category Filter Tabs */
+.rc-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.rc-filter-btn {
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: #ffffff;
+  color: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.12);
+  transition: all 0.15s ease;
+}
+
+.rc-filter-btn:hover {
+  background: #f0f6ff;
+  border-color: var(--blue);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.45);
+}
+
+.rc-filter-btn.active {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+  border-color: var(--blue);
+  color: #ffffff;
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.65), 0 4px 12px rgba(0, 85, 255, 0.35);
+}
+
+/* Recommendations Item List */
+.rec-list {
+  display: grid;
+  gap: 16px;
+}
+
+.rec {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-left: 6px solid var(--blue);
+  border-radius: 14px;
+  padding: 18px 22px;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.rec:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(0, 85, 255, 0.48), 0 8px 20px rgba(0, 85, 255, 0.2);
+}
+
+.rec.cat-workout {
+  border-left-color: var(--blue);
+}
+
+.rec.cat-nutrition {
+  border-left-color: #00b050;
+}
+
+.rec.cat-form {
+  border-left-color: #e68a00;
+}
+
+.rec.cat-general {
+  border-left-color: #0055ff;
+}
+
+.rec-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.rec-top h2 {
+  margin: 0;
+  font-size: 17px;
+  color: var(--blue-dark);
+}
+
+.rec-cat-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #f0f6ff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
+}
+
+.rec-cat-badge.cat-workout {
+  background: #f0f6ff;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.rec-cat-badge.cat-nutrition {
+  background: #e3f6e8;
+  color: #17512a;
+  border-color: #9fd8b0;
+}
+
+.rec-cat-badge.cat-form {
+  background: #fff6db;
+  color: #664d03;
+  border-color: #f3d27a;
+}
+
+.rec-cat-badge.cat-general {
+  background: #f0f6ff;
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+.rec p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.rec-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.rec-footer .why {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 13px;
+  background: #f0f6ff;
+  border: 1.5px solid var(--blue);
+  border-radius: 8px;
+  padding: 5px 10px;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.15);
+}
+
+.rc-action-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 8px;
+  padding: 5px 12px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.22);
+  transition: all 0.15s ease;
+}
+
+.rc-action-link:hover {
+  background: var(--blue);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.55);
+}
+
+.rc-notice {
+  background: #fff8e1;
+  color: #664d03;
+  border: 1.5px solid #f3d27a;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin: 0;
+  box-shadow: 0 0 10px rgba(102, 77, 3, 0.12);
+}

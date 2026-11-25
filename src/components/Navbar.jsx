@@ -1,4 +1,3 @@
-// This part was developed by Asif karim alif but committed by a teammate due to a GitHub repository structure loss issue.
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
 import { USE_MOCK } from "../api/client.js";
@@ -16,8 +15,11 @@ export default function Navbar() {
         </div>
       )}
       <nav className="nav">
-        <span className="brand">AI Personal Trainer</span>
+        <NavLink to="/" className="brand" style={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center", gap: 8 }}>
+          <span>💪 AI Personal Trainer</span>
+        </NavLink>
         <div className="nav-links">
+          <NavLink to="/" end>Muscle Map</NavLink>
           {user ? (
             <>
               <NavLink to="/dashboard">Dashboard</NavLink>

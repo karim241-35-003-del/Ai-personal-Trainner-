@@ -259,7 +259,12 @@ app.get("/api/exercises", requireAuth, async (req, res) => {
     return res.status(400).json({ detail: error.message });
   }
 
-  return res.json(data);
+  const mapped = (data || []).map((ex) => ({
+    ...ex,
+    videoUrl: ex.video_url || ex.videoUrl || ex.video || null,
+  }));
+
+  return res.json(mapped);
 });
 
 // POST /api/form-check -> forward to Python MediaPipe FastAPI service

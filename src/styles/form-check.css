@@ -1,0 +1,420 @@
+/* Styles for the FormCheck page (pure white background, pure blue boxes, borders and glow) */
+
+.fc-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 22px;
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.25), 0 6px 20px rgba(0, 85, 255, 0.1);
+}
+
+.fc-header h1 {
+  margin: 0 0 4px;
+  color: var(--blue-dark);
+}
+
+.fc-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.fc-count-pill {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 96px;
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.32);
+}
+
+.fc-count-num {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1.2;
+}
+
+.fc-count-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.fc-card {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.22), 0 6px 24px rgba(0, 85, 255, 0.08);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.fc-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 32px rgba(0, 85, 255, 0.45), 0 10px 32px rgba(0, 85, 255, 0.16);
+}
+
+.fc-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1.5px solid #d6e4ff;
+}
+
+.fc-card-head h2 {
+  margin: 0;
+  font-size: 19px;
+  color: var(--blue-dark);
+}
+
+.fc-card ul.tips {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.fc-card ul.tips li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.fc-card ul.tips li::marker {
+  color: var(--blue);
+}
+
+.fc-section-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.fc-part-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 580px) {
+  .fc-part-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fc-part-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--blue-dark);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  box-shadow: 0 0 14px rgba(0, 85, 255, 0.18);
+  transition: all 0.16s ease;
+}
+
+.fc-part-btn:hover {
+  background: #e9f1ff;
+  box-shadow: 0 0 20px rgba(0, 85, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.fc-part-btn.active {
+  background: linear-gradient(135deg, #0055ff 0%, #003cd6 100%);
+  border-color: #0055ff;
+  color: #ffffff;
+  box-shadow: 0 0 26px rgba(0, 85, 255, 0.6), 0 4px 16px rgba(0, 85, 255, 0.3);
+}
+
+.fc-part-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.fc-part-sub {
+  display: block;
+  font-size: 12px;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.fc-part-count {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--blue);
+  border: 1.5px solid var(--blue);
+  white-space: nowrap;
+  box-shadow: 0 0 8px rgba(0, 85, 255, 0.2);
+}
+
+.fc-part-btn.active .fc-part-count {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.fc-muscle-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.fc-muscle-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.fc-chip-btn {
+  padding: 5px 12px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 2px solid var(--blue);
+  background: #ffffff;
+  color: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 85, 255, 0.16);
+  transition: all 0.15s ease;
+}
+
+.fc-chip-btn:hover {
+  background: #edf3ff;
+  border-color: var(--blue);
+  box-shadow: 0 0 16px rgba(0, 85, 255, 0.35);
+}
+
+.fc-chip-btn.active {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.55);
+}
+
+.fc-search-box {
+  margin-bottom: 14px;
+}
+
+.fc-search-label {
+  margin-bottom: 6px;
+}
+
+.fc-search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fc-card .fc-search-input {
+  flex: 1;
+  margin-top: 0;
+  border: 2px solid var(--blue);
+  border-radius: 9px;
+  padding: 10px 12px;
+  background: #ffffff;
+  color: var(--text);
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.2);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fc-card .fc-search-input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 24px rgba(0, 85, 255, 0.5);
+}
+
+.fc-search-clear {
+  background: #ffffff;
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  border-radius: 9px;
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 0 12px rgba(0, 85, 255, 0.22);
+  transition: all 0.15s ease;
+}
+
+.fc-search-clear:hover {
+  background: var(--blue);
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.5);
+}
+
+.fc-search-status {
+  display: block;
+  margin-top: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.fc-card label {
+  color: var(--blue-dark);
+  font-weight: 600;
+}
+
+.fc-card select,
+.fc-card input[type="file"] {
+  border: 2px solid var(--blue);
+  border-radius: 9px;
+  padding: 10px 12px;
+  background: #ffffff;
+  color: var(--text);
+  box-shadow: 0 0 10px rgba(0, 85, 255, 0.16);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fc-card select:focus,
+.fc-card input[type="file"]:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 85, 255, 0.25), 0 0 22px rgba(0, 85, 255, 0.45);
+}
+
+.fc-cues-box {
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 13.5px;
+  color: var(--text);
+  box-shadow: 0 0 18px rgba(0, 85, 255, 0.25);
+}
+
+.fc-cues-title {
+  font-weight: 700;
+  color: var(--blue);
+  margin: 0 0 6px;
+}
+
+.fc-cues-box ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.fc-cues-box li {
+  margin-bottom: 3px;
+}
+
+.fc-preview {
+  display: block;
+  max-width: 100%;
+  max-height: 360px;
+  margin: 10px 0 14px;
+  border-radius: 10px;
+  border: 2px solid var(--blue);
+  box-shadow: 0 0 24px rgba(0, 85, 255, 0.35);
+}
+
+.fc-btn {
+  background: linear-gradient(135deg, #0055ff 0%, #003cd6 100%);
+  color: #ffffff;
+  border: 2px solid #0055ff;
+  border-radius: 9px;
+  padding: 10px 22px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.5), 0 4px 14px rgba(0, 85, 255, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fc-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 32px rgba(0, 85, 255, 0.75), 0 6px 20px rgba(0, 85, 255, 0.35);
+}
+
+.fc-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.fc-score-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #ffffff;
+  border: 2px solid var(--blue);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 0 22px rgba(0, 85, 255, 0.25);
+}
+
+.fc-score-card .score-value {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--blue);
+  text-shadow: 0 0 14px rgba(0, 85, 255, 0.35);
+}
+
+.fc-score-card .verdict-good {
+  color: #17512a;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.fc-score-card .verdict-ok {
+  color: #664d03;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.fc-score-card .verdict-bad {
+  color: var(--err);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.fc-notice {
+  background: #fff8e1;
+  color: #664d03;
+  border: 1.5px solid #f3d27a;
+  padding: 11px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}

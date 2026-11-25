@@ -5,23 +5,22 @@
 
 export const ACTIVITY_LEVELS = [
   // "factor" is used ONLY by the demo (mock) mode. The real backend owns the formula.
-  { value: "sedentary", label: "Little or no exercise", factor: 1.2 },
-  { value: "light", label: "Light exercise, 1-3 days/week", factor: 1.375 },
-  { value: "moderate", label: "Moderate exercise, 3-5 days/week", factor: 1.55 },
-  { value: "very", label: "Hard exercise, 6-7 days/week", factor: 1.725 },
-  { value: "super", label: "Very hard exercise or training twice a day", factor: 1.9 },
+  { value: "sedentary", label: "Sedentary (little to no exercise)", factor: 1.2 },
+  { value: "light", label: "Lightly active (exercise 1-3 days/week)", factor: 1.375 },
+  { value: "moderate", label: "Moderately active (exercise 3-5 days/week)", factor: 1.55 },
+  { value: "very", label: "Very active (exercise 6-7 days/week)", factor: 1.725 },
+  { value: "super", label: "Super active (training twice a day)", factor: 1.9 },
 ];
 
 export const GOALS = [
-  { value: "lose", label: "Lose weight" },
-  { value: "maintain", label: "Maintain weight" },
-  { value: "gain", label: "Gain muscle / weight" },
+  { value: "lose", label: "Weight loss (Subtract 300 to 500 calories from TDEE)" },
+  { value: "maintain", label: "Weight maintain (Same as TDEE)" },
+  { value: "gain", label: "Weight gain (Add 200 to 500 calories to TDEE)" },
 ];
 
 export const FITNESS_LEVELS = [
   { value: "beginner", label: "Beginner" },
   { value: "intermediate", label: "Intermediate" },
-  { value: "advanced", label: "Advanced" },
 ];
 
 export const LOCATIONS = [
@@ -32,7 +31,6 @@ export const LOCATIONS = [
 export const EQUIPMENT = [
   { value: "bodyweight", label: "No equipment (bodyweight only)" },
   { value: "dumbbell", label: "Dumbbells" },
-  { value: "barbell", label: "Barbell" },
   { value: "gym_machines", label: "Gym machines" },
 ];
 
